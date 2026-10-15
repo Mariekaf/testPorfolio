@@ -58,3 +58,7 @@ node --check admin.js
 ```
 
 Les tests Python utilisent un serveur et un dossier temporaire : ils ne modifient pas votre portfolio. Ils couvrent l’authentification, le CSRF, les fichiers privés, les images, les sauvegardes, les brouillons, la publication et les conflits de révision.
+
+## Windows : erreur UnicodeDecodeError / NetworkError
+
+Les fichiers du portfolio sont lus et écrits explicitement en UTF-8, y compris sur Windows. Si vous utilisez une ancienne version et voyez une erreur `charmap` / `cp1252`, arrêtez le serveur avec Ctrl+C puis lancez `python3 -X utf8 server.py`. Vous pouvez aussi remplacer uniquement `server.py` par la version à jour, sans toucher au dossier `.local` contenant vos données et votre mot de passe.

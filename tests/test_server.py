@@ -5,6 +5,7 @@ import io
 import json
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 import time
 import unittest
@@ -19,6 +20,10 @@ spec.loader.exec_module(portfolio)
 
 class PortfolioTest(unittest.TestCase):
     @classmethod
+    def server_command(cls):
+        return [sys.executable, str(ROOT/'server.py')]
+
+    @classmethod
     def setUpClass(cls):
         import os, socket
         cls.tmp = tempfile.TemporaryDirectory()
@@ -27,14 +32,14 @@ class PortfolioTest(unittest.TestCase):
             sock.bind(('127.0.0.1',0))
             port=sock.getsockname()[1]
         cls.base='http://127.0.0.1:'+str(port)
-        cls.process=subprocess.Popen(['python3',str(ROOT/'server.py'),'--host','127.0.0.1','--port',str(port)],env={**os.environ,'PORTFOLIO_DATA_DIR':cls.tmp.name},stdout=subprocess.DEVNULL)
+        cls.process=subprocess.Popen([*cls.server_command(),'--host','127.0.0.1','--port',str(port)],env={**os.environ,'PORTFOLIO_DATA_DIR':cls.tmp.name},stdout=subprocess.DEVNULL)
         for _ in range(100):
             try:
                 urllib.request.urlopen(cls.base+'/api/content',timeout=1).close()
                 break
             except OSError:time.sleep(.05)
         else:raise RuntimeError('Server did not start')
-        cls.password=(cls.data/'initial-password.txt').read_text()
+        cls.password=(cls.data/'initial-password.txt').read_text(encoding='utf-8')
 
     @classmethod
     def tearDownClass(cls):
@@ -79,7 +84,7 @@ class PortfolioTest(unittest.TestCase):
         self.assertEqual(status,200)
         _,public=self.request('/api/content')
         self.assertNotIn('test-draft',[p['id'] for p in public['projects']])
-        self.assertIn('test-draft',[p['id'] for p in json.loads((self.data/'content.json').read_text())['projects']])
+        self.assertIn('test-draft',[p['id'] for p in json.loads((self.data/'content.json').read_text(encoding='utf-8'))['projects']])
         self.assertEqual(self.request('/api/admin/content',content)[0],409)
         saved['projects'][-1]['published']=True
         self.assertEqual(self.request('/api/admin/content',saved)[0],200)
@@ -89,7 +94,7 @@ class PortfolioTest(unittest.TestCase):
         self.process.terminate();self.process.wait()
         import os
         port=self.base.rsplit(':',1)[1]
-        type(self).process=subprocess.Popen(['python3',str(ROOT/'server.py'),'--host','127.0.0.1','--port',port],env={**os.environ,'PORTFOLIO_DATA_DIR':str(self.data)},stdout=subprocess.DEVNULL)
+        type(self).process=subprocess.Popen([*self.server_command(),'--host','127.0.0.1','--port',port],env={**os.environ,'PORTFOLIO_DATA_DIR':str(self.data)},stdout=subprocess.DEVNULL)
         for _ in range(100):
             try:
                 status,public=self.request('/api/content')
@@ -119,5 +124,23 @@ class PortfolioTest(unittest.TestCase):
         content['site']['socials']=[]
         content['projects'][1]['slug']=content['projects'][0]['slug']
         self.assertEqual(self.request('/api/admin/content',content)[0],400)
+
+class WindowsEncodingTest(PortfolioTest):
+    """Run the HTTP workflow with Windows cp1252 as the implicit file encoding."""
+    @classmethod
+    def server_command(cls):
+        bootstrap = """
+import io, runpy, sys
+original_open = io.open
+def windows_open(file, mode='r', buffering=-1, encoding=None, errors=None,
+                 newline=None, closefd=True, opener=None):
+    if 'b' not in mode and encoding in (None, 'locale'):
+        encoding = 'cp1252'
+    return original_open(file, mode, buffering, encoding, errors, newline, closefd, opener)
+io.open = windows_open
+sys.argv = sys.argv[1:]
+runpy.run_path(sys.argv[0], run_name='__main__')
+"""
+        return [sys.executable, '-c', bootstrap, str(ROOT/'server.py')]
 
 if __name__=='__main__':unittest.main()

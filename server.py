@@ -40,7 +40,7 @@ def initialize():
     DATA.mkdir(parents=True, exist_ok=True, mode=0o700)
     (DATA / 'uploads').mkdir(exist_ok=True)
     if not (DATA / 'content.json').exists():
-        write_json(DATA / 'content.json', json.loads((ROOT / 'content.example.json').read_text()))
+        write_json(DATA / 'content.json', json.loads((ROOT / 'content.example.json').read_text(encoding='utf-8')))
     if not (DATA / 'auth.json').exists():
         password = secrets.token_urlsafe(24)
         write_json(DATA / 'auth.json', password_record(password))
@@ -159,7 +159,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         path = unquote(urlsplit(self.path).path)
         if path == '/api/content':
-            content = json.loads((DATA/'content.json').read_text())
+            content = json.loads((DATA/'content.json').read_text(encoding='utf-8'))
             content['projects'] = [p for p in content['projects'] if p['published']]
             return self.respond(200, content)
         if path == '/api/admin/session':
@@ -178,7 +178,7 @@ class Handler(BaseHTTPRequestHandler):
         if path == '/api/admin/content':
             if not self.session():
                 return self.respond(401, {'error':'Connexion requise.'})
-            return self.respond(200, json.loads((DATA/'content.json').read_text()))
+            return self.respond(200, json.loads((DATA/'content.json').read_text(encoding='utf-8')))
         if path.startswith('/uploads/'):
             name = path.removeprefix('/uploads/')
             if not re.fullmatch(r'[a-f0-9]{32}\.(png|jpg|webp|gif)', name):
@@ -205,7 +205,7 @@ class Handler(BaseHTTPRequestHandler):
                 if len(recent) >= 10:
                     return self.respond(429, {'error':'Trop de tentatives. Réessayez dans 5 minutes.'})
                 password = json.loads(self.read_body()).get('password','')
-                record = json.loads((DATA/'auth.json').read_text())
+                record = json.loads((DATA/'auth.json').read_text(encoding='utf-8'))
                 valid = isinstance(password,str) and len(password)<=500 and hmac.compare_digest(hashlib.scrypt(password.encode(),salt=bytes.fromhex(record['salt']),n=16384,r=8,p=1).hex(),record['hash'])
                 if not valid:
                     recent.append(time.time())
@@ -230,7 +230,7 @@ class Handler(BaseHTTPRequestHandler):
                 value = json.loads(self.read_body())
                 clean = validate(value)
                 with LOCK:
-                    old = json.loads((DATA/'content.json').read_text())
+                    old = json.loads((DATA/'content.json').read_text(encoding='utf-8'))
                     if value.get('revision') != old.get('revision'):
                         return self.respond(409, {'error':'Le contenu a changé dans une autre session. Exportez vos modifications puis rechargez avant de sauvegarder.'})
                     clean['revision'] = old.get('revision',0)+1
