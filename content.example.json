@@ -1,0 +1,195 @@
+{
+  "revision": 0,
+  "site": {
+    "name": "Marie Roger Fokou Kaffo",
+    "job": "UX/UI Designer",
+    "location": "",
+    "availability": "À l’écoute de nouveaux projets",
+    "heroTitle": "Du sens.\nDu lien.\nDu design.",
+    "heroDescription": "Je suis Marie Roger Fokou Kaffo. Je conçois des expériences numériques intuitives, utiles et sensibles.",
+    "projectsTitle": "De l’idée à l’expérience.",
+    "projectsIntro": "Une sélection de projets et les histoires derrière chaque décision de design.",
+    "aboutTitle": "Le bon design commence par l’écoute.",
+    "aboutIntro": "Derrière chaque écran, il y a une personne. Ses besoins, ses habitudes, ses moments de doute.",
+    "aboutText": "Ma démarche relie recherche utilisateur, exploration créative et attention aux détails. Mon objectif : rendre chaque interaction plus claire, plus utile et plus agréable.",
+    "skills": "Recherche utilisateur, Wireframes, UI design, Design systems, Prototypage, Accessibilité",
+    "contactTitle": "Et si on créait ensemble ?",
+    "contactText": "Un projet, une collaboration ou simplement envie d’échanger ?",
+    "email": "",
+    "footer": "Conçu avec intention.",
+    "photo": "",
+    "photoAlt": "",
+    "socials": [],
+    "theme": {
+      "background": "#f8f7f2",
+      "text": "#252a24",
+      "accent": "#4b6544",
+      "surface": "#e9ecdf",
+      "font": "sans",
+      "radius": "soft",
+      "density": "airy",
+      "columns": "two"
+    }
+  },
+  "projects": [
+    {
+      "id": "flora",
+      "slug": "flora",
+      "title": "Flora — Cultiver le quotidien",
+      "summary": "Concept d’application pour prendre soin de ses plantes, simplement.",
+      "category": "Concept UX/UI · Démonstration",
+      "role": "UX/UI Design",
+      "duration": "",
+      "year": "2026",
+      "tools": "Figma",
+      "published": true,
+      "cover": "",
+      "coverAlt": "",
+      "color": "#dfe6d5",
+      "links": [],
+      "sections": [
+        {
+          "title": "Le contexte",
+          "body": "Concept d’application pour prendre soin de ses plantes, simplement. Ce projet est un exemple à remplacer par votre travail réel.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "Le défi",
+          "body": "Présentez le besoin utilisateur, le problème à résoudre et les contraintes du projet.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "Recherche & apprentissages",
+          "body": "Ajoutez vos méthodes de recherche, observations et enseignements. Ne présentez que les recherches réellement menées.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "De l’exploration à la solution",
+          "body": "Racontez les pistes explorées, les choix de conception et les itérations. Ajoutez vos wireframes, maquettes et prototypes.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "Résultats & recul",
+          "body": "Présentez les retours de test, les résultats observés et ce que vous amélioreriez. Précisez si les résultats ne sont pas encore mesurés.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "id": "muse",
+      "slug": "muse",
+      "title": "Muse — La culture accessible",
+      "summary": "Concept de plateforme pour découvrir des expositions et préparer une visite.",
+      "category": "Concept UX/UI · Démonstration",
+      "role": "UX/UI Design",
+      "duration": "",
+      "year": "2026",
+      "tools": "Figma",
+      "published": true,
+      "cover": "",
+      "coverAlt": "",
+      "color": "#e7e3f1",
+      "links": [],
+      "sections": [
+        {
+          "title": "Le contexte",
+          "body": "Concept de plateforme pour découvrir des expositions et préparer une visite. Ce projet est un exemple à remplacer par votre travail réel.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "Le défi",
+          "body": "Présentez le besoin utilisateur, le problème à résoudre et les contraintes du projet.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "Recherche & apprentissages",
+          "body": "Ajoutez vos méthodes de recherche, observations et enseignements. Ne présentez que les recherches réellement menées.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "De l’exploration à la solution",
+          "body": "Racontez les pistes explorées, les choix de conception et les itérations. Ajoutez vos wireframes, maquettes et prototypes.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "Résultats & recul",
+          "body": "Présentez les retours de test, les résultats observés et ce que vous amélioreriez. Précisez si les résultats ne sont pas encore mesurés.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "id": "equilibre",
+      "slug": "equilibre",
+      "title": "Équilibre — Des finances plus simples",
+      "summary": "Concept de tableau de bord pour rendre le budget quotidien plus lisible.",
+      "category": "Concept UX/UI · Démonstration",
+      "role": "UX/UI Design",
+      "duration": "",
+      "year": "2026",
+      "tools": "Figma",
+      "published": true,
+      "cover": "",
+      "coverAlt": "",
+      "color": "#efe1d2",
+      "links": [],
+      "sections": [
+        {
+          "title": "Le contexte",
+          "body": "Concept de tableau de bord pour rendre le budget quotidien plus lisible. Ce projet est un exemple à remplacer par votre travail réel.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "Le défi",
+          "body": "Présentez le besoin utilisateur, le problème à résoudre et les contraintes du projet.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "Recherche & apprentissages",
+          "body": "Ajoutez vos méthodes de recherche, observations et enseignements. Ne présentez que les recherches réellement menées.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "De l’exploration à la solution",
+          "body": "Racontez les pistes explorées, les choix de conception et les itérations. Ajoutez vos wireframes, maquettes et prototypes.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "Résultats & recul",
+          "body": "Présentez les retours de test, les résultats observés et ce que vous amélioreriez. Précisez si les résultats ne sont pas encore mesurés.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    }
+  ]
+}
