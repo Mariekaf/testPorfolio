@@ -1,0 +1,152 @@
+{
+  "revision": 7,
+  "site": {
+    "name": "Studio Démonstration",
+    "job": "UX/UI Design",
+    "location": "Ville fictive",
+    "availability": "Projet de test",
+    "heroTitle": "Comprendre.\nConcevoir.\nPartager.",
+    "heroDescription": "Contenu entièrement synthétique — aucune identité réelle.",
+    "projectsTitle": "Projets de démonstration",
+    "projectsIntro": "Référence de compatibilité, sans recherche réelle.",
+    "aboutTitle": "Une démarche de test",
+    "aboutIntro": "Échantillon éditorial fictif.",
+    "aboutText": "Première ligne.\n\nDeuxième paragraphe : café, œuvre, « recherche », 東京 et ✳.",
+    "skills": "Recherche, Prototypage, Accessibilité",
+    "contactTitle": "Contacter le studio fictif",
+    "contactText": "Cette adresse est réservée aux exemples.",
+    "email": "studio@example.test",
+    "footer": "Référence synthétique",
+    "photo": "/uploads/11111111111111111111111111111111.png",
+    "photoAlt": "Carré vert synthétique",
+    "socials": [
+      {
+        "label": "Profil fictif",
+        "url": "https://example.test/studio"
+      }
+    ],
+    "theme": {
+      "background": "#f8f7f2",
+      "text": "#252a24",
+      "accent": "#4b6544",
+      "surface": "#e9ecdf",
+      "font": "sans",
+      "radius": "soft",
+      "density": "airy",
+      "columns": "two"
+    }
+  },
+  "projects": [
+    {
+      "id": "fixture-alpha",
+      "slug": "alpha",
+      "title": "Projet alpha",
+      "category": "Concept fictif UX/UI",
+      "summary": "Résumé synthétique alpha",
+      "role": "Conception",
+      "duration": "Deux semaines fictives",
+      "year": "2026",
+      "tools": "Outil de démonstration",
+      "cover": "/uploads/22222222222222222222222222222222.png",
+      "coverAlt": "Carré violet synthétique",
+      "published": true,
+      "color": "#dfe6d5",
+      "links": [
+        {
+          "label": "Prototype fictif",
+          "url": "https://example.test/prototype/alpha"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Contexte",
+          "body": "Première ligne.\n\nDeuxième paragraphe : café, œuvre, 東京.\nTexte littéral : <script>exemple</script>.",
+          "image": "/uploads/11111111111111111111111111111111.png",
+          "alt": "Carré vert synthétique",
+          "caption": "Image générée sans source personnelle"
+        },
+        {
+          "title": "Résultats de démonstration",
+          "body": "Aucun résultat utilisateur réel revendiqué.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "id": "fixture-beta",
+      "slug": "beta",
+      "title": "Projet beta",
+      "category": "Concept fictif UX/UI",
+      "summary": "Résumé synthétique beta",
+      "role": "Conception",
+      "duration": "Deux semaines fictives",
+      "year": "2026",
+      "tools": "Outil de démonstration",
+      "cover": "",
+      "coverAlt": "",
+      "published": false,
+      "color": "#e7e3f1",
+      "links": [
+        {
+          "label": "Prototype fictif",
+          "url": "https://example.test/prototype/beta"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Contexte",
+          "body": "Première ligne.\n\nDeuxième paragraphe : café, œuvre, 東京.\nTexte littéral : <script>exemple</script>.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "Résultats de démonstration",
+          "body": "Aucun résultat utilisateur réel revendiqué.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "id": "fixture-gamma",
+      "slug": "gamma",
+      "title": "Projet gamma",
+      "category": "Concept fictif UX/UI",
+      "summary": "Résumé synthétique gamma",
+      "role": "Conception",
+      "duration": "Deux semaines fictives",
+      "year": "2026",
+      "tools": "Outil de démonstration",
+      "cover": "",
+      "coverAlt": "",
+      "published": true,
+      "color": "#efe1d2",
+      "links": [
+        {
+          "label": "Prototype fictif",
+          "url": "https://example.test/prototype/gamma"
+        }
+      ],
+      "sections": [
+        {
+          "title": "Contexte",
+          "body": "Première ligne.\n\nDeuxième paragraphe : café, œuvre, 東京.\nTexte littéral : <script>exemple</script>.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        },
+        {
+          "title": "Résultats de démonstration",
+          "body": "Aucun résultat utilisateur réel revendiqué.",
+          "image": "",
+          "alt": "",
+          "caption": ""
+        }
+      ]
+    }
+  ]
+}

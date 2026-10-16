@@ -1,0 +1,7 @@
+node --check script.js
+Exit code: 0
+
+node --check admin.js
+Exit code: 0
+
+Node.js v24.19.0; no dependencies installed.
