@@ -147,3 +147,19 @@ En mode natif, arrêter uniquement le service PostgreSQL identifié si vous le s
 ## Validation restant à effectuer sous Windows
 
 Le backend, les migrations, les rôles, la connexion TCP et le studio ont été testés sous Linux. Les roues Windows CPython 3.13 x64 ont été téléchargées avec vérification des hashes. Cela ne remplace pas une installation Windows. Restent à confirmer : launcher Python, installateur/service PostgreSQL natif, pg_hba.conf, prompts masqués, ACL PowerShell, scripts complets, npm et accès navigateur sur votre PC.
+
+## Contrôle des empreintes et fins de ligne Windows
+
+Git peut extraire les textes en CRLF (`core.autocrlf=true`) alors que les sources de référence sont en LF. Le vérificateur corrigé sur `fix/core-001-windows` accepte uniquement cette équivalence pour les fichiers UTF-8 reconnus ; les fichiers binaires restent comparés octet par octet. Les manifestes SHA-256 historiques ne sont pas recalculés.
+
+Diagnostic non destructif :
+
+```powershell
+git status --short
+git ls-files --eol -- .gitignore
+& .\backend\.venv\Scripts\python.exe -B .\scripts\verification\check_base001.py
+```
+
+`i/lf w/crlf` avec un état Git propre correspond à une conversion normale au checkout. Une différence réelle de contenu, d'espaces, de BOM, d'encodage ou de média reste refusée. Ne pas retirer le contrôle, remplacer les empreintes, changer globalement core.autocrlf ou exécuter git reset/clean pour contourner une erreur. En cas d'échec persistant, conserver les fichiers et transmettre le diagnostic non secret.
+
+Le script Test-Foundations exécute également les régressions d'intégrité avant les tests historiques. Les résultats Windows de bout en bout restent à confirmer après installation de cette correction.

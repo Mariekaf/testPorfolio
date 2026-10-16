@@ -11,6 +11,8 @@ Push-Location $repoRoot
 try {
     & $python -B scripts/verification/check_base001.py
     if ($LASTEXITCODE -ne 0) { throw 'Historical source reference changed.' }
+    & $python -B -m unittest discover -s scripts/verification/tests -v
+    if ($LASTEXITCODE -ne 0) { throw 'Reference integrity regression tests failed.' }
     & $python -B -m unittest discover -s tests -v
     if ($LASTEXITCODE -ne 0) { throw 'Historical tests failed.' }
     & node --check script.js
