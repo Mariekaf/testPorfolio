@@ -17,3 +17,5 @@ urlpatterns += [
         ("password-reset/confirm", auth.PasswordResetConfirmView),
     ]
 ]
+
+urlpatterns += [path("api/v1/portfolios/", include("modules.portfolios.urls"))]
