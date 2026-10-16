@@ -14,7 +14,7 @@ class PortfolioBase(APIView):
     def owned(self, request, pk):
         return get_object_or_404(Portfolio, pk=pk, owner=request.user, deleted_at__isnull=True)
     def invalid(self, error):
-        return Response({"error":{"code":"validation_error","fields":error.detail,"message":"Vérifiez les informations du portfolio."}},status=400)
+        return Response({"error":{"code":"validation_error","fields":error.errors,"message":"Vérifiez les informations du portfolio."}},status=400)
 
 class PortfolioList(PortfolioBase):
     def get(self, request):
