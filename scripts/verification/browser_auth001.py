@@ -93,11 +93,47 @@ def main():
                 page.get_by_role('heading',name='Bienvenue, Synthetic.').wait_for()
                 peer=context.new_page();peer.goto(origin+'/dashboard')
                 peer.get_by_role('heading',name='Bienvenue, Synthetic.').wait_for()
+                # Hold a successful identity reply, then start logout and hold
+                # its reply too. A stale /me must never restore the greeting.
+                pending_identity=[]; pending_logout=[]
+                def hold_identity(route):
+                    pending_identity.append((route,route.fetch()))
+                def hold_logout(route):
+                    pending_logout.append((route,route.fetch()))
+                page.route('**/api/v1/auth/me',hold_identity)
+                page.route('**/api/v1/auth/logout',hold_logout)
+                page.evaluate('window.dispatchEvent(new Event("focus"))')
+                for _ in range(100):
+                    if pending_identity:break
+                    page.wait_for_timeout(50)
+                assert pending_identity, 'Expected delayed identity check.'
                 page.get_by_role('button',name='Se déconnecter').click()
+                for _ in range(100):
+                    if pending_logout:break
+                    page.wait_for_timeout(50)
+                assert pending_logout, 'Expected delayed logout response.'
+                for route,response in pending_identity:route.fulfill(response=response)
+                page.wait_for_timeout(250)
+                assert page.get_by_role('heading',name='Bienvenue, Synthetic.').count()==0, 'Stale identity reappeared during logout.'
+                for route,response in pending_logout:route.fulfill(response=response)
                 page.wait_for_url('**/login')
                 peer.wait_for_url('**/login?reason=expired')
+                page.unroute('**/api/v1/auth/me',hold_identity)
+                page.unroute('**/api/v1/auth/logout',hold_logout)
+                # Optional tab messaging must not prevent server-side logout
+                # or its redirect when the browser lacks BroadcastChannel.
+                context.add_init_script('Object.defineProperty(window,"BroadcastChannel",{value:undefined,configurable:true})')
+                page.goto(origin+'/login')
+                page.get_by_label('Adresse e-mail',exact=True).fill(email)
+                page.get_by_label('Mot de passe',exact=True).fill(new_password)
+                page.get_by_role('button',name='Se connecter',exact=True).click()
+                page.wait_for_url('**/dashboard')
+                page.get_by_role('heading',name='Bienvenue, Synthetic.').wait_for()
+                page.get_by_role('button',name='Se déconnecter').click()
+                page.wait_for_url('**/login')
+                assert page.request.get(origin+'/api/v1/auth/me').status==401
                 context.close()
-                print(f'PASS {width}px: private-route, registration, login, logout, local-mail reset, reused-link rejection, cookie flags, no localStorage, responsive layout, cross-tab logout, reset token absent from HTTP URLs.')
+                print(f'PASS {width}px: private-route, registration, login, logout, local-mail reset, reused-link rejection, cookie flags, no localStorage, responsive layout, cross-tab logout, reset token absent from HTTP URLs, stale identity reply during logout rejected, logout without BroadcastChannel.')
         finally:
             browser.close()
 

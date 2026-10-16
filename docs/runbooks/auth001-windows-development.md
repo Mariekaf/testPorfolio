@@ -1,6 +1,6 @@
 # AUTH-001 — Validation Windows native, sans Docker
 
-Statut : **suite automatisée réussie sur Windows natif**, selon le transcript utilisateur reçu le 16 octobre 2026 (58 tests, TypeScript, build). Les parcours manuels et le contrôle effectif des ACL Windows restent à réaliser. Prérequis CORE-001 conservés : Python 3.13 x64, Node 24, npm 11, PostgreSQL 17 natif en service sur 5432. Utiliser une console PowerShell normale, dans le clone SaaS séparé du CMS historique.
+Statut : **AUTH-001 clôturé techniquement**, sur le transcript Windows de 58 tests et la confirmation utilisateur du correctif de boîte et des parcours principaux. Voir [la revue](../reviews/AUTH-001-technical-review.md) pour les versions exactes testées : les derniers correctifs frontend ont été vérifiés sous Linux, sans nouveau passage Windows attesté. Ce guide reste le protocole de reproduction. Prérequis CORE-001 conservés : Python 3.13 x64, Node 24, npm 11, PostgreSQL 17 natif en service sur 5432. Utiliser une console PowerShell normale, dans le clone SaaS séparé du CMS historique.
 
 ## 1. Récupérer la branche
 
@@ -90,7 +90,7 @@ Le navigateur automatisé est optionnel et nécessite Playwright/Chromium déjà
 9. Refaire les actions essentielles en vue mobile (390 px) et au clavier. Vérifier labels, erreurs lisibles, indicateur de chargement, absence de défilement horizontal.
 10. Inspecter les cookies dans le navigateur : HttpOnly et SameSite Strict. Secure est volontairement absent en HTTP local ; son activation HTTPS est couverte par les tests backend. Vérifier qu’aucun jeton n’est dans `localStorage`.
 
-Ne partager que : version des outils, résumé final des tests, étapes réussies/échouées et messages techniques expurgés. Ne pas partager cookies, config privée, corps de formulaire, fichiers mail, e-mails réels ou liens reset. **AC14 (tests automatisés Windows) dispose désormais de preuves de réussite. La validation manuelle Windows et la revue de la PR restent ouvertes jusqu’à réception de leurs résultats.**
+Ne partager que : version des outils, résumé final des tests, étapes réussies/échouées et messages techniques expurgés. Ne pas partager cookies, config privée, corps de formulaire, fichiers mail, e-mails réels ou liens reset. **La clôture et les preuves de validation, y compris la confirmation manuelle Windows, sont consignées dans la revue technique.**
 
 ## Correction de SeSecurityPrivilege lors du démarrage
 
@@ -105,4 +105,4 @@ git pull --ff-only origin feature/auth-001
 
 Le contrôle crée uniquement un dossier temporaire synthétique, vérifie les permissions du dossier et d’un nouveau fichier, réexécute l’initialisation sur les mêmes objets, vérifie les permissions et le contenu, puis nettoie le dossier et restaure la variable de boîte précédente. Il ne consulte pas les messages réels. Le contrôle est aussi intégré à `Test-Foundations.ps1`.
 
-Si ce contrôle réussit, relancer `Start-Backend.ps1`, puis reprendre les parcours manuels. Réexécuter ensuite la suite complète avec Next.js arrêté afin de valider ce correctif sur Windows. **Correctif préparé sous Linux, validation d’exécution Windows encore ouverte.** En cas d’échec, transmettre l’erreur technique uniquement ; ne pas exécuter en administrateur pour contourner le contrôle.
+Si ce contrôle réussit, relancer `Start-Backend.ps1`, puis reprendre les parcours manuels. Réexécuter ensuite la suite complète avec Next.js arrêté afin de valider ce correctif sur Windows. **Le succès de ce contrôle et du démarrage sur le correctif 466d87c a ensuite été confirmé par l’utilisateur ; aucun nouveau transcript complet n’est revendiqué.** En cas d’échec, transmettre l’erreur technique uniquement ; ne pas exécuter en administrateur pour contourner le contrôle.

@@ -2,7 +2,9 @@
 
 Date : 16 octobre 2026. Branche : `feature/auth-001`, créée depuis `7331e5b` (`fix/core-001-windows`, socle validé avec corrections Windows). Aucun merge dans `main`.
 
-**Statut : tests automatisés validés sous Linux et Windows natif sur preuves fournies par l’utilisateur ; parcours manuels Windows et revue de la PR encore ouverts.**
+**Statut : AUTH-001 clôturé techniquement le 16 octobre 2026 sur instruction utilisateur, après revue et confirmation des contrôles Windows. PR non fusionnée.**
+
+Décision finale et preuves par version : [revue technique](docs/reviews/AUTH-001-technical-review.md). Les sections datées ci-dessous conservent l’historique des blocages et de leur résolution ; elles ne constituent pas le statut courant.
 
 ## Réalisation
 
@@ -60,7 +62,7 @@ Un premier passage navigateur a révélé une double redirection de déconnexion
 | AC11 limitation | Validé Linux : deux clients partagent les compteurs PostgreSQL, 429 + Retry-After |
 | AC12 CSRF/cookies | Validé Linux : mutations anonymes, origine refusée, cookies et option Secure HTTPS |
 | AC13 responsive | Validé Chromium Linux desktop/mobile ; revue humaine et lecteur d’écran non exécutés |
-| AC14 Windows natif | **Validé pour les tests automatisés** : transcript utilisateur, 58 tests, TypeScript et build réussis avec PostgreSQL 17.6 natif. Parcours manuels et contrôle effectif des ACL restent ouverts |
+| AC14 Windows natif | **Validé sur preuves utilisateur** : 58 tests, TypeScript/build et PostgreSQL 17.6 sur `ffc015b` ; contrôle Test-Mailbox et parcours principaux confirmés sur `466d87c`. Correctifs frontend finaux testés Linux, non réexécutés sur Windows ; voir la revue pour la portée exacte |
 | AC15 historique | Validé Linux : empreintes inchangées et 6 tests historiques réussis ; `.local/` non consulté/modifié |
 | AC16 secrets | Validé sur les chemins testés : réponses limitées, liens absents des URL HTTP, pas de journal SMTP sensible, boîte privée, configuration ignorée et contrôle des fichiers livrés |
 
@@ -177,3 +179,13 @@ Nouveau contrôle `scripts/windows/Test-Mailbox.ps1`, intégré à `Test-Foundat
 Vérifications Linux de cette correction : intégrité de référence et `git diff --check`. Aucun PowerShell Windows n’est disponible dans cet environnement ; **le contrôle ACL et la relance Django ne sont pas encore déclarés réussis**. Le nouveau passage complet de la suite Windows reste attendu. PORT-001 reste bloqué, aucune fusion ni modification du CMS historique.
 
 Fichiers concernés par ce correctif : `scripts/windows/Initialize-Mailbox.ps1`, `scripts/windows/Test-Mailbox.ps1` (créé), `scripts/windows/Test-Foundations.ps1`, ce rapport et le guide Windows AUTH-001.
+
+## Clôture après revue technique
+
+L’utilisateur a demandé la revue de la PR puis la clôture d’AUTH-001, et confirmé par « oui » la réussite sur le correctif Windows 466d87c de Test-Mailbox, du démarrage Django et des parcours inscription/connexion/déconnexion/reset/expiration. Cette déclaration lève le blocage Windows précédemment ouvert ; elle est distinguée du transcript automatisé antérieur.
+
+Revue effectuée et deux défauts frontend corrigés : réponse d’identité tardive pendant la déconnexion et absence de BroadcastChannel empêchant la redirection. Scénarios de régression avec délais simulés vérifiés dans Chromium desktop/mobile. Suite de 58 tests Linux, TypeScript/build, migration complète et rôles PostgreSQL vérifiés lors de la revue. Les derniers ajustements frontend n’ont pas été réexécutés sur le PC Windows ; aucune validation de cette version exacte sous Windows n’est prétendue.
+
+**AUTH-001 clôturé dans le suivi documentaire.** La PR nº 1 reste sans fusion ; aucune approbation formelle ou clôture GitHub n’a été envoyée, l’API étant inaccessible. Aucun démarrage de PORT-001, aucun déploiement et aucun changement des sources historiques.
+
+Livrables complémentaires de clôture : `docs/reviews/AUTH-001-technical-review.md` (créé), `apps/studio/src/app/dashboard/dashboard.tsx` et `scripts/verification/browser_auth001.py` (corrigés), ce rapport et le guide Windows (statuts actualisés).
