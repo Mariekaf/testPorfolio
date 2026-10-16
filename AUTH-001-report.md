@@ -2,7 +2,7 @@
 
 Date : 16 octobre 2026. Branche : `feature/auth-001`, créée depuis `7331e5b` (`fix/core-001-windows`, socle validé avec corrections Windows). Aucun merge dans `main`.
 
-**Statut : implémentation et vérifications Linux réalisées ; ticket non terminé tant que la validation Windows native AC14 et la revue de la PR ne sont pas acquises.**
+**Statut : tests automatisés validés sous Linux et Windows natif sur preuves fournies par l’utilisateur ; parcours manuels Windows et revue de la PR encore ouverts.**
 
 ## Réalisation
 
@@ -60,7 +60,7 @@ Un premier passage navigateur a révélé une double redirection de déconnexion
 | AC11 limitation | Validé Linux : deux clients partagent les compteurs PostgreSQL, 429 + Retry-After |
 | AC12 CSRF/cookies | Validé Linux : mutations anonymes, origine refusée, cookies et option Secure HTTPS |
 | AC13 responsive | Validé Chromium Linux desktop/mobile ; revue humaine et lecteur d’écran non exécutés |
-| AC14 Windows natif | **OUVERT** : PowerShell 5.1, PostgreSQL natif, ACL et parcours PC à exécuter |
+| AC14 Windows natif | **Validé pour les tests automatisés** : transcript utilisateur, 58 tests, TypeScript et build réussis avec PostgreSQL 17.6 natif. Parcours manuels et contrôle effectif des ACL restent ouverts |
 | AC15 historique | Validé Linux : empreintes inchangées et 6 tests historiques réussis ; `.local/` non consulté/modifié |
 | AC16 secrets | Validé sur les chemins testés : réponses limitées, liens absents des URL HTTP, pas de journal SMTP sensible, boîte privée, configuration ignorée et contrôle des fichiers livrés |
 
@@ -99,7 +99,7 @@ Le 16 octobre 2026, relecture ciblée des sessions/CSRF, de la révocation des s
 
 Correction documentaire : arrêter Next.js avant `Test-Foundations.ps1`, qui exécute un build dans le même `.next`, puis relancer le studio pour les parcours manuels. Aucun changement fonctionnel ni modification du CMS historique pour cette préparation.
 
-Vérifications à recueillir sur le PC Windows : branche/commit testés, versions Python/Node/npm/PostgreSQL, migration SaaS, ACL effectives de la boîte, résultat complet de `Test-Foundations.ps1`, parcours auth, expiration, onglets et retour arrière. Aucun de ces résultats Windows n’est encore déclaré réussi. PORT-001 reste suspendu ; PR nº 1 conservée en brouillon selon la consigne utilisateur.
+Vérifications à recueillir sur le PC Windows : branche/commit testés, versions Python/Node/npm/PostgreSQL, migration SaaS, ACL effectives de la boîte, résultat complet de `Test-Foundations.ps1`, parcours auth, expiration, onglets et retour arrière. Cette liste correspond aux éléments attendus avant réception du transcript Windows décrit ci-dessous. PORT-001 reste suspendu ; PR nº 1 conservée en brouillon selon la consigne utilisateur.
 
 
 ## Fichiers créés et modifiés
@@ -149,3 +149,19 @@ Fichiers créés :
 - `infra/mailbox/.gitignore`
 - `scripts/verification/browser_auth001.py`
 - `scripts/windows/Initialize-Mailbox.ps1`
+
+## Preuves Windows natives reçues le 16 octobre 2026
+
+Source : sortie de `Test-Foundations.ps1` exécuté par l’utilisateur sur son PC, fournie dans le chat. Il ne s’agit pas d’une exécution distante par l’agent. Aucun transcript brut, chemin personnel, message mail ou configuration privée n’est commité.
+
+- Référence historique : 11 fichiers inchangés, 4 empreintes de fixture conformes.
+- Tests : intégrité 12/12, CMS historique 6/6, Django 33/33, contrats santé 3/3, client auth 4/4, soit **58/58**.
+- PostgreSQL natif **17.6** : UTF8, accès de maintenance du rôle de test, rôle runtime sans DDL/CREATEDB/superuser/BYPASSRLS vérifiés.
+- Base de test créée, migration `identity.0002` appliquée avec succès puis base de test supprimée. Le transcript ne constitue pas une preuve séparée de migration de la base de développement.
+- Django check, absence d’écart de migrations, TypeScript et build Next.js réussis. Message final du script réussi.
+- Les avertissements PostgreSQL proviennent des scénarios de panne simulée qui passent. Avertissement Node `MODULE_TYPELESS_PACKAGE_JSON` non bloquant, sans changement de dépendance requis.
+- Initialisation des ACL de la boîte signalée réussie dans le précédent retour utilisateur ; contrôle des permissions effectives sur un message Windows encore à effectuer. Le test Python de permissions POSIX ne vérifie pas les ACL Windows.
+
+Versions préalablement fournies sur ce PC : Python 3.13.5, Node 24.22.0, npm 11.14.0, PowerShell 5.1. Le commit exact de cette exécution reste à confirmer par `git log -1 --format="%h %s"`.
+
+Restent à valider : démarrage Django/studio Windows et santé de la base de développement, parcours inscription/connexion/déconnexion/reset, expiration, onglets/retour arrière, responsive/clavier et ACL effectives de la boîte. La revue/approbation de la PR nº 1 reste distincte. Aucun merge et aucun démarrage de PORT-001.

@@ -1,6 +1,6 @@
 # AUTH-001 — Validation Windows native, sans Docker
 
-Statut : **à exécuter sur Windows**. Les résultats Linux ne valident pas les ACL Windows ni PowerShell 5.1. Prérequis CORE-001 conservés : Python 3.13 x64, Node 24, npm 11, PostgreSQL 17 natif en service sur 5432. Utiliser une console PowerShell normale, dans le clone SaaS séparé du CMS historique.
+Statut : **suite automatisée réussie sur Windows natif**, selon le transcript utilisateur reçu le 16 octobre 2026 (58 tests, TypeScript, build). Les parcours manuels et le contrôle effectif des ACL Windows restent à réaliser. Prérequis CORE-001 conservés : Python 3.13 x64, Node 24, npm 11, PostgreSQL 17 natif en service sur 5432. Utiliser une console PowerShell normale, dans le clone SaaS séparé du CMS historique.
 
 ## 1. Récupérer la branche
 
@@ -89,4 +89,4 @@ Le navigateur automatisé est optionnel et nécessite Playwright/Chromium déjà
 9. Refaire les actions essentielles en vue mobile (390 px) et au clavier. Vérifier labels, erreurs lisibles, indicateur de chargement, absence de défilement horizontal.
 10. Inspecter les cookies dans le navigateur : HttpOnly et SameSite Strict. Secure est volontairement absent en HTTP local ; son activation HTTPS est couverte par les tests backend. Vérifier qu’aucun jeton n’est dans `localStorage`.
 
-Ne partager que : version des outils, résumé final des tests, étapes réussies/échouées et messages techniques expurgés. Ne pas partager cookies, config privée, corps de formulaire, fichiers mail, e-mails réels ou liens reset. **AC14 reste ouvert tant que ces résultats Windows ne sont pas réellement fournis.**
+Ne partager que : version des outils, résumé final des tests, étapes réussies/échouées et messages techniques expurgés. Ne pas partager cookies, config privée, corps de formulaire, fichiers mail, e-mails réels ou liens reset. **AC14 (tests automatisés Windows) dispose désormais de preuves de réussite. La validation manuelle Windows et la revue de la PR restent ouvertes jusqu’à réception de leurs résultats.**
