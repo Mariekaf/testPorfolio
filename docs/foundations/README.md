@@ -1,6 +1,7 @@
 # CORE-001 — Socle parallèle
 
 - [Rapport et statut d'acceptation](CORE-001-report.md)
+- [Validation Windows native et corrections](WINDOWS-validation.md)
 - [Démarrage Windows, PostgreSQL natif ou Docker](../runbooks/core001-windows-development.md)
 - [Versions et justification des dépendances](dependency-versions.md)
 - [Liste des fichiers du ticket](files.txt)

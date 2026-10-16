@@ -1,4 +1,6 @@
-# CORE-001 — Suivi de validation Windows native
+# CORE-001 — Rapport de validation Windows native
+
+**Résultat final : parcours de développement Windows natif réussi, sans Docker**, d’après la sortie complète transmise par l’utilisateur après application de `2b7085d`. La suite atteint le message final « Foundation checks passed ». AUTH-001 reste soumis à une nouvelle validation explicite.
 
 Branche de corrections : `fix/core-001-windows`, issue de `51128c6` (`arch/core-001`). AUTH-001 n'a pas commencé. Aucune donnée réelle, aucun secret, aucun média ou fichier d'authentification utilisé dans les tests ou ajouté aux commits.
 
@@ -20,7 +22,8 @@ Branche de corrections : `fix/core-001-windows`, issue de `51128c6` (`arch/core-
 | Backend | /health/live et /health/ready retournent status=ok |
 | Studio | npm ci réussi ; Next dev répond 200 ; bouton affiche backend et PostgreSQL disponibles |
 | Suite Test-Foundations, premier passage | Arrêt au contrôle CRLF, corrigé sur la branche dédiée |
-| Suite après correctif CRLF | 12 tests d'intégrité, 6 historiques et 12 Django réussis ; nettoyage de la base test échoué ; frontend non encore exécuté par la suite |
+| Suite après correctif CRLF, avant correctif maintenance | 12 tests d'intégrité, 6 historiques et 12 Django réussis ; nettoyage de la base test échoué ; frontend non exécuté à ce stade |
+| Suite finale après les deux corrections | 12 tests d'intégrité, 6 historiques, 14 Django et 3 contrats réussis ; nettoyage, TypeScript et build réussis |
 
 Ces observations proviennent de l'utilisateur sur son PC, pas d'une exécution distante par l'agent. Aucun transcript personnel n'est recopié.
 
@@ -38,7 +41,7 @@ Correction limitée à l'outillage :
 - Manifestes historiques et fixtures existantes inchangés.
 - Aucun fichier du CMS historique modifié ; aucune configuration PostgreSQL ou donnée privée changée par le correctif.
 
-La cause exacte sur le poste sera corroborée par `git status --short` et `git ls-files --eol -- .gitignore` lors de la reprise. Si le fichier a réellement été édité, le correctif continuera de le refuser.
+Le passage réussi du vérificateur sur le poste confirme désormais l'équivalence des sources selon cette règle stricte. Une modification réelle du contenu resterait refusée ; les empreintes de référence n'ont pas été remplacées.
 
 ## Vérifications de la correction réalisées sous Linux
 
@@ -50,7 +53,7 @@ La cause exacte sur le poste sera corroborée par `git status --short` et `git l
 
 Les tests supplémentaires sont inclus dans Test-Foundations.ps1 et la CI. Aucune installation de dépendance supplémentaire.
 
-## Reste à exécuter sur Windows
+## Procédure de reprise suivie sur Windows
 
 1. Conserver les deux serveurs et les fichiers privés ; vérifier l'état Git et les fins de ligne.
 2. Récupérer la branche de correction sans reset, clean ni écrasement de modifications locales.
@@ -58,7 +61,7 @@ Les tests supplémentaires sont inclus dans Test-Foundations.ps1 et la CI. Aucun
 4. Examiner chaque résultat : référence, intégrité, six tests historiques, PostgreSQL réel, contrôles Django, quatorze tests Django (dont deux nouveaux de précontrôle), trois tests de contrats, TypeScript et build.
 5. Consigner les éventuels nouveaux problèmes spécifiques à Windows sur la même branche.
 
-**Validation Windows globale encore ouverte.** Le succès du navigateur ne remplace pas celui de la suite complète. Ne pas commencer AUTH-001 avant sa validation par l'utilisateur.
+**Procédure terminée avec succès après la seconde correction**, résultats détaillés ci-dessous. Le succès a été observé dans le transcript complet, pas déduit du seul navigateur. Ne pas commencer AUTH-001 avant une nouvelle validation utilisateur.
 
 ## Deuxième correction : base de maintenance Django
 
@@ -74,4 +77,40 @@ Vérifications effectuées ici :
 - Révocation temporaire du grant de test dans ce cluster de régression : le runner échoue avant création, sans fallback ; aucune base test créée.
 - 12 tests d'intégrité et 6 historiques restent réussis.
 
-Les résultats ci-dessus sont des tests Linux de la correction, pas une nouvelle exécution sur le PC utilisateur. La validation Windows complète et les contrôles frontend restent à recevoir après mise à jour/reprovisionnement.
+Les résultats de reproduction ci-dessus sont des tests Linux de la correction. Le passage Windows reçu ensuite est décrit dans la section finale suivante.
+
+## Résultat final reçu du poste Windows
+
+Après mise à jour fast-forward et réexécution d'Initialize-Database.ps1 : rôles existants préservés, aucune migration supplémentaire nécessaire, connexion de maintenance du rôle de test vérifiée et runtime toujours sans DDL/CREATEDB/superuser/BYPASSRLS.
+
+| Contrôle du dernier Test-Foundations.ps1 | Résultat |
+|---|---|
+| Référence des sources historiques | 11 fichiers conformes, équivalence LF/CRLF seulement pour les textes reconnus |
+| Fixtures synthétiques | 4 empreintes conformes |
+| Régressions d'intégrité | 12 tests OK |
+| Tests historiques | 6 tests OK |
+| PostgreSQL natif | 17.6, UTF8, table initiale accessible et droits runtime vérifiés |
+| Contrôles Django | Aucun problème, aucune migration manquante |
+| Tests Django | 14 tests OK ; base dédiée créée puis supprimée |
+| Contrats frontend | 3 tests OK, aucun skip annoncé |
+| TypeScript | Types Next générés et contrôle réussi |
+| Build Next.js | Compilation et génération statique réussies |
+| Fin du script | Foundation checks passed |
+
+Total : **35 tests réussis** (12 + 6 + 14 + 3), puis contrôles et build réussis. La base de test existait encore après l'échec précédent ; le runner l'a supprimée/recréée au début, puis son nettoyage final s'est terminé sans exception. Ce message initial n'est donc pas un échec de la dernière suite. Les messages readiness « failed » dans deux tests correspondent à des pannes simulées attendues et leurs assertions passent.
+
+L'ancien CMS, ses médias et `.local/` n'ont pas été modifiés par les corrections ; aucune donnée utilisateur n'a été migrée. Le rapport enregistre les résultats transmis par le propriétaire du poste : l'agent n'a pas exécuté directement Windows ni inspecté les données privées.
+
+### Corrections enregistrées
+
+- `b1a63c6` : comparaison d'intégrité compatible CRLF, refus des vraies modifications, tests et branche de vérification.
+- `2b7085d` : accès CONNECT de maintenance pour le rôle de test seulement, reprovisionnement compatible avec les rôles existants et précontrôle sans fallback.
+- La présente mise à jour est documentaire : rapport et synthèse expurgée, aucun nouveau code métier.
+
+Synthèse structurée sans chemins personnels ni secrets : `evidence/windows-native-summary.json`. Le transcript brut reçu n'est pas committé.
+
+### Portée et décision suivante
+
+La réserve Windows de CORE-001 est levée pour **ce poste et ce parcours de développement** : PostgreSQL natif local, Python 3.13, Node 24, Django et Next.js. Cela ne constitue ni une validation de production, ni un audit de sécurité complet, ni une garantie sur tous les postes Windows. La CI distante n'est pas déclarée validée par ces résultats locaux.
+
+Aucun blocage observé dans la dernière suite. La branche de correction n'est pas fusionnée dans main. **AUTH-001 n'a pas commencé et attend l'accord explicite de l'utilisateur.**
