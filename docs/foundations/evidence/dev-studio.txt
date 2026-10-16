@@ -1,0 +1,1 @@
+PASS Next.js dev/Turbopack: page 200, React interaction, live proxy to PostgreSQL, no JavaScript errors.

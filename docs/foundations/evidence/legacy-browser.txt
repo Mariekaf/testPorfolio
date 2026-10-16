@@ -1,0 +1,13 @@
+B01 PASS - Accueil, portrait, ordre public, a propos et contact synthetiques
+B02 PASS - Page dediee rechargeable, sections Unicode, liens et introuvable HTTP 200 observe
+B03 PASS - Connexion via identifiant ephemere, liste privee complete
+B04 PASS - Creation, image, brouillon et publication immediate historique apres sauvegarde
+B05 PASS - Sections ajoutees/reordonnees/supprimees, liens et retrait de couverture
+B06 PASS - Duplication privee, suppression et ordre des projets
+B07 PASS - Apercu refuse invite, brouillon visible en session et navigation privee
+B08 PASS - Edition profil/contact, liens proteges et masquage sans email
+B09 PASS - Palette apercue et theme public: serif, arrondi, compact, une colonne
+B10 PASS - Exports memoire/disque, medias orphelins conserves, import annule/confirme puis sauvegarde
+B11 PASS - Indicateur dirty et avertissement beforeunload
+B12 PASS - Viewport mobile public/admin/editeur et deconnexion sans erreur JavaScript
+12 browser scenarios passed; synthetic data only; no runtime user files accessed.

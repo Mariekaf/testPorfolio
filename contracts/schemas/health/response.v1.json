@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:portfolio:health:1",
+  "type": "object",
+  "required": ["schema_version", "service", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "service": {"const": "portfolio-api"},
+    "status": {"enum": ["ok", "unavailable"]}
+  }
+}

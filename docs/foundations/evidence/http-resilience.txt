@@ -1,0 +1,3 @@
+PASS HTTP/backend/proxy + React health button + mobile viewport
+PASS real PostgreSQL stopped: live=200, ready/proxy=503, studio unavailable state
+PASS PostgreSQL recovered without changing config, no JavaScript page errors

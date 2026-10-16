@@ -1,0 +1,32 @@
+openapi: 3.1.0
+info:
+  title: Portfolio SaaS foundations
+  version: 0.1.0
+  description: CORE-001 health contracts only; no business or authentication endpoints.
+paths:
+  /api/v1/health/live:
+    get:
+      operationId: liveness
+      responses:
+        '200':
+          description: Process available, without querying PostgreSQL.
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/health/response.v1.json'
+  /api/v1/health/ready:
+    get:
+      operationId: readiness
+      responses:
+        '200':
+          description: PostgreSQL reachable and initial user table accessible.
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/health/response.v1.json'
+        '503':
+          description: Database or required user table unavailable; no private details.
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/health/response.v1.json'
