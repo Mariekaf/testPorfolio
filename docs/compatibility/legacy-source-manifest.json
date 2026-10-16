@@ -1,0 +1,17 @@
+{
+  "reference_commit": "bf8952534bf8a17e7eb4521fee91d62409edc62a",
+  "algorithm": "sha256",
+  "files": {
+    ".gitignore": "d8974a1bd0952e55874013d796a654bfe6278147b832cc19879b3c5338ea85a3",
+    "README.md": "6597cbbb986260bbec9fa8652265f67deeae8da21f5582262eb96a7a1d21e370",
+    "server.py": "c02477da902f745ee36b6968237ab5e72ecaa9ab7b9371a06cb2ecc2f44b0137",
+    "index.html": "0515948b33378c14cf8ce4f97b52c7668eb7ab30f88ab5c251df797febda3b12",
+    "script.js": "d5246097259bf67a1bbf0a6a1b970d73a26987b308dd4391f10e6bfdad6a19ce",
+    "style.css": "91edf027c21c60f67e0651703d54330efbf9df3f066f2b5aff9c9e8236b73221",
+    "admin.html": "bf604f2d1c332a3ad78f7f1e9e39587d034cc636d881ec7addec49acb05a1034",
+    "admin.js": "d915f529018aa32db03f16e5358907ce34cab107496a410fe268d7fa295f8ae2",
+    "admin.css": "897a5c11bb330f1645071a52013a7e760b3b242a2f8b19ea76b99e492bcc294b",
+    "content.example.json": "48be1c0752939b4e3134cae780f90cc82ba37b00e9657987fbeb2f43153298f6",
+    "tests/test_server.py": "7099eb8b0ecd3fe98f1a48d0c69fccbb1b903c19b77f0b0eaba77c22d4ef8d7c"
+  }
+}
