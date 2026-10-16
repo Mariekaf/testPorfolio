@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from config.health import LiveView, ReadyView
 from modules.identity import views as auth
 
