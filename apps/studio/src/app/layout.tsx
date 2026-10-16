@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./style.css";
 
 export const metadata: Metadata = {
-  title: "Portfolio Studio — Fondations",
-  description: "Socle technique SaaS parallèle — CORE-001",
+  title: "Portfolio Studio",
+  description: "Votre espace personnel de création",
   robots: { index: false, follow: false },
 };
 

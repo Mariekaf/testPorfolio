@@ -33,6 +33,8 @@ try {
     } finally { Pop-Location }
     & npm.cmd run test:contracts
     if ($LASTEXITCODE -ne 0) { throw 'Frontend health contracts failed.' }
+    & npm.cmd run test:auth
+    if ($LASTEXITCODE -ne 0) { throw 'Frontend authentication client tests failed.' }
     & npm.cmd run typecheck
     if ($LASTEXITCODE -ne 0) { throw 'TypeScript check failed.' }
     & npm.cmd run build

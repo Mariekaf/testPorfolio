@@ -15,6 +15,7 @@
     "dev": "npm run dev --workspace @portfolio/studio",
     "build": "npm run build --workspace @portfolio/studio",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "test:contracts": "node --test packages/content-contracts/test/health.test.mjs"
+    "test:contracts": "node --test packages/content-contracts/test/health.test.mjs",
+    "test:auth": "node --test apps/studio/test/auth.test.mjs"
   }
 }

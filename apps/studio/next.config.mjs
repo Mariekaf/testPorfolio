@@ -6,6 +6,14 @@ if (!["127.0.0.1", "localhost", "[::1]"].includes(url.hostname) || url.protocol 
 export default {
   poweredByHeader: false,
   transpilePackages: ["@portfolio/content-contracts"],
+  async headers() {
+    return [{source: '/:path*', headers: [
+      {key:'Referrer-Policy',value:'no-referrer'},
+      {key:'X-Content-Type-Options',value:'nosniff'},
+      {key:'X-Frame-Options',value:'DENY'},
+      {key:'Cache-Control',value:'no-store'},
+    ]}];
+  },
   async rewrites() {
     return [{ source: "/api/:path*", destination: `${url.origin}/api/:path*` }];
   },
