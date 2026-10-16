@@ -9,6 +9,7 @@ $env:PYTHONDONTWRITEBYTECODE = '1'
 $env:NEXT_TELEMETRY_DISABLED = '1'
 Push-Location $repoRoot
 try {
+    & (Join-Path $PSScriptRoot 'Test-Mailbox.ps1')
     & $python -B scripts/verification/check_base001.py
     if ($LASTEXITCODE -ne 0) { throw 'Historical source reference changed.' }
     & $python -B -m unittest discover -s scripts/verification/tests -v
@@ -33,6 +34,8 @@ try {
     } finally { Pop-Location }
     & npm.cmd run test:contracts
     if ($LASTEXITCODE -ne 0) { throw 'Frontend health contracts failed.' }
+    & npm.cmd run test:auth
+    if ($LASTEXITCODE -ne 0) { throw 'Frontend authentication client tests failed.' }
     & npm.cmd run typecheck
     if ($LASTEXITCODE -ne 0) { throw 'TypeScript check failed.' }
     & npm.cmd run build

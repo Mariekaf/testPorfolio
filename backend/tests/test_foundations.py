@@ -45,7 +45,7 @@ class HealthTests(TestCase):
     def test_health_aliases_and_no_business_routes(self):
         for path in ['/health/live', '/health/ready', '/api/v1/health/live', '/api/v1/health/ready']:
             self.assertEqual(self.client.get(path).status_code, 200)
-        for path in ['/api/v1/auth/login', '/api/v1/accounts', '/api/v1/portfolios', '/admin/']:
+        for path in ['/api/v1/accounts', '/api/v1/portfolios', '/admin/']:
             self.assertEqual(self.client.get(path).status_code, 404)
 
     def test_health_contract_matches_responses_and_examples(self):
@@ -58,7 +58,7 @@ class HealthTests(TestCase):
         self.assertTrue(list(validator.iter_errors({'status': 'ok', 'service': 'portfolio-api', 'schema_version': 2})))
 
     def test_user_has_uuid_primary_key_without_seeded_personal_data(self):
-        user = get_user_model().objects.create_user(username='synthetic-fixture', password=secrets.token_urlsafe(24))
+        user = get_user_model().objects.create_user(email='fixture@example.test', first_name='Synthetic', last_name='Fixture', password=secrets.token_urlsafe(24))
         self.assertIsInstance(user.pk, uuid.UUID)
         self.assertNotEqual(user.password, '')
         self.assertFalse(user.is_superuser)
