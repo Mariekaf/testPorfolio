@@ -61,12 +61,16 @@ Sur votre PC, ouvrir `http://127.0.0.1:3000/register`. Django utilise 8001 ; le 
 
 ## 4. Tests automatisés
 
-Troisième terminal :
+Arrêter d’abord Next.js avec **Ctrl+C dans le terminal studio**. Le script lance un build Next et ne doit pas partager `.next` avec un serveur de développement en cours. Django peut rester actif : les tests utilisent une base séparée.
+
+Dans le terminal de vérification :
 
 ```powershell
 Set-Location "$env:USERPROFILE\testPorfolio-saas"
 & .\scripts\windows\Test-Foundations.ps1
 ```
+
+Après réussite du script, relancer `npm.cmd run dev --workspace @portfolio/studio` dans le terminal studio avant les parcours navigateur.
 
 Le script conserve les contrôles historiques et ajoute les tests du client d’authentification. Il doit passer : 12 tests d’intégrité, 6 tests historiques, suite Django (33 tests dans cette livraison), 3 contrats santé, 4 tests du client auth, TypeScript et build. Une réponse 503 simulée dans les tests de santé est attendue ; la commande finale doit néanmoins réussir. Les tests Django créent leur propre base `test_…` avec le rôle de test ; ils n’effacent pas la base de développement.
 

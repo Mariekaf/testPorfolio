@@ -2,7 +2,7 @@
 
 Date : 16 octobre 2026. Branche : `feature/auth-001`, créée depuis `7331e5b` (`fix/core-001-windows`, socle validé avec corrections Windows). Aucun merge dans `main`.
 
-**Statut : implémentation et vérifications Linux réalisées ; ticket non terminé tant que la validation Windows native AC14 et la PR ne sont pas acquises.**
+**Statut : implémentation et vérifications Linux réalisées ; ticket non terminé tant que la validation Windows native AC14 et la revue de la PR ne sont pas acquises.**
 
 ## Réalisation
 
@@ -87,12 +87,20 @@ Le profil production reste fermé. La politique de proxy de confiance, les limit
 
 ## Livraison Git et PR
 
-Branche dédiée `feature/auth-001`, base de revue recommandée `fix/core-001-windows` pour isoler AUTH-001 du socle non encore fusionné dans main. L’accès Git est vérifié séparément de l’API GitHub. La branche a été poussée sur GitHub (implémentation : `ba925e8`). La tentative réelle `gh pr create --draft` a échoué : `Post https://api.github.com/graphql: Forbidden`. La PR automatique est donc bloquée ; aucune PR n’a été créée et aucun numéro n’est annoncé. Aucun secret/token n’est demandé dans le chat.
+Branche dédiée `feature/auth-001`. La [PR nº 1](https://github.com/Mariekaf/testPorfolio/pull/1) a été créée par l’utilisateur et est en brouillon, selon sa confirmation du 16 octobre 2026. La création de PR n’est plus un blocage. La revue et la validation Windows native restent ouvertes.
 
-Le lien de comparaison après publication de la branche permet de créer la PR :
-https://github.com/Mariekaf/testPorfolio/compare/fix/core-001-windows...feature/auth-001
+Vérification indépendante : `git ls-remote origin refs/heads/feature/auth-001 refs/pull/1/head` a confirmé les deux références au commit `bbbd4dd` au début de cette vérification. L’accès GraphQL pour consulter les métadonnées reste refusé (`Forbidden`) ; le statut brouillon provient de la confirmation utilisateur, pas d’une lecture API. Aucun merge ni modification de la PR via l’API n’est effectué.
 
 Ne pas commencer le ticket suivant ni fusionner avant revue et validation Windows.
+
+### Préparation des vérifications encore ouvertes
+
+Le 16 octobre 2026, relecture ciblée des sessions/CSRF, de la révocation des sessions lors du reset, de la migration, des ACL PowerShell et de la protection du dashboard. Cette relecture ne remplace pas l’approbation de la PR. Réexécution Linux : 33 tests Django et 4 tests du client auth réussis ; les 11 empreintes historiques et les 4 empreintes de fixture sont conformes. Les autres résultats du tableau précédent restent ceux de la livraison initiale.
+
+Correction documentaire : arrêter Next.js avant `Test-Foundations.ps1`, qui exécute un build dans le même `.next`, puis relancer le studio pour les parcours manuels. Aucun changement fonctionnel ni modification du CMS historique pour cette préparation.
+
+Vérifications à recueillir sur le PC Windows : branche/commit testés, versions Python/Node/npm/PostgreSQL, migration SaaS, ACL effectives de la boîte, résultat complet de `Test-Foundations.ps1`, parcours auth, expiration, onglets et retour arrière. Aucun de ces résultats Windows n’est encore déclaré réussi. PORT-001 reste suspendu ; PR nº 1 conservée en brouillon selon la consigne utilisateur.
+
 
 ## Fichiers créés et modifiés
 
