@@ -1,6 +1,7 @@
 "use client";
 import {useEffect,useRef,useState} from 'react';
 import {ApiError,authRequest,type Session} from '../../lib/auth';
+import Portfolios from './portfolios';
 export default function Dashboard() {
   const leaving=useRef(false);
   const [session,setSession]=useState<Session|null>(null),[error,setError]=useState('');
@@ -32,6 +33,6 @@ export default function Dashboard() {
   }
   return <main><header><span className="brand">studio ✳</span><button onClick={logout}>Se déconnecter</button></header>
     <section className="intro"><p className="eyebrow">VOTRE TABLEAU DE BORD</p>
-      {session?<><h1>Bienvenue, {session.user.first_name}.</h1><p>Votre espace est prêt. La gestion des portfolios arrivera lors d’une prochaine étape.</p></>:<p role="status">{error||'Vérification de votre session…'}</p>}
-    </section></main>;
+      {session?<><h1>Bienvenue, {session.user.first_name}.</h1><p>Votre espace est prêt. Créez et gérez vos portfolios privés ci-dessous.</p></>:<p role="status">{error||'Vérification de votre session…'}</p>}
+    </section>{session&&<Portfolios/>}</main>;
 }
