@@ -27,6 +27,7 @@ Ne pas utiliser `reset --hard`, effacer `.local/` ou recopier les données histo
 & .\backend\.venv\Scripts\python.exe -m pip install --require-hashes -r .\backend\requirements\development.txt
 & .\backend\.venv\Scripts\python.exe -m pip check
 npm.cmd ci --ignore-scripts
+& .\scripts\windows\Test-Mailbox.ps1
 & .\scripts\windows\Initialize-Mailbox.ps1
 git check-ignore infra/env/development.local.json
 & .\backend\.venv\Scripts\python.exe -B backend/manage.py migrate --plan --settings=config.settings.migration
@@ -90,3 +91,18 @@ Le navigateur automatisé est optionnel et nécessite Playwright/Chromium déjà
 10. Inspecter les cookies dans le navigateur : HttpOnly et SameSite Strict. Secure est volontairement absent en HTTP local ; son activation HTTPS est couverte par les tests backend. Vérifier qu’aucun jeton n’est dans `localStorage`.
 
 Ne partager que : version des outils, résumé final des tests, étapes réussies/échouées et messages techniques expurgés. Ne pas partager cookies, config privée, corps de formulaire, fichiers mail, e-mails réels ou liens reset. **AC14 (tests automatisés Windows) dispose désormais de preuves de réussite. La validation manuelle Windows et la revue de la PR restent ouvertes jusqu’à réception de leurs résultats.**
+
+## Correction de SeSecurityPrivilege lors du démarrage
+
+Un échec natif Windows a été signalé au second passage de `Initialize-Mailbox.ps1` via `Start-Backend.ps1` : `Set-Acl` demande `SeSecurityPrivilege`. La correction utilise `DirectoryInfo.SetAccessControl` / `FileInfo.SetAccessControl` de .NET Framework sous PowerShell 5.1 pour enregistrer uniquement la DACL modifiée. Les règles restent limitées à l’utilisateur courant et SYSTEM ; ni propriétaire, ni groupe, ni audit ne sont modifiés. Aucune élévation administrateur ni désactivation des protections n’est demandée.
+
+Après récupération de la branche AUTH-001, exécuter dans PowerShell **sans élévation** :
+
+```powershell
+git pull --ff-only origin feature/auth-001
+& .\scripts\windows\Test-Mailbox.ps1
+```
+
+Le contrôle crée uniquement un dossier temporaire synthétique, vérifie les permissions du dossier et d’un nouveau fichier, réexécute l’initialisation sur les mêmes objets, vérifie les permissions et le contenu, puis nettoie le dossier et restaure la variable de boîte précédente. Il ne consulte pas les messages réels. Le contrôle est aussi intégré à `Test-Foundations.ps1`.
+
+Si ce contrôle réussit, relancer `Start-Backend.ps1`, puis reprendre les parcours manuels. Réexécuter ensuite la suite complète avec Next.js arrêté afin de valider ce correctif sur Windows. **Correctif préparé sous Linux, validation d’exécution Windows encore ouverte.** En cas d’échec, transmettre l’erreur technique uniquement ; ne pas exécuter en administrateur pour contourner le contrôle.

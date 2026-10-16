@@ -162,6 +162,18 @@ Source : sortie de `Test-Foundations.ps1` exécuté par l’utilisateur sur son 
 - Les avertissements PostgreSQL proviennent des scénarios de panne simulée qui passent. Avertissement Node `MODULE_TYPELESS_PACKAGE_JSON` non bloquant, sans changement de dépendance requis.
 - Initialisation des ACL de la boîte signalée réussie dans le précédent retour utilisateur ; contrôle des permissions effectives sur un message Windows encore à effectuer. Le test Python de permissions POSIX ne vérifie pas les ACL Windows.
 
-Versions préalablement fournies sur ce PC : Python 3.13.5, Node 24.22.0, npm 11.14.0, PowerShell 5.1. Le commit exact de cette exécution reste à confirmer par `git log -1 --format="%h %s"`.
+Versions préalablement fournies sur ce PC : Python 3.13.5, Node 24.22.0, npm 11.14.0, PowerShell 5.1. Le commit testé a ensuite été confirmé par l’utilisateur : `ffc015b`. `showmigrations identity` confirme également `[X]` sur `0001` et `0002` dans la base de développement.
 
 Restent à valider : démarrage Django/studio Windows et santé de la base de développement, parcours inscription/connexion/déconnexion/reset, expiration, onglets/retour arrière, responsive/clavier et ACL effectives de la boîte. La revue/approbation de la PR nº 1 reste distincte. Aucun merge et aucun démarrage de PORT-001.
+
+## Correctif Windows de la boîte privée — exécution encore à valider
+
+Après réussite des 58 tests sur `ffc015b`, le démarrage Django a été interrompu par `Set-Acl` dans `Initialize-Mailbox.ps1` : privilège `SeSecurityPrivilege` manquant. La première initialisation avait réussi ; le second passage devait donc être couvert explicitement. Ce blocage ne modifie pas les résultats de tests antérieurs mais empêche de déclarer le démarrage et les parcours Windows validés.
+
+Correction : remplacement des deux appels `Set-Acl` de la boîte par les setters .NET Framework `DirectoryInfo.SetAccessControl` et `FileInfo.SetAccessControl`. Seules les règles DACL modifiées sont enregistrées ; propriétaire/groupe/audit restent inchangés. Les deux identités autorisées restent l’utilisateur courant et SYSTEM, sans élévation.
+
+Nouveau contrôle `scripts/windows/Test-Mailbox.ps1`, intégré à `Test-Foundations.ps1` : première initialisation, héritage vers un fichier synthétique, initialisation répétée, protection des DACL et présence exclusive des deux règles FullControl attendues, contenu conservé, nettoyage et restauration de la variable d’environnement. Ce contrôle n’ouvre aucun vrai message.
+
+Vérifications Linux de cette correction : intégrité de référence et `git diff --check`. Aucun PowerShell Windows n’est disponible dans cet environnement ; **le contrôle ACL et la relance Django ne sont pas encore déclarés réussis**. Le nouveau passage complet de la suite Windows reste attendu. PORT-001 reste bloqué, aucune fusion ni modification du CMS historique.
+
+Fichiers concernés par ce correctif : `scripts/windows/Initialize-Mailbox.ps1`, `scripts/windows/Test-Mailbox.ps1` (créé), `scripts/windows/Test-Foundations.ps1`, ce rapport et le guide Windows AUTH-001.

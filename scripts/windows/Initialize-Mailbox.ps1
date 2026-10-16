@@ -13,7 +13,10 @@ foreach ($sid in @($identity, $system)) {
     $acl.AddAccessRule([System.Security.AccessControl.FileSystemAccessRule]::new(
         $sid, 'FullControl', 'ContainerInherit, ObjectInherit', 'None', 'Allow'))
 }
-Set-Acl -LiteralPath $mailbox -AclObject $acl
+# Windows PowerShell 5.1 Set-Acl can attempt to persist audit information
+# (SACL), requiring SeSecurityPrivilege. The .NET setter persists only the
+# modified access section (DACL); owner/group/audit sections are untouched.
+[System.IO.DirectoryInfo]::new($mailbox).SetAccessControl($acl)
 # Restrict existing files as well; never display mail content.
 Get-ChildItem -LiteralPath $mailbox -File | ForEach-Object {
     $fileAcl = [System.Security.AccessControl.FileSecurity]::new()
@@ -21,6 +24,6 @@ Get-ChildItem -LiteralPath $mailbox -File | ForEach-Object {
     foreach ($sid in @($identity, $system)) {
         $fileAcl.AddAccessRule([System.Security.AccessControl.FileSystemAccessRule]::new($sid, 'FullControl', 'Allow'))
     }
-    Set-Acl -LiteralPath $_.FullName -AclObject $fileAcl
+    [System.IO.FileInfo]::new($_.FullName).SetAccessControl($fileAcl)
 }
 Write-Host 'Private mailbox ACL configured. No message content displayed.'

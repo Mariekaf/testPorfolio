@@ -9,6 +9,7 @@ $env:PYTHONDONTWRITEBYTECODE = '1'
 $env:NEXT_TELEMETRY_DISABLED = '1'
 Push-Location $repoRoot
 try {
+    & (Join-Path $PSScriptRoot 'Test-Mailbox.ps1')
     & $python -B scripts/verification/check_base001.py
     if ($LASTEXITCODE -ne 0) { throw 'Historical source reference changed.' }
     & $python -B -m unittest discover -s scripts/verification/tests -v
