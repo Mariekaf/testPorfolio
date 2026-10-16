@@ -135,3 +135,22 @@ class LocalInitializationTests(SimpleTestCase):
             self.assertNotIn(config['secret_key'], output.getvalue())
             self.assertNotIn(config['bootstrap_password'], output.getvalue())
             self.assertTrue((Path(folder)/'infra/env/development.local.env').is_file())
+
+
+class MaintenancePreflightTests(SimpleTestCase):
+    def test_unavailable_maintenance_fails_without_fallback(self):
+        from config.database_checks import check_test_maintenance_access
+        import psycopg
+        from django.conf import settings
+        with patch('config.database_checks.psycopg.connect', side_effect=psycopg.OperationalError('PRIVATE_DETAIL')):
+            with self.assertRaises(ValueError) as error:
+                check_test_maintenance_access(settings.CONFIG['database'])
+        self.assertIn('no test database action performed', str(error.exception))
+        self.assertNotIn('PRIVATE_DETAIL', str(error.exception))
+
+    def test_test_runner_does_not_create_databases_if_preflight_fails(self):
+        from config.test_runner import PostgreSQLTestRunner
+        with patch('config.test_runner.check_test_maintenance_access', side_effect=ValueError('maintenance denied')), patch('django.test.runner.DiscoverRunner.setup_databases') as setup:
+            with self.assertRaisesRegex(ValueError, 'maintenance denied'):
+                PostgreSQLTestRunner().setup_databases()
+            setup.assert_not_called()

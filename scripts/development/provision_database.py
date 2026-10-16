@@ -27,6 +27,10 @@ def provision(admin_user=None):
     with psycopg.connect(host=db['host'], port=db['port'], dbname='postgres', user=user,
                          password=password, autocommit=True, connect_timeout=3) as connection:
         connection.execute("SET password_encryption = 'scram-sha-256'")
+        owner = connection.execute('SELECT pg_get_userbyid(datdba) FROM pg_database WHERE datname=%s', (db['name'],)).fetchone()
+        if owner is not None and owner[0] != db['migration_user']:
+            raise ValueError('Existing database has a different owner; no adoption performed.')
+        verification_database = db['name'] if owner is not None else 'postgres'
         for kind in ['migration', 'runtime', 'test']:
             name = db[kind+'_user']
             createdb = kind == 'test'
@@ -35,17 +39,17 @@ def provision(admin_user=None):
                 if existing != (False, False, createdb, False, False):
                     raise ValueError('Existing role has unexpected privileges; manual review required.')
                 # Do not rotate an existing role's password or adopt unrelated credentials.
-                with psycopg.connect(host=db['host'], port=db['port'], dbname='postgres', user=name,
+                with psycopg.connect(host=db['host'], port=db['port'], dbname=verification_database, user=name,
                                      password=db[kind+'_password'], connect_timeout=3):
                     pass
             else:
                 connection.execute(sql.SQL('CREATE ROLE {} LOGIN NOSUPERUSER NOCREATEROLE {} NOREPLICATION NOBYPASSRLS PASSWORD {}').format(
                     sql.Identifier(name), sql.SQL('CREATEDB' if createdb else 'NOCREATEDB'), sql.Literal(db[kind+'_password'])))
-        owner = connection.execute('SELECT pg_get_userbyid(datdba) FROM pg_database WHERE datname=%s', (db['name'],)).fetchone()
         if owner is None:
             connection.execute(sql.SQL("CREATE DATABASE {} OWNER {} ENCODING 'UTF8' TEMPLATE template0").format(sql.Identifier(db['name']),sql.Identifier(db['migration_user'])))
-        elif owner[0] != db['migration_user']:
-            raise ValueError('Existing database has a different owner; no adoption performed.')
+        # Django creates/drops its test DB while connected to postgres. Grant
+        # only CONNECT to the test role, never ownership or runtime privileges.
+        connection.execute(sql.SQL('GRANT CONNECT ON DATABASE postgres TO {}').format(sql.Identifier(db['test_user'])))
         connection.execute(sql.SQL('REVOKE ALL ON DATABASE {} FROM PUBLIC').format(sql.Identifier(db['name'])))
         for kind in ['runtime', 'migration', 'test']:
             connection.execute(sql.SQL('GRANT CONNECT ON DATABASE {} TO {}').format(sql.Identifier(db['name']),sql.Identifier(db[kind+'_user'])))

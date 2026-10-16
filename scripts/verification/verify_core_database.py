@@ -1,13 +1,15 @@
 """Verify the actual development PostgreSQL connection and runtime privileges."""
 import sys
+import argparse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]/'backend'))
 import psycopg
 from config.environment import load_configuration
+from config.database_checks import check_test_maintenance_access
 
 
-def main():
+def main(check_test_access=False):
     db = load_configuration()['database']
     with psycopg.connect(host=db['host'], port=db['port'], dbname=db['name'], user=db['runtime_user'],
                          password=db['runtime_password'], connect_timeout=3) as connection:
@@ -27,12 +29,21 @@ def main():
         encoding = connection.execute('SHOW server_encoding').fetchone()[0]
         if not version.startswith('17.') or encoding != 'UTF8':
             raise ValueError('Expected PostgreSQL 17 and UTF8.')
+    if check_test_access:
+        check_test_maintenance_access(db)
+        print('Test role maintenance connection verified; no runtime privilege added.')
     print('PostgreSQL '+version+' verified: UTF8, initial table accessible, least-privilege runtime role, no DDL/CREATEDB/superuser/BYPASSRLS.')
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check-test-access', action='store_true')
+    args = parser.parse_args()
     try:
-        main()
-    except (psycopg.Error, ValueError):
+        main(args.check_test_access)
+    except ValueError as error:
+        print(str(error), file=sys.stderr)
+        sys.exit(1)
+    except psycopg.Error:
         print('PostgreSQL verification failed; inspect the private local configuration. No credentials logged.', file=sys.stderr)
         sys.exit(1)

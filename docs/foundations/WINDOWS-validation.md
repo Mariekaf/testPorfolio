@@ -19,7 +19,8 @@ Branche de corrections : `fix/core-001-windows`, issue de `51128c6` (`arch/core-
 | Base et migrations | Rôles provisionnés, toutes migrations initiales OK ; dernière sortie du vérificateur DB fournie partiellement |
 | Backend | /health/live et /health/ready retournent status=ok |
 | Studio | npm ci réussi ; Next dev répond 200 ; bouton affiche backend et PostgreSQL disponibles |
-| Suite Test-Foundations | Arrêt au premier contrôle : Checksum mismatch: .gitignore ; tests suivants non exécutés à ce stade |
+| Suite Test-Foundations, premier passage | Arrêt au contrôle CRLF, corrigé sur la branche dédiée |
+| Suite après correctif CRLF | 12 tests d'intégrité, 6 historiques et 12 Django réussis ; nettoyage de la base test échoué ; frontend non encore exécuté par la suite |
 
 Ces observations proviennent de l'utilisateur sur son PC, pas d'une exécution distante par l'agent. Aucun transcript personnel n'est recopié.
 
@@ -54,7 +55,23 @@ Les tests supplémentaires sont inclus dans Test-Foundations.ps1 et la CI. Aucun
 1. Conserver les deux serveurs et les fichiers privés ; vérifier l'état Git et les fins de ligne.
 2. Récupérer la branche de correction sans reset, clean ni écrasement de modifications locales.
 3. Relancer Test-Foundations.ps1 en entier.
-4. Examiner chaque résultat : référence, intégrité, six tests historiques, PostgreSQL réel, contrôles Django, douze tests Django, trois tests de contrats, TypeScript et build.
+4. Examiner chaque résultat : référence, intégrité, six tests historiques, PostgreSQL réel, contrôles Django, quatorze tests Django (dont deux nouveaux de précontrôle), trois tests de contrats, TypeScript et build.
 5. Consigner les éventuels nouveaux problèmes spécifiques à Windows sur la même branche.
 
 **Validation Windows globale encore ouverte.** Le succès du navigateur ne remplace pas celui de la suite complète. Ne pas commencer AUTH-001 avant sa validation par l'utilisateur.
+
+## Deuxième correction : base de maintenance Django
+
+Le transcript utilisateur confirme la réussite des assertions Django mais un avertissement d'accès à `postgres`, suivi d'un échec au DROP de la base actuellement ouverte. Ce cas a été reproduit sur un PostgreSQL Linux **isolé**, avec CONNECT retiré de PUBLIC sur `postgres` : ancien code, 12 tests OK puis même échec de nettoyage.
+
+Correction : grant CONNECT sur `postgres` au seul rôle de test ; vérification des mots de passe existants via la base de développement appartenant au migrateur ; précontrôle direct de maintenance dans le script et le runner Django, qui échoue avant toute création si l'accès manque. Pas de modification des privilèges runtime/DDL, pas de mot de passe réinitialisé et pas de suppression manuelle de base.
+
+Vérifications effectuées ici :
+
+- Reprovisionnement idempotent de l'instance isolée avec les credentials existants.
+- 14 tests Django réussis, création et nettoyage de la base test terminés sans fallback.
+- Contrôle SQL confirmant le grant au test seulement ; runtime et migrateur sans nouvel accès à postgres dans ce cluster restreint.
+- Révocation temporaire du grant de test dans ce cluster de régression : le runner échoue avant création, sans fallback ; aucune base test créée.
+- 12 tests d'intégrité et 6 historiques restent réussis.
+
+Les résultats ci-dessus sont des tests Linux de la correction, pas une nouvelle exécution sur le PC utilisateur. La validation Windows complète et les contrôles frontend restent à recevoir après mise à jour/reprovisionnement.

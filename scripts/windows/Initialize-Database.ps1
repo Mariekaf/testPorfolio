@@ -19,6 +19,6 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'PostgreSQL provisioning failed.' }
     & $python -B backend/manage.py migrate --settings=config.settings.migration --noinput
     if ($LASTEXITCODE -ne 0) { throw 'Django migrations failed.' }
-    & $python -B scripts/verification/verify_core_database.py
+    & $python -B scripts/verification/verify_core_database.py --check-test-access
     if ($LASTEXITCODE -ne 0) { throw 'PostgreSQL runtime verification failed.' }
 } finally { Pop-Location }

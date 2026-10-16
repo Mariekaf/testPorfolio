@@ -163,3 +163,18 @@ git ls-files --eol -- .gitignore
 `i/lf w/crlf` avec un état Git propre correspond à une conversion normale au checkout. Une différence réelle de contenu, d'espaces, de BOM, d'encodage ou de média reste refusée. Ne pas retirer le contrôle, remplacer les empreintes, changer globalement core.autocrlf ou exécuter git reset/clean pour contourner une erreur. En cas d'échec persistant, conserver les fichiers et transmettre le diagnostic non secret.
 
 Le script Test-Foundations exécute également les régressions d'intégrité avant les tests historiques. Les résultats Windows de bout en bout restent à confirmer après installation de cette correction.
+
+## Accès de maintenance pour les tests Django
+
+Le rôle dédié aux tests doit pouvoir se connecter à la base système `postgres` pour créer et supprimer sa propre base de test. La correction Windows lui accorde explicitement **CONNECT uniquement** sur cette base ; ni le rôle applicatif ni le rôle DDL n'obtiennent de nouveau privilège de maintenance. Aucun mode trust, superutilisateur ou droit global supplémentaire n'est nécessaire.
+
+Si les assertions Django réussissent mais que le nettoyage échoue avec « ne peut pas supprimer la base de données actuellement ouverte », le runner historique peut avoir utilisé son fallback faute d'accès à `postgres`. Après mise à jour de `fix/core-001-windows`, relancer :
+
+```powershell
+& .\scripts\windows\Initialize-Database.ps1 -AdminUser postgres
+& .\scripts\windows\Test-Foundations.ps1
+```
+
+La première commande conserve les mots de passe/rôles existants, vérifie leur authentification dans la base de développement et applique le grant ciblé. Le mot de passe administrateur est saisi masqué. Un contrôle préalable direct refuse désormais la suite avant création si la connexion de maintenance échoue ; aucun fallback vers une base applicative n'est utilisé pour contourner l'erreur.
+
+Le runner peut recréer automatiquement sa base dédiée `test_portfolio_core_dev` laissée par le précédent échec. Ne pas y stocker de données personnelles ; ne supprimer aucune base manuellement et ne modifier ni la base de développement ni le dossier historique `.local/`.

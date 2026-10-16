@@ -19,7 +19,7 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Historical script.js syntax failed.' }
     & node --check admin.js
     if ($LASTEXITCODE -ne 0) { throw 'Historical admin.js syntax failed.' }
-    & $python -B scripts/verification/verify_core_database.py
+    & $python -B scripts/verification/verify_core_database.py --check-test-access
     if ($LASTEXITCODE -ne 0) { throw 'Actual PostgreSQL verification failed.' }
     & $python -B backend/manage.py check
     if ($LASTEXITCODE -ne 0) { throw 'Django check failed.' }
