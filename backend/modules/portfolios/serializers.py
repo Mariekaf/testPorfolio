@@ -3,6 +3,8 @@ from rest_framework import serializers
 from .models import Portfolio
 
 class PortfolioSerializer(serializers.ModelSerializer):
+    slug = serializers.SlugField(max_length=110, required=False)
+
     class Meta:
         model = Portfolio
         fields = ("id","name","slug","description","portfolio_type","status","visibility","created_at","updated_at")
