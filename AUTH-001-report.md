@@ -34,7 +34,7 @@ Environnement : Python 3.13.5, Node 24.19.0, npm 11.9.0, PostgreSQL **17.11 rée
 | Build Next.js | réussi ; dashboard dynamique, écrans auth générés |
 | Migrations | migration complète depuis zéro sur base jetable réussie ; aucun écart de modèles non migré |
 | Vérification PostgreSQL/rôles | UTF8, table utilisateur, maintenance du rôle de test et absence de privilèges DDL/superuser du runtime vérifiées |
-| Chromium desktop 1280 px et mobile 390 px | parcours inscription/connexion/déconnexion/reset/rejet réutilisation réussis |
+| Chromium desktop 1280 px et mobile 390 px | parcours inscription/connexion/déconnexion/reset/rejet réutilisation, déconnexion entre onglets et absence de jeton dans les URL HTTP réussis |
 | `git diff --check` | réussi |
 
 Total des suites unitaires/contrats : **58 tests réussis**, plus les parcours navigateur. Aucun résultat Windows réel n’est déduit de ces tests.
@@ -87,7 +87,7 @@ Le profil production reste fermé. La politique de proxy de confiance, les limit
 
 ## Livraison Git et PR
 
-Branche dédiée `feature/auth-001`, base de revue recommandée `fix/core-001-windows` pour isoler AUTH-001 du socle non encore fusionné dans main. L’accès Git est vérifié séparément de l’API GitHub. L’API GitHub renvoie actuellement `Forbidden` pour ce dépôt : la PR automatique est bloquée, aucun numéro de PR n’est annoncé. Aucun secret/token n’est demandé dans le chat.
+Branche dédiée `feature/auth-001`, base de revue recommandée `fix/core-001-windows` pour isoler AUTH-001 du socle non encore fusionné dans main. L’accès Git est vérifié séparément de l’API GitHub. La branche a été poussée sur GitHub (implémentation : `ba925e8`). La tentative réelle `gh pr create --draft` a échoué : `Post https://api.github.com/graphql: Forbidden`. La PR automatique est donc bloquée ; aucune PR n’a été créée et aucun numéro n’est annoncé. Aucun secret/token n’est demandé dans le chat.
 
 Le lien de comparaison après publication de la branche permet de créer la PR :
 https://github.com/Mariekaf/testPorfolio/compare/fix/core-001-windows...feature/auth-001

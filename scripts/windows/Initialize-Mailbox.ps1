@@ -14,7 +14,7 @@ foreach ($sid in @($identity, $system)) {
         $sid, 'FullControl', 'ContainerInherit, ObjectInherit', 'None', 'Allow'))
 }
 Set-Acl -LiteralPath $mailbox -AclObject $acl
-# Refuse existing files with explicit unrelated ACLs; never expose mail content.
+# Restrict existing files as well; never display mail content.
 Get-ChildItem -LiteralPath $mailbox -File | ForEach-Object {
     $fileAcl = [System.Security.AccessControl.FileSecurity]::new()
     $fileAcl.SetAccessRuleProtection($true, $false)
