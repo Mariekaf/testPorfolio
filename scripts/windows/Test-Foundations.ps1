@@ -36,6 +36,8 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Frontend health contracts failed.' }
     & npm.cmd run test:auth
     if ($LASTEXITCODE -ne 0) { throw 'Frontend authentication client tests failed.' }
+    & npm.cmd run test:portfolios
+    if ($LASTEXITCODE -ne 0) { throw 'Frontend portfolio client tests failed.' }
     & npm.cmd run typecheck
     if ($LASTEXITCODE -ne 0) { throw 'TypeScript check failed.' }
     & npm.cmd run build

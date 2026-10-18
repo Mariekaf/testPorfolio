@@ -22,6 +22,7 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from modules.accounts.services import ensure_personal_account, AccountInconsistent
 from .models import AuthSession
 from .rate_limits import RateLimited, limit_request
 from .serializers import EmailSerializer, LoginSerializer, RegistrationSerializer, ResetConfirmSerializer
@@ -81,8 +82,14 @@ class RegisterView(AuthView):
         value = serializer.validated_data
         try:
             with transaction.atomic():
-                get_user_model().objects.create_user(email=value['email'],password=value['password'],first_name=value['first_name'],last_name=value['last_name'])
-        except IntegrityError:
+                user = get_user_model().objects.create_user(email=value['email'],password=value['password'],first_name=value['first_name'],last_name=value['last_name'])
+                ensure_personal_account(user)
+        except AccountInconsistent:
+            return error_response('account_inconsistent','La création du compte ne peut pas être finalisée.',409)
+        except IntegrityError as exc:
+            constraint = getattr(getattr(exc.__cause__, 'diag', None), 'constraint_name', '') or ''
+            if 'email' not in constraint:
+                return error_response('provisioning_unavailable','La création du compte est temporairement indisponible.',503)
             return error_response('validation_error','Cette adresse e-mail ne peut pas être utilisée.',400,{'email':['Cette adresse e-mail est déjà utilisée.']})
         # No automatic session, no email or password returned.
         return Response({'message':'Compte créé. Vous pouvez maintenant vous connecter.'}, status=201)

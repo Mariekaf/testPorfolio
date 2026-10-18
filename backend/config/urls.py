@@ -18,4 +18,4 @@ urlpatterns += [
     ]
 ]
 
-urlpatterns += [path("api/v1/portfolios/", include("modules.portfolios.urls"))]
+urlpatterns += [path("api/v1/portfolios", include("modules.portfolios.urls"))]

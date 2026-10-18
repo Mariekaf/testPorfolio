@@ -43,7 +43,7 @@ def main():
                 page.get_by_label('Mot de passe',exact=True).fill(password)
                 page.get_by_role('button',name='Se connecter',exact=True).click()
                 page.wait_for_url('**/dashboard')
-                page.get_by_role('heading',name='Bienvenue, Synthetic.').wait_for()
+                page.locator('.account-note').filter(has_text='Synthetic').wait_for()
                 assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
                 session=context.cookies()
                 cookie=next(c for c in session if c['name']=='portfolio_saas_session')
@@ -79,7 +79,7 @@ def main():
                 page.get_by_label('Mot de passe',exact=True).fill(new_password)
                 page.get_by_role('button',name='Se connecter',exact=True).click()
                 page.wait_for_url('**/dashboard')
-                page.get_by_role('heading',name='Bienvenue, Synthetic.').wait_for()
+                page.locator('.account-note').filter(has_text='Synthetic').wait_for()
                 page.goto(link)
                 page.get_by_label('Mot de passe',exact=True).fill(password)
                 page.get_by_label('Confirmer le mot de passe',exact=True).fill(password)
@@ -90,9 +90,9 @@ def main():
                 token=parse_qs(urlsplit(link).fragment)['token'][0]
                 assert all(token not in url for url in requests)
                 page.goto(origin+'/dashboard')
-                page.get_by_role('heading',name='Bienvenue, Synthetic.').wait_for()
+                page.locator('.account-note').filter(has_text='Synthetic').wait_for()
                 peer=context.new_page();peer.goto(origin+'/dashboard')
-                peer.get_by_role('heading',name='Bienvenue, Synthetic.').wait_for()
+                peer.locator('.account-note').filter(has_text='Synthetic').wait_for()
                 # Hold a successful identity reply, then start logout and hold
                 # its reply too. A stale /me must never restore the greeting.
                 pending_identity=[]; pending_logout=[]
@@ -114,7 +114,7 @@ def main():
                 assert pending_logout, 'Expected delayed logout response.'
                 for route,response in pending_identity:route.fulfill(response=response)
                 page.wait_for_timeout(250)
-                assert page.get_by_role('heading',name='Bienvenue, Synthetic.').count()==0, 'Stale identity reappeared during logout.'
+                assert page.locator('.account-note').filter(has_text='Synthetic').count()==0, 'Stale identity reappeared during logout.'
                 for route,response in pending_logout:route.fulfill(response=response)
                 page.wait_for_url('**/login')
                 peer.wait_for_url('**/login?reason=expired')
@@ -128,7 +128,7 @@ def main():
                 page.get_by_label('Mot de passe',exact=True).fill(new_password)
                 page.get_by_role('button',name='Se connecter',exact=True).click()
                 page.wait_for_url('**/dashboard')
-                page.get_by_role('heading',name='Bienvenue, Synthetic.').wait_for()
+                page.locator('.account-note').filter(has_text='Synthetic').wait_for()
                 page.get_by_role('button',name='Se déconnecter').click()
                 page.wait_for_url('**/login')
                 assert page.request.get(origin+'/api/v1/auth/me').status==401

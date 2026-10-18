@@ -1,31 +1,24 @@
-from django.utils.text import slugify
+import re
 from rest_framework import serializers
-from .models import Portfolio
+from modules.identity.serializers import StrictSerializer
 
-class PortfolioSerializer(serializers.ModelSerializer):
-    slug = serializers.SlugField(max_length=110, required=False)
+class PortfolioInput(StrictSerializer):
+    name=serializers.CharField(min_length=3,max_length=100)
+    slug=serializers.CharField(max_length=110,required=False)
+    description=serializers.CharField(max_length=500,required=False,allow_blank=True)
 
-    class Meta:
-        model = Portfolio
-        fields = ("id","name","slug","description","portfolio_type","status","visibility","created_at","updated_at")
-        read_only_fields = ("id","status","visibility","created_at","updated_at")
+    def validate_name(self,value):
+        if not re.fullmatch(r'\S.{1,98}\S',value):
+            raise serializers.ValidationError('Utilisez un nom de 3 à 100 caractères sur une seule ligne.')
+        return value
 
-    def to_internal_value(self, data):
-        if not isinstance(data, dict) or set(data) - {"name","slug","description","portfolio_type"}:
-            raise serializers.ValidationError({"non_field_errors":["Champs non autorisés."]})
-        return super().to_internal_value(data)
+    def validate_slug(self,value):
+        value=value.lower()
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*',value):
+            raise serializers.ValidationError('Utilisez des lettres sans accent, des chiffres et des tirets simples.')
+        return value
 
-    def validate_name(self, value):
-        if len(value.strip()) < 3:
-            raise serializers.ValidationError("Le nom doit contenir au moins 3 caractères.")
-        return value.strip()
-
-    def validate(self, attrs):
-        if self.instance is None and "slug" not in attrs:
-            attrs["slug"] = slugify(attrs.get("name",""), allow_unicode=False)[:110]
-        if not attrs.get("slug") and self.instance is None:
-            raise serializers.ValidationError({"slug":["Un slug valide est nécessaire."]})
-        slug = attrs.get("slug")
-        if slug and Portfolio.objects.filter(slug__iexact=slug).exclude(pk=getattr(self.instance,"pk",None)).exists():
-            raise serializers.ValidationError({"slug":["Ce slug est déjà utilisé."]})
+    def validate(self,attrs):
+        if self.partial and not attrs:
+            raise serializers.ValidationError({'non_field_errors':['Aucune modification fournie.']})
         return attrs

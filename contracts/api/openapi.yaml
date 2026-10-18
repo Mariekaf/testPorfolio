@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: Portfolio SaaS foundations
   version: 0.1.0
-  description: CORE-001 health contracts only; no business or authentication endpoints.
+  description: CORE-001 health plus PORT-001 portfolio contracts; AUTH session contract remains separate.
 paths:
   /api/v1/health/live:
     get:
@@ -30,3 +30,25 @@ paths:
             application/json:
               schema:
                 $ref: '../schemas/health/response.v1.json'
+
+  /api/v1/portfolios:
+    $ref: "./portfolios.v1.json#/paths/~1api~1v1~1portfolios"
+
+  /api/v1/portfolios/{id}:
+    $ref: "./portfolios.v1.json#/paths/~1api~1v1~1portfolios~1{id}"
+
+  /api/v1/portfolios/{id}/duplicate:
+    $ref: "./portfolios.v1.json#/paths/~1api~1v1~1portfolios~1{id}~1duplicate"
+
+  /api/v1/portfolios/{id}/archive:
+    $ref: "./portfolios.v1.json#/paths/~1api~1v1~1portfolios~1{id}~1archive"
+
+  /api/v1/portfolios/{id}/restore:
+    $ref: "./portfolios.v1.json#/paths/~1api~1v1~1portfolios~1{id}~1restore"
+
+components:
+  securitySchemes:
+    session:
+      type: apiKey
+      in: cookie
+      name: portfolio_saas_session

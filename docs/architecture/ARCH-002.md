@@ -1,12 +1,12 @@
 # ARCH-002 — Identités, comptes et propriété des portfolios
 
-- Version de proposition : **0.1 — 18 octobre 2026** (Africa/Douala).
-- Statut : **PROPOSITION À EXAMINER — NON APPROUVÉE**.
+- Version : **0.2 — approbation du 18 octobre 2026** (Africa/Douala).
+- Statut : **P01–P10 APPROUVÉES SOUS CONDITIONS — implémentation à vérifier**.
 - Référence observée : `feature/auth-001`, commit **`2ff4fc1`**.
 - Emplacement de travail : `feature/port-001`, après l’audit `d0afaf6`.
 - Portée : spécifier les fondations de propriété nécessaires à PORT-001. Aucun modèle métier, migration, contrat OpenAPI exécutable ou mécanisme de collaboration n’est livré par ce document.
 
-Cette proposition remplace les références antérieures à un ARCH-002 supposé approuvé. **Aucune relation Account/AccountMembership/Portfolio décrite ici n’est déjà validée.** Son approbation explicite doit précéder leur implémentation et toute nouvelle migration PORT-001. La PR nº 1 n’est pas fusionnée par cette démarche ; `main`, le CMS historique et `.local/` ne sont pas modifiés.
+Cette proposition remplace les références antérieures à un ARCH-002 supposé approuvé. L’utilisateur a explicitement approuvé P01–P10 après examen de la version 0.1. Cette approbation ne constitue pas une validation du code, des migrations ou de la livraison. La PR nº 1 n’est pas fusionnée par cette démarche ; `main`, le CMS historique et `.local/` ne sont pas modifiés.
 
 ## 1. Faits vérifiés et sources
 
@@ -34,7 +34,7 @@ Son historique doit être préservé. Ses champs et sa migration ne doivent pas 
 
 ## 2. Décisions structurantes proposées
 
-Toutes les décisions **P01–P10** ci-dessous sont nouvelles et soumises à approbation.
+Les décisions **P01–P10** ci-dessous sont approuvées au niveau architectural ; leur mise en œuvre reste soumise aux conditions et preuves de validation.
 
 | Réf. | Proposition | Conséquence |
 |---|---|---|
@@ -252,4 +252,21 @@ L’approbation doit porter sur P01–P10, en particulier :
 
 Lecture des modèles, managers, vues, serializers, réglages, schéma de session, OpenAPI et migrations de l’arbre AUTH-001 `2ff4fc1`, puis comparaison avec la migration Portfolio provisoire actuelle. L’état `identity.0002` a également été reconstruit en mémoire avec `MigrationLoader(None)` : UUID, retrait de username, unicités de l’e-mail, modèles de session/limitation et absence d’Account/Membership/Portfolio vérifiés, sans connexion PostgreSQL. Les 11 sources historiques et 4 empreintes de fixture restent conformes. La compatibilité décrite est **une analyse structurelle**, pas une exécution des migrations proposées : ces migrations n’existent pas et n’ont pas été créées. Les tests de préparation précédents sur l’ancienne branche PORT ne valident pas cette architecture.
 
-**Point d’arrêt : attendre l’examen et l’approbation explicite de cette spécification. Aucun modèle, aucune nouvelle migration ni fonctionnalité PORT-001 ne doit être commencé sur la seule présence de ce document.**
+**Décision utilisateur : P01–P10 approuvées. PORT-001 est autorisé sous les conditions ci-dessous ; sa livraison attendra une revue technique distincte.**
+
+## 11. Décision d’approbation et conditions d’implémentation
+
+Approbation explicite reçue le 18 octobre 2026 pour P01–P10 de la version 0.1. Conditions obligatoires :
+
+1. Conserver les migrations historiques ; faire évoluer le Portfolio provisoire par étapes additives contrôlées.
+2. Préserver UUID, données et états existants.
+3. Ne jamais réparer silencieusement une incohérence de propriété ou de Membership.
+4. Fournir une référence de thème par défaut réellement validable, sans moteur de thèmes.
+5. Préparer les références versionnées de templates pour TPL-001, sans catalogue.
+6. Maintenir strictement le contrat de session AUTH-001.
+7. Tester sur PostgreSQL 17 avec données synthétiques les chemins depuis AUTH-001 et depuis le PORT-001 provisoire.
+8. Aucune migration d’une base réelle sans sauvegarde et autorisation explicites.
+9. CMS historique et `.local/` intacts.
+10. Aucune fusion de PR sans validation.
+
+Autorisation : mettre à jour cette spécification, détailler la migration, implémenter PORT-001, exécuter les tests et livrer pour revue. TPL-001 et l’éditeur visuel restent exclus. L’OpenAPI PORT-001 et le plan de migration sont établis avant les modifications métier. Le champ SQL historique `status` peut rester conservé, exposé sous `publication_state`, pour éviter un renommage inutile et préserver les contraintes existantes.

@@ -45,7 +45,7 @@ class HealthTests(TestCase):
     def test_health_aliases_and_no_business_routes(self):
         for path in ['/health/live', '/health/ready', '/api/v1/health/live', '/api/v1/health/ready']:
             self.assertEqual(self.client.get(path).status_code, 200)
-        for path in ['/api/v1/accounts', '/api/v1/portfolios', '/admin/']:
+        for path in ['/api/v1/accounts', '/api/v1/account-memberships', '/admin/']:
             self.assertEqual(self.client.get(path).status_code, 404)
 
     def test_health_contract_matches_responses_and_examples(self):
