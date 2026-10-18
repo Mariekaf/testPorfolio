@@ -1,7 +1,7 @@
 # PORT-001 — Audit préalable et plan de reprise
 
 Date : 18 octobre 2026 (Africa/Douala).
-Statut : **préparation réalisée ; développement du nouveau périmètre bloqué par l’absence des contrats ARCH-002**. Aucun livrable final ni critère nouveau n’est déclaré validé.
+Statut : **préparation réalisée ; proposition ARCH-002 désormais rédigée, développement des modèles en attente de son approbation**. Aucun livrable final ni critère nouveau n’est déclaré validé.
 
 ## État réel du dépôt et des branches
 
@@ -10,13 +10,13 @@ Statut : **préparation réalisée ; développement du nouveau périmètre bloqu
 - Une branche distante `feature/port-001` existait déjà, tête `669d573`, descendante de `2ff4fc1`. Le travail provisoire y a été conservé intégralement par avance rapide de la branche locale créée depuis AUTH-001 ; aucun historique réécrit, aucune PR fusionnée, aucun changement de `main`.
 - L’API GraphQL GitHub répond `Forbidden` à la lecture de la PR nº 1. Sa référence Git est vérifiée ; son état ouvert/non fusionné est celui indiqué par l’utilisateur, non une vérification indépendante des métadonnées API.
 
-## Blocage : source d’ARCH-002
+## Historique du blocage et clarification d’ARCH-002
 
 `backend/modules/README.md` cite ARCH-002 mais le dépôt examiné ne contient ni son rapport, ni les contrats Account/AccountMembership, ni les schémas de blocs/composition/expérience évoqués. Le fichier `contracts/api/openapi.yaml` ne décrit que la santé CORE-001. Le schéma de session AUTH-001 existe séparément.
 
 Le nouveau ticket exige de vérifier ARCH-002 avant de concevoir les modèles, de distinguer User/Account/AccountMembership et de ne pas substituer User à Account. Il faut donc obtenir le document approuvé ou son emplacement accessible avant de définir les relations, la création de l’espace propriétaire et les futures autorisations.
 
-Question transmise à l’utilisateur : fournir le chemin, la branche ou le lien du contrat approuvé. Aucun modèle de compte, migration de propriété ou contrat prétendument approuvé n’a été inventé dans cette préparation.
+L’utilisateur a ensuite confirmé qu’il ne disposait d’aucun document approuvé et versionné, et demandé une proposition. Elle est rédigée dans [docs/architecture/ARCH-002.md](../architecture/ARCH-002.md), explicitement non approuvée. Son examen est désormais le préalable ; il n’est plus demandé de fournir un ancien contrat supposé existant. Aucun modèle métier ni nouvelle migration n’a été implémenté.
 
 ## Écarts de l’implémentation provisoire
 
