@@ -1,7 +1,7 @@
 # PORT-001 — Audit préalable et plan de reprise
 
 Date : 18 octobre 2026 (Africa/Douala).
-Statut : **préparation réalisée ; proposition ARCH-002 désormais rédigée, développement des modèles en attente de son approbation**. Aucun livrable final ni critère nouveau n’est déclaré validé.
+Statut historique : audit de préparation conservé. P01–P10 ont ensuite été approuvées par l’utilisateur et PORT-001 implémenté ; le [rapport courant](../../PORT-001-report.md) décrit la livraison et les réserves. Les blocages ci-dessous décrivent l’état antérieur à cette approbation.
 
 ## État réel du dépôt et des branches
 

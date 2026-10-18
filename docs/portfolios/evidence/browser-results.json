@@ -1,0 +1,52 @@
+{
+  "synthetic_data_only": true,
+  "platform": "Linux Chromium",
+  "scenarios": [
+    {
+      "width": 1365,
+      "height": 960,
+      "result": "passed",
+      "checks": [
+        "empty",
+        "blank creation",
+        "template unavailable",
+        "edit",
+        "slug collision",
+        "version conflict",
+        "duplicate",
+        "archive",
+        "restore",
+        "delete confirmation keyboard/escape",
+        "pagination",
+        "network error/retry",
+        "owner isolation",
+        "dark theme persistence",
+        "reduced motion",
+        "no horizontal overflow"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "result": "passed",
+      "checks": [
+        "empty",
+        "blank creation",
+        "template unavailable",
+        "edit",
+        "slug collision",
+        "version conflict",
+        "duplicate",
+        "archive",
+        "restore",
+        "delete confirmation keyboard/escape",
+        "pagination",
+        "network error/retry",
+        "owner isolation",
+        "dark theme persistence",
+        "reduced motion",
+        "no horizontal overflow"
+      ]
+    }
+  ]
+}
