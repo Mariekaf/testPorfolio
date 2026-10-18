@@ -48,7 +48,7 @@ Inscription atomique User/Account/Membership sans connexion automatique ; rattra
 
 Migrations identity historiques et portfolios.0001 inchangées. UUID, contenus, états SQL, dates, type historique, deleted_at et sessions préservés. Les vérifications de Membership/propriété/slug précèdent le rattachement ; aucune correction silencieuse. Les contraintes différables sont vérifiées avant les opérations DDL suivant le backfill. La contraction ne promet pas un retour automatique à l’unicité globale ; une restauration de sauvegarde cohérente doit être planifiée pour une base à conserver.
 
-**Aucune migration sur une base contenant des données réelles n’a été exécutée.** Les tests utilisent la base de test PostgreSQL ; les parcours navigateur ont une autre base, des rôles, une configuration et une boîte temporaires dédiés. Le générateur de validation fournit également une base native séparée pour le PC Windows, sans copier les utilisateurs de développement.
+**Aucune migration sur une base contenant des données réelles n’a été exécutée.** Les tests utilisent la base de test PostgreSQL ; les parcours navigateur ont une autre base, des rôles, une configuration et une boîte temporaires dédiés. Le générateur de validation fournit également une base native séparée pour le PC Windows, sans copier les utilisateurs de développement. Après les parcours, la base navigateur temporaire, ses rôles, sa configuration et ses e-mails reset ont été supprimés ; la base de validation séparée et vide reste disponible dans le cloud. Les instructions de démarrage réutilisables ont été enregistrées dans le brouillon de configuration d’environnement, sans publication de site.
 
 ## 4. Résultats réellement exécutés
 
@@ -73,6 +73,8 @@ Linux, Python 3.13.5, Node 24.19.0/npm 11.9.0, PostgreSQL **17.11 réel** via im
 | Parcours PORT navigateur | 1365 px et 390 px, réussite complète |
 | Régression AUTH navigateur | 1280 px et 390 px, réussite complète |
 | Windows natif PORT-001 | **Non exécuté** ; guide et scripts fournis, aucun succès hérité d’AUTH revendiqué |
+
+Le test d’atomicité d’inscription a aussi été renforcé avec une erreur injectée après insertion d’Account, lors de la création de Membership : aucun User/Account/Membership partiel ne reste. Ce même cas de la suite Django a été réexécuté isolément avec succès (1/1) après renforcement ; il n’est pas ajouté une seconde fois au total de 88.
 
 Les parcours PORT couvrent : état vide, création vierge, template indisponible, édition, erreur de slug, conflit de version avec rechargement explicite, duplication, archives/restauration, confirmation de suppression au clavier et Escape, pagination, erreur réseau/réessai, isolation avec deuxième compte, sombre conservé, reduced-motion et absence de débordement horizontal.
 
@@ -148,6 +150,6 @@ La suite `Test-Foundations.ps1` doit être lancée avec SAAS_CONFIG_FILE de vali
 
 Liste exhaustive relative à AUTH-001 `2ff4fc1` : [files.txt](docs/portfolios/files.txt). Elle inclut les documents de proposition/préparation conservés dans la branche et les preuves, pas les configurations privées, bases, dépendances ou builds.
 
-La branche distante est publiée sans réécriture et sans fusion de PR. La création de PR via API GitHub sera distinguée de la publication Git ; aucun numéro ou statut GitHub n’est inventé si l’API refuse l’opération. Comparaison de revue : https://github.com/Mariekaf/testPorfolio/compare/feature/auth-001...feature/port-001
+La branche distante est publiée sans réécriture et sans fusion de PR. La tentative réelle de création de PR brouillon via `gh pr create`, base `feature/auth-001`, a échoué : `Post https://api.github.com/graphql: Forbidden`. La branche est publiée, mais aucune nouvelle PR automatique n’a été créée ni approuvée. Aucun numéro ou statut GitHub n’est inventé. Comparaison de revue : https://github.com/Mariekaf/testPorfolio/compare/feature/auth-001...feature/port-001
 
 **Attendre la revue technique et la validation utilisateur avant fusion ou ticket suivant.**

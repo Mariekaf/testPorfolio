@@ -171,6 +171,14 @@ class PortfolioTests(TestCase):
         with patch('modules.identity.views.ensure_personal_account',side_effect=AccountInconsistent):
             self.assertEqual(self.post('/api/v1/auth/register',data,client=anon).status_code,409)
         self.assertFalse(get_user_model().objects.filter(email=data['email']).exists())
+        accounts_before=Account.objects.count();members_before=AccountMembership.objects.count()
+        # Fail after Account has been inserted: both identity and account must
+        # roll back, not merely the membership or a validation-only path.
+        with patch('modules.accounts.services.AccountMembership.objects.create',side_effect=IntegrityError()):
+            self.assertEqual(self.post('/api/v1/auth/register',data,client=anon).status_code,503)
+        self.assertFalse(get_user_model().objects.filter(email=data['email']).exists())
+        self.assertEqual(Account.objects.count(),accounts_before)
+        self.assertEqual(AccountMembership.objects.count(),members_before)
         self.assertEqual(self.post('/api/v1/auth/register',data,client=anon).status_code,201)
         user=get_user_model().objects.get(email=data['email'])
         self.assertTrue(Account.objects.filter(owner=user,memberships__user=user).exists())
