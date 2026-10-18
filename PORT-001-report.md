@@ -1,4 +1,20 @@
-# PORT-001 — Rapport d'implémentation provisoire
+# PORT-001 — Préparation du nouveau périmètre
+
+Date : 18 octobre 2026. **Non livré : ARCH-002 à fournir avant la conception des modèles.**
+
+Le nouveau ticket « Gestion multi-portfolios, dashboard designer et préparation des templates » remplace le périmètre provisoire ci-dessous. L’historique distant `feature/port-001` jusqu’à `669d573`, issu d’AUTH-001 `2ff4fc1`, a été conservé. Aucune fusion ni réécriture.
+
+L’[audit préalable et le plan de reprise](docs/reviews/PORT-001-preflight.md) détaillent les écarts, les étapes et le blocage. Le propriétaire direct User et le slug global de l’ancienne implémentation ne sont pas conformes au nouveau ticket. Aucun modèle Account n’a été inventé sans le contrat approuvé.
+
+Vérifications Linux réalisées pendant cette préparation : **64 tests existants réussis**, TypeScript/build, vraie connexion PostgreSQL 17.11, migrations existantes sur base fraîche, rôles, santé backend et accès anonyme contrôlés. Le CMS historique et `.local/` sont préservés. Aucun parcours du nouveau PORT-001 ni test Windows du nouveau périmètre n’est déclaré réussi.
+
+Fichiers de cette préparation : `PORT-001-report.md` (actualisé), `docs/reviews/PORT-001-preflight.md` (créé). Aucun changement fonctionnel.
+
+## Historique — rapport provisoire du 16 octobre 2026
+
+Les déclarations de non-exécution ci-dessous décrivent la session initiale de création de l’ancienne implémentation. Les tests de préparation du 18 octobre sont consignés ci-dessus ; ils ne valent pas acceptation du nouveau ticket.
+
+### Ancien périmètre provisoire
 
 Date : 16 octobre 2026. Branche : `feature/port-001`, dérivée de `feature/auth-001`. Aucun merge effectué.
 
