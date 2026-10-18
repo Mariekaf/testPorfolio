@@ -76,6 +76,8 @@ Linux, Python 3.13.5, Node 24.19.0/npm 11.9.0, PostgreSQL **17.11 réel** via im
 
 Le test d’atomicité d’inscription a aussi été renforcé avec une erreur injectée après insertion d’Account, lors de la création de Membership : aucun User/Account/Membership partiel ne reste. Ce même cas de la suite Django a été réexécuté isolément avec succès (1/1) après renforcement ; il n’est pas ajouté une seconde fois au total de 88.
 
+Les cinq tests de migration ont enfin été réexécutés après renforcement des preuves : une session Django réellement encodée avant migration reste authentifiée sur `me` après migration, et deux propriétaires distincts récupèrent chacun leurs portfolios historiques sans mélange. Résultat 5/5 ; ces réexécutions ne gonflent pas le total des cas distincts.
+
 Les parcours PORT couvrent : état vide, création vierge, template indisponible, édition, erreur de slug, conflit de version avec rechargement explicite, duplication, archives/restauration, confirmation de suppression au clavier et Escape, pagination, erreur réseau/réessai, isolation avec deuxième compte, sombre conservé, reduced-motion et absence de débordement horizontal.
 
 Les parcours AUTH couvrent : inscription, connexion, logout, reset via boîte privée, refus de réutilisation, cookies, absence de jetons localStorage, inter-onglets, absence de token dans les URL HTTP, réponse d’identité tardive et logout sans BroadcastChannel. Seul le sélecteur d’affichage du prénom dans le script a été adapté au nouveau dashboard ; les contrôles de sécurité sont conservés.
