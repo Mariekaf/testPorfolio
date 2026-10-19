@@ -1,5 +1,7 @@
 # TPL-001.A — Rapport de conception
 
+**Décision ultérieure : A approuvé par l’utilisateur au commit `b151719`, avec ajustements intégrés dans design.md avant B.** Le rapport et les preuves ci-dessous conservent le contexte de livraison initial ; C/D/E restent non autorisées.
+
 Date : 19 octobre 2026. Branche dédiée : `design/tpl-001-a`, créée depuis `4ce0f6b` (clôture documentaire de PORT-001 ; code accepté `27a0b85`).
 
 **Livré pour revue de conception — validation de A attendue. Aucun développement B/C/D/E commencé.**

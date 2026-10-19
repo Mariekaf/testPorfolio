@@ -1,0 +1,64 @@
+{
+  "ticket": "TPL-001.B",
+  "date": "2026-10-19",
+  "status": "delivered-for-review-not-approved",
+  "branch": "feature/tpl-001-b",
+  "base_design_commit": "b151719",
+  "source_commit": "943b9cc64f3c2ecd28162b1d84876605b4def465",
+  "implementation_commit": "deaf73e",
+  "version_hardening_commit": "6645c9f",
+  "platform": "Linux",
+  "versions": {
+    "python": "3.13.5",
+    "node": "24.19.0",
+    "npm": "11.9.0",
+    "postgresql": "17.11",
+    "chromium": "154.0.8037.57"
+  },
+  "tests": {
+    "django_full": 74,
+    "django_template_subset": 17,
+    "template_subset_is_included_not_additional": true,
+    "baseline_integrity": 12,
+    "legacy": 6,
+    "health_client": 3,
+    "auth_client": 4,
+    "portfolio_client": 6,
+    "renderer": 6,
+    "distinct_total": 111,
+    "failed": 0,
+    "skipped": 0
+  },
+  "checks": {
+    "typecheck": "passed",
+    "build": "passed",
+    "django_check": "passed",
+    "makemigrations_check_dry_run": "no changes",
+    "postgresql_runtime_and_test_role": "passed",
+    "legacy_source_checksums": 11,
+    "port001_evidence": "unchanged",
+    "browser_scenarios": 4,
+    "browser_container_mobile_additional": 2,
+    "new_migrations": 0,
+    "new_dependencies": 0,
+    "synthetic_preview_accounts_removed": 3,
+    "active_openapi_schema_references_resolved": 29
+  },
+  "openapi": "Read-only B responses, error statuses, formats and no-store validated against active schema; reference targets checked. No external full OpenAPI validator added. C routes remain inactive.",
+  "not_executed": [
+    "native Windows",
+    "GitHub hosted CI",
+    "persistent instance workflows (C/D/E not authorized)"
+  ],
+  "scope_exclusions": [
+    "real database migrations",
+    "historical CMS modifications",
+    ".local access",
+    "uploads/media storage",
+    "3D/GSAP",
+    "free visual editor",
+    "publication",
+    "branch merge"
+  ],
+  "reference_hardening_commit": "943b9cc"
+}

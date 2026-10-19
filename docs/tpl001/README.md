@@ -1,6 +1,10 @@
 # TPL-001.A — Dossier de conception pour revue
 
-**Conception et contrats uniquement. Aucun développement B/C/D/E autorisé avant validation de A.**
+**A approuvé au commit `b151719`, avec ajustements intégrés. B livré pour revue ; C/D/E non autorisées.**
+
+- [Rapport B et critères de validation](TPL-001-B-report.md)
+- [Commandes et frontières de B](TPL-001-B-runbook.md)
+- [Preuves B Linux](evidence/validation-summary.json)
 
 - [Rapport de conception et décisions à valider](TPL-001-A-report.md)
 - [Architecture, stockage, API et parcours](design.md)
