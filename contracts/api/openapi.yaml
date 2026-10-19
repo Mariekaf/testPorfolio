@@ -55,6 +55,12 @@ paths:
   /api/v1/templates/{template_id}/versions/{template_version}/preview:
     $ref: "./templates.v1.json#/paths/~1api~1v1~1templates~1{template_id}~1versions~1{template_version}~1preview"
 
+  /api/v1/portfolios/from-template:
+    $ref: "./template-instances.v1.json#/paths/~1api~1v1~1portfolios~1from-template"
+
+  /api/v1/portfolios/{id}/design:
+    $ref: "./template-instances.v1.json#/paths/~1api~1v1~1portfolios~1{id}~1design"
+
 components:
   securitySchemes:
     session:

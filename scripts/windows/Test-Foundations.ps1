@@ -40,6 +40,8 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Frontend portfolio client tests failed.' }
     & npm.cmd run test:templates
     if ($LASTEXITCODE -ne 0) { throw 'Template renderer tests failed.' }
+    & npm.cmd run test:template-instances
+    if ($LASTEXITCODE -ne 0) { throw 'Template instance client tests failed.' }
     & npm.cmd run typecheck
     if ($LASTEXITCODE -ne 0) { throw 'TypeScript check failed.' }
     & npm.cmd run build

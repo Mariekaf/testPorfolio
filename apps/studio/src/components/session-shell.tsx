@@ -32,6 +32,7 @@ export default function SessionShell({children}:{children:ReactNode}) {
     return()=>{active=false;clearInterval(interval);clearTimeout(expiry);channel?.close();window.removeEventListener('focus',check);window.removeEventListener('pageshow',check);window.removeEventListener('pagehide',hide);};
   },[]);
   async function logout(){
+    if(!window.dispatchEvent(new Event('portfolio-before-leave',{cancelable:true})))return;
     leaving.current=true;setSession(null);
     try{await authRequest('logout',{});if(typeof BroadcastChannel!=='undefined'){const channel=new BroadcastChannel('portfolio-session');channel.postMessage('logout');channel.close();}window.location.replace('/login');}
     catch{leaving.current=false;setError('Déconnexion non confirmée. Réessayez.');}

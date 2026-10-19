@@ -164,7 +164,7 @@ class TemplateRegistry:
             require(entry['availability'] != 'available' or all(s['variant'] in LAYOUT_VARIANTS[snapshot['composition']['layout']] for s in snapshot['composition']['sections']))
             validate_snapshot(snapshot)
             descriptor['availability'] = entry['availability']
-            self._entries[key] = {'descriptor': descriptor, 'snapshot': snapshot, 'theme': theme}
+            self._entries[key] = {'descriptor': descriptor, 'snapshot': snapshot, 'theme': theme, 'source_digest': next(f['sha256'] for f in entry['files'] if f['role'] == 'snapshot')}
 
     def catalogue(self, category=None, availability='available'):
         items = [v['descriptor'] for v in self._entries.values() if v['descriptor']['availability'] == availability and (category is None or v['descriptor']['category'] == category)]

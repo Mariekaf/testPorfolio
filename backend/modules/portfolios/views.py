@@ -123,6 +123,8 @@ class PortfolioAction(PortfolioBase):
                 if item.management_state!='active':raise PortfolioProblem('archived','Restaurez le portfolio avant duplication.')
                 values={'name':item.name[:92]+' (copie)','description':item.description,'portfolio_type':item.portfolio_type}
                 duplicate=create_portfolio(item.account,values)
+                from modules.templates.instance_services import copy_design
+                copy_design(item,duplicate)
                 return portfolio_response(duplicate,201)
             target='archived' if self.action=='archive' else 'active'
             if item.management_state==target:raise PortfolioProblem('state_conflict','Le portfolio est déjà dans cet état.')

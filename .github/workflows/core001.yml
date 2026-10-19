@@ -40,6 +40,7 @@ jobs:
       - run: npm run test:auth
       - run: npm run test:portfolios
       - run: npm run test:templates
+      - run: npm run test:template-instances
       - run: npm run typecheck
       - run: npm run build
       - if: always()

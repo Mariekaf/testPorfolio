@@ -10,10 +10,12 @@ DEBUG = False
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 INSTALLED_APPS = [
     "django.contrib.auth", "django.contrib.contenttypes", "django.contrib.sessions",
+    "modules.templates.apps.TemplatesConfig",
     "rest_framework", "modules.identity.apps.IdentityConfig", "modules.portfolios.apps.PortfoliosConfig", "modules.accounts.apps.AccountsConfig",
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "modules.templates.middleware.DesignBodyLimit",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",

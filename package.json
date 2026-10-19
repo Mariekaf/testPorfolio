@@ -18,6 +18,7 @@
     "test:contracts": "node --test packages/content-contracts/test/health.test.mjs",
     "test:auth": "node --test apps/studio/test/auth.test.mjs",
     "test:portfolios": "node --test apps/studio/test/portfolios.test.mjs",
-    "test:templates": "node --test apps/studio/test/templates.test.mjs"
+    "test:templates": "node --test apps/studio/test/templates.test.mjs",
+    "test:template-instances": "node --test apps/studio/test/template-instances.test.mjs"
   }
 }
