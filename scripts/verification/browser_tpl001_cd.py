@@ -22,10 +22,16 @@ with sync_playwright() as p:
  page=context.new_page();creation_requests=[];page.on('request',lambda request:creation_requests.append(request.url) if request.method=='POST' and request.url.endswith('/api/v1/portfolios/from-template') else None);errors=[];page.on('pageerror',lambda e:errors.append(str(e)));results=[]
  for template in ['minimal','editorial']:
   page.goto(origin+'/templates');page.get_by_role('heading',name='Deux regards sur votre travail.').wait_for()
-  if template=='minimal':page.screenshot(path=str(out/'library-desktop.png'),full_page=True)
+  if template=='minimal':
+   page.screenshot(path=str(out/'library-desktop.png'),full_page=True)
+   page.get_by_role('button',name='Activer le mode sombre',exact=True).click();page.screenshot(path=str(out/'library-dark.png'),full_page=True)
+   page.get_by_role('button',name='Activer le mode clair',exact=True).click()
+   page.set_viewport_size({'width':390,'height':844});page.screenshot(path=str(out/'library-mobile.png'),full_page=True)
+   page.set_viewport_size({'width':1440,'height':1000})
   card=page.locator('article').filter(has=page.get_by_role('heading',name=template.title(),exact=True)).first
   card.get_by_role('link',name='Utiliser ce template',exact=True).click()
   page.get_by_label('Nom du portfolio',exact=True).fill('Atelier '+template.title())
+  page.screenshot(path=str(out/f'create-{template}.png'),full_page=True)
   before=len(creation_requests)
   page.get_by_role('button',name='Créer et personnaliser').dblclick()
   page.wait_for_url(re.compile(r'/portfolios/[0-9a-f-]+/edit$'));item_id=page.url.split('/')[-2]
@@ -69,6 +75,7 @@ with sync_playwright() as p:
   assert post(f'/api/v1/portfolios/{item_id}/design',{k:remote[k] for k in ['content','customization']},'PUT',current['etag']).status==200
   page.get_by_role('button',name='Enregistrer',exact=True).click();page.get_by_role('alert').filter(has_text='Ce portfolio a changé').wait_for()
   assert page.get_by_label('Titre principal',exact=True).input_value()=='Brouillon en conflit '+template
+  page.screenshot(path=str(out/f'conflict-{template}.png'),full_page=True)
   page.once('dialog',lambda d:d.accept());page.get_by_role('button',name='Recharger la version enregistrée',exact=True).click()
   page.get_by_label('Titre principal',exact=True).wait_for();assert page.get_by_label('Titre principal',exact=True).input_value()=='Mon regard '+template
   page.screenshot(path=str(out/f'editor-{template}-desktop.png'),full_page=True)
