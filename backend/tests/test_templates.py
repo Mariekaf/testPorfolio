@@ -26,16 +26,16 @@ class RegistryTests(SimpleTestCase):
     def rewrite(self, role, change, rehash=True):
         base=self.root/'contracts/templates'
         path=base/'minimal/1.0.0'/f'{role}.json'
-        document=json.loads(path.read_text());change(document)
-        path.write_text(json.dumps(document,ensure_ascii=False)+'\n')
+        document=json.loads(path.read_text(encoding="utf-8"));change(document)
+        path.write_text(json.dumps(document,ensure_ascii=False)+'\n', encoding="utf-8")
         if rehash:
-            manifest=json.loads((base/'manifest.v1.json').read_text())
+            manifest=json.loads((base/'manifest.v1.json').read_text(encoding="utf-8"))
             file=next(f for e in manifest['entries'] if e['id']=='minimal' for f in e['files'] if f['role']==role)
             file['sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
-            (base/'manifest.v1.json').write_text(json.dumps(manifest))
+            (base/'manifest.v1.json').write_text(json.dumps(manifest), encoding="utf-8")
 
     def manifest(self, change):
-        p=self.root/'contracts/templates/manifest.v1.json';data=json.loads(p.read_text());change(data);p.write_text(json.dumps(data))
+        p=self.root/'contracts/templates/manifest.v1.json';data=json.loads(p.read_text(encoding="utf-8"));change(data);p.write_text(json.dumps(data), encoding="utf-8")
 
     def invalid(self):
         with self.assertRaisesRegex(RegistryInvalid,'Invalid template registry'):
@@ -66,17 +66,17 @@ class RegistryTests(SimpleTestCase):
         for version in ['01.0.0','1.٠.0','1.0.0.0','1'*31+'.0.0']:
             with tempfile.TemporaryDirectory() as folder:
                 root=Path(folder);shutil.copytree(ROOT/'contracts',root/'contracts')
-                base=root/'contracts/templates';manifest=json.loads((base/'manifest.v1.json').read_text())
+                base=root/'contracts/templates';manifest=json.loads((base/'manifest.v1.json').read_text(encoding="utf-8"))
                 entry=manifest['entries'][0];entry['version']=version
                 (base/'minimal/1.0.0').rename(base/'minimal'/version)
                 for file in entry['files']:
                     file['path']=f'minimal/{version}/{file["role"]}.json'
-                    path=base/file['path'];document=json.loads(path.read_text())
+                    path=base/file['path'];document=json.loads(path.read_text(encoding="utf-8"))
                     if file['role']=='descriptor':document['version']=version
                     else:document['composition']['template']['version']=version
-                    path.write_text(json.dumps(document,ensure_ascii=False))
+                    path.write_text(json.dumps(document,ensure_ascii=False), encoding="utf-8")
                     file['sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
-                (base/'manifest.v1.json').write_text(json.dumps(manifest))
+                (base/'manifest.v1.json').write_text(json.dumps(manifest), encoding="utf-8")
                 with self.assertRaises(RegistryInvalid):TemplateRegistry(root)
 
     def test_invalid_format_and_untrusted_links_rejected(self):
@@ -110,7 +110,7 @@ class RegistryTests(SimpleTestCase):
         for raw in [b'{"schema_version":1,"schema_version":1}',b' '* (256*1024+1)]:
             with self.assertRaises(RegistryInvalid):strict_json(raw)
         p=self.root/'contracts/schemas/templates/documents/snapshot.v1.json'
-        d=json.loads(p.read_text());d['properties']['content']={'$ref':'https://example.test/untrusted-schema'};p.write_text(json.dumps(d));self.invalid()
+        d=json.loads(p.read_text(encoding="utf-8"));d['properties']['content']={'$ref':'https://example.test/untrusted-schema'};p.write_text(json.dumps(d), encoding="utf-8");self.invalid()
 
     def test_symlink_outside_bundle_root_rejected(self):
         source=self.root/'contracts/templates/minimal/1.0.0/snapshot.json'
@@ -134,12 +134,12 @@ class TemplateAPITests(SimpleTestCase):
         return TemplateRead.as_view()(req,template_id=template_id,version=version,preview=preview)
 
     def assert_contract(self,response,path):
-        doc=ROOT/'contracts/api/templates.v1.json';api=json.loads(doc.read_text())
+        doc=ROOT/'contracts/api/templates.v1.json';api=json.loads(doc.read_text(encoding="utf-8"))
         schema=api['paths'][path]['get']['responses'][str(response.status_code)]['content']['application/json']['schema']
         def retrieve(uri):
             target=Path.from_uri(uri).resolve()
             self.assertTrue(target.is_relative_to(ROOT/'contracts'))
-            return Resource.from_contents(json.loads(target.read_text()),default_specification=DRAFT202012)
+            return Resource.from_contents(json.loads(target.read_text(encoding="utf-8")),default_specification=DRAFT202012)
         wrapped={'$ref':doc.as_uri()+'#/paths/'+path.replace('~','~0').replace('/','~1')+'/get/responses/'+str(response.status_code)+'/content/application~1json/schema'}
         Draft202012Validator(wrapped,registry=Registry(retrieve=retrieve),format_checker=FormatChecker()).validate(response.data)
         self.assertIn('no-store',response['Cache-Control'])

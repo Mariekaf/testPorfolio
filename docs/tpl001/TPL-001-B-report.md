@@ -6,6 +6,8 @@ Date : 19 octobre 2026. Branche dédiée **`feature/tpl-001-b`**, issue de la co
 
 Implémentation : `deaf73e`. Durcissement des versions : `6645c9f`. Tests de versions renforcés : `a001b48`. Référence source finale, avec refus des références médias/documents/thèmes non disponibles : **`943b9cc64f3c2ecd28162b1d84876605b4def465`**. Le commit documentaire de livraison vient ensuite et ne remplace pas ces références de code.
 
+**Suivi Windows du 19 octobre 2026 :** sur `730384b`, l’utilisateur rapporte 72 réussites, 1 erreur d’encodage et 1 test symlink ignoré parmi 74 tests Django. [Correctif UTF-8 et relance](TPL-001-B-windows-encoding-fix.md) ; la validation Windows du correctif reste en attente. Les preuves Linux ci-dessous conservent leur contexte initial.
+
 ## 1. Ajustements de la revue A intégrés
 
 [design.md, §9](design.md#9-ajustements-de-revue-a--intégrés-avant-tpl-001b) explicite les extensions futures aux palettes, polices, images, vidéos, animations et expériences immersives, avec évolution de schémas et préservation des overrides. La stratégie future MediaAsset/PortfolioAsset traite propriété canonique, références opaques, originaux immuables, dérivés, sécurité, accès privé/public, duplication, rétention et purge. **Aucune table, stockage ou fonction d’upload n’est implémenté.**
@@ -86,13 +88,13 @@ Les comptes de navigateur étaient créés uniquement dans la base de validation
 | Tests et rapport, branche dédiée | Livrés avec références et inventaire |
 | Aucun C/D/E, moteur immersif, stockage média ou nouvelle migration | Respecté |
 | CMS, `.local/`, bases réelles et absence de merge | Respecté |
-| Windows natif | **NON EXÉCUTÉ**, à vérifier séparément ; aucune preuve Linux utilisée comme succès Windows |
+| Windows natif | Exécution utilisateur partielle sur `730384b` : **72 réussis, 1 erreur, 1 ignoré** ; correctif UTF-8 à revalider sur Windows |
 | Acceptation de B | **En attente de revue utilisateur** |
 
 ## 6. Fichiers, démarrage et réserves
 
 [Inventaire exhaustif relatif à `b151719`](TPL-001-B-files.txt). Les changements existants sont limités au raccordement URL/API du SaaS, à OpenAPI, aux commandes de tests npm/CI/PowerShell et à la documentation. Aucun fichier fonctionnel du CMS historique, module métier AUTH/PORT/accounts ou migration existante modifié. Nouveaux fichiers : module stateless templates, schemas/bundles versionnés, renderer, routes d’aperçu, tests et preuves synthétiques. Aucun lockfile ni dépendance ajouté/modifié.
 
-[Commandes Windows et Linux](TPL-001-B-runbook.md). **Windows natif non exécuté**, y compris le nouvel appel de tests renderer dans Test-Foundations.ps1 et les nouvelles contraintes de checkout LF. CI GitHub ajoutée/étendue mais son exécution distante n’est pas revendiquée.
+[Commandes Windows et Linux](TPL-001-B-runbook.md). **Windows natif exécuté partiellement par l’utilisateur sur `730384b`, validation du correctif en attente**. L’arrêt à la suite Django ne valide pas les contrôles npm/renderer/typecheck/build suivants ; le test symlink ignoré reste une limitation de l’environnement. CI GitHub ajoutée/étendue mais son exécution distante n’est pas revendiquée.
 
 Aucun blocage Linux restant. Aucun merge ni changement de base réelle. Cette livraison n’autorise ni C/D/E, ni éditeur visuel libre, ni déploiement/publication. Attendre la revue de B avant la phase suivante.

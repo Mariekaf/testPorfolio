@@ -78,7 +78,7 @@ def main():
             page.goto(origin+'/templates');page.wait_for_url('**/login')
             assert context.request.get(origin+'/api/v1/templates').status==401
             context.close()
-            (args.evidence/'browser-results.json').write_text(json.dumps({'platform':'Linux Chromium','synthetic_only':True,'results':results,'anonymous_redirect':True,'write_denied':True,'csrf_preserved':True,'logout_guard':True,'no_portfolio_created':True,'external_requests':0,'page_errors':0},ensure_ascii=False,indent=2)+'\n')
+            (args.evidence/'browser-results.json').write_text(json.dumps({'platform':'Linux Chromium','synthetic_only':True,'results':results,'anonymous_redirect':True,'write_denied':True,'csrf_preserved':True,'logout_guard':True,'no_portfolio_created':True,'external_requests':0,'page_errors':0},ensure_ascii=False,indent=2)+'\n', encoding="utf-8")
             print('PASS: both templates desktop/mobile; shared renderer, session/CSRF, read-only, no overflow/external request.')
         finally:browser.close()
 
