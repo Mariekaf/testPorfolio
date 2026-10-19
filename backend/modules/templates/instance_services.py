@@ -2,6 +2,7 @@ import copy
 import hashlib
 import json
 import uuid
+from django.conf import settings
 from datetime import timedelta
 from django.db import transaction, connection
 from django.utils import timezone
@@ -69,6 +70,8 @@ def copy_design(source, duplicate):
         if source.source_template_id:raise PortfolioProblem('design_inconsistent','La source nécessite une vérification.')
         return
     document=copy.deepcopy(snapshot_of(design));validate_document(document,stored=True)
+    if document['schema_version'] == 2 and not settings.SAAS_HERO_TRANSITIONS_ENABLED:
+        raise PortfolioProblem('hero_transitions_disabled','Les copies de design v2 sont désactivées.')
     if document['composition']['template'] != {'id':source.source_template_id,'version':source.source_template_version}:
         raise PortfolioProblem('design_inconsistent','La provenance nécessite une vérification.')
     for section in document['content']['sections']:

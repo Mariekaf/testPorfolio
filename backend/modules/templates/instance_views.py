@@ -1,4 +1,5 @@
 import uuid
+from django.conf import settings
 from django.db import transaction, OperationalError
 from django.utils import timezone
 from rest_framework import serializers
@@ -55,10 +56,18 @@ class DesignDetail(PortfolioBase):
     def response(self,item,snapshot):
         tag=etag(item);response=Response({'portfolio_id':str(item.pk),'version':item.version,'etag':tag,'snapshot':snapshot});response['ETag']=tag;return response
 
+    def negotiate(self, request, snapshot):
+        accepted = request.headers.get('Accept-Design-Schema', '1')
+        if accepted not in ('1','2','1,2','2,1'):
+            raise PortfolioProblem('invalid_request','Versions de design invalides.',400)
+        if str(snapshot['schema_version']) not in accepted.split(','):
+            raise PortfolioProblem('design_schema_not_acceptable','Ce client ne prend pas en charge la version du design.',406)
+
     def get(self,request,pk):
         with transaction.atomic():
             item=self.owned(request,pk,True)
             _,snapshot=self.read_design(item)
+            self.negotiate(request, snapshot)
             return self.response(item,snapshot)
 
     def put(self,request,pk):
@@ -66,6 +75,9 @@ class DesignDetail(PortfolioBase):
             item=self.owned(request,pk,True);self.precondition(request,item)
             if item.management_state!='active':raise PortfolioProblem('portfolio_archived','Restaurez le portfolio avant de modifier son design.')
             design,snapshot=self.read_design(item,True)
+            self.negotiate(request, snapshot)
+            if snapshot['schema_version'] == 2 and not settings.SAAS_HERO_TRANSITIONS_ENABLED:
+                raise PortfolioProblem('hero_transitions_disabled','Les écritures de design v2 sont désactivées.')
             values=request.data
             if not isinstance(values,dict) or set(values)!={'content','customization'}:
                 raise PortfolioProblem('invalid_design','Envoyez uniquement le contenu et la personnalisation.',400)

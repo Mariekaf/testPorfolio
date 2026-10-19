@@ -23,6 +23,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 ROOT_URLCONF = "config.urls"
+SAAS_HERO_TRANSITIONS_ENABLED = os.environ.get('SAAS_HERO_TRANSITIONS_ENABLED', '0') == '1'
 WSGI_APPLICATION = "config.wsgi.application"
 ASGI_APPLICATION = "config.asgi.application"
 AUTH_USER_MODEL = "identity.User"

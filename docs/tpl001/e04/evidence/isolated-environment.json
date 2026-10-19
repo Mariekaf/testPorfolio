@@ -1,0 +1,11 @@
+{
+  "engine": "docker",
+  "postgresql": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "cluster": "new-disposable",
+  "database_name_prefix": "e04_",
+  "test_database_prefix": "test_e04_",
+  "existing_database_access": false,
+  "migration_authorization": "explicit-isolated-only",
+  "runtime_transition_default": false,
+  "cleanup": "cluster stopped and removed in finally"
+}

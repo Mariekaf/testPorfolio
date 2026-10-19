@@ -18,6 +18,10 @@ def validator():
 
 def validate_document(snapshot, stored=False):
     try:
+        if isinstance(snapshot, dict) and snapshot.get('schema_version') == 2:
+            from .hero_resolution import resolve_heroes
+            resolve_heroes(snapshot)
+            return
         if len(json.dumps(snapshot,ensure_ascii=False).encode('utf-8')) > LIMIT:
             raise RegistryInvalid('Document too large.')
         validator().validate(snapshot)

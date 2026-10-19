@@ -59,7 +59,19 @@ paths:
     $ref: "./template-instances.v1.json#/paths/~1api~1v1~1portfolios~1from-template"
 
   /api/v1/portfolios/{id}/design:
-    $ref: "./template-instances.v1.json#/paths/~1api~1v1~1portfolios~1{id}~1design"
+    $ref: "./hero-design.v2.json#/paths/~1api~1v1~1portfolios~1{id}~1design"
+
+  /api/v1/portfolios/{id}/design/upgrade:
+    $ref: "./hero-design.v2.json#/paths/~1api~1v1~1portfolios~1{id}~1design~1upgrade"
+
+  /api/v1/portfolios/{id}/design/restore:
+    $ref: "./hero-design.v2.json#/paths/~1api~1v1~1portfolios~1{id}~1design~1restore"
+
+  /api/v1/portfolios/{id}/design/revisions:
+    $ref: "./hero-design.v2.json#/paths/~1api~1v1~1portfolios~1{id}~1design~1revisions"
+
+  /api/v1/portfolios/{id}/design/revisions/{revision_id}:
+    $ref: "./hero-design.v2.json#/paths/~1api~1v1~1portfolios~1{id}~1design~1revisions~1{revision_id}"
 
 components:
   securitySchemes:
