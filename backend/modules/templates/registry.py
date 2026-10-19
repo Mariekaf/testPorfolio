@@ -131,7 +131,7 @@ class TemplateRegistry:
             require(set(entry) == {'id', 'version', 'availability', 'files'})
             require(entry['availability'] in ['available', 'unavailable', 'retired'])
             require(isinstance(entry['id'], str) and re.fullmatch(r'[a-z][a-z0-9-]{0,99}', entry['id']))
-            require(isinstance(entry['version'], str) and re.fullmatch(r'\d+\.\d+\.\d+', entry['version']))
+            require(isinstance(entry['version'], str) and len(entry['version']) <= 30 and re.fullmatch(r'(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)', entry['version']))
             key = (entry['id'], entry['version'])
             require(key not in self._entries)
             require(isinstance(entry['files'], list) and len(entry['files']) == 2)

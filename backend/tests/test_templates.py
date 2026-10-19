@@ -62,6 +62,8 @@ class RegistryTests(SimpleTestCase):
     def test_unknown_schema_and_experience_rejected(self):
         self.rewrite('snapshot',lambda d:d.update(schema_version=2));self.invalid()
         self.rewrite('snapshot',lambda d:d.update(schema_version=1,experience={'engine':'gsap'}));self.invalid()
+        for version in ['01.0.0','1.٠.0','1.0.0.0','1'*31+'.0.0']:
+            self.manifest(lambda m:m['entries'][0].update(version=version));self.invalid()
 
     def test_invalid_format_and_untrusted_links_rejected(self):
         for link in ['javascript:alert(1)','http://example.test','https://user:pass@example.test','https://example.test/\npath']:
