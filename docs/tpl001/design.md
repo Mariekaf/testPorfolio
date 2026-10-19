@@ -2,7 +2,9 @@
 
 Version 0.1 — 19 octobre 2026. Branche `design/tpl-001-a`.
 
-**Conception uniquement, soumise à validation.** Le périmètre global et les exigences précisés par l’utilisateur sont approuvés ; les décisions détaillées ci-dessous sont proposées. TPL-001.B/C/D/E ne commencent pas avant validation de A. Aucun modèle Django, renderer, composant React ou migration n’est implémenté ici.
+**TPL-001.A approuvé au commit `b151719`, avec ajustements documentaires intégrés avant B.**
+
+Les choix structurants sont approuvés par décision utilisateur du 19 octobre 2026. TPL-001.B est autorisé ; C/D/E restent interdits avant revue de B. Les paragraphes de proposition ci-dessous conservent leur contexte historique de conception. Le périmètre global et les exigences précisés par l’utilisateur sont approuvés ; les décisions détaillées ci-dessous sont proposées. TPL-001.B/C/D/E ne commencent pas avant validation de A. Aucun modèle Django, renderer, composant React ou migration n’est implémenté ici.
 
 ## 1. Références et frontières
 
@@ -162,3 +164,24 @@ Pas de nouveaux composants implémentés ici. Favoriser les composants de dialog
 [Plan de tests](test-plan.md). B : registre/descripteurs/compositions et rendu d’aperçu ; C : schéma additif, services transactionnels, API et duplication ; D : studio accessible et personnalisation persistante ; E : campagnes d’intégration/non-régression et rapport. Ordre recommandé : B fournit les bundles validés à C ; D consomme les contrats B/C ; E valide l’ensemble. Aucun de ces travaux n’est commencé.
 
 Le présent dossier est livré pour revue de A, pas comme preuve d’une bibliothèque fonctionnelle.
+
+
+## 9. Ajustements de revue A — intégrés avant TPL-001.B
+
+### Extensibilité de la présentation et des expériences
+
+Les futurs contrats pourront porter palettes, typographies, images, vidéos, animations et expériences immersives. Une évolution versionnée ajoutera des tokens autorisés, références de polices/médias et capacités de renderer ; elle définira des migrations explicites des documents, sans écraser les overrides existants. Les polices distantes, CSS libre, scripts, timelines et scènes 3D restent refusés en v1 ; experience reste null. Aucun moteur GSAP/Three.js ni éditeur visuel libre n’est développé dans B.
+
+### Stratégie des médias futurs — contrat de frontière, aucune implémentation
+
+Une future ressource MediaAsset aura son UUID, un compte propriétaire canonique, une clé de stockage opaque, type MIME détecté, taille, empreinte et état de traitement/quarantaine. Les documents référenceront des identifiants de médias, jamais des chemins disque ou URL de stockage fournis par le client. Une association PortfolioAsset autorisera leur utilisation dans un portfolio du même compte ; autorisation serveur à chaque lecture/écriture, accès privé à durée limitée pour les brouillons et publication explicite séparée pour d’éventuels dérivés publics.
+
+Les originaux seront immuables, les transformations référencées et régénérables. Les images/vidéos auront dimensions/durée et variantes ; textes alternatifs, légendes et réglages de recadrage resteront dans les documents de présentation/contenu. Validation MIME réelle, quotas, analyse de sécurité, droits/licences et restrictions SVG/HTML seront spécifiés avant uploads. Aucune table, bucket, upload, téléchargement distant, miniature ou URL signée n’est créé dans B.
+
+Duplication future dans le même compte : nouveaux UUID d’association et références locales indépendantes ; partage possible des seuls octets immuables après validation de la politique. Aucun partage inter-comptes implicite. Archivage/suppression logique ne suppriment pas un original encore référencé ; purge physique uniquement selon politique de rétention validée, références et sauvegardes vérifiées. Les fichiers historiques et .local ne deviennent jamais des ressources SaaS par découverte automatique.
+
+### Rendu, démonstration et activation
+
+Minimal et Editorial doivent produire deux compositions responsive professionnelles avec le même moteur que le futur rendu d’instance. Des JSON seuls ou captures statiques ne satisfont pas B. Les contenus sont entièrement fictifs, cohérents et représentatifs des projets UX/UI ; ils ne revendiquent aucun client ou résultat réel. Les visuels décoratifs de B sont dessinés en CSS, sans médias importés.
+
+Les descripteurs source restent immuables et unavailable ; la révision du manifeste ne projette available qu’après validation des bundles, des capacités réelles du renderer, des références/thèmes et des tests de rendu. Une erreur de chargement échoue fermée : aucun template déclaré utilisable. Avant activation des routes en lecture B, vérifier la cohérence sémantique OpenAPI (formes de réponses, statuts/erreurs, filtres, versions et sécurité). Les routes de création et design proposées restent inactives jusqu’à C.

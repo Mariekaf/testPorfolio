@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TPL-001 approved document content v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sections"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "section_id",
+              "type",
+              "data"
+            ],
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]{0,59}$"
+              },
+              "type": {
+                "const": "hero"
+              },
+              "data": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "title",
+                  "subtitle",
+                  "cta_label"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "maxLength": 160
+                  },
+                  "subtitle": {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  "cta_label": {
+                    "type": "string",
+                    "maxLength": 60
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "section_id",
+              "type",
+              "data"
+            ],
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]{0,59}$"
+              },
+              "type": {
+                "const": "about"
+              },
+              "data": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "heading",
+                  "body"
+                ],
+                "properties": {
+                  "heading": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "body": {
+                    "type": "string",
+                    "maxLength": 5000
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "section_id",
+              "type",
+              "data"
+            ],
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]{0,59}$"
+              },
+              "type": {
+                "const": "projects"
+              },
+              "data": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "heading",
+                  "items"
+                ],
+                "properties": {
+                  "heading": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "id",
+                        "title",
+                        "summary",
+                        "url"
+                      ],
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "title": {
+                          "type": "string",
+                          "maxLength": 160
+                        },
+                        "summary": {
+                          "type": "string",
+                          "maxLength": 1000
+                        },
+                        "url": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "maxLength": 2048,
+                          "format": "uri"
+                        }
+                      }
+                    },
+                    "minItems": 0,
+                    "maxItems": 24
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "section_id",
+              "type",
+              "data"
+            ],
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]{0,59}$"
+              },
+              "type": {
+                "const": "skills"
+              },
+              "data": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "heading",
+                  "items"
+                ],
+                "properties": {
+                  "heading": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 100
+                    },
+                    "minItems": 0,
+                    "maxItems": 40
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "section_id",
+              "type",
+              "data"
+            ],
+            "properties": {
+              "section_id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]{0,59}$"
+              },
+              "type": {
+                "const": "contact"
+              },
+              "data": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "heading",
+                  "body",
+                  "email"
+                ],
+                "properties": {
+                  "heading": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "body": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "email": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "email",
+                    "maxLength": 254
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 20
+    }
+  }
+}

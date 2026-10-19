@@ -37,6 +37,9 @@ jobs:
       - run: node --check script.js && node --check admin.js
       - run: npm ci --ignore-scripts
       - run: npm run test:contracts
+      - run: npm run test:auth
+      - run: npm run test:portfolios
+      - run: npm run test:templates
       - run: npm run typecheck
       - run: npm run build
       - if: always()

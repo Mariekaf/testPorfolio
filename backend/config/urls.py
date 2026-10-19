@@ -19,3 +19,6 @@ urlpatterns += [
 ]
 
 urlpatterns += [path("api/v1/portfolios", include("modules.portfolios.urls"))]
+
+# TPL-001.B: authenticated, read-only catalogue and preview bundles.
+urlpatterns += [path("api/v1/templates", include("modules.templates.urls"))]

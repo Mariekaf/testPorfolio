@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "composition": {
+    "schema_version": 1,
+    "template": {
+      "id": "minimal",
+      "version": "1.0.0"
+    },
+    "layout": "minimal-stack",
+    "sections": [
+      {
+        "id": "hero",
+        "type": "hero",
+        "variant": "hero-centered",
+        "visible": true,
+        "required": true,
+        "toggleable": false,
+        "reorderable": false,
+        "presentation_policy": {
+          "spacing": [
+            "compact",
+            "normal",
+            "airy"
+          ],
+          "alignment": [
+            "start",
+            "center"
+          ],
+          "emphasis": [
+            "quiet",
+            "strong"
+          ]
+        }
+      },
+      {
+        "id": "projects",
+        "type": "projects",
+        "variant": "projects-grid",
+        "visible": true,
+        "required": false,
+        "toggleable": true,
+        "reorderable": true,
+        "presentation_policy": {
+          "spacing": [
+            "compact",
+            "normal",
+            "airy"
+          ],
+          "alignment": [
+            "start",
+            "center"
+          ],
+          "emphasis": [
+            "quiet",
+            "strong"
+          ]
+        }
+      },
+      {
+        "id": "about",
+        "type": "about",
+        "variant": "about-compact",
+        "visible": true,
+        "required": false,
+        "toggleable": true,
+        "reorderable": true,
+        "presentation_policy": {
+          "spacing": [
+            "compact",
+            "normal",
+            "airy"
+          ],
+          "alignment": [
+            "start",
+            "center"
+          ],
+          "emphasis": [
+            "quiet",
+            "strong"
+          ]
+        }
+      },
+      {
+        "id": "skills",
+        "type": "skills",
+        "variant": "skills-list",
+        "visible": true,
+        "required": false,
+        "toggleable": true,
+        "reorderable": true,
+        "presentation_policy": {
+          "spacing": [
+            "compact",
+            "normal",
+            "airy"
+          ],
+          "alignment": [
+            "start",
+            "center"
+          ],
+          "emphasis": [
+            "quiet",
+            "strong"
+          ]
+        }
+      },
+      {
+        "id": "contact",
+        "type": "contact",
+        "variant": "contact-simple",
+        "visible": true,
+        "required": false,
+        "toggleable": true,
+        "reorderable": false,
+        "presentation_policy": {
+          "spacing": [
+            "compact",
+            "normal",
+            "airy"
+          ],
+          "alignment": [
+            "start",
+            "center"
+          ],
+          "emphasis": [
+            "quiet",
+            "strong"
+          ]
+        }
+      }
+    ]
+  },
+  "content": {
+    "schema_version": 1,
+    "sections": [
+      {
+        "section_id": "hero",
+        "type": "hero",
+        "data": {
+          "title": "Des idées claires. Des expériences qui comptent.",
+          "subtitle": "Camille Exemple, designer UX/UI. Je transforme les situations complexes en expériences simples et attentives.",
+          "cta_label": "Explorer mes études de cas"
+        }
+      },
+      {
+        "section_id": "projects",
+        "type": "projects",
+        "data": {
+          "heading": "Une sélection de projets",
+          "items": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Clair — rendre les démarches accessibles",
+              "summary": "Recherche qualitative · Parcours usager · Prototype testé",
+              "url": null
+            },
+            {
+              "id": "20000000-0000-4000-8000-000000000002",
+              "title": "Tempo — mieux organiser les soins",
+              "summary": "Entretiens terrain · Architecture de l’information · Design system",
+              "url": null
+            },
+            {
+              "id": "20000000-0000-4000-8000-000000000003",
+              "title": "Lisière — découvrir les mobilités douces",
+              "summary": "Exploration · Cartographie d’expérience · Interface mobile",
+              "url": null
+            }
+          ]
+        }
+      },
+      {
+        "section_id": "about",
+        "type": "about",
+        "data": {
+          "heading": "Écouter avant de dessiner.",
+          "body": "J’explore les besoins, je rends les idées tangibles et je confronte les solutions au terrain. De la recherche au prototype, je construis des interfaces utiles, accessibles et précises. Profil et projets entièrement fictifs, conçus pour illustrer ce template."
+        }
+      },
+      {
+        "section_id": "skills",
+        "type": "skills",
+        "data": {
+          "heading": "De la question à l’interface",
+          "items": [
+            "Recherche utilisateur",
+            "Parcours & architecture",
+            "Design d’interaction",
+            "Prototypage & tests",
+            "Design system",
+            "Accessibilité"
+          ]
+        }
+      },
+      {
+        "section_id": "contact",
+        "type": "contact",
+        "data": {
+          "heading": "Et si nous faisions du beau travail ensemble ?",
+          "body": "Un projet, une question ou une idée à explorer ? Cet espace accueillera votre invitation à échanger.",
+          "email": null
+        }
+      }
+    ]
+  },
+  "presentation": {
+    "schema_version": 1,
+    "theme": {
+      "id": "studio-neutral",
+      "version": "1.0.0"
+    },
+    "sections": [
+      {
+        "section_id": "hero",
+        "settings": {
+          "spacing": "normal",
+          "alignment": "center",
+          "emphasis": "strong"
+        }
+      },
+      {
+        "section_id": "projects",
+        "settings": {
+          "spacing": "normal",
+          "alignment": "start",
+          "emphasis": "quiet"
+        }
+      },
+      {
+        "section_id": "about",
+        "settings": {
+          "spacing": "normal",
+          "alignment": "start",
+          "emphasis": "quiet"
+        }
+      },
+      {
+        "section_id": "skills",
+        "settings": {
+          "spacing": "normal",
+          "alignment": "start",
+          "emphasis": "quiet"
+        }
+      },
+      {
+        "section_id": "contact",
+        "settings": {
+          "spacing": "normal",
+          "alignment": "start",
+          "emphasis": "quiet"
+        }
+      }
+    ]
+  },
+  "customization": {
+    "schema_version": 1,
+    "sections": []
+  },
+  "experience": null
+}

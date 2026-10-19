@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "minimal",
+  "version": "1.0.0",
+  "name": "Minimal",
+  "category": "minimal",
+  "description": "Épuré et centré, avec une grille de projets lisible.",
+  "compatible_themes": [
+    {
+      "id": "studio-neutral",
+      "version": "1.0.0"
+    }
+  ],
+  "availability": "unavailable"
+}

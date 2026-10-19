@@ -46,6 +46,15 @@ paths:
   /api/v1/portfolios/{id}/restore:
     $ref: "./portfolios.v1.json#/paths/~1api~1v1~1portfolios~1{id}~1restore"
 
+  /api/v1/templates:
+    $ref: "./templates.v1.json#/paths/~1api~1v1~1templates"
+
+  /api/v1/templates/{template_id}/versions/{template_version}:
+    $ref: "./templates.v1.json#/paths/~1api~1v1~1templates~1{template_id}~1versions~1{template_version}"
+
+  /api/v1/templates/{template_id}/versions/{template_version}/preview:
+    $ref: "./templates.v1.json#/paths/~1api~1v1~1templates~1{template_id}~1versions~1{template_version}~1preview"
+
 components:
   securitySchemes:
     session:

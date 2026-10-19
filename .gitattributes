@@ -1,0 +1,2 @@
+# Immutable template bundle digests are computed over UTF-8 LF bytes.
+contracts/templates/** text eol=lf

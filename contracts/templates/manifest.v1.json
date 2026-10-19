@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "revision": 1,
+  "renderer_version": "1.0.0",
+  "entries": [
+    {
+      "id": "minimal",
+      "version": "1.0.0",
+      "availability": "available",
+      "files": [
+        {
+          "role": "descriptor",
+          "path": "minimal/1.0.0/descriptor.json",
+          "sha256": "c2a7802326b37b8ab82b61fee185ce1f20980b085e94a5ead59988770f81f955"
+        },
+        {
+          "role": "snapshot",
+          "path": "minimal/1.0.0/snapshot.json",
+          "sha256": "7cea51f2e6b0cb39ac04f2328f9e3961654823821ed31e0085a3da0011fefef8"
+        }
+      ]
+    },
+    {
+      "id": "editorial",
+      "version": "1.0.0",
+      "availability": "available",
+      "files": [
+        {
+          "role": "descriptor",
+          "path": "editorial/1.0.0/descriptor.json",
+          "sha256": "8d88594d4ea03a07f2969f83f8f2bb494773672378b1035dc335b90cc93c510b"
+        },
+        {
+          "role": "snapshot",
+          "path": "editorial/1.0.0/snapshot.json",
+          "sha256": "f75120ccfff78f8e2de853f63936631b8f4ce4968ad5a48fbe19495371eb62fd"
+        }
+      ]
+    }
+  ]
+}
