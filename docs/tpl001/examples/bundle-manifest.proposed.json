@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "design-only-not-active",
+  "entries": [
+    {
+      "id": "minimal",
+      "version": "1.0.0",
+      "availability": "unavailable",
+      "files": [
+        {
+          "role": "descriptor",
+          "path": "minimal.descriptor.v1.json",
+          "sha256": "756479d8e6d881b01bb0b3d01eee96cf2692e73c903719cfdfea693b5c665c97"
+        },
+        {
+          "role": "snapshot",
+          "path": "minimal.snapshot.v1.json",
+          "sha256": "72231ae9c8785a6a37ca15c0381a0702cf7258adb2e96333f0a6061c992c3047"
+        }
+      ]
+    },
+    {
+      "id": "editorial",
+      "version": "1.0.0",
+      "availability": "unavailable",
+      "files": [
+        {
+          "role": "descriptor",
+          "path": "editorial.descriptor.v1.json",
+          "sha256": "62d6eb0fa7f1e89fe730752436c5fbbd92b6f1398581163788f0f21aed01e15e"
+        },
+        {
+          "role": "snapshot",
+          "path": "editorial.snapshot.v1.json",
+          "sha256": "0e88a6ed9e7cf75133c738c62013dde27bfb1bcc049f20a7d6414d5bff453d6d"
+        }
+      ]
+    }
+  ]
+}

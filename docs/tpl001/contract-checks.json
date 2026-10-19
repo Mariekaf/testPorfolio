@@ -1,0 +1,32 @@
+{
+  "scope": "TPL-001.A static design checks only",
+  "date": "2026-10-19",
+  "baseline": "4ce0f6b",
+  "results": [
+    "minimal snapshot: PASS schema/formats",
+    "minimal descriptor: PASS existing schema",
+    "minimal cross-references/default policies: PASS manual design assertions",
+    "editorial snapshot: PASS schema/formats",
+    "editorial descriptor: PASS existing schema",
+    "editorial cross-references/default policies: PASS manual design assertions",
+    "customization example: PASS schema/formats",
+    "negative unknown field: rejected",
+    "negative experience payload: rejected",
+    "negative null override: rejected",
+    "negative unknown section type: rejected",
+    "negative invalid theme: rejected",
+    "OpenAPI/schema reference targets: PASS (63 references); not full OpenAPI tool validation",
+    "tracked baseline: only ticket documentation changed; proposals untracked before commit",
+    "Local documentation links: PASS",
+    "Example manifest SHA-256 digests: PASS",
+    "Active contracts, application files and PORT evidence compared to 4ce0f6b: unchanged"
+  ],
+  "not_executed": [
+    "application suites",
+    "database migrations",
+    "browser renderer",
+    "Windows native",
+    "full OpenAPI semantic validator"
+  ],
+  "application_implemented": false
+}

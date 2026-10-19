@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "minimal",
+  "version": "1.0.0",
+  "name": "Minimal",
+  "category": "minimal",
+  "description": "Exemple de contrat uniquement : aucun template disponible dans l’application.",
+  "compatible_themes": [
+    {
+      "id": "studio-neutral",
+      "version": "1.0.0"
+    }
+  ],
+  "availability": "unavailable"
+}

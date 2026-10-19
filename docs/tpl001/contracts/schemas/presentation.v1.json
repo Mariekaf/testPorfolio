@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TPL-001.A PROPOSAL presentation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "theme",
+    "sections"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "theme": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "const": "studio-neutral"
+        },
+        "version": {
+          "const": "1.0.0"
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "section_id",
+          "settings"
+        ],
+        "properties": {
+          "section_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{0,59}$"
+          },
+          "settings": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "spacing",
+              "alignment",
+              "emphasis"
+            ],
+            "properties": {
+              "spacing": {
+                "enum": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ]
+              },
+              "alignment": {
+                "enum": [
+                  "start",
+                  "center"
+                ]
+              },
+              "emphasis": {
+                "enum": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 20
+    }
+  }
+}
