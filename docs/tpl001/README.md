@@ -1,6 +1,9 @@
-# TPL-001.A — Dossier de conception pour revue
+# TPL-001 — Conception, registre et instances
 
-**A approuvé au commit `b151719`, avec ajustements intégrés. B livré pour revue ; C/D/E non autorisées.**
+**C+D autorisées ensemble et livrées pour revue. E non autorisée.** Base B `730384b` avec correctif Windows `99b2269`, conservés sans fusion.
+
+- [Rapport C+D et critères](TPL-001-CD-report.md)
+- [Guide Windows C+D isolé](TPL-001-CD-windows.md)
 
 - [Rapport B et critères de validation](TPL-001-B-report.md)
 - [Commandes et frontières de B](TPL-001-B-runbook.md)

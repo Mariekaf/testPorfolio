@@ -1,0 +1,25 @@
+
+> portfolio-saas-foundations@0.1.0 test:template-instances
+> node --test apps/studio/test/template-instances.test.mjs
+
+(node:731402) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/testPorfolio/apps/studio/src/lib/portfolios.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/testPorfolio/apps/studio/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ creation obtains CSRF and sends the exact idempotency key with private credentials (27.774425ms)
+✔ save sends content and customization with exact version precondition (1.00309ms)
+✔ conflict and expired session surface errors without discarding caller state (1.264436ms)
+✔ new creation intents have distinct keys and explicit timestamps (1.163297ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 156.464047
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

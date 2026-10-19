@@ -1,0 +1,27 @@
+
+> portfolio-saas-foundations@0.1.0 test:templates
+> node --test apps/studio/test/templates.test.mjs
+
+(node:734553) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/testPorfolio/apps/studio/src/lib/template-render.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/testPorfolio/apps/studio/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ real renderer produces distinct layouts and all declared section variants (14.813171ms)
+✔ same renderer resolves a local snapshot without modifying its source (4.172528ms)
+✔ React escapes hostile text and never renders HTML or unsafe project links (3.370514ms)
+✔ URLs reject unsafe schemes, credentials and whitespace (0.275136ms)
+✔ protected sections, unknown documents and invalid settings fail closed (0.8338ms)
+✔ renderer has only whitelisted local styling and responsive container rules (0.326091ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 485.486194
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

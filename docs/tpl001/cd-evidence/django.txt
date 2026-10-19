@@ -1,0 +1,13 @@
+Creating test database for alias 'default'...
+......................PostgreSQL readiness check failed; connection details omitted.
+..PostgreSQL readiness check failed; connection details omitted.
+..............................................................
+----------------------------------------------------------------------
+Ran 86 tests in 33.314s
+
+OK
+Destroying test database for alias 'default'...
+Found 86 test(s).
+System check identified no issues (0 silenced).
+Expired records: 1. Dry run; no changes.
+Expired records: 1. Removed.
