@@ -1,4 +1,4 @@
-# PORT-001 — Livraison pour revue
+# PORT-001 — Accepté et clôturé
 
 - [Rapport d’exécution](../../PORT-001-report.md)
 - [Architecture approuvée sous conditions](../architecture/ARCH-002.md)
@@ -8,4 +8,10 @@
 - [Fichiers de livraison](files.txt)
 - [Preuves et captures synthétiques](evidence/validation-summary.json)
 
-P01–P10 approuvées ne signifie pas validation anticipée du code. Linux : 88 tests et quatre scénarios navigateur réussis. Windows PORT-001 : non exécuté ici. Aucun merge, déploiement, import du CMS, TPL-001 ni éditeur visuel.
+**ACCEPTÉ — CLÔTURÉ AVEC RÉSERVE NON BLOQUANTE**, décision utilisateur du 19 octobre 2026 sur `27a0b85`. Les 88 tests Linux et les parcours navigateur rapportés sont acceptés. **Windows natif PORT-001 : NON EXÉCUTÉ.**
+
+- [Décision de clôture et références conservées](CLOSURE.md)
+- [Suivi indépendant de la réserve Windows](windows-follow-up.md)
+- [TPL-001 préparé pour examen, sans implémentation](../tickets/TPL-001.md)
+
+Aucune fusion, modification de base réelle, intervention sur le CMS historique ou `.local/`. L’éditeur visuel reste hors périmètre.

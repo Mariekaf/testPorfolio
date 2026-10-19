@@ -1,6 +1,6 @@
 # PORT-001 — Vérification Windows native isolée (sans Docker)
 
-Statut : **guide préparé, exécution Windows PORT-001 non effectuée par l’agent**. Ne pas réutiliser les succès Windows AUTH-001 comme preuve des nouvelles migrations. P01–P10 sont approuvées, pas le code livré.
+Statut : **guide préparé, exécution Windows PORT-001 non effectuée par l’agent**. Ne pas réutiliser les succès Windows AUTH-001 comme preuve des nouvelles migrations. La livraison `27a0b85` est acceptée et PORT-001 clôturé depuis le 19 octobre 2026 ; Windows reste une réserve non bloquante [suivie séparément](../portfolios/windows-follow-up.md).
 
 ## Préconditions et données réelles
 

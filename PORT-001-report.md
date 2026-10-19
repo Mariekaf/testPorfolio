@@ -1,9 +1,11 @@
 # PORT-001 — Rapport d’exécution
 
 Date : 18 octobre 2026 (Africa/Douala). Branche : **`feature/port-001`**.
-Commit d’implémentation : **`34d78fe`** ; le commit final documentaire est indiqué dans le message de livraison et obtenu par `git rev-parse HEAD`.
+Commit d’implémentation : **`34d78fe`**. Livraison acceptée : **`27a0b852668c548b9e793f176dd458c3aebaf79f`** (`27a0b85`). Les commits documentaires ultérieurs ne remplacent pas cette référence validée.
 
-**Statut : implémentation et validation Linux livrées pour revue technique. Validation Windows native PORT-001 non exécutée. Aucun merge, déploiement public, TPL-001 ou éditeur visuel commencé.** L’approbation de P01–P10 ne vaut pas acceptation anticipée de ce code.
+**Statut au 19 octobre 2026 : ACCEPTÉ — CLÔTURÉ AVEC RÉSERVE NON BLOQUANTE**, sur décision explicite de l’utilisateur après revue favorable du code. Les 88 tests Linux et les parcours navigateur sont acceptés comme preuves rapportées. **Validation Windows native PORT-001 : NON EXÉCUTÉE**, suivie séparément. Aucun merge ni changement de base réelle autorisé par cette clôture.
+
+Voir la [décision de clôture](docs/portfolios/CLOSURE.md), le [suivi Windows](docs/portfolios/windows-follow-up.md) et le [ticket TPL-001 préparé](docs/tickets/TPL-001.md), sans début d’implémentation.
 
 ## 1. Références et périmètre
 
@@ -111,7 +113,7 @@ Captures synthétiques : [dashboard clair desktop](docs/portfolios/evidence/dash
 | Sources historiques, `.local/`, migrations historiques | Intacts, aucune lecture de données historiques |
 | Absence de secret/fichier privé publié | Exclusions et scan des valeurs générées avant commit ; preuves synthétiques uniquement |
 | Réserves Windows explicites | Scripts/guide fournis ; exécution native à effectuer |
-| Approbation du code et migrations | **À réaliser par la revue technique de l’utilisateur** |
+| Approbation du code et migrations | **Acceptée par l’utilisateur le 19 octobre 2026, livraison `27a0b85`** |
 
 Les dix conditions d’approbation architecturale sont appliquées : évolution contrôlée de l’historique, conservation testée, refus d’incohérence, thème concret et contrats TPL futurs, session inchangée, deux points d’entrée de migration réels testés sur PostgreSQL 17 synthétique, absence de migration réelle, historique intact et aucune fusion.
 
@@ -139,7 +141,7 @@ La suite `Test-Foundations.ps1` doit être lancée avec SAAS_CONFIG_FILE de vali
 
 ## 7. Réserves et décisions différées
 
-- Livré pour revue, pas approuvé ni fusionné. PORT-001 Windows doit être exécuté sur le PC ; les preuves AUTH anciennes ne suffisent pas.
+- Livraison `27a0b85` acceptée et PORT-001 clôturé le 19 octobre 2026, sans fusion. Windows demeure une réserve non bloquante, NON EXÉCUTÉE ; les preuves AUTH anciennes ne suffisent pas.
 - Pas de catalogue TPL opérationnel, éditeur, moteur de thèmes, collaboration, import du CMS, média, publication ou 3D.
 - API provisoire avec slash final remplacée par les chemins canoniques documentés ; pas de promesse de rétrocompatibilité d’un contrat provisoire non validé.
 - Pas de restauration des portfolios supprimés, purge automatique ou transfert de compte. Slugs supprimés restent réservés ; politique de rétention/récupération à définir.
@@ -154,4 +156,4 @@ Liste exhaustive relative à AUTH-001 `2ff4fc1` : [files.txt](docs/portfolios/fi
 
 La branche distante est publiée sans réécriture et sans fusion de PR. La tentative réelle de création de PR brouillon via `gh pr create`, base `feature/auth-001`, a échoué : `Post https://api.github.com/graphql: Forbidden`. La branche est publiée, mais aucune nouvelle PR automatique n’a été créée ni approuvée. Aucun numéro ou statut GitHub n’est inventé. Comparaison de revue : https://github.com/Mariekaf/testPorfolio/compare/feature/auth-001...feature/port-001
 
-**Attendre la revue technique et la validation utilisateur avant fusion ou ticket suivant.**
+**Clôture approuvée ; aucune fusion autorisée. TPL-001 est préparé uniquement : attendre une autorisation explicite avant son implémentation ou celle de l’éditeur visuel.**
