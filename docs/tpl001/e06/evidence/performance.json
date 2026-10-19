@@ -1,0 +1,69 @@
+{
+  "runtime": "v24.19.0",
+  "initialization_ms": 577.902032,
+  "measurements": [
+    {
+      "layout": "centered",
+      "iterations": 100,
+      "first_render_ms": 58.71479199999999,
+      "median_ms": 0.721873999999957,
+      "p95_ms": 1.1100669999999582,
+      "html_bytes": 1119
+    },
+    {
+      "layout": "split-screen",
+      "iterations": 100,
+      "first_render_ms": 0.9045240000000376,
+      "median_ms": 0.500899000000004,
+      "p95_ms": 0.839849000000072,
+      "html_bytes": 1172
+    },
+    {
+      "layout": "fullscreen",
+      "iterations": 100,
+      "first_render_ms": 0.6174500000000762,
+      "median_ms": 0.5040830000000369,
+      "p95_ms": 0.9126760000000331,
+      "html_bytes": 1230
+    },
+    {
+      "layout": "typographic",
+      "iterations": 100,
+      "first_render_ms": 0.7303269999999884,
+      "median_ms": 0.4950209999999515,
+      "p95_ms": 0.8673290000000407,
+      "html_bytes": 1189
+    },
+    {
+      "layout": "asymmetric",
+      "iterations": 100,
+      "first_render_ms": 0.6077070000000049,
+      "median_ms": 0.5963489999999183,
+      "p95_ms": 0.9599849999999606,
+      "html_bytes": 1215
+    },
+    {
+      "layout": "product-showcase",
+      "iterations": 100,
+      "first_render_ms": 1.094824000000017,
+      "median_ms": 0.7492049999998471,
+      "p95_ms": 1.0849699999998847,
+      "html_bytes": 1377
+    },
+    {
+      "layout": "bento-grid",
+      "iterations": 100,
+      "first_render_ms": 1.1823139999999057,
+      "median_ms": 0.71812900000009,
+      "p95_ms": 1.085561000000098,
+      "html_bytes": 1438
+    }
+  ],
+  "css_bytes": 9548,
+  "css_gzip_bytes": 2236,
+  "limitations": [
+    "Synthetic Node/Linux SSR, loader/JSX transpilation included in initialization.",
+    "No HTTP, hydration, database, physical mobile GPU or Core Web Vitals benchmark.",
+    "No new route activated; unused component is not a measured deployed bundle."
+  ]
+}

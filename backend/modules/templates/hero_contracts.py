@@ -100,7 +100,7 @@ def validate_appearance(appearance, complete=False):
 
 
 class HeroCapabilities:
-    def __init__(self, root=ROOT, document=None):
+    def __init__(self, root=ROOT, document=None, *, text_layouts=False):
         self.root = Path(root)
         try:
             value = copy.deepcopy(document) if document is not None else read_json(self.root/'contracts/hero/capabilities.v1.json')
@@ -115,6 +115,15 @@ class HeroCapabilities:
                     expected_needs = (['content-v2', 'media-assets'] if group == 'layouts' and entry['id'] == 'product-showcase'
                                       else ['content-v2'] if group == 'layouts' and entry['id'] == 'bento-grid' else [])
                     require(entry['requires'] == expected_needs)
+            require(type(text_layouts) is bool)
+            self._text_layouts = []
+            if text_layouts:
+                profile = read_json(self.root/'contracts/hero/text-layouts.v1.json')
+                validate_schema('hero/text-layouts.v1.json', profile, self.root)
+                require(profile == {'schema_version':1, 'id':'text-layouts', 'version':'1.0.0',
+                    'layouts':[{'id':i, 'version':'1.1.0', 'requires':['content-v1']}
+                               for i in ('product-showcase', 'bento-grid')]})
+                self._text_layouts = profile['layouts']
             self._document = value
         except Exception:
             raise HeroContractError('Invalid or unsupported Hero contract.') from None
@@ -123,7 +132,13 @@ class HeroCapabilities:
         return copy.deepcopy(self._document)
 
     def declared_layout(self, identity):
-        require(any(e['id'] == identity['id'] and e['version'] == identity['version'] for e in self._document['layouts']))
+        require(any(e['id'] == identity['id'] and e['version'] == identity['version'] for e in [*self._document['layouts'], *self._text_layouts]))
+
+    def require_content_compatible(self, identity):
+        self.declared_layout(identity)
+        if identity['id'] in {'product-showcase', 'bento-grid'}:
+            require(any(e['id'] == identity['id'] and e['version'] == identity['version']
+                        for e in self._text_layouts))
 
     def selectable_layouts(self):
         return []  # Deliberately no runtime feature activation in E.02.
@@ -160,7 +175,7 @@ class HeroCapabilities:
                 continue
             hero = section['hero']
             self.declared_layout(hero['layout'])
-            require(hero['layout']['id'] not in {'product-showcase', 'bento-grid'})
+            self.require_content_compatible(hero['layout'])
             allowed = hero['policy']['layouts']
             require(len({(e['id'], e['version']) for e in allowed}) == len(allowed))
             for entry in allowed:
@@ -177,7 +192,7 @@ class HeroCapabilities:
             self.validate_hero(override['hero'])
             layout = override['hero'].get('layout')
             if layout:
-                require(layout['id'] not in {'product-showcase', 'bento-grid'})
+                self.require_content_compatible(layout)
                 require({k: layout[k] for k in ('id', 'version')} in source['hero']['policy']['layouts'])
                 for settings in [layout.get('settings', {}), *layout.get('responsive', {}).values()]:
                     require(all(v in source['presentation_policy'][k] for k, v in settings.items()))

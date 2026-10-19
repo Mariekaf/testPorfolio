@@ -17,21 +17,21 @@ RESET_PATHS |= {('appearance', 'palette', key) for key in ('text', 'surface', 'a
 RESET_PATHS |= {('appearance', 'typography', key) for key in ('family', 'scale')}
 
 
-def resolve_heroes(document):
+def resolve_heroes(document, *, text_layouts=False):
     """Resolve a Design v2 into fresh effective Hero configurations, or fail closed."""
     try:
-        return _resolve_heroes(document)
+        return _resolve_heroes(document, text_layouts=text_layouts)
     except Exception:
         raise HeroContractError('Invalid or unsupported Hero contract.') from None
 
 
-def _resolve_heroes(document):
+def _resolve_heroes(document, *, text_layouts=False):
     """Return a fresh effective configuration for every Hero, including hidden ones.
 
     Contract validity is not renderability: the capability registry stays inactive.
     Only local copied defaults are read. v1 is rejected, never converted.
     """
-    registry = HeroCapabilities()
+    registry = HeroCapabilities(text_layouts=text_layouts)
     registry.validate_design(document)
     presentations = {s['section_id']: s for s in document['presentation']['sections']}
     contents = {s['section_id']: s for s in document['content']['sections']}
@@ -78,22 +78,22 @@ def _resolve_heroes(document):
     return {'schema_version':1, 'design_schema_version':2, 'heroes':heroes}
 
 
-def reset_hero_override(document, section_id, path=()):
+def reset_hero_override(document, section_id, path=(), *, text_layouts=False):
     """Return a validated copy after deleting an allowed local Hero override key."""
     try:
-        return _reset_hero_override(document, section_id, path)
+        return _reset_hero_override(document, section_id, path, text_layouts=text_layouts)
     except Exception:
         raise HeroContractError('Invalid or unsupported Hero contract.') from None
 
 
-def _reset_hero_override(document, section_id, path):
+def _reset_hero_override(document, section_id, path, *, text_layouts=False):
     """Return a copied design with an allowed customization key removed.
 
     Paths are relative to sections[].hero. Empty path removes that Hero override.
     Reset of an already absent allowed key is idempotent; null is never written.
     Background/surface and layout identity pairs reset atomically.
     """
-    registry = HeroCapabilities()
+    registry = HeroCapabilities(text_layouts=text_layouts)
     registry.validate_design(document)
     require(isinstance(path, (list, tuple)) and all(isinstance(k, str) for k in path))
     path = tuple(path)
@@ -118,5 +118,5 @@ def _reset_hero_override(document, section_id, path):
                     if not parent[key]:
                         del parent[key]
     # A reset is also refused if restoring inherited values breaks contrast/policy.
-    resolve_heroes(result)
+    resolve_heroes(result, text_layouts=text_layouts)
     return result

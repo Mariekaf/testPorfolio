@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "id": "text-layouts",
+  "version": "1.0.0",
+  "layouts": [
+    {
+      "id": "product-showcase",
+      "version": "1.1.0",
+      "requires": [
+        "content-v1"
+      ]
+    },
+    {
+      "id": "bento-grid",
+      "version": "1.1.0",
+      "requires": [
+        "content-v1"
+      ]
+    }
+  ]
+}

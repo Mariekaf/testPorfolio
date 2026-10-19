@@ -6,7 +6,7 @@ import type {AnySchemaObject} from 'ajv';
 import type {HeroSettings, HeroLayoutId, HeroBackground, HeroSurface} from './hero-contracts.ts';
 
 type Data = Record<string, any>;
-export type HeroResolutionContracts = {schemas: Record<string, AnySchemaObject>; capabilities: unknown};
+export type HeroResolutionContracts = {schemas: Record<string, AnySchemaObject>; capabilities: unknown; textLayouts?: unknown};
 export type EffectiveHero = {
   section_id: string; visible: boolean; content: {title: string; subtitle: string; cta_label: string};
   layout: {id: HeroLayoutId; version: string; settings: Record<'mobile'|'tablet'|'desktop', Required<HeroSettings>>};
@@ -118,7 +118,18 @@ export function createHeroResolver(contracts: HeroResolutionContracts) {
       requireValue(JSON.stringify(entry.requires)===JSON.stringify(needs));
     }
   }
-  function declared(layout: Data) { requireValue(capabilities.layouts.some((e: Data)=>e.id===layout.id && e.version===layout.version)); }
+  let textLayouts: Data[] = [];
+  if (contracts.textLayouts !== undefined) {
+    const profile=structuredClone(contracts.textLayouts) as Data;
+    checkSchema('hero/text-layouts.v1.json',profile);
+    requireValue(profile.schema_version===1 && profile.id==='text-layouts' && profile.version==='1.0.0');
+    textLayouts=profile.layouts;
+  }
+  function declared(layout: Data) { requireValue([...capabilities.layouts,...textLayouts].some((e: Data)=>e.id===layout.id && e.version===layout.version)); }
+  function contentCompatible(layout:Data) {
+    declared(layout);
+    requireValue(!['product-showcase','bento-grid'].includes(layout.id) || textLayouts.some(e=>e.id===layout.id && e.version===layout.version));
+  }
   function checkSettings(settings: Data, policy: Data) { requireValue(Object.entries(settings).every(([key,value])=>policy[key].includes(value))); }
   function checkHero(hero: Data) {
     checkSchema('hero/hero-config.v1.json',hero);
@@ -161,7 +172,7 @@ export function createHeroResolver(contracts: HeroResolutionContracts) {
       requireValue(own(presentation,'hero')===(source.type==='hero'));
       if (source.type!=='hero') continue;
       const layout = source.hero.layout;
-      declared(layout); requireValue(!['product-showcase','bento-grid'].includes(layout.id));
+      contentCompatible(layout);
       const allowed = source.hero.policy.layouts as Data[];
       for (const pair of allowed) declared(pair);
       requireValue(new Set(allowed.map(p=>`${p.id}@${p.version}`)).size===allowed.length);
@@ -180,7 +191,7 @@ export function createHeroResolver(contracts: HeroResolutionContracts) {
       requireValue(source.type==='hero'); checkHero(override.hero);
       if (override.hero.layout) {
         const layout = override.hero.layout;
-        requireValue(!['product-showcase','bento-grid'].includes(layout.id));
+        contentCompatible(layout);
         requireValue(source.hero.policy.layouts.some((p:Data)=>p.id===layout.id && p.version===layout.version));
         checkSettings(layout.settings ?? {},source.presentation_policy);
         for (const settings of Object.values(layout.responsive ?? {}) as Data[]) checkSettings(settings,source.presentation_policy);

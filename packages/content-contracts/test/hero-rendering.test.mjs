@@ -31,12 +31,12 @@ test('structural differences, not just data labels',()=>{
 });
 test('unsupported declarations are never presented as implementations',()=>{
  const registry=JSON.parse(readFileSync(new URL('../../../contracts/hero/renderer.v1.json',import.meta.url),'utf8'));
- assert.equal(registry.enabled_by_default,false);assert.equal(registry.layouts.filter(x=>x.implemented).length,4);
+ assert.equal(registry.enabled_by_default,false);assert.equal(registry.layouts.filter(x=>x.implemented).length,7);
  assert.ok(registry.layouts.every(x=>x.selectable===false));
  const hero=heroResolver.resolve(base).heroes[0];
- for(const id of ['asymmetric','product-showcase','bento-grid','unknown']) assert.throws(()=>requireRenderableHero({...hero,layout:{...hero.layout,id}}),HeroRenderingError);
+ for(const id of ['product-showcase','bento-grid','unknown']) assert.throws(()=>requireRenderableHero({...hero,layout:{...hero.layout,id}}),HeroRenderingError);
  assert.throws(()=>requireRenderableHero({...hero,layout:{...hero.layout,version:'2.0.0'}}),HeroRenderingError);
- const d=structuredClone(base);d.composition.sections[0].hero.layout.id='asymmetric';assert.throws(()=>render(d),/not implemented/);
+ const d=structuredClone(base);d.composition.sections[0].hero.layout.id='unknown';assert.throws(()=>render(d),/unsupported/);
 });
 test('behavior, arbitrary CSS/HTML, wrong versions and low contrast reject before render',()=>{
  for(const modify of [
@@ -80,6 +80,8 @@ test('renderer registry is consistent with frozen declarations, not a replacemen
  const read=path=>JSON.parse(readFileSync(new URL('../../../contracts/hero/'+path,import.meta.url),'utf8'));
  const declared=read('capabilities.v1.json'),renderer=read('renderer.v1.json');
  assert.equal(declared.runtime_enabled,false);assert.ok(declared.layouts.every(x=>!x.implemented && !x.selectable));
- assert.deepEqual(renderer.layouts.map(x=>[x.id,x.version]),declared.layouts.map(x=>[x.id,x.version]));
+ const textual=read('text-layouts.v1.json');
+ for(const entry of renderer.layouts)assert.ok([...declared.layouts,...textual.layouts].some(x=>x.id===entry.id && x.version===entry.version));
+ assert.equal(new Set(renderer.layouts.map(x=>x.id)).size,7);
  assert.deepEqual(renderer.appearance,declared.appearance.map(x=>x.id));assert.deepEqual(renderer.behavior,['none']);
 });

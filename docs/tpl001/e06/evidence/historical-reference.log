@@ -1,0 +1,5 @@
+Historical reference: 11 files unchanged (SHA-256).
+Synthetic fixture: 4 checksums verified.
+Fixture accepted without truncation; order, drafts, Unicode and media references verified.
+UTF-8 reference text allows LF/CRLF checkout equivalence only; binary hashes remain exact.
+No runtime content, credentials, initialization or CORE-001 dependency used.

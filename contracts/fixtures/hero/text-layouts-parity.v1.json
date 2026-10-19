@@ -1,0 +1,497 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "asymmetric-defaults",
+      "source": "asymmetric",
+      "changes": [],
+      "valid": true
+    },
+    {
+      "id": "asymmetric-overrides",
+      "source": "asymmetric",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "accent": "#112233"
+                  }
+                },
+                "layout": {
+                  "id": "asymmetric",
+                  "version": "1.0.0",
+                  "settings": {
+                    "alignment": "start"
+                  },
+                  "responsive": {
+                    "tablet": {
+                      "alignment": "center"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "asymmetric-reset",
+      "source": "asymmetric",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "accent": "#112233"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "reset": [
+        "appearance",
+        "palette",
+        "accent"
+      ],
+      "valid": true
+    },
+    {
+      "id": "asymmetric-unknown-version",
+      "source": "asymmetric",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/layout/version",
+          "value": "9.0.0"
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "asymmetric-low-contrast",
+      "source": "asymmetric",
+      "changes": [
+        {
+          "path": "/presentation/sections/0/hero/appearance/palette/text",
+          "value": "#F5F4EE"
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "asymmetric-arbitrary-css",
+      "source": "asymmetric",
+      "changes": [
+        {
+          "path": "/presentation/sections/0/hero/appearance/css",
+          "value": "color:red"
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "asymmetric-behavior",
+      "source": "asymmetric",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "behavior": {
+                  "kind": "parallax"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "asymmetric-null-reset",
+      "source": "asymmetric",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "accent": null
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "product-showcase-defaults",
+      "source": "product-showcase",
+      "changes": [],
+      "valid": true
+    },
+    {
+      "id": "product-showcase-overrides",
+      "source": "product-showcase",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "accent": "#112233"
+                  }
+                },
+                "layout": {
+                  "id": "product-showcase",
+                  "version": "1.1.0",
+                  "settings": {
+                    "alignment": "start"
+                  },
+                  "responsive": {
+                    "tablet": {
+                      "alignment": "center"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "product-showcase-reset",
+      "source": "product-showcase",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "accent": "#112233"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "reset": [
+        "appearance",
+        "palette",
+        "accent"
+      ],
+      "valid": true
+    },
+    {
+      "id": "product-showcase-unknown-version",
+      "source": "product-showcase",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/layout/version",
+          "value": "9.0.0"
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "product-showcase-low-contrast",
+      "source": "product-showcase",
+      "changes": [
+        {
+          "path": "/presentation/sections/0/hero/appearance/palette/text",
+          "value": "#F5F4EE"
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "product-showcase-arbitrary-css",
+      "source": "product-showcase",
+      "changes": [
+        {
+          "path": "/presentation/sections/0/hero/appearance/css",
+          "value": "color:red"
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "product-showcase-behavior",
+      "source": "product-showcase",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "behavior": {
+                  "kind": "parallax"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "product-showcase-null-reset",
+      "source": "product-showcase",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "accent": null
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "bento-grid-defaults",
+      "source": "bento-grid",
+      "changes": [],
+      "valid": true
+    },
+    {
+      "id": "bento-grid-overrides",
+      "source": "bento-grid",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "accent": "#112233"
+                  }
+                },
+                "layout": {
+                  "id": "bento-grid",
+                  "version": "1.1.0",
+                  "settings": {
+                    "alignment": "start"
+                  },
+                  "responsive": {
+                    "tablet": {
+                      "alignment": "center"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "valid": true
+    },
+    {
+      "id": "bento-grid-reset",
+      "source": "bento-grid",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "accent": "#112233"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "reset": [
+        "appearance",
+        "palette",
+        "accent"
+      ],
+      "valid": true
+    },
+    {
+      "id": "bento-grid-unknown-version",
+      "source": "bento-grid",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/layout/version",
+          "value": "9.0.0"
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "bento-grid-low-contrast",
+      "source": "bento-grid",
+      "changes": [
+        {
+          "path": "/presentation/sections/0/hero/appearance/palette/text",
+          "value": "#F5F4EE"
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "bento-grid-arbitrary-css",
+      "source": "bento-grid",
+      "changes": [
+        {
+          "path": "/presentation/sections/0/hero/appearance/css",
+          "value": "color:red"
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "bento-grid-behavior",
+      "source": "bento-grid",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "behavior": {
+                  "kind": "parallax"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "bento-grid-null-reset",
+      "source": "bento-grid",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "accent": null
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "product-showcase-old-prerequisites",
+      "source": "product-showcase",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/layout/version",
+          "value": "1.0.0"
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "product-showcase-not-in-local-policy",
+      "source": "product-showcase",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/policy/layouts",
+          "value": [
+            {
+              "id": "centered",
+              "version": "1.0.0"
+            }
+          ]
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "bento-grid-old-prerequisites",
+      "source": "bento-grid",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/layout/version",
+          "value": "1.0.0"
+        }
+      ],
+      "valid": false
+    },
+    {
+      "id": "bento-grid-not-in-local-policy",
+      "source": "bento-grid",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/policy/layouts",
+          "value": [
+            {
+              "id": "centered",
+              "version": "1.0.0"
+            }
+          ]
+        }
+      ],
+      "valid": false
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import type {CSSProperties} from 'react';
-import {heroResolver} from '../../../../../packages/content-contracts/src/hero-runtime.ts';
+import {textHeroResolver} from '../../../../../packages/content-contracts/src/hero-runtime.ts';
 import {HeroRenderingError,requireHeroRenderingEnabled,requireRenderableHero} from '../../../../../packages/content-contracts/src/hero-rendering.ts';
 import styles from './modular-hero-renderer.module.css';
 
@@ -9,7 +9,7 @@ export default function ModularHeroRenderer({snapshot,sectionId,enabled=false,sc
   requireHeroRenderingEnabled(enabled);
   if(!/^[a-zA-Z][a-zA-Z0-9_-]{0,79}$/.test(scope)) throw new HeroRenderingError('Invalid Hero scope.');
   if(continuationId !== undefined && !/^[a-zA-Z][a-zA-Z0-9_-]{0,159}$/.test(continuationId)) throw new HeroRenderingError('Invalid continuation target.');
-  const resolved=heroResolver.resolve(snapshot);
+  const resolved=textHeroResolver.resolve(snapshot);
   const hero=resolved.heroes.find(item=>item.section_id===sectionId);
   if(!hero) throw new HeroRenderingError('Hero section is missing.');
   requireRenderableHero(hero);
@@ -43,6 +43,16 @@ export default function ModularHeroRenderer({snapshot,sectionId,enabled=false,sc
         <p className={styles.subtitle}>{content.subtitle}</p>
         {content.cta_label.trim() && continuationId && <a className={styles.cta} href={`#${continuationId}`}><span className={styles.ctaLabel}>{content.cta_label}</span><span className={styles.arrow} aria-hidden="true"/></a>}
       </div>
+      {layout.id==='product-showcase' && <div className={styles.productPanel} aria-hidden="true">
+        <div className={styles.productToolbar}><i/><i/><i/></div>
+        <div className={styles.productCanvas}><span/><span/><span/><span/></div>
+      </div>}
+      {layout.id==='bento-grid' && <>
+        <div className={styles.bentoTile} data-cell="orbit" aria-hidden="true"><span/><span/></div>
+        <div className={styles.bentoTile} data-cell="stripes" aria-hidden="true"><span/><span/><span/></div>
+        <div className={styles.bentoTile} data-cell="dot" aria-hidden="true"><span/></div>
+      </>}
+      {layout.id==='asymmetric' && <div className={styles.offsetArt} aria-hidden="true"><span/><span/></div>}
       {layout.id==='typographic' && <div className={styles.signature} aria-hidden="true">DESIGN<br/>WITH INTENT.</div>}
       {layout.id==='fullscreen' && <span className={styles.index} aria-hidden="true">01 — PORTFOLIO</span>}
     </div>
