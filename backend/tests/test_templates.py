@@ -62,8 +62,22 @@ class RegistryTests(SimpleTestCase):
     def test_unknown_schema_and_experience_rejected(self):
         self.rewrite('snapshot',lambda d:d.update(schema_version=2));self.invalid()
         self.rewrite('snapshot',lambda d:d.update(schema_version=1,experience={'engine':'gsap'}));self.invalid()
+        # Make a fully self-consistent bundle so only canonical-version policy rejects it.
         for version in ['01.0.0','1.٠.0','1.0.0.0','1'*31+'.0.0']:
-            self.manifest(lambda m:m['entries'][0].update(version=version));self.invalid()
+            with tempfile.TemporaryDirectory() as folder:
+                root=Path(folder);shutil.copytree(ROOT/'contracts',root/'contracts')
+                base=root/'contracts/templates';manifest=json.loads((base/'manifest.v1.json').read_text())
+                entry=manifest['entries'][0];entry['version']=version
+                (base/'minimal/1.0.0').rename(base/'minimal'/version)
+                for file in entry['files']:
+                    file['path']=f'minimal/{version}/{file["role"]}.json'
+                    path=base/file['path'];document=json.loads(path.read_text())
+                    if file['role']=='descriptor':document['version']=version
+                    else:document['composition']['template']['version']=version
+                    path.write_text(json.dumps(document,ensure_ascii=False))
+                    file['sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
+                (base/'manifest.v1.json').write_text(json.dumps(manifest))
+                with self.assertRaises(RegistryInvalid):TemplateRegistry(root)
 
     def test_invalid_format_and_untrusted_links_rejected(self):
         for link in ['javascript:alert(1)','http://example.test','https://user:pass@example.test','https://example.test/\npath']:
