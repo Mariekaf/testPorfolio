@@ -95,7 +95,8 @@ class RegistryTests(SimpleTestCase):
 
     def test_theme_and_identity_mismatch_rejected(self):
         self.rewrite('descriptor',lambda d:d.update(id='other'));self.invalid()
-        self.rewrite('descriptor',lambda d:d.update(id='minimal',compatible_themes=[{'id':'missing','version':'1.0.0'}]));self.invalid()
+        self.rewrite('descriptor',lambda d:d.update(id='minimal',compatible_themes=[{'id':'studio-neutral','version':'1.0.0'},{'id':'missing','version':'1.0.0'}]));self.invalid()
+        self.rewrite('descriptor',lambda d:d.update(compatible_themes=[{'id':'studio-neutral','version':'1.0.0'}],composition_reference={'schema_version':1,'document_id':'30000000-0000-4000-8000-000000000001'}));self.invalid()
 
     def test_overrides_and_section_order_validated(self):
         def change(d):d['customization']['sections']=[{'section_id':'hero','visible':False}]

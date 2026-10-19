@@ -153,6 +153,9 @@ class TemplateRegistry:
             descriptor_validator.validate(descriptor)
             snapshot_validator.validate(snapshot)
             require((descriptor['id'], descriptor['version']) == key)
+            # B has no UUID document/media store or additional theme registry.
+            require('composition_reference' not in descriptor and descriptor.get('thumbnail') is None)
+            require(descriptor['compatible_themes'] == [{'id': 'studio-neutral', 'version': '1.0.0'}])
             require(snapshot['composition']['template'] == {'id': key[0], 'version': key[1]})
             require(snapshot['presentation']['theme'] in descriptor['compatible_themes'])
             require(snapshot['presentation']['theme'] == {'id': 'studio-neutral', 'version': '1.0.0'})
