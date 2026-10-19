@@ -1,0 +1,40 @@
+{
+  "ticket": "TPL-001.E.02",
+  "status": "delivered-for-review-not-approved",
+  "base_commit": "fc2f2b3d616de29bd9cb8a9f11a8c8608e1f3d30",
+  "branch": "feature/tpl-001-e02",
+  "platform": "Linux",
+  "versions": {
+    "python": "3.13.5",
+    "node": "24.19.0",
+    "typescript": "5.9.3",
+    "jsonschema": "4.26.0"
+  },
+  "tests": {
+    "python_e02": 90,
+    "typescript_corpus": 2,
+    "existing_frontend": 23,
+    "base_integrity": 12,
+    "legacy_cms": 6,
+    "total_passed": 133,
+    "failed": 0,
+    "skipped": 0
+  },
+  "other_checks": {
+    "strict_typescript": "passed",
+    "legacy_source_files_unchanged": 11,
+    "synthetic_fixture_hashes_verified": 4,
+    "bundle_digests": "passed"
+  },
+  "not_executed": [
+    "native-Windows-E02",
+    "visual-acceptance",
+    "PostgreSQL-tests",
+    "Django-database-suite",
+    "migrations",
+    "studio-build"
+  ],
+  "runtime_enabled": false,
+  "database_access": false,
+  "new_dependencies": []
+}

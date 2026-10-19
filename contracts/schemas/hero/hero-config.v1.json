@@ -1,0 +1,412 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "layout": {
+      "$ref": "#/$defs/layout"
+    },
+    "appearance": {
+      "$ref": "#/$defs/appearance"
+    },
+    "behavior": {
+      "$ref": "#/$defs/behavior"
+    }
+  },
+  "required": [
+    "schema_version"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HeroConfig v1 — contract only; no renderer activation",
+  "$defs": {
+    "settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "spacing": {
+          "enum": [
+            "compact",
+            "normal",
+            "airy"
+          ]
+        },
+        "alignment": {
+          "enum": [
+            "start",
+            "center"
+          ]
+        },
+        "emphasis": {
+          "enum": [
+            "quiet",
+            "strong"
+          ]
+        }
+      },
+      "required": []
+    },
+    "palette": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "minLength": 7,
+          "maxLength": 7
+        },
+        "surface": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "minLength": 7,
+          "maxLength": 7
+        },
+        "accent": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "minLength": 7,
+          "maxLength": 7
+        }
+      },
+      "required": []
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "enum": [
+            "centered",
+            "split-screen",
+            "fullscreen",
+            "typographic",
+            "asymmetric",
+            "product-showcase",
+            "bento-grid"
+          ]
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?![\\s\\S])",
+          "maxLength": 30
+        },
+        "settings": {
+          "$ref": "#/$defs/settings"
+        },
+        "responsive": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "tablet": {
+              "$ref": "#/$defs/settings"
+            },
+            "desktop": {
+              "$ref": "#/$defs/settings"
+            }
+          },
+          "required": []
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ]
+    },
+    "background": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "solid"
+            },
+            "color": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$",
+              "minLength": 7,
+              "maxLength": 7
+            }
+          },
+          "required": [
+            "kind",
+            "color"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "gradient"
+            },
+            "angle": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 359
+            },
+            "stops": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "color": {
+                    "type": "string",
+                    "pattern": "^#[0-9A-Fa-f]{6}$",
+                    "minLength": 7,
+                    "maxLength": 7
+                  },
+                  "position": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100
+                  }
+                },
+                "required": [
+                  "color",
+                  "position"
+                ]
+              },
+              "minItems": 2,
+              "maxItems": 4
+            }
+          },
+          "required": [
+            "kind",
+            "angle",
+            "stops"
+          ]
+        }
+      ]
+    },
+    "surface": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "flat"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "glass"
+            },
+            "opacity": {
+              "type": "integer",
+              "minimum": 85,
+              "maximum": 100
+            },
+            "blur": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 12
+            }
+          },
+          "required": [
+            "kind",
+            "opacity",
+            "blur"
+          ]
+        }
+      ]
+    },
+    "appearance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "palette": {
+          "$ref": "#/$defs/palette"
+        },
+        "typography": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "family": {
+              "enum": [
+                "system-sans"
+              ]
+            },
+            "scale": {
+              "enum": [
+                "compact",
+                "balanced",
+                "display"
+              ]
+            }
+          },
+          "required": []
+        },
+        "background": {
+          "$ref": "#/$defs/background"
+        },
+        "surface": {
+          "$ref": "#/$defs/surface"
+        }
+      },
+      "required": []
+    },
+    "behavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "none"
+        }
+      },
+      "required": [
+        "kind"
+      ]
+    },
+    "appearanceDefaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "palette": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "text": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$",
+              "minLength": 7,
+              "maxLength": 7
+            },
+            "surface": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$",
+              "minLength": 7,
+              "maxLength": 7
+            },
+            "accent": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$",
+              "minLength": 7,
+              "maxLength": 7
+            }
+          },
+          "required": [
+            "text",
+            "surface",
+            "accent"
+          ]
+        },
+        "typography": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "family": {
+              "enum": [
+                "system-sans"
+              ]
+            },
+            "scale": {
+              "enum": [
+                "compact",
+                "balanced",
+                "display"
+              ]
+            }
+          },
+          "required": [
+            "family",
+            "scale"
+          ]
+        },
+        "background": {
+          "$ref": "#/$defs/background"
+        },
+        "surface": {
+          "$ref": "#/$defs/surface"
+        }
+      },
+      "required": [
+        "palette",
+        "typography",
+        "background",
+        "surface"
+      ]
+    },
+    "layoutDefaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "enum": [
+            "centered",
+            "split-screen",
+            "fullscreen",
+            "typographic",
+            "asymmetric",
+            "product-showcase",
+            "bento-grid"
+          ]
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?![\\s\\S])",
+          "maxLength": 30
+        },
+        "settings": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "spacing": {
+              "enum": [
+                "compact",
+                "normal",
+                "airy"
+              ]
+            },
+            "alignment": {
+              "enum": [
+                "start",
+                "center"
+              ]
+            },
+            "emphasis": {
+              "enum": [
+                "quiet",
+                "strong"
+              ]
+            }
+          },
+          "required": [
+            "spacing",
+            "alignment",
+            "emphasis"
+          ]
+        },
+        "responsive": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "tablet": {
+              "$ref": "#/$defs/settings"
+            },
+            "desktop": {
+              "$ref": "#/$defs/settings"
+            }
+          },
+          "required": []
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "settings"
+      ]
+    }
+  }
+}
