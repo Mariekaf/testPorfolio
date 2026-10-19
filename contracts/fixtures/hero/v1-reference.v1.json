@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "source_commit": "76e8af02159ccc237a1f7e83f41d2b6d66db1aab",
+  "description": "Frozen v1 source SHA-256 and static HTML renderer baselines. CSS class names mocked consistently with existing renderer tests; not browser screenshots.",
+  "files": {
+    "apps/studio/src/lib/template-render.ts": "7cd105f8b850167c3960ac9136f31056d4f5feae5f67c4f84fa41188446b4165",
+    "apps/studio/src/components/templates/portfolio-renderer.tsx": "d5a277565a8ae1bf5952afa85337775e09957fa45f9e126f861a2a3c569c9a39",
+    "apps/studio/src/components/templates/portfolio-renderer.module.css": "7a5fb337a84a1032ede09fda808b36a78f1d6c24d1a132dc3434db4b2d018107",
+    "contracts/templates/minimal/1.0.0/snapshot.json": "7cea51f2e6b0cb39ac04f2328f9e3961654823821ed31e0085a3da0011fefef8",
+    "contracts/templates/minimal/1.0.0/descriptor.json": "c2a7802326b37b8ab82b61fee185ce1f20980b085e94a5ead59988770f81f955",
+    "contracts/templates/editorial/1.0.0/snapshot.json": "f75120ccfff78f8e2de853f63936631b8f4ce4968ad5a48fbe19495371eb62fd",
+    "contracts/templates/editorial/1.0.0/descriptor.json": "8d88594d4ea03a07f2969f83f8f2bb494773672378b1035dc335b90cc93c510b",
+    "contracts/schemas/templates/documents/snapshot.v1.json": "77cb21667d5f2a0bd00a160ab6460e941f0fa289c5552a1fb8ecf61d89019b2f",
+    "contracts/schemas/templates/documents/composition.v1.json": "931857db14859edcbf83c0a0fb853efa449366acf76e218d6b4375f29136c7e5",
+    "contracts/schemas/templates/documents/content.v1.json": "de82323543e627742534f32b88f9a95d8ab43326225d4f28964b8589adee0a2a",
+    "contracts/schemas/templates/documents/presentation.v1.json": "b2d44397bd6455774e24f1f4d9f6a69f45ca97a64fe6ef27e69c3b73444b1471",
+    "contracts/schemas/templates/documents/customization.v1.json": "e3b359c36f2dae487017af6411518ddb4e7955678eed8db2677f0b414d29af9a"
+  },
+  "html_sha256": {
+    "minimal": "78b888c9eb5e41fbecef8dfde4e3d5121ccab5b5dc725e78f091d48867c60ace",
+    "editorial": "b52aa7a1d097becb7179633690f260ebb4c1b5ebdb9a50376e1552557d845c3b"
+  }
+}
