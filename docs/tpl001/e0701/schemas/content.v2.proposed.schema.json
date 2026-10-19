@@ -1,0 +1,568 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PROPOSAL ONLY — Creative Editorial slot content v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "slots": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[a-z][a-z0-9_]{0,59}$": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "text"
+                },
+                "value": {
+                  "type": "string",
+                  "maxLength": 500
+                }
+              },
+              "required": [
+                "type",
+                "value"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "rich_text"
+                },
+                "blocks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "type": {
+                        "const": "paragraph"
+                      },
+                      "children": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "text": {
+                              "type": "string",
+                              "maxLength": 1000
+                            },
+                            "marks": {
+                              "type": "array",
+                              "items": {
+                                "enum": [
+                                  "strong",
+                                  "emphasis"
+                                ]
+                              },
+                              "uniqueItems": true,
+                              "maxItems": 2
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "marks"
+                          ]
+                        },
+                        "maxItems": 30
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "children"
+                    ]
+                  },
+                  "maxItems": 8
+                }
+              },
+              "required": [
+                "type",
+                "blocks"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "image"
+                },
+                "value": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "asset_id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 240
+                        },
+                        "decorative": {
+                          "type": "boolean"
+                        },
+                        "focal_point": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "x": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            "y": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            }
+                          },
+                          "required": [
+                            "x",
+                            "y"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "asset_id",
+                        "alt",
+                        "decorative",
+                        "focal_point"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "type",
+                "value"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "logo"
+                },
+                "value": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "asset_id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 240
+                        },
+                        "decorative": {
+                          "type": "boolean"
+                        },
+                        "focal_point": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "x": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            "y": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            }
+                          },
+                          "required": [
+                            "x",
+                            "y"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "asset_id",
+                        "alt",
+                        "decorative",
+                        "focal_point"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "type",
+                "value"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "link"
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 60
+                },
+                "target": {
+                  "oneOf": [
+                    {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "kind": {
+                              "const": "section"
+                            },
+                            "section_id": {
+                              "type": "string",
+                              "maxLength": 60
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "section_id"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "kind": {
+                              "const": "external"
+                            },
+                            "url": {
+                              "type": "string",
+                              "format": "uri",
+                              "pattern": "^https://",
+                              "maxLength": 2048
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "url"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "kind": {
+                              "const": "email"
+                            },
+                            "address": {
+                              "type": "string",
+                              "format": "email",
+                              "maxLength": 254
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "address"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "type",
+                "label",
+                "target"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "project_list"
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 120
+                      },
+                      "summary": {
+                        "type": "string",
+                        "maxLength": 300
+                      },
+                      "cover": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "asset_id": {
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "alt": {
+                                "type": "string",
+                                "maxLength": 240
+                              },
+                              "decorative": {
+                                "type": "boolean"
+                              },
+                              "focal_point": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "x": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "y": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  }
+                                },
+                                "required": [
+                                  "x",
+                                  "y"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "asset_id",
+                              "alt",
+                              "decorative",
+                              "focal_point"
+                            ]
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "target": {
+                        "oneOf": [
+                          {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "kind": {
+                                    "const": "section"
+                                  },
+                                  "section_id": {
+                                    "type": "string",
+                                    "maxLength": 60
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "section_id"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "kind": {
+                                    "const": "external"
+                                  },
+                                  "url": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "pattern": "^https://",
+                                    "maxLength": 2048
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "url"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "properties": {
+                                  "kind": {
+                                    "const": "email"
+                                  },
+                                  "address": {
+                                    "type": "string",
+                                    "format": "email",
+                                    "maxLength": 254
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "address"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "summary",
+                      "cover",
+                      "target"
+                    ]
+                  },
+                  "maxItems": 12
+                }
+              },
+              "required": [
+                "type",
+                "items"
+              ]
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "const": "social_links"
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "network": {
+                        "enum": [
+                          "linkedin",
+                          "behance",
+                          "dribbble",
+                          "github",
+                          "other"
+                        ]
+                      },
+                      "label": {
+                        "type": "string",
+                        "maxLength": 60
+                      },
+                      "target": {
+                        "oneOf": [
+                          {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "kind": {
+                                "const": "section"
+                              },
+                              "section_id": {
+                                "type": "string",
+                                "maxLength": 60
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "section_id"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "kind": {
+                                "const": "external"
+                              },
+                              "url": {
+                                "type": "string",
+                                "format": "uri",
+                                "pattern": "^https://",
+                                "maxLength": 2048
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "url"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "kind": {
+                                "const": "email"
+                              },
+                              "address": {
+                                "type": "string",
+                                "format": "email",
+                                "maxLength": 254
+                              }
+                            },
+                            "required": [
+                              "kind",
+                              "address"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "network",
+                      "label",
+                      "target"
+                    ]
+                  },
+                  "maxItems": 8
+                }
+              },
+              "required": [
+                "type",
+                "items"
+              ]
+            }
+          ]
+        }
+      },
+      "maxProperties": 64
+    }
+  },
+  "required": [
+    "schema_version",
+    "slots"
+  ],
+  "$comment": "Documentation only. Semantic template-specific validation, ownership, URLs, alt, readiness and publication rules are specified in architecture.md; this schema alone does not authorize a save."
+}

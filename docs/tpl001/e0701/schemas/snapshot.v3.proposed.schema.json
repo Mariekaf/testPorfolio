@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PROPOSAL ONLY — Ready Portfolio snapshot v3",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 3
+    },
+    "composition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 3
+        },
+        "template": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]{0,79}$"
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$",
+              "maxLength": 30
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ]
+        },
+        "sections": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "enum": [
+                  "navigation",
+                  "hero",
+                  "about",
+                  "projects",
+                  "contact",
+                  "footer"
+                ]
+              },
+              "variant": {
+                "enum": [
+                  "creative-navigation.v1",
+                  "creative-hero.v1",
+                  "creative-about.v1",
+                  "creative-projects.v1",
+                  "creative-contact.v1",
+                  "creative-footer.v1"
+                ]
+              },
+              "slot_bindings": {
+                "type": "object",
+                "maxProperties": 8,
+                "additionalProperties": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]{0,59}$",
+                  "maxLength": 60
+                }
+              }
+            },
+            "required": [
+              "id",
+              "variant",
+              "slot_bindings"
+            ]
+          }
+        },
+        "responsive_profile": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]{0,79}$"
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$",
+              "maxLength": 30
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "template",
+        "sections",
+        "responsive_profile"
+      ]
+    },
+    "content": {
+      "$ref": "content.v2.proposed.schema.json"
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 3
+        },
+        "style_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]{0,79}$"
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$",
+              "maxLength": 30
+            }
+          },
+          "required": [
+            "id",
+            "version"
+          ]
+        },
+        "defaults": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "palette_id": {
+              "enum": [
+                "ink-lime",
+                "paper-cobalt"
+              ]
+            },
+            "font_pair_id": {
+              "const": "system-sans"
+            }
+          },
+          "required": [
+            "palette_id",
+            "font_pair_id"
+          ]
+        }
+      },
+      "required": [
+        "schema_version",
+        "style_policy",
+        "defaults"
+      ]
+    },
+    "customization": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 3
+        },
+        "style_overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "palette_id": {
+              "enum": [
+                "ink-lime",
+                "paper-cobalt"
+              ]
+            },
+            "font_pair_id": {
+              "const": "system-sans"
+            },
+            "colors": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "background": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
+                },
+                "surface": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
+                },
+                "text": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
+                },
+                "accent": {
+                  "type": "string",
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
+                }
+              },
+              "required": []
+            }
+          },
+          "required": []
+        }
+      },
+      "required": [
+        "schema_version",
+        "style_overrides"
+      ]
+    },
+    "experience": {
+      "type": "null"
+    }
+  },
+  "required": [
+    "schema_version",
+    "composition",
+    "content",
+    "presentation",
+    "customization",
+    "experience"
+  ],
+  "$comment": "Proposed Creative Editorial family only. Semantic validation must enforce exact section order, id/variant/binding pairs and descriptor policies. Not installed in application."
+}

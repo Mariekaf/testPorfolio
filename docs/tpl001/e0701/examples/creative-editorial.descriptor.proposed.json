@@ -1,0 +1,97 @@
+{
+  "schema_version": 2,
+  "template": {
+    "id": "creative-editorial",
+    "version": "1.0.0"
+  },
+  "name": "Creative Editorial",
+  "status": "draft",
+  "renderer": {
+    "id": "ready-portfolio",
+    "version": "1.0.0"
+  },
+  "document_schema": 3,
+  "required_capabilities": [
+    "typed-slots-v1",
+    "safe-images-v1",
+    "responsive-art-direction-v1",
+    "manual-publication-v1"
+  ],
+  "customization_policy": {
+    "id": "creative-editorial-style",
+    "version": "1.0.0"
+  },
+  "bundle_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+  "slots": {
+    "identity_name": {
+      "type": "text",
+      "required_for_publication": true,
+      "empty": "block-publication"
+    },
+    "brand_logo": {
+      "type": "logo",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "hero_title": {
+      "type": "text",
+      "required_for_publication": true,
+      "empty": "block-publication"
+    },
+    "hero_subtitle": {
+      "type": "text",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "hero_portrait": {
+      "type": "image",
+      "required_for_publication": false,
+      "empty": "reserve-art"
+    },
+    "hero_cta": {
+      "type": "link",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "about_heading": {
+      "type": "text",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "about_body": {
+      "type": "rich_text",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "projects_heading": {
+      "type": "text",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "selected_projects": {
+      "type": "project_list",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "contact_heading": {
+      "type": "text",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "contact_link": {
+      "type": "link",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "socials": {
+      "type": "social_links",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "footer_note": {
+      "type": "text",
+      "required_for_publication": false,
+      "empty": "omit"
+    }
+  }
+}

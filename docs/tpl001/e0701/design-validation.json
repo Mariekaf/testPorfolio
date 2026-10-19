@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "base_commit": "f579f0dd3af147316115ae366dc2bcc798721db8",
+  "scope": "Design only. Proposed schemas not installed or activated.",
+  "checks": [
+    {
+      "check": "schema-definition",
+      "file": "docs/tpl001/e0701/schemas/content.v2.proposed.schema.json",
+      "result": "passed"
+    },
+    {
+      "check": "schema-definition",
+      "file": "docs/tpl001/e0701/schemas/snapshot.v3.proposed.schema.json",
+      "result": "passed"
+    },
+    {
+      "check": "schema-definition",
+      "file": "docs/tpl001/e0701/schemas/template.v2.proposed.schema.json",
+      "result": "passed"
+    },
+    {
+      "check": "example-structure",
+      "file": "creative-editorial.descriptor.proposed.json",
+      "result": "passed"
+    },
+    {
+      "check": "example-structure",
+      "file": "creative-editorial.content.proposed.json",
+      "result": "passed"
+    },
+    {
+      "check": "example-structure",
+      "file": "creative-editorial.media-reference.proposed.json",
+      "result": "passed"
+    },
+    {
+      "check": "example-structure",
+      "file": "creative-editorial.snapshot.proposed.json",
+      "result": "passed"
+    },
+    {
+      "check": "cross-document-inventory",
+      "slots": 14,
+      "sections": 6,
+      "result": "passed"
+    },
+    {
+      "check": "documentation-only-scope-and-approved-parent",
+      "result": "passed"
+    }
+  ],
+  "database_used": false,
+  "migrations_run": false,
+  "application_tests_rerun": false,
+  "windows_executed": false,
+  "limitations": [
+    "Structural examples and cross-document inventory verified; no runtime implementation or business validator delivered.",
+    "Asset UUIDs are synthetic; no asset existence, rights or publication validation claimed.",
+    "Zero bundle digest is a documentary placeholder, not a verified deployable bundle."
+  ],
+  "sha256": {
+    "docs/tpl001/e0701/examples/creative-editorial.content.proposed.json": "18e410a73a370f0b60338ce734eece0b11165ca747afc93e3c41f125292f9e51",
+    "docs/tpl001/e0701/examples/creative-editorial.descriptor.proposed.json": "166d760f2a97f240c0085d942b3b504054d45922fafac21e07b25b05a41b6590",
+    "docs/tpl001/e0701/examples/creative-editorial.media-reference.proposed.json": "f4b1b242ef485279a1952b033861795b7d975001a072b6638df7445fc21ce8a3",
+    "docs/tpl001/e0701/examples/creative-editorial.snapshot.proposed.json": "175281f7a75dd1d1e364b03b8c590c3328a407aab60d7867c08b69edbec5c6dc",
+    "docs/tpl001/e0701/schemas/content.v2.proposed.schema.json": "a632491a617c8e22c822695916c2510710e2a08c32fbae28a99c574ddc4ff765",
+    "docs/tpl001/e0701/schemas/snapshot.v3.proposed.schema.json": "2a3f220ec579eb279857b66da56e1477a8957f86d187c246f346bbd819ebbfb8",
+    "docs/tpl001/e0701/schemas/template.v2.proposed.schema.json": "e7f6954b5ccc6b0176d18279c446eb80340047e781522cfd23f20e2d691eb809"
+  }
+}
