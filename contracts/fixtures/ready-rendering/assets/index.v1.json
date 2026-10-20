@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "description": "Original synthetic vector illustrations, no real person, product or private file.",
+  "sources": [
+    {
+      "id": "portrait-a",
+      "file": "portrait-a.svg",
+      "width": 900,
+      "height": 1125,
+      "sha256": "74262c6eb011535b01e85aac8e89087b9a6bad15a429fffb70418ad358adacca",
+      "bytes": 1107
+    },
+    {
+      "id": "portrait-b",
+      "file": "portrait-b.svg",
+      "width": 900,
+      "height": 1125,
+      "sha256": "3bb91b65644edeac0dfa09ddc30df1509ba46e88f4f64151112d793df68bed44",
+      "bytes": 1107
+    },
+    {
+      "id": "project-a",
+      "file": "project-a.svg",
+      "width": 1200,
+      "height": 800,
+      "sha256": "088b452ee3ba627aa86fa0f3fc4d066df99d5699f460f65da56070db4dfa7444",
+      "bytes": 780
+    },
+    {
+      "id": "project-b",
+      "file": "project-b.svg",
+      "width": 1200,
+      "height": 800,
+      "sha256": "187b0d30c6520122891a34c7ba36198e95f77d38f760fbb922150bd48241b21e",
+      "bytes": 683
+    },
+    {
+      "id": "project-c",
+      "file": "project-c.svg",
+      "width": 1200,
+      "height": 800,
+      "sha256": "2e1b45a975cf2d327c6ba66c3b6e6ac31b6d15dee6080bb4f9aa325ab1e89eed",
+      "bytes": 780
+    },
+    {
+      "id": "project-d",
+      "file": "project-d.svg",
+      "width": 1200,
+      "height": 800,
+      "sha256": "01f31005eb06e008cf355123d751ce4405d7be372e8efb9e4c00228ff3b0fb77",
+      "bytes": 683
+    },
+    {
+      "id": "logo-a",
+      "file": "logo-a.svg",
+      "width": 96,
+      "height": 96,
+      "sha256": "cacc7c274b9822ba726bc342dbdb45360f8140ece13432721af2866a0ed697a1",
+      "bytes": 158
+    },
+    {
+      "id": "logo-b",
+      "file": "logo-b.svg",
+      "width": 96,
+      "height": 96,
+      "sha256": "0bc8e2c03e538cb5ba912fd3ffd851dada8c25f8181371f41ef6feb106a214cf",
+      "bytes": 152
+    }
+  ]
+}

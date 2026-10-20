@@ -1,0 +1,594 @@
+{
+  "schema_version": 1,
+  "description": "Two explicitly synthetic content sets for the same immutable Creative Editorial1.0.0 composition.",
+  "cases": [
+    {
+      "id": "studio-a",
+      "document": {
+        "schema_version": 3,
+        "composition": {
+          "schema_version": 3,
+          "template": {
+            "id": "creative-editorial",
+            "version": "1.0.0"
+          },
+          "sections": [
+            {
+              "id": "navigation",
+              "variant": "creative-navigation.v1",
+              "slot_bindings": {
+                "identity": "identity_name",
+                "logo": "brand_logo"
+              }
+            },
+            {
+              "id": "hero",
+              "variant": "creative-hero.v1",
+              "slot_bindings": {
+                "title": "hero_title",
+                "subtitle": "hero_subtitle",
+                "portrait": "hero_portrait",
+                "cta": "hero_cta"
+              }
+            },
+            {
+              "id": "about",
+              "variant": "creative-about.v1",
+              "slot_bindings": {
+                "heading": "about_heading",
+                "body": "about_body"
+              }
+            },
+            {
+              "id": "projects",
+              "variant": "creative-projects.v1",
+              "slot_bindings": {
+                "heading": "projects_heading",
+                "items": "selected_projects"
+              }
+            },
+            {
+              "id": "contact",
+              "variant": "creative-contact.v1",
+              "slot_bindings": {
+                "heading": "contact_heading",
+                "link": "contact_link",
+                "socials": "socials"
+              }
+            },
+            {
+              "id": "footer",
+              "variant": "creative-footer.v1",
+              "slot_bindings": {
+                "note": "footer_note"
+              }
+            }
+          ],
+          "responsive_profile": {
+            "id": "creative-editorial-responsive",
+            "version": "1.0.0"
+          }
+        },
+        "content": {
+          "schema_version": 2,
+          "slots": {
+            "identity_name": {
+              "type": "text",
+              "value": "Alix — profil fictif"
+            },
+            "brand_logo": {
+              "type": "logo",
+              "value": {
+                "asset_id": "10000000-0000-4000-8000-000000000002",
+                "alt": "Symbole graphique original du profil fictif — studio-a",
+                "decorative": false,
+                "focal_point": {
+                  "x": 0.5,
+                  "y": 0.4
+                }
+              }
+            },
+            "hero_title": {
+              "type": "text",
+              "value": "Des idées qui font du lien."
+            },
+            "hero_subtitle": {
+              "type": "text",
+              "value": "Recherche UX et design d’interfaces. Un portfolio entièrement fictif pour explorer des expériences plus humaines."
+            },
+            "hero_portrait": {
+              "type": "image",
+              "value": {
+                "asset_id": "10000000-0000-4000-8000-000000000001",
+                "alt": "Illustration originale d’un portrait fictif — studio-a",
+                "decorative": false,
+                "focal_point": {
+                  "x": 0.5,
+                  "y": 0.4
+                }
+              }
+            },
+            "hero_cta": {
+              "type": "link",
+              "label": "Explorer les projets",
+              "target": {
+                "kind": "section",
+                "section_id": "projects"
+              }
+            },
+            "about_heading": {
+              "type": "text",
+              "value": "De la curiosité à la clarté."
+            },
+            "about_body": {
+              "type": "rich_text",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "J’explore les usages, je relie les idées et je dessine des produits que l’on comprend.",
+                      "marks": [
+                        "strong"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "Ce récit est une démonstration synthétique. Tous les projets et visuels sont fictifs, et peuvent être remplacés sans changer la composition.",
+                      "marks": []
+                    }
+                  ]
+                }
+              ]
+            },
+            "projects_heading": {
+              "type": "text",
+              "value": "Matières à explorer."
+            },
+            "selected_projects": {
+              "type": "project_list",
+              "items": [
+                {
+                  "id": "20000000-0000-4000-8000-000000000001",
+                  "title": "Clarté — projet fictif",
+                  "summary": "Une interface de suivi simple et attentive aux usages.",
+                  "cover": {
+                    "asset_id": "10000000-0000-4000-8000-000000000003",
+                    "alt": "Illustration géométrique originale du projet fictif Clarté — projet fictif",
+                    "decorative": false,
+                    "focal_point": {
+                      "x": 0.5,
+                      "y": 0.4
+                    }
+                  },
+                  "target": {
+                    "kind": "external",
+                    "url": "https://example.invalid/project-0"
+                  }
+                },
+                {
+                  "id": "20000000-0000-4000-8000-000000000002",
+                  "title": "Élan — projet fictif",
+                  "summary": "Un parcours mobile conçu autour des moments essentiels.",
+                  "cover": {
+                    "asset_id": "10000000-0000-4000-8000-000000000004",
+                    "alt": "Illustration géométrique originale du projet fictif Élan — projet fictif",
+                    "decorative": false,
+                    "focal_point": {
+                      "x": 0.5,
+                      "y": 0.4
+                    }
+                  },
+                  "target": {
+                    "kind": "external",
+                    "url": "https://example.invalid/project-1"
+                  }
+                },
+                {
+                  "id": "20000000-0000-4000-8000-000000000003",
+                  "title": "Traverse — projet fictif",
+                  "summary": "Relier recherche, structure et expérience de navigation.",
+                  "cover": {
+                    "asset_id": "10000000-0000-4000-8000-000000000005",
+                    "alt": "Illustration géométrique originale du projet fictif Traverse — projet fictif",
+                    "decorative": false,
+                    "focal_point": {
+                      "x": 0.5,
+                      "y": 0.4
+                    }
+                  },
+                  "target": {
+                    "kind": "external",
+                    "url": "https://example.invalid/project-2"
+                  }
+                }
+              ]
+            },
+            "contact_heading": {
+              "type": "text",
+              "value": "Une idée à partager ?"
+            },
+            "contact_link": {
+              "type": "link",
+              "label": "Échangeons ensemble",
+              "target": {
+                "kind": "email",
+                "address": "alix@example.invalid"
+              }
+            },
+            "socials": {
+              "type": "social_links",
+              "items": [
+                {
+                  "network": "other",
+                  "label": "Site de démonstration",
+                  "target": {
+                    "kind": "external",
+                    "url": "https://example.invalid"
+                  }
+                }
+              ]
+            },
+            "footer_note": {
+              "type": "text",
+              "value": "Portfolio synthétique · aucune information personnelle réelle."
+            }
+          }
+        },
+        "presentation": {
+          "schema_version": 3,
+          "style_policy": {
+            "id": "creative-editorial-style",
+            "version": "1.0.0"
+          },
+          "defaults": {
+            "palette_id": "ink-lime",
+            "font_ref": {
+              "id": "system-sans",
+              "version": "1.0.0"
+            }
+          }
+        },
+        "customization": {
+          "schema_version": 3,
+          "style_overrides": {}
+        },
+        "experience": null
+      },
+      "media": {
+        "accountId": "a0000000-0000-4000-8000-000000000001",
+        "assets": {
+          "10000000-0000-4000-8000-000000000001": {
+            "accountId": "a0000000-0000-4000-8000-000000000001",
+            "state": "ready",
+            "rightsConfirmed": true,
+            "sourceId": "portrait-a"
+          },
+          "10000000-0000-4000-8000-000000000002": {
+            "accountId": "a0000000-0000-4000-8000-000000000001",
+            "state": "ready",
+            "rightsConfirmed": true,
+            "sourceId": "logo-a"
+          },
+          "10000000-0000-4000-8000-000000000003": {
+            "accountId": "a0000000-0000-4000-8000-000000000001",
+            "state": "ready",
+            "rightsConfirmed": true,
+            "sourceId": "project-a"
+          },
+          "10000000-0000-4000-8000-000000000004": {
+            "accountId": "a0000000-0000-4000-8000-000000000001",
+            "state": "ready",
+            "rightsConfirmed": true,
+            "sourceId": "project-b"
+          },
+          "10000000-0000-4000-8000-000000000005": {
+            "accountId": "a0000000-0000-4000-8000-000000000001",
+            "state": "ready",
+            "rightsConfirmed": true,
+            "sourceId": "project-c"
+          }
+        }
+      },
+      "synthetic": true
+    },
+    {
+      "id": "studio-b",
+      "document": {
+        "schema_version": 3,
+        "composition": {
+          "schema_version": 3,
+          "template": {
+            "id": "creative-editorial",
+            "version": "1.0.0"
+          },
+          "sections": [
+            {
+              "id": "navigation",
+              "variant": "creative-navigation.v1",
+              "slot_bindings": {
+                "identity": "identity_name",
+                "logo": "brand_logo"
+              }
+            },
+            {
+              "id": "hero",
+              "variant": "creative-hero.v1",
+              "slot_bindings": {
+                "title": "hero_title",
+                "subtitle": "hero_subtitle",
+                "portrait": "hero_portrait",
+                "cta": "hero_cta"
+              }
+            },
+            {
+              "id": "about",
+              "variant": "creative-about.v1",
+              "slot_bindings": {
+                "heading": "about_heading",
+                "body": "about_body"
+              }
+            },
+            {
+              "id": "projects",
+              "variant": "creative-projects.v1",
+              "slot_bindings": {
+                "heading": "projects_heading",
+                "items": "selected_projects"
+              }
+            },
+            {
+              "id": "contact",
+              "variant": "creative-contact.v1",
+              "slot_bindings": {
+                "heading": "contact_heading",
+                "link": "contact_link",
+                "socials": "socials"
+              }
+            },
+            {
+              "id": "footer",
+              "variant": "creative-footer.v1",
+              "slot_bindings": {
+                "note": "footer_note"
+              }
+            }
+          ],
+          "responsive_profile": {
+            "id": "creative-editorial-responsive",
+            "version": "1.0.0"
+          }
+        },
+        "content": {
+          "schema_version": 2,
+          "slots": {
+            "identity_name": {
+              "type": "text",
+              "value": "Sacha — profil fictif"
+            },
+            "brand_logo": {
+              "type": "logo",
+              "value": {
+                "asset_id": "10000000-0000-4000-8000-000000000012",
+                "alt": "Symbole graphique original du profil fictif — studio-b",
+                "decorative": false,
+                "focal_point": {
+                  "x": 0.5,
+                  "y": 0.4
+                }
+              }
+            },
+            "hero_title": {
+              "type": "text",
+              "value": "Des formes qui font du sens."
+            },
+            "hero_subtitle": {
+              "type": "text",
+              "value": "Stratégie produit et interfaces inclusives. Deuxième portfolio synthétique, avec d’autres textes, images et projets."
+            },
+            "hero_portrait": {
+              "type": "image",
+              "value": {
+                "asset_id": "10000000-0000-4000-8000-000000000011",
+                "alt": "Illustration originale d’un portrait fictif — studio-b",
+                "decorative": false,
+                "focal_point": {
+                  "x": 0.5,
+                  "y": 0.4
+                }
+              }
+            },
+            "hero_cta": {
+              "type": "link",
+              "label": "Découvrir les projets",
+              "target": {
+                "kind": "section",
+                "section_id": "projects"
+              }
+            },
+            "about_heading": {
+              "type": "text",
+              "value": "Donner forme aux bonnes questions."
+            },
+            "about_body": {
+              "type": "rich_text",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "Je transforme des situations complexes en parcours accessibles et en interfaces utiles.",
+                      "marks": [
+                        "strong"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "text": "Ce récit est une démonstration synthétique. Tous les projets et visuels sont fictifs, et peuvent être remplacés sans changer la composition.",
+                      "marks": []
+                    }
+                  ]
+                }
+              ]
+            },
+            "projects_heading": {
+              "type": "text",
+              "value": "Des pistes devenues projets."
+            },
+            "selected_projects": {
+              "type": "project_list",
+              "items": [
+                {
+                  "id": "20000000-0000-4000-8000-000000000011",
+                  "title": "Lien — projet synthétique",
+                  "summary": "Rendre les échanges plus clairs dans une interface partagée.",
+                  "cover": {
+                    "asset_id": "10000000-0000-4000-8000-000000000013",
+                    "alt": "Illustration géométrique originale du projet fictif Lien — projet synthétique",
+                    "decorative": false,
+                    "focal_point": {
+                      "x": 0.5,
+                      "y": 0.4
+                    }
+                  },
+                  "target": {
+                    "kind": "external",
+                    "url": "https://example.invalid/project-0"
+                  }
+                },
+                {
+                  "id": "20000000-0000-4000-8000-000000000012",
+                  "title": "Tempo — projet synthétique",
+                  "summary": "Organiser les étapes et laisser de la place à l’essentiel.",
+                  "cover": {
+                    "asset_id": "10000000-0000-4000-8000-000000000014",
+                    "alt": "Illustration géométrique originale du projet fictif Tempo — projet synthétique",
+                    "decorative": false,
+                    "focal_point": {
+                      "x": 0.5,
+                      "y": 0.4
+                    }
+                  },
+                  "target": {
+                    "kind": "external",
+                    "url": "https://example.invalid/project-1"
+                  }
+                },
+                {
+                  "id": "20000000-0000-4000-8000-000000000013",
+                  "title": "Repères — projet synthétique",
+                  "summary": "Une exploration des détails qui rendent un service accessible.",
+                  "cover": {
+                    "asset_id": "10000000-0000-4000-8000-000000000015",
+                    "alt": "Illustration géométrique originale du projet fictif Repères — projet synthétique",
+                    "decorative": false,
+                    "focal_point": {
+                      "x": 0.5,
+                      "y": 0.4
+                    }
+                  },
+                  "target": {
+                    "kind": "external",
+                    "url": "https://example.invalid/project-2"
+                  }
+                }
+              ]
+            },
+            "contact_heading": {
+              "type": "text",
+              "value": "Et si on en parlait ?"
+            },
+            "contact_link": {
+              "type": "link",
+              "label": "Parlons de votre idée",
+              "target": {
+                "kind": "email",
+                "address": "sacha@example.invalid"
+              }
+            },
+            "socials": {
+              "type": "social_links",
+              "items": [
+                {
+                  "network": "other",
+                  "label": "Autre site synthétique",
+                  "target": {
+                    "kind": "external",
+                    "url": "https://example.invalid/second-demo"
+                  }
+                }
+              ]
+            },
+            "footer_note": {
+              "type": "text",
+              "value": "Démonstration fictive B · contenus et images originaux de test."
+            }
+          }
+        },
+        "presentation": {
+          "schema_version": 3,
+          "style_policy": {
+            "id": "creative-editorial-style",
+            "version": "1.0.0"
+          },
+          "defaults": {
+            "palette_id": "ink-lime",
+            "font_ref": {
+              "id": "system-sans",
+              "version": "1.0.0"
+            }
+          }
+        },
+        "customization": {
+          "schema_version": 3,
+          "style_overrides": {}
+        },
+        "experience": null
+      },
+      "media": {
+        "accountId": "a0000000-0000-4000-8000-000000000002",
+        "assets": {
+          "10000000-0000-4000-8000-000000000011": {
+            "accountId": "a0000000-0000-4000-8000-000000000002",
+            "state": "ready",
+            "rightsConfirmed": true,
+            "sourceId": "portrait-b"
+          },
+          "10000000-0000-4000-8000-000000000012": {
+            "accountId": "a0000000-0000-4000-8000-000000000002",
+            "state": "ready",
+            "rightsConfirmed": true,
+            "sourceId": "logo-b"
+          },
+          "10000000-0000-4000-8000-000000000013": {
+            "accountId": "a0000000-0000-4000-8000-000000000002",
+            "state": "ready",
+            "rightsConfirmed": true,
+            "sourceId": "project-d"
+          },
+          "10000000-0000-4000-8000-000000000014": {
+            "accountId": "a0000000-0000-4000-8000-000000000002",
+            "state": "ready",
+            "rightsConfirmed": true,
+            "sourceId": "project-c"
+          },
+          "10000000-0000-4000-8000-000000000015": {
+            "accountId": "a0000000-0000-4000-8000-000000000002",
+            "state": "ready",
+            "rightsConfirmed": true,
+            "sourceId": "project-b"
+          }
+        }
+      },
+      "synthetic": true
+    }
+  ]
+}

@@ -1,8 +1,12 @@
 # TPL-001 — Conception, registre et instances
 
-**C+D livrées ; recette visuelle manuelle ouverte. E.01–E.06 validées selon les décisions utilisateur (E.06 : revue et Windows rapportés). E.07.01 acceptée sous conditions (`329101d`). E.07.02 livrée pour revue : contrats et registre hors ligne uniquement. E.07.03 et publication PUB non commencées.** Aucun catalogue v3, éditeur ou upload activé.
+**C+D livrées ; recette visuelle manuelle ouverte. E.01–E.07.02 validées selon les décisions utilisateur. Windows E.07.02 : 449 réussites, 1 symlink ignoré (`0268f80`). E.07.03 livrée pour revue : renderer complet et preview synthétique isolée uniquement, statut draft conservé. E.07.04 et PUB non commencés.** Aucun catalogue utilisateur, upload réel ou route de publication activé.
 
-- [Rapport E.07.02 — Contrats et registre hors ligne, à revoir](TPL-001-E0702-report.md)
+- [Rapport E.07.03 — Creative Editorial complet, à revoir](TPL-001-E0703-report.md)
+- [Renderer, médias synthétiques et revue visuelle E.07.03](e0703/rendering.md)
+- [Commandes Windows et preview isolée E.07.03](e0703/windows.md)
+- [Captures réelles E.07.03](e0703/evidence/)
+- [Rapport E.07.02 — Contrats et registre hors ligne, validés après livraison](TPL-001-E0702-report.md)
 - [Contrats E.07.02 et ajustements conditionnels](e0702/contracts.md)
 - [Commandes Windows E.07.02 sans base](e0702/windows.md)
 - [Architecture E.07.01 acceptée sous conditions](TPL-001-E0701-architecture.md)

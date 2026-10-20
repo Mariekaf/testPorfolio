@@ -1,0 +1,356 @@
+{
+  "checks": [
+    {
+      "case": "studio-a",
+      "width": 320,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "studio-a",
+      "width": 375,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "studio-a",
+      "width": 640,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "studio-a",
+      "width": 768,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "studio-a",
+      "width": 1024,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "studio-a",
+      "width": 1440,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "studio-b",
+      "width": 320,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "studio-b",
+      "width": 375,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "studio-b",
+      "width": 640,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "studio-b",
+      "width": 768,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "studio-b",
+      "width": 1024,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "studio-b",
+      "width": 1440,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "paper-serif",
+      "width": 320,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "paper-serif",
+      "width": 375,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "paper-serif",
+      "width": 640,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "paper-serif",
+      "width": 768,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "paper-serif",
+      "width": 1024,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "paper-serif",
+      "width": 1440,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "about",
+        "projects",
+        "contact",
+        "footer"
+      ]
+    },
+    {
+      "case": "empty-draft",
+      "width": 320,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "footer"
+      ]
+    },
+    {
+      "case": "empty-draft",
+      "width": 375,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "footer"
+      ]
+    },
+    {
+      "case": "empty-draft",
+      "width": 640,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "footer"
+      ]
+    },
+    {
+      "case": "empty-draft",
+      "width": 768,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "footer"
+      ]
+    },
+    {
+      "case": "empty-draft",
+      "width": 1024,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "footer"
+      ]
+    },
+    {
+      "case": "empty-draft",
+      "width": 1440,
+      "keyboard": "passed",
+      "contrast": "passed",
+      "zoom_200_and_long_text": "passed",
+      "sections": [
+        "navigation",
+        "hero",
+        "footer"
+      ]
+    }
+  ],
+  "composition_substitution": "six width comparisons passed",
+  "forced_colors": "4 passed",
+  "page_errors": [],
+  "remote_requests": 0,
+  "screenshots": 12,
+  "limitations": [
+    "Linux Chromium only, Windows/Safari/Firefox unrun.",
+    "Semantic structure and alt tested, no real screen-reader session.",
+    "200% CSS zoom; OS display scaling not tested."
+  ]
+}
