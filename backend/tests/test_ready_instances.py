@@ -84,6 +84,15 @@ class ReadyInstanceTests(ReadyMixin,TestCase):
         from pathlib import Path
         root=Path(__file__).resolve().parents[2]
         fixture=json.loads((root/'contracts/fixtures/ready-rendering/demonstration.v1.json').read_text(encoding='utf-8'))['cases'][0]['document']
+        from tests.media_fixtures import image_upload
+        from modules.media.services import import_images
+        image=import_images(self.user,[image_upload()])[0]
+        fixture=copy.deepcopy(fixture)
+        slots=fixture['content']['slots']
+        slots['brand_logo']['value']['asset_id']=str(image.pk)
+        slots['hero_portrait']['value']['asset_id']=str(image.pk)
+        for project in slots['selected_projects']['items']:
+            if project['cover']:project['cover']['asset_id']=str(image.pk)
         record=self.create();data={k:fixture[k] for k in ('content','customization')}
         data['customization']['style_overrides']={'palette_id':'paper-cobalt','font_ref':{'id':'system-serif','version':'1.0.0'}}
         result=self.send(BASE+'/'+record['portfolio']['id'],data,'put',tag=record['etag'])

@@ -135,6 +135,8 @@ class ReadyDetail(ReadyBase):
                 raise PortfolioProblem('portfolio_archived', 'Restaurez le portfolio avant modification.')
             design = design_for(item, True)
             document = merged(design.document, request.data)
+            from modules.media.services import validate_references
+            validate_references(item.account_id, document)
             design.document = document; design.save(update_fields=['document','updated_at'])
             item.version += 1; item.save(update_fields=['version','updated_at'])
             revision(design, item, request.user)
@@ -161,3 +163,19 @@ class ReadyRevisions(ReadyBase):
         item = self.owned(request, pk); design = design_for(item)
         return Response({'results':[{'id':str(r.pk),'version':r.version,'created_at':r.created_at.isoformat()}
             for r in design.revisions.order_by('-version')[:50]]})
+
+
+class ReadyMedia(ReadyBase):
+    parser_classes = [BoundedJSONParser]
+    def post(self, request, pk):
+        from modules.media.services import resolve
+        with transaction.atomic():
+            item = self.owned(request, pk, True)
+            design = design_for(item)
+            if not isinstance(request.data, dict) or set(request.data) != {'content'}:
+                raise PortfolioProblem('invalid_design','Envoyez uniquement le contenu à résoudre.',400)
+            document = merged(design.document, {'content':request.data['content'], 'customization':design.document['customization']})
+            result=Response({'assets':resolve(item.account_id,document)})
+            result['Cache-Control']='private, no-store'
+            result['Vary']='Cookie'
+            return result

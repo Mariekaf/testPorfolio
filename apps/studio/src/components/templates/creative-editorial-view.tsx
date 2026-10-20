@@ -1,6 +1,8 @@
+import PrivateImage from '../media/private-image.tsx';
 import type {CSSProperties} from 'react';
 import {resolveFixtureMedia,type MediaReference,type FixtureMediaContext} from '../../../../../packages/content-contracts/src/ready-fixture-media.ts';
 import styles from './creative-editorial-renderer.module.css';
+import {privateImage,type PrivateMedia} from '../../lib/private-media-resolution.ts';
 
 type Data=Record<string,any>;
 const nonblank=(text:string)=>text.replace(/[\s\u0085\uFEFF]/g,'').length>0;
@@ -17,8 +19,9 @@ function RichText({blocks}:{blocks:Data[]}){
   return <span key={n}>{text}</span>;
  })}</p>)}</>;
 }
-function ImageSlot({reference,media,kind}:{reference:MediaReference|null;media?:FixtureMediaContext;kind:'portrait'|'cover'|'logo'}){
- const resolved=resolveFixtureMedia(reference,media);
+function ImageSlot({reference,media,privateMedia,kind}:{reference:MediaReference|null;media?:FixtureMediaContext;privateMedia?:PrivateMedia;kind:'portrait'|'cover'|'logo'}){
+ const resolved=privateMedia?privateImage(reference?.asset_id||'',privateMedia):resolveFixtureMedia(reference,media);
+ if(resolved.state==='available'&&privateMedia)return <PrivateImage className={styles.image} src={resolved.src!} width={resolved.width!} height={resolved.height!} alt={reference!.alt} loading={kind==='portrait'||kind==='logo'?'eager':'lazy'} style={{objectPosition:`${reference!.focal_point.x*100}% ${reference!.focal_point.y*100}%`}}/>;
  if(resolved.state==='available')return <img className={styles.image} src={resolved.src} width={resolved.width} height={resolved.height}
   alt={reference!.alt} loading={kind==='portrait'||kind==='logo'?'eager':'lazy'} decoding="async"
   style={{objectPosition:`${reference!.focal_point.x*100}% ${reference!.focal_point.y*100}%`}}/>;
@@ -29,8 +32,8 @@ function ImageSlot({reference,media,kind}:{reference:MediaReference|null;media?:
  </div>;
 }
 /** Isolated, explicit opt-in. No routes, writes, conversion, uploads or public rendering. */
-export default function CreativeEditorialView({document,effective,media,enabled=false,scope='creative',demonstration=false,embedded=false}:{
- document:unknown;effective:Data;media?:FixtureMediaContext;enabled?:boolean;scope?:string;demonstration?:boolean;embedded?:boolean;
+export default function CreativeEditorialView({document,effective,media,privateMedia,enabled=false,scope='creative',demonstration=false,embedded=false}:{
+ document:unknown;effective:Data;media?:FixtureMediaContext;privateMedia?:PrivateMedia;enabled?:boolean;scope?:string;demonstration?:boolean;embedded?:boolean;
 }){
  if(enabled!==true)throw new Error('Creative Editorial rendering is disabled.');
  if(!/^[a-z][a-z0-9-]{0,60}$/.test(scope))throw new Error('Invalid preview scope.');
@@ -47,7 +50,7 @@ export default function CreativeEditorialView({document,effective,media,enabled=
   <div className={styles.previewNote}>{demonstration?'Démonstration synthétique · contenus et illustrations fictifs':'Brouillon · aperçu local non publié'}</div>
   <header id={`${scope}-navigation`} className={styles.navigation} data-ready-section="navigation">
    <a className={styles.identity} href={`#${scope}-hero`}>
-    <span className={styles.logo}><ImageSlot reference={s.brand_logo.value} media={media} kind="logo"/></span>
+    <span className={styles.logo}><ImageSlot reference={s.brand_logo.value} media={media} privateMedia={privateMedia} kind="logo"/></span>
     <span>{nonblank(s.identity_name.value)?s.identity_name.value:'Identité à compléter'}</span>
    </a>
    {navigationSections.length>0&&<nav aria-label="Navigation du portfolio"><ul>{navigationSections.map(id=><li key={id}><a href={`#${scope}-${id}`}>{labels[id]}</a></li>)}</ul></nav>}
@@ -60,7 +63,7 @@ export default function CreativeEditorialView({document,effective,media,enabled=
      {nonblank(s.hero_subtitle.value)&&<p className={styles.heroSubtitle}>{s.hero_subtitle.value}</p>}
      {href(s.hero_cta)&&<a className={styles.button} href={href(s.hero_cta)}><span className={styles.actionLabel}>{s.hero_cta.label}</span><span className={styles.arrow} aria-hidden="true"/></a>}
     </div>
-    <div className={styles.heroPortrait}><ImageSlot reference={s.hero_portrait.value} media={media} kind="portrait"/><span className={styles.orbit} aria-hidden="true"/></div>
+    <div className={styles.heroPortrait}><ImageSlot reference={s.hero_portrait.value} media={media} privateMedia={privateMedia} kind="portrait"/><span className={styles.orbit} aria-hidden="true"/></div>
     <span className={styles.heroRule} aria-hidden="true"/>
    </section>
    {visible.has('about')&&<section id={`${scope}-about`} tabIndex={-1} className={styles.about} data-ready-section="about" aria-labelledby={`${scope}-about-heading`}>
@@ -72,7 +75,7 @@ export default function CreativeEditorialView({document,effective,media,enabled=
     <div className={styles.sectionLabel}><span aria-hidden="true">02 /</span><span>Projets sélectionnés</span></div>
     <h2 id={`${scope}-projects-heading`}>{nonblank(s.projects_heading.value)?s.projects_heading.value:'Projets sélectionnés'}</h2>
     <div className={styles.projectGrid}>{projects.map((item:Data,index:number)=><article className={styles.project} key={item.id} data-project-id={item.id}>
-     <div className={styles.projectCover}><ImageSlot reference={item.cover} media={media} kind="cover"/></div>
+     <div className={styles.projectCover}><ImageSlot reference={item.cover} media={media} privateMedia={privateMedia} kind="cover"/></div>
      <div className={styles.projectMeta}><span aria-hidden="true">{String(index+1).padStart(2,'0')}</span><div>
       <h3>{item.target?<a href={link(item.target,scope)} rel="noopener noreferrer">{item.title}<span className={styles.arrow} aria-hidden="true"/></a>:item.title}</h3>
       {nonblank(item.summary)&&<p>{item.summary}</p>}

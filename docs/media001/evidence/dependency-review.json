@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-20",
+  "python_processing": "3.13.5",
+  "pillow": "13.0.0",
+  "webp_linux_executed": true,
+  "windows_executed": false,
+  "pypi_source": "https://pypi.org/pypi/Pillow/13.0.0/json",
+  "requires_python": ">=3.11",
+  "windows_wheel": {
+    "filename": "pillow-13.0.0-cp313-cp313-win_amd64.whl",
+    "sha256": "9dda0788a9932776a75d8bcc020076edc308ce2508b51f6739a45e3158b3fc42"
+  },
+  "locks": {
+    "runtime": {
+      "historical_versions_unchanged": true,
+      "new_packages": [
+        "pillow==13.0.0"
+      ],
+      "sha256": "43a737210d2f23e75f25712876aa301bb71dbc01a2ad153b84faf5383be0574d"
+    },
+    "development": {
+      "historical_versions_unchanged": true,
+      "new_packages": [
+        "pillow==13.0.0"
+      ],
+      "sha256": "5a3b67ecd33ad5de79582af8017e8438871974721d536bc5f270516ad8cbc6ca"
+    }
+  }
+}

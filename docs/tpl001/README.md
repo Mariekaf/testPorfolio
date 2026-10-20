@@ -1,8 +1,10 @@
 # TPL-001 — Conception, registre et instances
 
-**C+D livrées ; recette visuelle manuelle ouverte. E.01–E.07.02 validées selon les décisions utilisateur. E.07.03 : recette visuelle MVP acceptée ; Windows et lecteur d’écran ouverts. E.07.04 livrée pour revue : sélection et édition privées v3, SQL uniquement en cluster neuf jetable. Aucun upload réel, catalogue public, publication, PR ou déploiement.**
+**E.07.04 acceptée MVP selon décision utilisateur (Windows natif réussi, deux tests ignorés ; lecteur d’écran ouvert). MEDIA-001 livrée pour revue : bibliothèque et médias privés, validation Linux sur cluster et stockage neufs jetables uniquement. Aucun catalogue public, publication, PR ou déploiement.**
 
-- [Rapport E.07.04 — Parcours privé complet, à revoir](TPL-001-E0704-report.md)
+- [Rapport MEDIA-001 et réserves](../media001/MEDIA-001-report.md)
+- [Windows MEDIA-001 sans Docker, exclusivement isolé](../media001/windows.md)
+- [Rapport E.07.04 — Parcours privé complet, accepté MVP](TPL-001-E0704-report.md)
 - [Architecture et récupération E.07.04](e0704/architecture.md)
 - [Utilisation et limites E.07.04](e0704/usage.md)
 - [Commandes Windows E.07.04 exclusivement isolées](e0704/windows.md)

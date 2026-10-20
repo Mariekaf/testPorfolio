@@ -32,3 +32,8 @@ urlpatterns += [
     path('api/v1/ready-portfolios/<uuid:pk>/validate', ReadyValidate.as_view()),
     path('api/v1/ready-portfolios/<uuid:pk>/revisions', ReadyRevisions.as_view()),
 ]
+
+urlpatterns += [path('api/v1/media', include('modules.media.urls'))]
+
+from modules.templates.ready_instances import ReadyMedia
+urlpatterns += [path('api/v1/ready-portfolios/<uuid:pk>/media', ReadyMedia.as_view())]
