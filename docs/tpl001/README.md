@@ -1,8 +1,13 @@
 # TPL-001 — Conception, registre et instances
 
-**C+D livrées ; recette visuelle manuelle ouverte. E.01–E.07.02 validées selon les décisions utilisateur. Windows E.07.02 : 449 réussites, 1 symlink ignoré (`0268f80`). E.07.03 livrée pour revue : renderer complet et preview synthétique isolée uniquement, statut draft conservé. E.07.04 et PUB non commencés.** Aucun catalogue utilisateur, upload réel ou route de publication activé.
+**C+D livrées ; recette visuelle manuelle ouverte. E.01–E.07.02 validées selon les décisions utilisateur. E.07.03 : recette visuelle MVP acceptée ; Windows et lecteur d’écran ouverts. E.07.04 livrée pour revue : sélection et édition privées v3, SQL uniquement en cluster neuf jetable. Aucun upload réel, catalogue public, publication, PR ou déploiement.**
 
-- [Rapport E.07.03 — Creative Editorial complet, à revoir](TPL-001-E0703-report.md)
+- [Rapport E.07.04 — Parcours privé complet, à revoir](TPL-001-E0704-report.md)
+- [Architecture et récupération E.07.04](e0704/architecture.md)
+- [Utilisation et limites E.07.04](e0704/usage.md)
+- [Commandes Windows E.07.04 exclusivement isolées](e0704/windows.md)
+- [Captures et preuves E.07.04](e0704/evidence/)
+- [Rapport E.07.03 — Creative Editorial complet, recette visuelle MVP acceptée](TPL-001-E0703-report.md)
 - [Renderer, médias synthétiques et revue visuelle E.07.03](e0703/rendering.md)
 - [Commandes Windows et preview isolée E.07.03](e0703/windows.md)
 - [Captures réelles E.07.03](e0703/evidence/)

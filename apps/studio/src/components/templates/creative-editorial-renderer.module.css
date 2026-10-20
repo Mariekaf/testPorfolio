@@ -91,3 +91,6 @@
  .logo {background:Canvas;}
  .orbit {display:none;}
 }
+/* E0704: scope host Studio defaults so private preview matches standalone E0703. */
+.portfolio main {max-width:none;margin:0;padding:0;}
+.portfolio p, .portfolio footer {color:inherit;}

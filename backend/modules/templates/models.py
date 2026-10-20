@@ -65,3 +65,35 @@ class DesignTransition(models.Model):
             models.CheckConstraint(condition=(models.Q(action='upgrade', restored_from__isnull=True, before_snapshot__schema_version=1, after_snapshot__schema_version=2) | models.Q(action='restore', restored_from__isnull=False, before_snapshot__schema_version=2, after_snapshot__schema_version=1)), name='tpl_transition_direction'),
             *[models.CheckConstraint(condition=models.Q(**{name+'__regex':r'^[0-9a-f]{64}$'}), name='tpl_transition_'+name) for name in ('request_digest','source_digest','before_digest','after_digest')],
         ]
+
+
+class ReadyPortfolioDesign(models.Model):
+    """Separate v3 aggregate. Ownership remains exclusively on Portfolio.account."""
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    portfolio = models.OneToOneField('portfolios.Portfolio', on_delete=models.PROTECT, related_name='ready_design')
+    document = models.JSONField()
+    source_digest = models.CharField(max_length=64, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.CheckConstraint(condition=models.Q(document__has_key='schema_version', document__schema_version=3), name='ready_document_v3'),
+            models.CheckConstraint(condition=models.Q(source_digest__regex=r'^[0-9a-f]{64}$'), name='ready_source_digest'),
+        ]
+
+
+class ReadyDesignRevision(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    design = models.ForeignKey(ReadyPortfolioDesign, on_delete=models.PROTECT, related_name='revisions')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    version = models.PositiveBigIntegerField()
+    document = models.JSONField(editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['version']
+        constraints = [
+            models.UniqueConstraint(fields=['design','version'], name='ready_revision_version_unique'),
+            models.CheckConstraint(condition=models.Q(version__gte=1, document__has_key='schema_version', document__schema_version=3), name='ready_revision_v3'),
+        ]

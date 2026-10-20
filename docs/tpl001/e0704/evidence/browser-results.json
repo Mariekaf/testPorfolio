@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "anonymous private route redirects",
+    "real registration login private selection creation",
+    "structured text rich project link social media style editing and real renderer",
+    "validation and network failure retain input retry saves",
+    "save leave dashboard overview resume persisted content",
+    "concurrent ETag conflict and unsaved navigation guard explicit reload",
+    "desktop mobile Studio and actual portfolio screenshots no overflow",
+    "logout private route closed"
+  ],
+  "page_errors": [],
+  "screenshots": 5,
+  "synthetic_only": true,
+  "windows_executed": false,
+  "screen_reader_executed": false
+}

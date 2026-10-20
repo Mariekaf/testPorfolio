@@ -65,6 +65,9 @@ def create_from_template(user, values, key, serialize):
 
 
 def copy_design(source, duplicate):
+    from .models import ReadyPortfolioDesign
+    if ReadyPortfolioDesign.objects.filter(portfolio=source).exists():
+        raise PortfolioProblem('ready_duplicate_unavailable','La duplication v3 n’est pas disponible. Créez un nouveau portfolio Creative Editorial.')
     design=PortfolioDesign.objects.select_for_update().filter(portfolio=source).first()
     if design is None:
         if source.source_template_id:raise PortfolioProblem('design_inconsistent','La source nécessite une vérification.')

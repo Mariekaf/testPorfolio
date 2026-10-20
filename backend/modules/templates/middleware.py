@@ -14,6 +14,7 @@ class DesignBodyLimit:
     def __init__(self,get_response):self.get_response=get_response
     def __call__(self,request):
         allowed=(request.method=='POST' and request.path=='/api/v1/portfolios/from-template') or (request.method=='PUT' and re.fullmatch(r'/api/v1/portfolios/[0-9a-f-]{36}/design',request.path))
+        allowed = allowed or (request.method in ('POST','PUT') and re.fullmatch(r'/api/v1/ready-portfolios(?:/[0-9a-f-]{36}(?:/validate)?)?', request.path))
         if allowed:
             raw=request.read(LIMIT+1)
             if len(raw)>LIMIT:

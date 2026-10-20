@@ -22,3 +22,13 @@ urlpatterns += [path("api/v1/portfolios", include("modules.portfolios.urls"))]
 
 # TPL-001.B: authenticated, read-only catalogue and preview bundles.
 urlpatterns += [path("api/v1/templates", include("modules.templates.urls"))]
+
+# E0704 private MVP; does not promote the immutable draft catalogue.
+from modules.templates.ready_instances import ReadyTemplates, ReadyCreate, ReadyDetail, ReadyValidate, ReadyRevisions
+urlpatterns += [
+    path('api/v1/ready-templates', ReadyTemplates.as_view()),
+    path('api/v1/ready-portfolios', ReadyCreate.as_view()),
+    path('api/v1/ready-portfolios/<uuid:pk>', ReadyDetail.as_view()),
+    path('api/v1/ready-portfolios/<uuid:pk>/validate', ReadyValidate.as_view()),
+    path('api/v1/ready-portfolios/<uuid:pk>/revisions', ReadyRevisions.as_view()),
+]
