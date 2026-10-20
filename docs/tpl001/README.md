@@ -1,8 +1,12 @@
 # TPL-001 — Conception, registre et instances
 
-**C+D livrées ; recette visuelle manuelle ouverte. E.01–E.04 approuvées. E.05 validée par revue et confirmation utilisateur des vérifications Windows (`a3e6e90`). E.06 autorisée exclusivement, trois rendus livrés pour revue et toujours désactivés dans les routes. E.07 non commencée.** Base B `730384b` avec correctif Windows `99b2269`, conservés sans fusion.
+**C+D livrées ; recette visuelle manuelle ouverte. E.01–E.06 validées selon les décisions utilisateur (E.06 : revue et Windows rapportés). E.07.01 acceptée sous conditions (`329101d`). E.07.02 livrée pour revue : contrats et registre hors ligne uniquement. E.07.03 et publication PUB non commencées.** Aucun catalogue v3, éditeur ou upload activé.
 
-- [Rapport E.06 — Sept layouts, trois nouveaux rendus à revoir](TPL-001-E06-report.md)
+- [Rapport E.07.02 — Contrats et registre hors ligne, à revoir](TPL-001-E0702-report.md)
+- [Contrats E.07.02 et ajustements conditionnels](e0702/contracts.md)
+- [Commandes Windows E.07.02 sans base](e0702/windows.md)
+- [Architecture E.07.01 acceptée sous conditions](TPL-001-E0701-architecture.md)
+- [Rapport E.06 — Sept layouts, livraison validée après revue](TPL-001-E06-report.md)
 - [Décision approuvée sur les variantes textuelles E.06](e06/contract-decision.md)
 - [Commandes Windows E.06 sans base](e06/windows.md)
 - [Performances et limites E.06](e06/performance.md)

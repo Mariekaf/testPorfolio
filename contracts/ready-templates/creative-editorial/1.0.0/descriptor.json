@@ -1,0 +1,118 @@
+{
+  "schema_version": 2,
+  "template": {
+    "id": "creative-editorial",
+    "version": "1.0.0"
+  },
+  "name": "Creative Editorial",
+  "status": "draft",
+  "renderer": {
+    "id": "ready-portfolio",
+    "version": "1.0.0"
+  },
+  "document_schema": 3,
+  "required_capabilities": [
+    "typed-slots-v2",
+    "ready-renderer-v1",
+    "safe-media-v1",
+    "manual-publication-v1"
+  ],
+  "customization_policy": {
+    "id": "creative-editorial-style",
+    "version": "1.0.0"
+  },
+  "slots": {
+    "identity_name": {
+      "type": "text",
+      "required_for_publication": true,
+      "empty": "block-publication",
+      "max_length": 80
+    },
+    "brand_logo": {
+      "type": "logo",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "hero_title": {
+      "type": "text",
+      "required_for_publication": true,
+      "empty": "block-publication",
+      "max_length": 160
+    },
+    "hero_subtitle": {
+      "type": "text",
+      "required_for_publication": false,
+      "empty": "omit",
+      "max_length": 300
+    },
+    "hero_portrait": {
+      "type": "image",
+      "required_for_publication": false,
+      "empty": "reserve-art"
+    },
+    "hero_cta": {
+      "type": "link",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "about_heading": {
+      "type": "text",
+      "required_for_publication": false,
+      "empty": "omit",
+      "max_length": 120
+    },
+    "about_body": {
+      "type": "rich_text",
+      "required_for_publication": false,
+      "empty": "omit",
+      "max_length": 3000
+    },
+    "projects_heading": {
+      "type": "text",
+      "required_for_publication": false,
+      "empty": "omit",
+      "max_length": 120
+    },
+    "selected_projects": {
+      "type": "project_list",
+      "required_for_publication": true,
+      "empty": "block-publication",
+      "max_items": 6
+    },
+    "contact_heading": {
+      "type": "text",
+      "required_for_publication": false,
+      "empty": "omit",
+      "max_length": 120
+    },
+    "contact_link": {
+      "type": "link",
+      "required_for_publication": false,
+      "empty": "omit"
+    },
+    "socials": {
+      "type": "social_links",
+      "required_for_publication": false,
+      "empty": "omit",
+      "max_items": 6
+    },
+    "footer_note": {
+      "type": "text",
+      "required_for_publication": false,
+      "empty": "omit",
+      "max_length": 160
+    }
+  },
+  "publication_policy": {
+    "required_text_slots": [
+      "identity_name",
+      "hero_title"
+    ],
+    "project_slot": "selected_projects",
+    "min_real_projects": 1,
+    "contact_slots": [
+      "contact_link",
+      "socials"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "reference": {
+    "id": "creative-editorial-responsive",
+    "version": "1.0.0"
+  },
+  "mobile_max": 639,
+  "tablet_min": 640,
+  "tablet_max": 1023,
+  "desktop_min": 1024,
+  "desktop_inherits_tablet": false,
+  "composition_locked": true
+}

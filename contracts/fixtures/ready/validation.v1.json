@@ -1,0 +1,1877 @@
+{
+  "schema_version": 1,
+  "description": "Synthetic offline facts only; no users/assets/projects or publication created.",
+  "cases": [
+    {
+      "id": "empty-draft",
+      "changes": [],
+      "valid": true,
+      "ready": false,
+      "facts": {}
+    },
+    {
+      "id": "complete-with-trusted-synthetic-evidence",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        }
+      ],
+      "valid": true,
+      "ready": true,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ]
+      }
+    },
+    {
+      "id": "demo-project-not-real-evidence",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {}
+    },
+    {
+      "id": "identity-still-required",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "﻿ "
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ]
+      }
+    },
+    {
+      "id": "project-client-claim-is-not-proof",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "verified_user_project_ids": []
+      }
+    },
+    {
+      "id": "contact-needed-even-with-project",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": null
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ]
+      }
+    },
+    {
+      "id": "section-link-is-not-contact",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "section",
+            "section_id": "hero"
+          }
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ]
+      }
+    },
+    {
+      "id": "external-contact",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "external",
+            "url": "https://example.invalid/contact"
+          }
+        }
+      ],
+      "valid": true,
+      "ready": true,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ]
+      }
+    },
+    {
+      "id": "social-contact",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": null
+        },
+        {
+          "path": "/content/slots/socials/items",
+          "value": [
+            {
+              "network": "github",
+              "label": "GitHub synthétique",
+              "target": {
+                "kind": "external",
+                "url": "https://github.com/example"
+              }
+            }
+          ]
+        }
+      ],
+      "valid": true,
+      "ready": true,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ]
+      }
+    },
+    {
+      "id": "authorized-font-reference-no-load",
+      "changes": [
+        {
+          "path": "/customization/style_overrides/font_ref",
+          "value": {
+            "id": "system-serif",
+            "version": "1.0.0"
+          }
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {}
+    },
+    {
+      "id": "alternate-palette",
+      "changes": [
+        {
+          "path": "/customization/style_overrides/palette_id",
+          "value": "paper-cobalt"
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {}
+    },
+    {
+      "id": "emoji-boundary-80",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨"
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {}
+    },
+    {
+      "id": "emoji-over-80",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨🎨"
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "rich-text",
+      "changes": [
+        {
+          "path": "/content/slots/about_body/blocks",
+          "value": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "Texte Unicode 東京",
+                  "marks": [
+                    "strong",
+                    "emphasis"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {}
+    },
+    {
+      "id": "unresolved-image",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/hero_portrait/value",
+          "value": {
+            "asset_id": "10000000-0000-4000-8000-000000000001",
+            "alt": "Portrait synthétique, sans fichier réel",
+            "decorative": false,
+            "focal_point": {
+              "x": 0.25,
+              "y": 1
+            }
+          }
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ]
+      }
+    },
+    {
+      "id": "synthetic-ready-image",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/hero_portrait/value",
+          "value": {
+            "asset_id": "10000000-0000-4000-8000-000000000001",
+            "alt": "Portrait synthétique, sans fichier réel",
+            "decorative": false,
+            "focal_point": {
+              "x": 0.25,
+              "y": 1
+            }
+          }
+        }
+      ],
+      "valid": true,
+      "ready": true,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ],
+        "assets": {
+          "10000000-0000-4000-8000-000000000001": {
+            "account_id": "a0000000-0000-4000-8000-000000000001",
+            "state": "ready",
+            "rights_confirmed": true
+          }
+        }
+      }
+    },
+    {
+      "id": "image-foreign",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/hero_portrait/value",
+          "value": {
+            "asset_id": "10000000-0000-4000-8000-000000000001",
+            "alt": "Portrait synthétique, sans fichier réel",
+            "decorative": false,
+            "focal_point": {
+              "x": 0.25,
+              "y": 1
+            }
+          }
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ],
+        "assets": {
+          "10000000-0000-4000-8000-000000000001": {
+            "account_id": "b0000000-0000-4000-8000-000000000001",
+            "state": "ready",
+            "rights_confirmed": true
+          }
+        }
+      }
+    },
+    {
+      "id": "image-processing",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/hero_portrait/value",
+          "value": {
+            "asset_id": "10000000-0000-4000-8000-000000000001",
+            "alt": "Portrait synthétique, sans fichier réel",
+            "decorative": false,
+            "focal_point": {
+              "x": 0.25,
+              "y": 1
+            }
+          }
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ],
+        "assets": {
+          "10000000-0000-4000-8000-000000000001": {
+            "account_id": "a0000000-0000-4000-8000-000000000001",
+            "state": "processing",
+            "rights_confirmed": true
+          }
+        }
+      }
+    },
+    {
+      "id": "image-no-rights",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/hero_portrait/value",
+          "value": {
+            "asset_id": "10000000-0000-4000-8000-000000000001",
+            "alt": "Portrait synthétique, sans fichier réel",
+            "decorative": false,
+            "focal_point": {
+              "x": 0.25,
+              "y": 1
+            }
+          }
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ],
+        "assets": {
+          "10000000-0000-4000-8000-000000000001": {
+            "account_id": "a0000000-0000-4000-8000-000000000001",
+            "state": "ready",
+            "rights_confirmed": false
+          }
+        }
+      }
+    },
+    {
+      "id": "snapshot-version",
+      "changes": [
+        {
+          "path": "/schema_version",
+          "value": 2
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "template-id",
+      "changes": [
+        {
+          "path": "/composition/template/id",
+          "value": "unknown"
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "template-version",
+      "changes": [
+        {
+          "path": "/composition/template/version",
+          "value": "2.0.0"
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "section-order",
+      "changes": [
+        {
+          "path": "/composition/sections",
+          "value": [
+            {
+              "id": "footer",
+              "variant": "creative-footer.v1",
+              "slot_bindings": {
+                "note": "footer_note"
+              }
+            },
+            {
+              "id": "contact",
+              "variant": "creative-contact.v1",
+              "slot_bindings": {
+                "heading": "contact_heading",
+                "link": "contact_link",
+                "socials": "socials"
+              }
+            },
+            {
+              "id": "projects",
+              "variant": "creative-projects.v1",
+              "slot_bindings": {
+                "heading": "projects_heading",
+                "items": "selected_projects"
+              }
+            },
+            {
+              "id": "about",
+              "variant": "creative-about.v1",
+              "slot_bindings": {
+                "heading": "about_heading",
+                "body": "about_body"
+              }
+            },
+            {
+              "id": "hero",
+              "variant": "creative-hero.v1",
+              "slot_bindings": {
+                "title": "hero_title",
+                "subtitle": "hero_subtitle",
+                "portrait": "hero_portrait",
+                "cta": "hero_cta"
+              }
+            },
+            {
+              "id": "navigation",
+              "variant": "creative-navigation.v1",
+              "slot_bindings": {
+                "identity": "identity_name",
+                "logo": "brand_logo"
+              }
+            }
+          ]
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "duplicate-section",
+      "changes": [
+        {
+          "path": "/composition/sections/1",
+          "value": {
+            "id": "navigation",
+            "variant": "creative-navigation.v1",
+            "slot_bindings": {
+              "identity": "identity_name",
+              "logo": "brand_logo"
+            }
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "binding-swap",
+      "changes": [
+        {
+          "path": "/composition/sections/1/slot_bindings/title",
+          "value": "identity_name"
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "new-binding",
+      "changes": [
+        {
+          "path": "/composition/sections/1/slot_bindings/css",
+          "value": "hero_title"
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "new-slot",
+      "changes": [
+        {
+          "path": "/content/slots/css",
+          "value": {
+            "type": "text",
+            "value": "<script>"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "wrong-slot-type",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name",
+          "value": {
+            "type": "link",
+            "label": "oops",
+            "target": null
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "null-text",
+      "changes": [
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": null
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "text-length",
+      "changes": [
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "font-unknown",
+      "changes": [
+        {
+          "path": "/customization/style_overrides/font_ref",
+          "value": {
+            "id": "remote",
+            "version": "1.0.0"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "font-version",
+      "changes": [
+        {
+          "path": "/customization/style_overrides/font_ref",
+          "value": {
+            "id": "system-serif",
+            "version": "1.1.0"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "font-url",
+      "changes": [
+        {
+          "path": "/customization/style_overrides/font_ref/url",
+          "value": "https://example.invalid/f.woff"
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "color-shorthand",
+      "changes": [
+        {
+          "path": "/customization/style_overrides/colors",
+          "value": {
+            "text": "#fff"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "contrast-text",
+      "changes": [
+        {
+          "path": "/customization/style_overrides/colors",
+          "value": {
+            "text": "#172620"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "contrast-cta",
+      "changes": [
+        {
+          "path": "/customization/style_overrides/colors",
+          "value": {
+            "accent": "#172620"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "css-injection",
+      "changes": [
+        {
+          "path": "/customization/style_overrides/colors",
+          "value": {
+            "text": "red;display:none"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "override-null",
+      "changes": [
+        {
+          "path": "/customization/style_overrides/palette_id",
+          "value": null
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "default-changed",
+      "changes": [
+        {
+          "path": "/presentation/defaults/palette_id",
+          "value": "paper-cobalt"
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "experience",
+      "changes": [
+        {
+          "path": "/experience",
+          "value": {
+            "kind": "none"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "project-blank-title",
+      "changes": [
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "﻿ ",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        }
+      ],
+      "valid": true,
+      "facts": {},
+      "ready": false
+    },
+    {
+      "id": "project-duplicate",
+      "changes": [
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            },
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "project-too-many",
+      "changes": [
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000000",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            },
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            },
+            {
+              "id": "20000000-0000-4000-8000-000000000002",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            },
+            {
+              "id": "20000000-0000-4000-8000-000000000003",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            },
+            {
+              "id": "20000000-0000-4000-8000-000000000004",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            },
+            {
+              "id": "20000000-0000-4000-8000-000000000005",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            },
+            {
+              "id": "20000000-0000-4000-8000-000000000006",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "social-domain",
+      "changes": [
+        {
+          "path": "/content/slots/socials/items",
+          "value": [
+            {
+              "network": "linkedin",
+              "label": "Profil",
+              "target": {
+                "kind": "external",
+                "url": "https://linkedin.com.evil.invalid"
+              }
+            }
+          ]
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "social-duplicate",
+      "changes": [
+        {
+          "path": "/content/slots/socials/items",
+          "value": [
+            {
+              "network": "other",
+              "label": "Site",
+              "target": {
+                "kind": "external",
+                "url": "https://example.invalid"
+              }
+            },
+            {
+              "network": "other",
+              "label": "Site",
+              "target": {
+                "kind": "external",
+                "url": "https://example.invalid"
+              }
+            }
+          ]
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "rich-html",
+      "changes": [
+        {
+          "path": "/content/slots/about_body/blocks",
+          "value": [
+            {
+              "type": "html",
+              "children": []
+            }
+          ]
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "rich-mark",
+      "changes": [
+        {
+          "path": "/content/slots/about_body/blocks",
+          "value": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "x",
+                  "marks": [
+                    "script"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "rich-total",
+      "changes": [
+        {
+          "path": "/content/slots/about_body/blocks",
+          "value": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "marks": []
+                },
+                {
+                  "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "marks": []
+                },
+                {
+                  "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "marks": []
+                },
+                {
+                  "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "image-no-alt",
+      "changes": [
+        {
+          "path": "/content/slots/hero_portrait/value",
+          "value": {
+            "asset_id": "10000000-0000-4000-8000-000000000001",
+            "alt": " ",
+            "decorative": false,
+            "focal_point": {
+              "x": 0.25,
+              "y": 1
+            }
+          }
+        }
+      ],
+      "valid": true,
+      "facts": {},
+      "ready": false
+    },
+    {
+      "id": "image-decorative",
+      "changes": [
+        {
+          "path": "/content/slots/hero_portrait/value",
+          "value": {
+            "asset_id": "10000000-0000-4000-8000-000000000001",
+            "alt": "",
+            "decorative": true,
+            "focal_point": {
+              "x": 0.25,
+              "y": 1
+            }
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "image-crop",
+      "changes": [
+        {
+          "path": "/content/slots/hero_portrait/value",
+          "value": {
+            "asset_id": "10000000-0000-4000-8000-000000000001",
+            "alt": "Portrait synthétique, sans fichier réel",
+            "decorative": false,
+            "focal_point": {
+              "x": 2,
+              "y": 0
+            }
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "image-url",
+      "changes": [
+        {
+          "path": "/content/slots/hero_portrait/value",
+          "value": {
+            "asset_id": "10000000-0000-4000-8000-000000000001",
+            "alt": "Portrait synthétique, sans fichier réel",
+            "decorative": false,
+            "focal_point": {
+              "x": 0.25,
+              "y": 1
+            },
+            "url": "https://example.invalid/a"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "unknown-style",
+      "changes": [
+        {
+          "path": "/presentation/style_policy/version",
+          "value": "9.0.0"
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "unsafe-link-javascript",
+      "changes": [
+        {
+          "path": "/content/slots/hero_cta/label",
+          "value": "Lien"
+        },
+        {
+          "path": "/content/slots/hero_cta/target",
+          "value": {
+            "kind": "external",
+            "url": "javascript:alert(1)"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "unsafe-link-http",
+      "changes": [
+        {
+          "path": "/content/slots/hero_cta/label",
+          "value": "Lien"
+        },
+        {
+          "path": "/content/slots/hero_cta/target",
+          "value": {
+            "kind": "external",
+            "url": "http://example.invalid"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "unsafe-link-credentials",
+      "changes": [
+        {
+          "path": "/content/slots/hero_cta/label",
+          "value": "Lien"
+        },
+        {
+          "path": "/content/slots/hero_cta/target",
+          "value": {
+            "kind": "external",
+            "url": "https://name:pass@example.invalid"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "unsafe-link-backslash",
+      "changes": [
+        {
+          "path": "/content/slots/hero_cta/label",
+          "value": "Lien"
+        },
+        {
+          "path": "/content/slots/hero_cta/target",
+          "value": {
+            "kind": "external",
+            "url": "https://example.invalid\\evil"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "unsafe-link-newline",
+      "changes": [
+        {
+          "path": "/content/slots/hero_cta/label",
+          "value": "Lien"
+        },
+        {
+          "path": "/content/slots/hero_cta/target",
+          "value": {
+            "kind": "external",
+            "url": "https://example.invalid/\n"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "unsafe-link-port",
+      "changes": [
+        {
+          "path": "/content/slots/hero_cta/label",
+          "value": "Lien"
+        },
+        {
+          "path": "/content/slots/hero_cta/target",
+          "value": {
+            "kind": "external",
+            "url": "https://example.invalid:99999"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "unsafe-link-empty-host-part",
+      "changes": [
+        {
+          "path": "/content/slots/hero_cta/label",
+          "value": "Lien"
+        },
+        {
+          "path": "/content/slots/hero_cta/target",
+          "value": {
+            "kind": "external",
+            "url": "https://example..invalid"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "unsafe-link-unicode-host",
+      "changes": [
+        {
+          "path": "/content/slots/hero_cta/label",
+          "value": "Lien"
+        },
+        {
+          "path": "/content/slots/hero_cta/target",
+          "value": {
+            "kind": "external",
+            "url": "https://éxample.invalid"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "invisible-target",
+      "changes": [
+        {
+          "path": "/content/slots/hero_cta/target",
+          "value": {
+            "kind": "section",
+            "section_id": "projects"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "valid-target",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/hero_cta/target",
+          "value": {
+            "kind": "section",
+            "section_id": "projects"
+          }
+        }
+      ],
+      "valid": true,
+      "ready": true,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ]
+      }
+    },
+    {
+      "id": "literal-html-is-plain-text",
+      "changes": [
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "<script>alert(1)</script>"
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {}
+    },
+    {
+      "id": "color-final-newline",
+      "changes": [
+        {
+          "path": "/customization/style_overrides/colors",
+          "value": {
+            "text": "#F5F4EE\n"
+          }
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "deep-rich-property",
+      "changes": [
+        {
+          "path": "/content/slots/about_body/blocks",
+          "value": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "ok",
+                  "marks": [],
+                  "html": "<img>"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "valid": false,
+      "facts": {}
+    },
+    {
+      "id": "unscoped-project-evidence",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ]
+      }
+    },
+    {
+      "id": "incomplete-contact-label",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "﻿ "
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ]
+      }
+    },
+    {
+      "id": "incomplete-project-title",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ]
+      }
+    },
+    {
+      "id": "ready-image-still-needs-alt",
+      "changes": [
+        {
+          "path": "/content/slots/identity_name/value",
+          "value": "Profil synthétique"
+        },
+        {
+          "path": "/content/slots/hero_title/value",
+          "value": "Interfaces et usages"
+        },
+        {
+          "path": "/content/slots/selected_projects/items",
+          "value": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Projet synthétique Unicode 東京 🎨",
+              "summary": "Étude synthétique, aucun travail personnel réel.",
+              "cover": null,
+              "target": null
+            }
+          ]
+        },
+        {
+          "path": "/content/slots/contact_link/label",
+          "value": "Écrire"
+        },
+        {
+          "path": "/content/slots/contact_link/target",
+          "value": {
+            "kind": "email",
+            "address": "design@example.invalid"
+          }
+        },
+        {
+          "path": "/content/slots/hero_portrait/value",
+          "value": {
+            "asset_id": "10000000-0000-4000-8000-000000000001",
+            "alt": "Portrait synthétique, sans fichier réel",
+            "decorative": false,
+            "focal_point": {
+              "x": 0.25,
+              "y": 1
+            }
+          }
+        },
+        {
+          "path": "/content/slots/hero_portrait/value/alt",
+          "value": ""
+        }
+      ],
+      "valid": true,
+      "ready": false,
+      "facts": {
+        "account_id": "a0000000-0000-4000-8000-000000000001",
+        "verified_user_project_ids": [
+          "20000000-0000-4000-8000-000000000001"
+        ],
+        "assets": {
+          "10000000-0000-4000-8000-000000000001": {
+            "account_id": "a0000000-0000-4000-8000-000000000001",
+            "state": "ready",
+            "rights_confirmed": true
+          }
+        }
+      }
+    }
+  ]
+}
