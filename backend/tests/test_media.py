@@ -1,5 +1,6 @@
 """MEDIA-001, synthetic data only, runs through the new-cluster runner."""
 import copy
+from contextlib import contextmanager, nullcontext
 from io import BytesIO,StringIO
 import os
 from pathlib import Path
@@ -13,6 +14,7 @@ from PIL import Image
 from django.contrib.auth import get_user_model
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.management import call_command
+from django.core.signals import request_finished
 from django.db import close_old_connections,transaction,IntegrityError,DatabaseError
 from django.test import TestCase,TransactionTestCase
 from django.utils import timezone
@@ -28,6 +30,30 @@ from tests.test_ready_instances import ReadyMixin,BASE
 from tests.media_fixtures import image_upload
 
 URL='/api/v1/media/assets'
+
+
+@contextmanager
+def closing_response(response):
+    """Close even an unread stream, using Django test client's signal semantics."""
+    try:
+        yield response
+    finally:
+        try:
+            # Closing a started test-client generator runs its own finally block.
+            # Do this first to avoid reentrant response.close() and signal hooks.
+            iterator=getattr(response,'_iterator',None)
+            close_iterator=getattr(iterator,'close',None)
+            if close_iterator is not None:close_iterator()
+        finally:
+            if not response.closed:
+                # An unstarted generator does not run its finally on close.
+                # Match django.test.client.closing_iterator_wrapper here too.
+                connected=request_finished.disconnect(close_old_connections)
+                try:
+                    response.close()
+                finally:
+                    if connected:request_finished.connect(close_old_connections)
+
 
 class MediaMixin(ReadyMixin):
     def setUp(self):
@@ -82,20 +108,22 @@ class MediaTests(MediaMixin,TestCase):
         for item in result.json()['results']:
             self.assertNotIn('storage_key',item);self.assertNotIn(str(self.root),str(item));self.assertEqual(item['content_type'],'image/webp')
             for suffix in ('file','thumbnail'):
-                response=self.client.get(URL+'/'+item['id']+'/'+suffix);self.assertEqual(response.status_code,200)
-                raw=b''.join(response.streaming_content)
-                with Image.open(BytesIO(raw)) as image:self.assertEqual(image.format,'WEBP');self.assertFalse(image.getexif())
-                self.assertIn('private',response['Cache-Control']);self.assertIn('no-store',response['Cache-Control'])
-                self.assertIn('Cookie',response['Vary']);self.assertEqual(response['X-Content-Type-Options'],'nosniff')
-                self.assertEqual(response['Cross-Origin-Resource-Policy'],'same-origin')
-                self.assertEqual(response['Content-Type'],'image/webp')
-                self.assertNotIn(item['original_name'],response['Content-Disposition'])
+                with closing_response(self.client.get(URL+'/'+item['id']+'/'+suffix)) as response:
+                    self.assertEqual(response.status_code,200)
+                    raw=b''.join(response.streaming_content)
+                    with Image.open(BytesIO(raw)) as image:self.assertEqual(image.format,'WEBP');self.assertFalse(image.getexif())
+                    self.assertIn('private',response['Cache-Control']);self.assertIn('no-store',response['Cache-Control'])
+                    self.assertIn('Cookie',response['Vary']);self.assertEqual(response['X-Content-Type-Options'],'nosniff')
+                    self.assertEqual(response['Cross-Origin-Resource-Policy'],'same-origin')
+                    self.assertEqual(response['Content-Type'],'image/webp')
+                    self.assertNotIn(item['original_name'],response['Content-Disposition'])
 
     def test_exif_orientation_gps_comments_do_not_survive(self):
         exif=Image.Exif();exif[274]=6;exif[315]='Synthetic private author';exif[270]='Synthetic secret location'
         item=self.upload([image_upload('rotated.jpg','JPEG',size=(100,200),exif=exif)]).json()['results'][0]
         self.assertEqual((item['width'],item['height']),(200,100))
-        raw=b''.join(self.client.get(item['file_url']).streaming_content)
+        with closing_response(self.client.get(item['file_url'])) as response:
+            raw=b''.join(response.streaming_content)
         self.assertNotIn(b'Synthetic private',raw);self.assertNotIn(b'Synthetic secret',raw)
         with Image.open(BytesIO(raw)) as image:self.assertFalse(image.getexif());self.assertNotIn('icc_profile',image.info);self.assertNotIn('xmp',image.info)
 
@@ -105,8 +133,9 @@ class MediaTests(MediaMixin,TestCase):
         self.assertEqual(result.status_code,201,result.data);item=result.json()['results'][0]
         self.assertEqual((item['width'],item['height']),(2560,1280))
         self.assertEqual((item['thumbnail_width'],item['thumbnail_height']),(400,200))
-        with Image.open(BytesIO(b''.join(self.client.get(item['file_url']).streaming_content))) as normalized:
-            self.assertEqual(normalized.getpixel((0,0))[3],0)
+        with closing_response(self.client.get(item['file_url'])) as response:
+            with Image.open(BytesIO(b''.join(response.streaming_content))) as normalized:
+                self.assertEqual(normalized.getpixel((0,0))[3],0)
 
     def test_logo_and_cover_revisions_block_deletion(self):
         for role in ('brand_logo','selected_projects'):
@@ -206,8 +235,64 @@ class MediaTests(MediaMixin,TestCase):
         removed=self.send(BASE+'/'+r['portfolio']['id'],data,'put',tag=r['etag']);self.assertEqual(removed.status_code,200)
         result=self.send(URL+'/'+item['id'],{'confirm':True},'delete',tag=item['etag']);self.assertEqual(result.status_code,409)
         self.assertEqual(result.json()['error']['code'],'asset_in_use')
-        self.assertEqual(self.client.get(item['file_url']).status_code,200)
+        with closing_response(self.client.get(item['file_url'])) as response:
+            self.assertEqual(response.status_code,200)
+            self.assertFalse(response.closed)
+        self.assertTrue(response.closed)
         self.assertEqual(ReadyDesignRevision.objects.count(),3)
+
+    def test_download_descriptors_close_before_windows_cleanup(self):
+        item=self.asset();asset=Asset.objects.get(pk=item['id'])
+        real_open=PrivateLocalStorage.open
+        for variant,url in (('full',item['file_url']),('thumbnail',item['thumbnail_url'])):
+            for mode in ('unread','partial','complete','head','consumer-error'):
+                with self.subTest(variant=variant,mode=mode):
+                    opened=[]
+                    def track(storage,*args,**kwargs):
+                        file=real_open(storage,*args,**kwargs);opened.append(file);return file
+                    expected=self.assertRaisesRegex(RuntimeError,'synthetic consumer failure') if mode=='consumer-error' else nullcontext()
+                    with patch.object(PrivateLocalStorage,'open',autospec=True,side_effect=track):
+                        with expected:
+                            with closing_response(self.client.head(url) if mode=='head' else self.client.get(url)) as response:
+                                self.assertEqual(response.status_code,200)
+                                self.assertEqual(len(opened),1)
+                                self.assertFalse(opened[0].closed)
+                                directives={value.strip() for value in response['Cache-Control'].split(',')}
+                                self.assertTrue({'private','no-store'} <= directives)
+                                self.assertIn('Cookie',response['Vary'])
+                                self.assertEqual(response['X-Content-Type-Options'],'nosniff')
+                                self.assertEqual(response['Cross-Origin-Resource-Policy'],'same-origin')
+                                if mode=='partial':
+                                    self.assertTrue(next(iter(response.streaming_content)))
+                                elif mode=='complete':
+                                    self.assertTrue(b''.join(response.streaming_content))
+                                    self.assertTrue(opened[0].closed)
+                                elif mode=='consumer-error':
+                                    raise RuntimeError('synthetic consumer failure')
+                    self.assertTrue(response.closed)
+                    self.assertTrue(opened[0].closed)
+                    with self.assertRaises(ValueError):opened[0].fileno()
+                    # Windows refuses this rename if a descriptor is still open.
+                    path=self.root/asset.storage_key/(variant+'.webp')
+                    moved=path.with_suffix('.released')
+                    path.rename(moved);moved.rename(path)
+
+    def test_integrity_rejection_closes_descriptor_before_windows_cleanup(self):
+        item=self.asset();asset=Asset.objects.get(pk=item['id']);storage=PrivateLocalStorage()
+        real_fdopen=os.fdopen
+        for variant,digest,size in (('full',asset.digest,asset.size),('thumbnail',asset.thumbnail_digest,asset.thumbnail_size)):
+            for supplied_digest,supplied_size in ((digest,size+1),('0'*64,size)):
+                with self.subTest(variant=variant,size=supplied_size):
+                    opened=[]
+                    def track(*args,**kwargs):
+                        file=real_fdopen(*args,**kwargs);opened.append(file);return file
+                    with patch('modules.media.storage.os.fdopen',side_effect=track):
+                        with self.assertRaises(OSError):storage.open(asset.storage_key,variant,supplied_digest,supplied_size)
+                    self.assertEqual(len(opened),1);self.assertTrue(opened[0].closed)
+                    with self.assertRaises(ValueError):opened[0].fileno()
+                    path=self.root/asset.storage_key/(variant+'.webp')
+                    moved=path.with_suffix('.released')
+                    path.rename(moved);moved.rename(path)
 
     def test_delete_preconditions_retention_dry_run_and_purge(self):
         item=self.asset();asset=Asset.objects.get(pk=item['id']);key=asset.storage_key
@@ -309,8 +394,9 @@ class MediaConcurrencyTests(MediaMixin,TransactionTestCase):
             close_old_connections()
             try:
                 client=APIClient();client.cookies=copy.copy(cookies)
-                response=client.get(f'{URL}/{asset.pk}/file');data=b''.join(response.streaming_content)
-                return response.status_code,data
+                with closing_response(client.get(f'{URL}/{asset.pk}/file')) as response:
+                    data=b''.join(response.streaming_content)
+                    return response.status_code,data
             finally:close_old_connections()
         with ThreadPoolExecutor(max_workers=4) as pool:reads=list(pool.map(download,range(8)))
         self.assertTrue(all(status==200 for status,_ in reads));self.assertTrue(all(raw==reads[0][1] for _,raw in reads))

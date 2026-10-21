@@ -194,3 +194,14 @@ Recette Windows rapportée : 389 tests, 10 échecs, 6 erreurs, 3 ignorés.
 Correctif ciblé OWNER RIGHTS proposé pour revue : [diagnostic, preuves et commandes](windows-acl-fix.md).
 La validation Windows du correctif et l’analyse individuelle des traces complètes
 restent ouvertes. Aucun push, PR, merge, déploiement ou PUB-001.
+
+## Suivi — WinError 32 après confirmation ACL Windows
+
+L’utilisateur confirme 25/25 tests ACL natifs réussis sur `4ad0e268`, puis une
+seule erreur de nettoyage dans la suite Django (391 exécutés, trois ignorés).
+Le correctif complémentaire ferme la réponse de streaming abandonnée par le test,
+sans modification du code applicatif : [rapport WinError 32](windows-winerror32-fix.md).
+Preuves finales Linux : 393 Django réussis, 22 contrôles hors base réussis et
+3 contrôles DACL Windows ignorés, 6 CMS réussis. Les clusters/stockages sont neufs
+et jetables. Validation Windows complémentaire encore ouverte ; commit local
+pour revue, sans push, PR, merge, déploiement ni PUB-001.
