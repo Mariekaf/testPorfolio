@@ -7,26 +7,17 @@ import re
 import shutil
 import subprocess
 from functools import lru_cache
+from .windows_acl import inspect_private_acl
 from django.conf import settings
 from modules.portfolios.services import PortfolioProblem
 
 @lru_cache(maxsize=8)
 def verify_windows_acl(root):
-    # Query DACL only; no SACL read/write or SeSecurityPrivilege required.
-    code = """$ErrorActionPreference='Stop';
-    $sid=[System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value;
-    $allowed=@($sid,'S-1-5-18','S-1-5-32-544');
-    $acl=Get-Acl -LiteralPath $env:MEDIA001_ACL_PATH;
-    foreach($rule in $acl.Access){
-      if($rule.AccessControlType -eq 'Allow'){
-        $who=$rule.IdentityReference.Translate([System.Security.Principal.SecurityIdentifier]).Value;
-        if($allowed -notcontains $who){throw 'Unrestricted private storage ACL'}
-      }
-    }; Write-Output 'private-acl-ok'"""
-    env=os.environ.copy();env['MEDIA001_ACL_PATH']=root
-    result=subprocess.run(['powershell.exe','-NoProfile','-NonInteractive','-Command',code],env=env,capture_output=True,text=True,timeout=10)
-    if result.returncode!=0 or result.stdout.strip()!='private-acl-ok':
-        raise PortfolioProblem('media_unavailable','Les permissions Windows du stockage doivent être privées.',503)
+    try:
+        inspect_private_acl(root)
+    except (OSError, ValueError, subprocess.SubprocessError) as exc:
+        raise PortfolioProblem('media_unavailable','Les permissions Windows du stockage doivent être privées.',503) from exc
+
 
 
 class BinaryStorage(ABC):

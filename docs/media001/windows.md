@@ -1,5 +1,9 @@
 # MEDIA-001 — Validation Windows native, sans Docker
 
+**Correctif après recette Windows échouée :** suivre [windows-acl-fix.md](windows-acl-fix.md)
+pour le diagnostic OWNER RIGHTS, le patch non publié et les commandes de reprise.
+Le résultat Linux initial ci-dessous reste une preuve historique, pas la recette du correctif.
+
 **Non exécutée sous Windows par l'agent.** E.07.04 est accepté MVP selon votre
 validation Windows (deux tests ignorés). Cette preuve n'est pas une validation
 Windows de MEDIA-001. Le lecteur d'écran reste ouvert.

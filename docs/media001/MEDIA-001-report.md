@@ -187,3 +187,10 @@ réelle et déploiement restent à autoriser séparément. Aucun passage sur la 
 habituelle ne doit être déduit de cette livraison.
 
 **Arrêt après MEDIA-001. PUB-001 n'est pas commencé. Attente de la revue utilisateur.**
+
+## Suivi — correctif Windows DACL
+
+Recette Windows rapportée : 389 tests, 10 échecs, 6 erreurs, 3 ignorés.
+Correctif ciblé OWNER RIGHTS proposé pour revue : [diagnostic, preuves et commandes](windows-acl-fix.md).
+La validation Windows du correctif et l’analyse individuelle des traces complètes
+restent ouvertes. Aucun push, PR, merge, déploiement ou PUB-001.
