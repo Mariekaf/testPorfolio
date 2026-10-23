@@ -425,7 +425,7 @@ test_vector_66_unscoped_project_evidence (tests.test_ready_templates.ReadyDocume
 test_vector_67_incomplete_contact_label (tests.test_ready_templates.ReadyDocumentTests.test_vector_67_incomplete_contact_label) ... ok
 test_vector_68_incomplete_project_title (tests.test_ready_templates.ReadyDocumentTests.test_vector_68_incomplete_project_title) ... ok
 test_vector_69_ready_image_still_needs_alt (tests.test_ready_templates.ReadyDocumentTests.test_vector_69_ready_image_still_needs_alt) ... ok
-test_corruption_and_path_guards_match_typescript (tests.test_ready_templates.ReadyRegistrySafetyTests.test_corruption_and_path_guards_match_typescript) ... 
+test_corruption_and_path_guards_match_typescript (tests.test_ready_templates.ReadyRegistrySafetyTests.test_corruption_and_path_guards_match_typescript) ...
   test_corruption_and_path_guards_match_typescript (tests.test_ready_templates.ReadyRegistrySafetyTests.test_corruption_and_path_guards_match_typescript) (mutation='hash') ... ERROR
   test_corruption_and_path_guards_match_typescript (tests.test_ready_templates.ReadyRegistrySafetyTests.test_corruption_and_path_guards_match_typescript) (mutation='bytes') ... ERROR
   test_corruption_and_path_guards_match_typescript (tests.test_ready_templates.ReadyRegistrySafetyTests.test_corruption_and_path_guards_match_typescript) (mutation='digest') ... ERROR
@@ -440,7 +440,7 @@ test_corruption_and_path_guards_match_typescript (tests.test_ready_templates.Rea
   test_corruption_and_path_guards_match_typescript (tests.test_ready_templates.ReadyRegistrySafetyTests.test_corruption_and_path_guards_match_typescript) (mutation='case-collision') ... ERROR
   test_corruption_and_path_guards_match_typescript (tests.test_ready_templates.ReadyRegistrySafetyTests.test_corruption_and_path_guards_match_typescript) (mutation='unsafe-font') ... ERROR
   test_corruption_and_path_guards_match_typescript (tests.test_ready_templates.ReadyRegistrySafetyTests.test_corruption_and_path_guards_match_typescript) (mutation='unknown-policy') ... ERROR
-test_strict_json_parity (tests.test_ready_templates.ReadyRegistrySafetyTests.test_strict_json_parity) ... 
+test_strict_json_parity (tests.test_ready_templates.ReadyRegistrySafetyTests.test_strict_json_parity) ...
   test_strict_json_parity (tests.test_ready_templates.ReadyRegistrySafetyTests.test_strict_json_parity) (raw='b\'{"x":1,"x":2}\'') ... ERROR
   test_strict_json_parity (tests.test_ready_templates.ReadyRegistrySafetyTests.test_strict_json_parity) (raw='b\'{"x":{"a":1,"a":2}}\'') ... ERROR
   test_strict_json_parity (tests.test_ready_templates.ReadyRegistrySafetyTests.test_strict_json_parity) (raw='b\'{"a":1,"\\\\u0061":2}\'') ... ERROR

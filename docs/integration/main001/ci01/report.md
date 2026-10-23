@@ -63,8 +63,11 @@ réparties dans `test_hero_rendering`, `test_hero_resolution`,
 Les trois drivers ci-dessus retournent exit 1 avant installation. Voir les fichiers
 `before-*.stderr` et `before-django.log` dans [evidence](evidence/).
 
-Après installation des dépendances, ces mêmes appels retournent exit 0, sans stderr
-(`after-*.stderr` et `after-*.stdout`). Le driver de registre valide le digest et
+Après installation des dépendances, ces mêmes appels retournent exit 0, sans
+`ERR_MODULE_NOT_FOUND` (`after-*.stderr` et `after-*.stdout`). Deux stderr sont
+vides ; le driver de rendu ready émet un avertissement Node
+`MODULE_TYPELESS_PACKAGE_JSON` non bloquant. Il est conservé dans les preuves,
+sans changement de package.json hors périmètre. Le driver de registre valide le digest et
 le statut draft ; les deux drivers de rendu acceptent une liste vide. La suite
 Django complète après installation vérifie les vrais documents et rendus.
 
