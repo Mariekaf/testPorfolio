@@ -1,7 +1,7 @@
 name: CORE-001 foundations
 on:
   push:
-    branches: [arch/core-001]
+    branches: [main, arch/core-001, integration/main-001-saas]
   pull_request:
 permissions:
   contents: read
@@ -22,26 +22,30 @@ jobs:
           node-version: '24'
           cache: npm
       - run: python -m pip install --require-hashes -r backend/requirements/development.txt
-      - run: python -B scripts/development/initialize_development.py --mode docker
-      - run: docker compose --env-file infra/env/development.local.env -f infra/compose.yaml up -d --wait postgres
-      - run: python -B scripts/development/provision_database.py
-      - run: python -B backend/manage.py migrate --settings=config.settings.migration --noinput
-      - run: python -B scripts/verification/verify_core_database.py --check-test-access
-      - run: python -B backend/manage.py check
-      - run: python -B backend/manage.py makemigrations --check --dry-run --settings=config.settings.migration
-      - run: python -B manage.py test tests --settings=config.settings.test --noinput --verbosity 2
-        working-directory: backend
+      # The runner creates, verifies and destroys its own PostgreSQL 17 cluster.
+      # Existing database/configuration paths cannot be supplied to it.
+      - name: Isolated PostgreSQL 17 migrations, privileges and full Django suite
+        run: >-
+          python -B scripts/verification/run_media001_isolated.py
+          --engine docker --execute-isolated-migrations
+          --output "${{ runner.temp }}/main001-evidence"
       - run: python -B -m unittest discover -s scripts/verification/tests -v
       - run: python -B -m unittest discover -s tests -v
       - run: python -B scripts/verification/check_base001.py
       - run: node --check script.js && node --check admin.js
       - run: npm ci --ignore-scripts
-      - run: npm run test:contracts
-      - run: npm run test:auth
-      - run: npm run test:portfolios
-      - run: npm run test:templates
-      - run: npm run test:template-instances
+      - name: All Node contract and Studio tests
+        run: node --test packages/content-contracts/test/*.test.mjs packages/content-contracts/test/*.test.ts apps/studio/test/*.test.mjs
       - run: npm run typecheck
       - run: npm run build
-      - if: always()
-        run: docker compose --env-file infra/env/development.local.env -f infra/compose.yaml stop postgres
+      - name: Preserve non-secret isolated validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: main001-isolated-validation
+          path: |
+            ${{ runner.temp }}/main001-evidence/django-tests.log
+            ${{ runner.temp }}/main001-evidence/schema-check.log
+            ${{ runner.temp }}/main001-evidence/runtime-privileges.log
+            ${{ runner.temp }}/main001-evidence/isolated-environment.json
+          if-no-files-found: ignore
