@@ -1,0 +1,51 @@
+{
+  "scope": "CORE-001 local development on user Windows PC, native PostgreSQL, no Docker",
+  "evidence_source": "complete user-supplied console output; raw personal transcript not committed",
+  "tested_code_commit": "2b7085df0eda389597605cd3ce771aa648bafbbb",
+  "environment": {
+    "powershell": "5.1",
+    "python": "3.13.5 x64",
+    "node": "24.22.0",
+    "npm": "11.14.0",
+    "postgresql": "17.6 Windows x64",
+    "postgresql_port": 5432
+  },
+  "integrity": {
+    "legacy_files_verified": 11,
+    "fixture_checksums_verified": 4,
+    "text_checkout_rule": "UTF-8 LF/CRLF equivalence only; binary files byte-exact"
+  },
+  "tests": {
+    "integrity": {
+      "passed": 12
+    },
+    "legacy": {
+      "passed": 6
+    },
+    "django": {
+      "passed": 14
+    },
+    "frontend_contracts": {
+      "passed": 3,
+      "skipped": 0
+    },
+    "total_passed": 35
+  },
+  "checks": {
+    "postgresql_runtime_privileges": "passed",
+    "test_role_maintenance_access": "passed",
+    "django_system_check": "passed",
+    "migration_drift": "none",
+    "test_database_cleanup": "passed",
+    "typescript": "passed",
+    "next_build": "passed",
+    "final_script_message": "Foundation checks passed"
+  },
+  "observations": [
+    "A leftover dedicated test database from the prior failure was recreated by the test runner and cleaned up successfully.",
+    "Expected readiness failure messages are from successful simulated-failure tests."
+  ],
+  "overall_result": "passed for reported local Windows development environment",
+  "production_validation": false,
+  "auth_001_started": false
+}

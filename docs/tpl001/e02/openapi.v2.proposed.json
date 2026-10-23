@@ -1,0 +1,617 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Hero Design v2 — inactive E02 proposal",
+    "version": "0.1.0",
+    "description": "Standalone review artifact. Not referenced by active OpenAPI/router. Existing endpoints remain v1. Upgrade endpoint intentionally deferred to E04; no endpoint implementation in E02."
+  },
+  "x-activation-status": "proposed-not-active",
+  "security": [
+    {
+      "session": []
+    }
+  ],
+  "paths": {
+    "/api/v1/portfolios/{id}/design": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        {
+          "name": "Accept-Design-Schema",
+          "in": "header",
+          "required": false,
+          "description": "Absent = 1. Exact ordered list of supported envelopes; never performs conversion. Authorization precedes negotiation.",
+          "schema": {
+            "type": "string",
+            "enum": [
+              "1",
+              "2",
+              "1,2",
+              "2,1"
+            ],
+            "default": "1"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "proposed_design_read_v2",
+        "summary": "Proposed negotiated read; NOT activated",
+        "responses": {
+          "200": {
+            "description": "Coherent private snapshot and canonical Portfolio ETag.",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "ETag": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Design"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid_design/invalid_request; body document versions must match stored schema.",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authentication_required",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not_found; foreign/deleted resources indistinguishable.",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "design_schema_not_acceptable; never downgrade.",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "design_not_initialized/design_inconsistent/portfolio_archived",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "rate_limited",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "temporarily_unavailable",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "proposed_design_update_v2",
+        "summary": "Proposed version-aware replacement; NOT activated",
+        "description": "Same AUTH session/CSRF. Ownership first, then If-Match under locks. Body cannot change composition/presentation/experience or stored envelope version. No schema conversion. No publication. Increment Portfolio.version once.",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "X-CSRFToken",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DesignUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated private design, same ETag as Portfolio.",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "ETag": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Design"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid_design/invalid_request/validation_error; body document versions must match stored schema.",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "authentication_required",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "csrf_failed/request_denied; preserve AUTH error envelope.",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not_found; foreign/deleted resources indistinguishable.",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "design_schema_not_acceptable; never downgrade.",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "design_not_initialized/design_inconsistent/portfolio_archived",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "version_conflict; local edits retained.",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "428": {
+            "description": "precondition_required",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "payload_too_large; limit 262144 UTF-8 bytes.",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "unsupported_media_type",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "rate_limited",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "temporarily_unavailable",
+            "headers": {
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "session": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "portfolio_saas_session"
+      }
+    },
+    "schemas": {
+      "Design": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "portfolio_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "etag": {
+            "type": "string",
+            "minLength": 1
+          },
+          "snapshot": {
+            "oneOf": [
+              {
+                "$ref": "../../../contracts/schemas/templates/documents/snapshot.v1.json"
+              },
+              {
+                "$ref": "../../../contracts/schemas/templates/documents/snapshot.v2.json"
+              }
+            ]
+          }
+        },
+        "required": [
+          "portfolio_id",
+          "version",
+          "etag",
+          "snapshot"
+        ]
+      },
+      "DesignUpdate": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "content": {
+                "$ref": "../../../contracts/schemas/templates/documents/content.v1.json"
+              },
+              "customization": {
+                "$ref": "../../../contracts/schemas/templates/documents/customization.v1.json"
+              }
+            },
+            "required": [
+              "content",
+              "customization"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "content": {
+                "$ref": "../../../contracts/schemas/templates/documents/content.v1.json"
+              },
+              "customization": {
+                "$ref": "../../../contracts/schemas/templates/documents/customization.v2.json"
+              }
+            },
+            "required": [
+              "content",
+              "customization"
+            ]
+          }
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "enum": [
+                  "invalid_design",
+                  "invalid_request",
+                  "authentication_required",
+                  "csrf_failed",
+                  "not_found",
+                  "design_schema_not_acceptable",
+                  "design_inconsistent",
+                  "design_not_initialized",
+                  "portfolio_archived",
+                  "version_conflict",
+                  "precondition_required",
+                  "payload_too_large",
+                  "unsupported_media_type",
+                  "rate_limited",
+                  "temporarily_unavailable",
+                  "validation_error",
+                  "request_denied"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "fields": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 300
+                  },
+                  "minItems": 1,
+                  "maxItems": 10
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+PASS: both templates desktop/mobile; shared renderer, session/CSRF, read-only, no overflow/external request.

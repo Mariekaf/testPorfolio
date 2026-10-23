@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PROPOSAL ONLY — Ready template descriptor",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "template": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{0,79}$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$",
+          "maxLength": 30
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "preview",
+        "available",
+        "deprecated",
+        "retired",
+        "quarantined"
+      ]
+    },
+    "renderer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{0,79}$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$",
+          "maxLength": 30
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ]
+    },
+    "document_schema": {
+      "const": 3
+    },
+    "required_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 80
+      },
+      "uniqueItems": true,
+      "maxItems": 32
+    },
+    "customization_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{0,79}$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$",
+          "maxLength": 30
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ]
+    },
+    "bundle_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "slots": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "enum": [
+              "text",
+              "rich_text",
+              "image",
+              "link",
+              "project_list",
+              "logo",
+              "social_links"
+            ]
+          },
+          "required_for_publication": {
+            "type": "boolean"
+          },
+          "empty": {
+            "enum": [
+              "omit",
+              "reserve-art",
+              "block-publication"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "required_for_publication",
+          "empty"
+        ]
+      },
+      "maxProperties": 64
+    }
+  },
+  "required": [
+    "schema_version",
+    "template",
+    "name",
+    "status",
+    "renderer",
+    "document_schema",
+    "required_capabilities",
+    "customization_policy",
+    "bundle_digest",
+    "slots"
+  ],
+  "$comment": "Proposed descriptor. Bundle hashing excludes its own digest-bearing manifest; see architecture."
+}

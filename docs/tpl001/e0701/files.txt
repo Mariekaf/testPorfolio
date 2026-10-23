@@ -1,0 +1,15 @@
+Created (documentation only):
+docs/tpl001/TPL-001-E0701-architecture.md
+docs/tpl001/TPL-001-E0701-report.md
+docs/tpl001/e0701/design-validation.json
+docs/tpl001/e0701/examples/README.md
+docs/tpl001/e0701/examples/creative-editorial.content.proposed.json
+docs/tpl001/e0701/examples/creative-editorial.descriptor.proposed.json
+docs/tpl001/e0701/examples/creative-editorial.media-reference.proposed.json
+docs/tpl001/e0701/examples/creative-editorial.snapshot.proposed.json
+docs/tpl001/e0701/files.txt
+docs/tpl001/e0701/schemas/content.v2.proposed.schema.json
+docs/tpl001/e0701/schemas/snapshot.v3.proposed.schema.json
+docs/tpl001/e0701/schemas/template.v2.proposed.schema.json
+
+Modified existing files: none

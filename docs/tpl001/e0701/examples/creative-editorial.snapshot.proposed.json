@@ -1,0 +1,155 @@
+{
+  "schema_version": 3,
+  "composition": {
+    "schema_version": 3,
+    "template": {
+      "id": "creative-editorial",
+      "version": "1.0.0"
+    },
+    "sections": [
+      {
+        "id": "navigation",
+        "variant": "creative-navigation.v1",
+        "slot_bindings": {
+          "identity": "identity_name",
+          "logo": "brand_logo"
+        }
+      },
+      {
+        "id": "hero",
+        "variant": "creative-hero.v1",
+        "slot_bindings": {
+          "title": "hero_title",
+          "subtitle": "hero_subtitle",
+          "portrait": "hero_portrait",
+          "cta": "hero_cta"
+        }
+      },
+      {
+        "id": "about",
+        "variant": "creative-about.v1",
+        "slot_bindings": {
+          "heading": "about_heading",
+          "body": "about_body"
+        }
+      },
+      {
+        "id": "projects",
+        "variant": "creative-projects.v1",
+        "slot_bindings": {
+          "heading": "projects_heading",
+          "items": "selected_projects"
+        }
+      },
+      {
+        "id": "contact",
+        "variant": "creative-contact.v1",
+        "slot_bindings": {
+          "heading": "contact_heading",
+          "link": "contact_link",
+          "socials": "socials"
+        }
+      },
+      {
+        "id": "footer",
+        "variant": "creative-footer.v1",
+        "slot_bindings": {
+          "note": "footer_note"
+        }
+      }
+    ],
+    "responsive_profile": {
+      "id": "creative-editorial-responsive",
+      "version": "1.0.0"
+    }
+  },
+  "content": {
+    "schema_version": 2,
+    "slots": {
+      "identity_name": {
+        "type": "text",
+        "value": "Camille Démo — profil fictif"
+      },
+      "brand_logo": {
+        "type": "logo",
+        "value": null
+      },
+      "hero_title": {
+        "type": "text",
+        "value": "Des idées claires. Des interfaces vivantes."
+      },
+      "hero_subtitle": {
+        "type": "text",
+        "value": "Portfolio de démonstration fictif en recherche UX et design UI."
+      },
+      "hero_portrait": {
+        "type": "image",
+        "value": null
+      },
+      "hero_cta": {
+        "type": "link",
+        "label": "Voir les projets",
+        "target": null
+      },
+      "about_heading": {
+        "type": "text",
+        "value": "Une approche attentive"
+      },
+      "about_body": {
+        "type": "rich_text",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "text": "Présentation fictive à remplacer avant publication.",
+                "marks": []
+              }
+            ]
+          }
+        ]
+      },
+      "projects_heading": {
+        "type": "text",
+        "value": "Projets sélectionnés"
+      },
+      "selected_projects": {
+        "type": "project_list",
+        "items": []
+      },
+      "contact_heading": {
+        "type": "text",
+        "value": "Travaillons ensemble"
+      },
+      "contact_link": {
+        "type": "link",
+        "label": "Me contacter",
+        "target": null
+      },
+      "socials": {
+        "type": "social_links",
+        "items": []
+      },
+      "footer_note": {
+        "type": "text",
+        "value": ""
+      }
+    }
+  },
+  "presentation": {
+    "schema_version": 3,
+    "style_policy": {
+      "id": "creative-editorial-style",
+      "version": "1.0.0"
+    },
+    "defaults": {
+      "palette_id": "ink-lime",
+      "font_pair_id": "system-sans"
+    }
+  },
+  "customization": {
+    "schema_version": 3,
+    "style_overrides": {}
+  },
+  "experience": null
+}

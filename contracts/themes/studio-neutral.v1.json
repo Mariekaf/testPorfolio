@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "id": "studio-neutral",
+  "version": "1.0.0",
+  "name": "Studio Neutral",
+  "tokens": {
+    "font": "system-sans",
+    "light": {
+      "background": "#f5f5f1",
+      "surface": "#ffffff",
+      "text": "#202823",
+      "muted": "#59665e",
+      "accent": "#245b48",
+      "line": "#d5ddd6"
+    },
+    "dark": {
+      "background": "#111815",
+      "surface": "#1a2420",
+      "text": "#ecf2ed",
+      "muted": "#b0bfb5",
+      "accent": "#a4d9bd",
+      "line": "#394a40"
+    }
+  }
+}

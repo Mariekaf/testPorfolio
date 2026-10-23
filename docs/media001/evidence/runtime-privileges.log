@@ -1,0 +1,2 @@
+Test role maintenance connection verified; no runtime privilege added.
+PostgreSQL 17.11 verified: UTF8, initial table accessible, least-privilege runtime role, no DDL/CREATEDB/superuser/BYPASSRLS.

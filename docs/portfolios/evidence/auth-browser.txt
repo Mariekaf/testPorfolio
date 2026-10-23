@@ -1,0 +1,2 @@
+PASS 1280px: private-route, registration, login, logout, local-mail reset, reused-link rejection, cookie flags, no localStorage, responsive layout, cross-tab logout, reset token absent from HTTP URLs, stale identity reply during logout rejected, logout without BroadcastChannel.
+PASS 390px: private-route, registration, login, logout, local-mail reset, reused-link rejection, cookie flags, no localStorage, responsive layout, cross-tab logout, reset token absent from HTTP URLs, stale identity reply during logout rejected, logout without BroadcastChannel.

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "source_commit": "a3e6e9011d09e72c8f9ca48ce6331eae99a24f1b",
+  "source_sha256": {
+    "apps/studio/src/components/templates/modular-hero-renderer.tsx": "c591d59dc5c98789951074eb756004176c462d49ab2ec7026109fa331f522e0b",
+    "apps/studio/src/components/templates/modular-hero-renderer.module.css": "ae190e40a7ff5258a4fa886a05081f672f068818f176ef3e51eadb728726b748",
+    "contracts/hero/renderer.v1.json": "a4b9e354df4bae599325d88360e5df85891158cfdf461a1e60c9d8a1f85daae5"
+  },
+  "html_sha256": {
+    "centered": "690763f62039e1da63c000ca75f30bc91606b1b214719eaa7e1e59305582444a",
+    "split-screen": "17e5850287ad11afdad1222257743af90a42007dc4c81178ecb939dd4194727f",
+    "fullscreen": "d7bcdaef29e66db79c15528f01107af1f1093b61d178bdb2c2371ba4734a158f",
+    "typographic": "7f1b1ffb3afc23fc1c16d5b1d589b0cf8a58fe047e0029ad133103a47a286e69"
+  }
+}

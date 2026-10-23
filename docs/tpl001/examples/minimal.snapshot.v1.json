@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "composition": {
+    "schema_version": 1,
+    "template": {
+      "id": "minimal",
+      "version": "1.0.0"
+    },
+    "layout": "minimal-stack",
+    "sections": [
+      {
+        "id": "hero",
+        "type": "hero",
+        "variant": "hero-centered",
+        "visible": true,
+        "required": true,
+        "toggleable": false,
+        "reorderable": false,
+        "presentation_policy": {
+          "spacing": [
+            "compact",
+            "normal",
+            "airy"
+          ],
+          "alignment": [
+            "start",
+            "center"
+          ],
+          "emphasis": [
+            "quiet",
+            "strong"
+          ]
+        }
+      },
+      {
+        "id": "projects",
+        "type": "projects",
+        "variant": "projects-grid",
+        "visible": true,
+        "required": false,
+        "toggleable": true,
+        "reorderable": true,
+        "presentation_policy": {
+          "spacing": [
+            "compact",
+            "normal",
+            "airy"
+          ],
+          "alignment": [
+            "start",
+            "center"
+          ],
+          "emphasis": [
+            "quiet",
+            "strong"
+          ]
+        }
+      },
+      {
+        "id": "about",
+        "type": "about",
+        "variant": "about-compact",
+        "visible": true,
+        "required": false,
+        "toggleable": true,
+        "reorderable": true,
+        "presentation_policy": {
+          "spacing": [
+            "compact",
+            "normal",
+            "airy"
+          ],
+          "alignment": [
+            "start",
+            "center"
+          ],
+          "emphasis": [
+            "quiet",
+            "strong"
+          ]
+        }
+      },
+      {
+        "id": "skills",
+        "type": "skills",
+        "variant": "skills-list",
+        "visible": true,
+        "required": false,
+        "toggleable": true,
+        "reorderable": true,
+        "presentation_policy": {
+          "spacing": [
+            "compact",
+            "normal",
+            "airy"
+          ],
+          "alignment": [
+            "start",
+            "center"
+          ],
+          "emphasis": [
+            "quiet",
+            "strong"
+          ]
+        }
+      },
+      {
+        "id": "contact",
+        "type": "contact",
+        "variant": "contact-simple",
+        "visible": true,
+        "required": false,
+        "toggleable": true,
+        "reorderable": false,
+        "presentation_policy": {
+          "spacing": [
+            "compact",
+            "normal",
+            "airy"
+          ],
+          "alignment": [
+            "start",
+            "center"
+          ],
+          "emphasis": [
+            "quiet",
+            "strong"
+          ]
+        }
+      }
+    ]
+  },
+  "content": {
+    "schema_version": 1,
+    "sections": [
+      {
+        "section_id": "hero",
+        "type": "hero",
+        "data": {
+          "title": "Designer UX/UI — profil de démonstration",
+          "subtitle": "Des expériences claires, accessibles et utiles.",
+          "cta_label": "Découvrir mes études de cas"
+        }
+      },
+      {
+        "section_id": "projects",
+        "type": "projects",
+        "data": {
+          "heading": "Études de cas",
+          "items": [
+            {
+              "id": "20000000-0000-4000-8000-000000000001",
+              "title": "Service de démonstration",
+              "summary": "Étude de cas fictive : compréhension du problème et exploration de solutions.",
+              "url": null
+            }
+          ]
+        }
+      },
+      {
+        "section_id": "about",
+        "type": "about",
+        "data": {
+          "heading": "Ma démarche",
+          "body": "Recherche, exploration et itérations : texte synthétique à personnaliser."
+        }
+      },
+      {
+        "section_id": "skills",
+        "type": "skills",
+        "data": {
+          "heading": "Compétences",
+          "items": [
+            "Recherche utilisateur",
+            "Design d’interaction",
+            "Prototypage"
+          ]
+        }
+      },
+      {
+        "section_id": "contact",
+        "type": "contact",
+        "data": {
+          "heading": "Échangeons",
+          "body": "Remplacez ce texte par votre invitation.",
+          "email": null
+        }
+      }
+    ]
+  },
+  "presentation": {
+    "schema_version": 1,
+    "theme": {
+      "id": "studio-neutral",
+      "version": "1.0.0"
+    },
+    "sections": [
+      {
+        "section_id": "hero",
+        "settings": {
+          "spacing": "normal",
+          "alignment": "center",
+          "emphasis": "strong"
+        }
+      },
+      {
+        "section_id": "projects",
+        "settings": {
+          "spacing": "normal",
+          "alignment": "start",
+          "emphasis": "quiet"
+        }
+      },
+      {
+        "section_id": "about",
+        "settings": {
+          "spacing": "normal",
+          "alignment": "start",
+          "emphasis": "quiet"
+        }
+      },
+      {
+        "section_id": "skills",
+        "settings": {
+          "spacing": "normal",
+          "alignment": "start",
+          "emphasis": "quiet"
+        }
+      },
+      {
+        "section_id": "contact",
+        "settings": {
+          "spacing": "normal",
+          "alignment": "start",
+          "emphasis": "quiet"
+        }
+      }
+    ]
+  },
+  "customization": {
+    "schema_version": 1,
+    "sections": []
+  },
+  "experience": null
+}

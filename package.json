@@ -1,0 +1,24 @@
+{
+  "name": "portfolio-saas-foundations",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "npm@11.9.0",
+  "engines": {
+    "node": ">=24 <25",
+    "npm": ">=11 <12"
+  },
+  "workspaces": [
+    "apps/studio",
+    "packages/content-contracts"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @portfolio/studio",
+    "build": "npm run build --workspace @portfolio/studio",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test:contracts": "node --test packages/content-contracts/test/health.test.mjs",
+    "test:auth": "node --test apps/studio/test/auth.test.mjs",
+    "test:portfolios": "node --test apps/studio/test/portfolios.test.mjs",
+    "test:templates": "node --test apps/studio/test/templates.test.mjs",
+    "test:template-instances": "node --test apps/studio/test/template-instances.test.mjs"
+  }
+}

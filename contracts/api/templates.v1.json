@@ -1,0 +1,619 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "TPL-001.B authenticated read-only templates",
+    "version": "1.0.0",
+    "description": "Validated Git catalogue and synthetic preview snapshots only. No instance persistence, creation, publication or design mutations."
+  },
+  "security": [
+    {
+      "session": []
+    }
+  ],
+  "paths": {
+    "/api/v1/templates": {
+      "get": {
+        "operationId": "tpl_list",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "minimal",
+                "editorial",
+                "retro",
+                "cyberpunk",
+                "gaming",
+                "immersive"
+              ]
+            }
+          },
+          {
+            "name": "availability",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "available",
+                "unavailable",
+                "retired"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success (proposed contract)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Catalogue"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid schema/query or missing/invalid idempotency key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "401": {
+            "description": "Session required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown, foreign or deleted resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "503": {
+            "description": "Temporary unavailability",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "405": {
+            "description": "Read-only resource; write method denied.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "403": {
+            "description": "Request denied (including CSRF on unsupported write methods).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/templates/{template_id}/versions/{template_version}": {
+      "get": {
+        "operationId": "tpl_detail",
+        "parameters": [
+          {
+            "name": "template_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]{0,59}$"
+            }
+          },
+          {
+            "name": "template_version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+\\.\\d+\\.\\d+$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success (proposed contract)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Descriptor"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid schema/query or missing/invalid idempotency key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "401": {
+            "description": "Session required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown, foreign or deleted resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "503": {
+            "description": "Temporary unavailability",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "405": {
+            "description": "Read-only resource; write method denied.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "403": {
+            "description": "Request denied (including CSRF on unsupported write methods).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/templates/{template_id}/versions/{template_version}/preview": {
+      "get": {
+        "operationId": "tpl_preview",
+        "parameters": [
+          {
+            "name": "template_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]{0,59}$"
+            }
+          },
+          {
+            "name": "template_version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d+\\.\\d+\\.\\d+$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success (proposed contract)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Snapshot"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid schema/query or missing/invalid idempotency key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "401": {
+            "description": "Session required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown, foreign or deleted resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "503": {
+            "description": "Temporary unavailability",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "409": {
+            "description": "Template unavailable/incompatible, or portfolio has no initialized design.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "405": {
+            "description": "Read-only resource; write method denied.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          },
+          "403": {
+            "description": "Request denied (including CSRF on unsupported write methods).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                },
+                "description": "Private response, never cached."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "session": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "portfolio_saas_session"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "maxLength": 80
+              },
+              "message": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "fields": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 300
+                  },
+                  "minItems": 1,
+                  "maxItems": 10
+                }
+              }
+            }
+          }
+        }
+      },
+      "Descriptor": {
+        "$ref": "../schemas/templates/template.v1.json"
+      },
+      "Snapshot": {
+        "$ref": "../schemas/templates/documents/snapshot.v1.json"
+      },
+      "Catalogue": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "count",
+          "page",
+          "page_size",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "page_size": {
+            "const": 12
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Descriptor"
+            },
+            "minItems": 0,
+            "maxItems": 12
+          }
+        }
+      }
+    }
+  }
+}

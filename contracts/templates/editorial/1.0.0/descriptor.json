@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "editorial",
+  "version": "1.0.0",
+  "name": "Editorial",
+  "category": "editorial",
+  "description": "Composition éditoriale asymétrique et études de cas mises en récit.",
+  "compatible_themes": [
+    {
+      "id": "studio-neutral",
+      "version": "1.0.0"
+    }
+  ],
+  "availability": "unavailable"
+}

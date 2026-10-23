@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TPL-001.A PROPOSAL customization v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sections"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "section_order": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]{0,59}$"
+      },
+      "minItems": 1,
+      "maxItems": 20,
+      "uniqueItems": true
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "section_id"
+        ],
+        "properties": {
+          "section_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{0,59}$"
+          },
+          "visible": {
+            "type": "boolean"
+          },
+          "presentation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [],
+            "properties": {
+              "spacing": {
+                "enum": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ]
+              },
+              "alignment": {
+                "enum": [
+                  "start",
+                  "center"
+                ]
+              },
+              "emphasis": {
+                "enum": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "minItems": 0,
+      "maxItems": 20
+    }
+  }
+}

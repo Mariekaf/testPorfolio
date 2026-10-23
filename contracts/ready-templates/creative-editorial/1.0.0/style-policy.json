@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "reference": {
+    "id": "creative-editorial-style",
+    "version": "1.0.0"
+  },
+  "palettes": {
+    "ink-lime": {
+      "background": "#172620",
+      "surface": "#172620",
+      "text": "#F5F4EE",
+      "accent": "#D5EB90"
+    },
+    "paper-cobalt": {
+      "background": "#F5F4EE",
+      "surface": "#FFFFFF",
+      "text": "#102A43",
+      "accent": "#123B86"
+    }
+  },
+  "allowed_font_refs": [
+    {
+      "id": "system-sans",
+      "version": "1.0.0"
+    },
+    {
+      "id": "system-serif",
+      "version": "1.0.0"
+    }
+  ]
+}

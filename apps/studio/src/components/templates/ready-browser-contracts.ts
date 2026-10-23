@@ -1,0 +1,18 @@
+import {createReadySchemas,createReadyValidator} from '../../../../../packages/content-contracts/src/ready-contracts.ts';
+import schema0 from '../../../../../contracts/schemas/ready/content.v2.json';
+import schema1 from '../../../../../contracts/schemas/ready/snapshot.v3.json';
+import schema2 from '../../../../../contracts/schemas/ready/descriptor.v2.json';
+import schema3 from '../../../../../contracts/schemas/ready/style-policy.v1.json';
+import schema4 from '../../../../../contracts/schemas/ready/fonts.v1.json';
+import schema5 from '../../../../../contracts/schemas/ready/responsive.v1.json';
+import schema6 from '../../../../../contracts/schemas/ready/manifest.v2.json';
+import schema7 from '../../../../../contracts/schemas/ready/assessment-facts.v1.json';
+import bundle0 from '../../../../../contracts/ready-templates/creative-editorial/1.0.0/descriptor.json';
+import bundle1 from '../../../../../contracts/ready-templates/creative-editorial/1.0.0/snapshot.json';
+import bundle2 from '../../../../../contracts/ready-templates/creative-editorial/1.0.0/style-policy.json';
+import bundle3 from '../../../../../contracts/ready-templates/creative-editorial/1.0.0/fonts.json';
+import bundle4 from '../../../../../contracts/ready-templates/creative-editorial/1.0.0/responsive.json';
+import bundle5 from '../../../../../contracts/ready-templates/creative-editorial/1.0.0/demo-content.json';
+const schemas={'content.v2.json':schema0,'snapshot.v3.json':schema1,'descriptor.v2.json':schema2,'style-policy.v1.json':schema3,'fonts.v1.json':schema4,'responsive.v1.json':schema5,'manifest.v2.json':schema6,'assessment-facts.v1.json':schema7};
+export const readyBundle={'descriptor':bundle0,'snapshot':bundle1,'style-policy':bundle2,'fonts':bundle3,'responsive':bundle4,'demo-content':bundle5};
+export const readyValidator=createReadyValidator(schemas,readyBundle);

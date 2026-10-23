@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "editorial",
+  "version": "1.0.0",
+  "name": "Editorial",
+  "category": "editorial",
+  "description": "Exemple de contrat uniquement : aucun template disponible dans l’application.",
+  "compatible_themes": [
+    {
+      "id": "studio-neutral",
+      "version": "1.0.0"
+    }
+  ],
+  "availability": "unavailable"
+}

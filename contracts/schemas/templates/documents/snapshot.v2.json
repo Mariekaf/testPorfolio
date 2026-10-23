@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TPL E02 snapshot v2 — inactive contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "composition",
+    "content",
+    "presentation",
+    "customization",
+    "experience"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "composition": {
+      "$ref": "composition.v2.json"
+    },
+    "content": {
+      "$ref": "content.v1.json"
+    },
+    "presentation": {
+      "$ref": "presentation.v2.json"
+    },
+    "customization": {
+      "$ref": "customization.v2.json"
+    },
+    "experience": {
+      "type": "null"
+    }
+  }
+}

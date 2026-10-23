@@ -1,0 +1,30 @@
+{
+  "platform": "Linux Chromium",
+  "results": [
+    {
+      "template": "minimal",
+      "double_click_single_request": true,
+      "unsaved_link_and_back_guard": true,
+      "created_saved_reloaded": true,
+      "reconnected": true,
+      "validation_400": true,
+      "conflict_412_keeps_local": true,
+      "duplicate_independent": true,
+      "archive_restore": true,
+      "mobile_no_overflow": true
+    },
+    {
+      "template": "editorial",
+      "double_click_single_request": true,
+      "unsaved_link_and_back_guard": true,
+      "created_saved_reloaded": true,
+      "reconnected": true,
+      "validation_400": true,
+      "conflict_412_keeps_local": true,
+      "duplicate_independent": true,
+      "archive_restore": true,
+      "mobile_no_overflow": true
+    }
+  ],
+  "page_errors": 0
+}

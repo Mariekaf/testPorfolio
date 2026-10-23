@@ -1,0 +1,275 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ready descriptor v2 — offline E0702",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "template": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{0,79}$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$",
+          "maxLength": 30
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "preview",
+        "available",
+        "deprecated",
+        "retired",
+        "quarantined"
+      ]
+    },
+    "renderer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{0,79}$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$",
+          "maxLength": 30
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ]
+    },
+    "document_schema": {
+      "const": 3
+    },
+    "required_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 80
+      },
+      "uniqueItems": true,
+      "maxItems": 32
+    },
+    "customization_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{0,79}$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$",
+          "maxLength": 30
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ]
+    },
+    "slots": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "enum": [
+              "text",
+              "rich_text",
+              "image",
+              "link",
+              "project_list",
+              "logo",
+              "social_links"
+            ]
+          },
+          "required_for_publication": {
+            "type": "boolean"
+          },
+          "empty": {
+            "enum": [
+              "omit",
+              "reserve-art",
+              "block-publication"
+            ]
+          },
+          "max_length": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6000
+          },
+          "max_items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 12
+          }
+        },
+        "required": [
+          "type",
+          "required_for_publication",
+          "empty"
+        ]
+      },
+      "maxProperties": 64,
+      "const": {
+        "identity_name": {
+          "type": "text",
+          "required_for_publication": true,
+          "empty": "block-publication",
+          "max_length": 80
+        },
+        "brand_logo": {
+          "type": "logo",
+          "required_for_publication": false,
+          "empty": "omit"
+        },
+        "hero_title": {
+          "type": "text",
+          "required_for_publication": true,
+          "empty": "block-publication",
+          "max_length": 160
+        },
+        "hero_subtitle": {
+          "type": "text",
+          "required_for_publication": false,
+          "empty": "omit",
+          "max_length": 300
+        },
+        "hero_portrait": {
+          "type": "image",
+          "required_for_publication": false,
+          "empty": "reserve-art"
+        },
+        "hero_cta": {
+          "type": "link",
+          "required_for_publication": false,
+          "empty": "omit"
+        },
+        "about_heading": {
+          "type": "text",
+          "required_for_publication": false,
+          "empty": "omit",
+          "max_length": 120
+        },
+        "about_body": {
+          "type": "rich_text",
+          "required_for_publication": false,
+          "empty": "omit",
+          "max_length": 3000
+        },
+        "projects_heading": {
+          "type": "text",
+          "required_for_publication": false,
+          "empty": "omit",
+          "max_length": 120
+        },
+        "selected_projects": {
+          "type": "project_list",
+          "required_for_publication": true,
+          "empty": "block-publication",
+          "max_items": 6
+        },
+        "contact_heading": {
+          "type": "text",
+          "required_for_publication": false,
+          "empty": "omit",
+          "max_length": 120
+        },
+        "contact_link": {
+          "type": "link",
+          "required_for_publication": false,
+          "empty": "omit"
+        },
+        "socials": {
+          "type": "social_links",
+          "required_for_publication": false,
+          "empty": "omit",
+          "max_items": 6
+        },
+        "footer_note": {
+          "type": "text",
+          "required_for_publication": false,
+          "empty": "omit",
+          "max_length": 160
+        }
+      }
+    },
+    "publication_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "required_text_slots": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "maxLength": 60
+          }
+        },
+        "project_slot": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "min_real_projects": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "contact_slots": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "maxLength": 60
+          }
+        }
+      },
+      "required": [
+        "required_text_slots",
+        "project_slot",
+        "min_real_projects",
+        "contact_slots"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "template",
+    "name",
+    "status",
+    "renderer",
+    "document_schema",
+    "required_capabilities",
+    "customization_policy",
+    "slots",
+    "publication_policy"
+  ]
+}

@@ -1,0 +1,20 @@
+test_added_whitespace_is_rejected (test_check_base001.IntegrityTests.test_added_whitespace_is_rejected) ... ok
+test_binary_file_is_never_normalized (test_check_base001.IntegrityTests.test_binary_file_is_never_normalized) ... ok
+test_bom_is_not_silently_removed (test_check_base001.IntegrityTests.test_bom_is_not_silently_removed) ... ok
+test_exact_lf_bytes_are_accepted (test_check_base001.IntegrityTests.test_exact_lf_bytes_are_accepted) ... ok
+test_invalid_utf8_is_rejected (test_check_base001.IntegrityTests.test_invalid_utf8_is_rejected) ... ok
+test_lone_carriage_return_is_rejected (test_check_base001.IntegrityTests.test_lone_carriage_return_is_rejected) ... ok
+test_manifest_path_cannot_escape_root (test_check_base001.IntegrityTests.test_manifest_path_cannot_escape_root) ... ok
+test_mixed_line_endings_only_are_accepted (test_check_base001.IntegrityTests.test_mixed_line_endings_only_are_accepted) ... ok
+test_real_text_change_is_rejected (test_check_base001.IntegrityTests.test_real_text_change_is_rejected) ... ok
+test_unknown_extension_remains_byte_exact (test_check_base001.IntegrityTests.test_unknown_extension_remains_byte_exact) ... ok
+test_utf8_crlf_json_is_accepted (test_check_base001.IntegrityTests.test_utf8_crlf_json_is_accepted) ... ok
+test_windows_crlf_gitignore_is_accepted (test_check_base001.IntegrityTests.test_windows_crlf_gitignore_is_accepted) ... ok
+test_existing_user_directory_is_never_adopted_or_changed (test_media_initialization.PrivateMediaInitializationTests.test_existing_user_directory_is_never_adopted_or_changed) ... ok
+test_legacy_local_directory_is_not_created_or_used (test_media_initialization.PrivateMediaInitializationTests.test_legacy_local_directory_is_not_created_or_used) ... ok
+test_new_dedicated_directory_has_marker_and_private_mode (test_media_initialization.PrivateMediaInitializationTests.test_new_dedicated_directory_has_marker_and_private_mode) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.004s
+
+OK

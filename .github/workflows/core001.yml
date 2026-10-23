@@ -1,0 +1,52 @@
+name: CORE-001 foundations
+on:
+  push:
+    branches: [main, arch/core-001, integration/main-001-saas]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  linux-foundations:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: python -m pip install --require-hashes -r backend/requirements/development.txt
+      # Django parity/SSR tests invoke Node and require the locked workspace packages.
+      - run: npm ci --ignore-scripts
+      # The runner creates, verifies and destroys its own PostgreSQL 17 cluster.
+      # Existing database/configuration paths cannot be supplied to it.
+      - name: Isolated PostgreSQL 17 migrations, privileges and full Django suite
+        run: >-
+          python -B scripts/verification/run_media001_isolated.py
+          --engine docker --execute-isolated-migrations
+          --output "${{ runner.temp }}/main001-evidence"
+      - run: python -B -m unittest discover -s scripts/verification/tests -v
+      - run: python -B -m unittest discover -s tests -v
+      - run: python -B scripts/verification/check_base001.py
+      - run: node --check script.js && node --check admin.js
+      - name: All Node contract and Studio tests
+        run: node --test packages/content-contracts/test/*.test.mjs packages/content-contracts/test/*.test.ts apps/studio/test/*.test.mjs
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Preserve non-secret isolated validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: main001-isolated-validation
+          path: |
+            ${{ runner.temp }}/main001-evidence/django-tests.log
+            ${{ runner.temp }}/main001-evidence/schema-check.log
+            ${{ runner.temp }}/main001-evidence/runtime-privileges.log
+            ${{ runner.temp }}/main001-evidence/isolated-environment.json
+          if-no-files-found: ignore

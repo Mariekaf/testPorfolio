@@ -1,0 +1,67 @@
+Creating test database for alias 'default' ('test_e04_3034af6e89')...
+Found 24 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: rest_framework
+  Apply all migrations: accounts, auth, contenttypes, identity, media, portfolios, sessions, templates
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying sessions.0001_initial... OK
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying identity.0001_initial... OK
+  Applying identity.0002_authenticationlimit_authsession_alter_user_options_and_more... OK
+  Applying accounts.0001_initial... OK
+  Applying accounts.0002_provision_personal_accounts... OK
+  Applying media.0001_initial... OK
+  Applying portfolios.0001_initial... OK
+  Applying portfolios.0002_expand_account_ownership... OK
+  Applying portfolios.0003_backfill_and_constrain... OK
+  Applying portfolios.0004_contract_legacy_owner... OK
+  Applying templates.0001_initial... OK
+  Applying templates.0002_versioned_design_transitions... OK
+  Applying templates.0003_readyportfoliodesign_readydesignrevision_and_more...test_alpha_and_thumbnail_dimensions_preserved (tests.test_media.MediaTests.test_alpha_and_thumbnail_dimensions_preserved) ... ok
+test_csrf_anonymous_unknown_and_rights (tests.test_media.MediaTests.test_csrf_anonymous_unknown_and_rights) ... ok
+test_delete_preconditions_retention_dry_run_and_purge (tests.test_media.MediaTests.test_delete_preconditions_retention_dry_run_and_purge) ... ok
+test_download_descriptors_close_before_windows_cleanup (tests.test_media.MediaTests.test_download_descriptors_close_before_windows_cleanup) ... ok
+test_exif_orientation_gps_comments_do_not_survive (tests.test_media.MediaTests.test_exif_orientation_gps_comments_do_not_survive) ... ok
+test_file_count_body_size_and_other_api_limits (tests.test_media.MediaTests.test_file_count_body_size_and_other_api_limits) ... ok
+test_integrity_rejection_closes_descriptor_before_windows_cleanup (tests.test_media.MediaTests.test_integrity_rejection_closes_descriptor_before_windows_cleanup) ... ok
+test_invalid_disguised_and_animated_files_atomic (tests.test_media.MediaTests.test_invalid_disguised_and_animated_files_atomic) ... ok
+test_library_pagination_and_no_metadata_leak (tests.test_media.MediaTests.test_library_pagination_and_no_metadata_leak) ... ok
+test_logo_and_cover_revisions_block_deletion (tests.test_media.MediaTests.test_logo_and_cover_revisions_block_deletion) ... ok
+test_migration_guard_existing_database_refused (tests.test_media.MediaTests.test_migration_guard_existing_database_refused) ... ok
+test_missing_file_keeps_other_content_and_rejects_new_reference (tests.test_media.MediaTests.test_missing_file_keeps_other_content_and_rejects_new_reference) ... ok
+test_openapi_real_metadata_errors_and_resolution (tests.test_media.MediaTests.test_openapi_real_metadata_errors_and_resolution) ... ok
+test_orphan_reconciliation_safe_and_explicit (tests.test_media.MediaTests.test_orphan_reconciliation_safe_and_explicit) ... ok
+test_other_account_cannot_get_list_resolve_save_delete (tests.test_media.MediaTests.test_other_account_cannot_get_list_resolve_save_delete) ... ok
+test_path_and_hash_tampering_never_serve_arbitrary_binary (tests.test_media.MediaTests.test_path_and_hash_tampering_never_serve_arbitrary_binary) ... ok
+test_pixels_sides_and_decompression_bomb_refused (tests.test_media.MediaTests.test_pixels_sides_and_decompression_bomb_refused) ... ok
+test_private_storage_permissions_and_decode_capacity (tests.test_media.MediaTests.test_private_storage_permissions_and_decode_capacity) ... ok
+test_quota_and_disk_failure_cleanup_are_atomic (tests.test_media.MediaTests.test_quota_and_disk_failure_cleanup_are_atomic) ... ok
+test_real_three_formats_reencoded_headers_and_private_metadata (tests.test_media.MediaTests.test_real_three_formats_reencoded_headers_and_private_metadata) ... ok
+test_revisions_retain_used_file_after_slot_removed (tests.test_media.MediaTests.test_revisions_retain_used_file_after_slot_removed) ... ok
+test_symlink_storage_is_refused (tests.test_media.MediaTests.test_symlink_storage_is_refused) ... ok
+test_uncertain_database_commit_preserves_bytes_for_reconciliation (tests.test_media.MediaTests.test_uncertain_database_commit_preserves_bytes_for_reconciliation) ... ok
+test_concurrent_quota_one_success_and_parallel_downloads (tests.test_media.MediaConcurrencyTests.test_concurrent_quota_one_success_and_parallel_downloads) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 20.026s
+
+OK
+Destroying test database for alias 'default' ('test_e04_3034af6e89')...
+ OK
+System check identified no issues (0 silenced).

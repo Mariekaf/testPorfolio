@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "private import three real images, selection in all three slots, real pixels, alt/crop, save",
+    "leave logout login reopen private binaries and crop persist; anonymous binary denied",
+    "binary failure placeholder preserves content and recovers after reopen",
+    "invalid SVG rejected, keyboard modal escape focus, remove/replace preserves other slots, revision deletion refused",
+    "12 Mio real proxied multipart import succeeds and unused asset deletion follows retention policy",
+    "authenticated second tenant cannot read known asset or metadata or list it"
+  ],
+  "screenshots": 7,
+  "page_errors": [],
+  "synthetic_only": true,
+  "windows_executed": false,
+  "screen_reader_executed": false
+}

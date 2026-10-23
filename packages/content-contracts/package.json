@@ -1,0 +1,12 @@
+{
+  "name": "@portfolio/content-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "type": "module",
+  "dependencies": {
+    "ajv": "8.20.0"
+  }
+}

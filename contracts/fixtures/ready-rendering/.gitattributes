@@ -1,0 +1,4 @@
+# Synthetic source files have exact LF bytes for cross-platform asset hashes.
+*.svg text eol=lf
+*.json text eol=lf
+*.txt text eol=lf

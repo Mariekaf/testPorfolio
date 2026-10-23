@@ -1,0 +1,785 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "TPL-001.C+D private template instances",
+    "version": "1.0.0",
+    "description": "Exact template creation, idempotency 24h and versioned private design. No publication, media or experience engine."
+  },
+  "security": [
+    {
+      "session": []
+    }
+  ],
+  "paths": {
+    "/api/v1/portfolios/from-template": {
+      "post": {
+        "operationId": "tpl_create",
+        "parameters": [
+          {
+            "name": "X-CSRFToken",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success (proposed contract)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Portfolio"
+                }
+              }
+            },
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Same strong portfolio ETag as PORT-001."
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid schema/query or missing/invalid idempotency key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Session required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "CSRF rejected",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown, foreign or deleted resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "State, slug, template compatibility or idempotency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request exceeds 256 KiB",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON content type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Temporary unavailability",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Unsupported method.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFromTemplate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/portfolios/{id}/design": {
+      "get": {
+        "operationId": "tpl_design_get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success (proposed contract)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Design"
+                }
+              }
+            },
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Same strong portfolio ETag as PORT-001."
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid schema/query or missing/invalid idempotency key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Session required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown, foreign or deleted resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Template unavailable/incompatible, or portfolio has no initialized design.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Unsupported method.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Versioned design contracts temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "tpl_design_save",
+        "parameters": [
+          {
+            "name": "X-CSRFToken",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^\"portfolio:[0-9a-f-]{36}:[1-9][0-9]*\"$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success (proposed contract)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Design"
+                }
+              }
+            },
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Same strong portfolio ETag as PORT-001."
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid schema/query or missing/invalid idempotency key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Session required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "CSRF rejected",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown, foreign or deleted resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "State, slug, template compatibility or idempotency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request exceeds 256 KiB",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON content type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Temporary unavailability",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "Stale portfolio ETag",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "428": {
+            "description": "If-Match required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Unsupported method.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "no-store"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SaveDesign"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "session": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "portfolio_saas_session"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "maxLength": 80
+              },
+              "message": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "fields": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 300
+                  },
+                  "minItems": 1,
+                  "maxItems": 10
+                }
+              }
+            }
+          }
+        }
+      },
+      "Snapshot": {
+        "$ref": "../schemas/templates/documents/snapshot.v1.json"
+      },
+      "Customization": {
+        "$ref": "../schemas/templates/documents/customization.v1.json"
+      },
+      "Content": {
+        "$ref": "../schemas/templates/documents/content.v1.json"
+      },
+      "Portfolio": {
+        "$ref": "./portfolios.v1.json#/components/schemas/Portfolio"
+      },
+      "CreateFromTemplate": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "template_id",
+          "template_version"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100
+          },
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "maxLength": 110
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "template_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{0,59}$"
+          },
+          "template_version": {
+            "type": "string",
+            "maxLength": 30,
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+          }
+        }
+      },
+      "Design": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "portfolio_id",
+          "version",
+          "etag",
+          "snapshot"
+        ],
+        "properties": {
+          "portfolio_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "etag": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "snapshot": {
+            "$ref": "#/components/schemas/Snapshot"
+          }
+        }
+      },
+      "SaveDesign": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "content",
+          "customization"
+        ],
+        "properties": {
+          "content": {
+            "$ref": "#/components/schemas/Content"
+          },
+          "customization": {
+            "$ref": "#/components/schemas/Customization"
+          }
+        }
+      }
+    }
+  }
+}

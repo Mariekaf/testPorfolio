@@ -1,0 +1,11 @@
+test_auth_csrf_and_private_files (test_server.PortfolioTest.test_auth_csrf_and_private_files) ... ok
+test_images_backup_and_link_validation (test_server.PortfolioTest.test_images_backup_and_link_validation) ... ok
+test_persistence_drafts_and_revision_conflicts (test_server.PortfolioTest.test_persistence_drafts_and_revision_conflicts) ... ok
+test_auth_csrf_and_private_files (test_server.WindowsEncodingTest.test_auth_csrf_and_private_files) ... ok
+test_images_backup_and_link_validation (test_server.WindowsEncodingTest.test_images_backup_and_link_validation) ... ok
+test_persistence_drafts_and_revision_conflicts (test_server.WindowsEncodingTest.test_persistence_drafts_and_revision_conflicts) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.257s
+
+OK

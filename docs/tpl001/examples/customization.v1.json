@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "section_order": [
+    "hero",
+    "skills",
+    "about",
+    "projects",
+    "contact"
+  ],
+  "sections": [
+    {
+      "section_id": "about",
+      "visible": false
+    },
+    {
+      "section_id": "projects",
+      "presentation": {
+        "spacing": "airy",
+        "emphasis": "strong"
+      }
+    }
+  ]
+}

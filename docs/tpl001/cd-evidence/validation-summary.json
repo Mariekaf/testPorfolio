@@ -1,0 +1,82 @@
+{
+  "ticket": "TPL-001.C+D",
+  "date": "2026-10-19",
+  "timezone": "Africa/Douala",
+  "branch": "feature/tpl-001-cd",
+  "status": "delivered-for-review",
+  "source_commit": "e14139c57ea7f4f6dc16cd40f11ae4965078c305",
+  "base_commit": "99b2269",
+  "B_commit": "730384b",
+  "platform": "Linux",
+  "database": "new isolated synthetic PostgreSQL 17.11 database and separate disposable test databases",
+  "tests": {
+    "django_full": 86,
+    "instances_subset": 12,
+    "subset_already_in_full_total": true,
+    "baseline": 12,
+    "legacy": 6,
+    "health_client": 3,
+    "auth_client": 4,
+    "portfolio_client": 6,
+    "renderer": 6,
+    "instance_client": 4,
+    "distinct_total": 127,
+    "failures": 0,
+    "skipped": 0
+  },
+  "checks": {
+    "build": "passed",
+    "types": "passed",
+    "makemigrations_check": "no changes",
+    "postgresql_runtime_and_test_role": "passed",
+    "new_migrations": 1,
+    "historical_migrations_modified": 0,
+    "new_dependencies": 0,
+    "historical_source_files_verified": 11,
+    "B_bundles_and_hashes": "unchanged",
+    "B_and_PORT_evidence": "unchanged",
+    "Windows_native": "not executed",
+    "phase_E": "not started",
+    "deployed": false,
+    "merged": false,
+    "api_references_resolved": 38
+  },
+  "browser": {
+    "platform": "Linux Chromium",
+    "results": [
+      {
+        "template": "minimal",
+        "double_click_single_request": true,
+        "unsaved_link_and_back_guard": true,
+        "created_saved_reloaded": true,
+        "reconnected": true,
+        "validation_400": true,
+        "conflict_412_keeps_local": true,
+        "duplicate_independent": true,
+        "archive_restore": true,
+        "mobile_no_overflow": true
+      },
+      {
+        "template": "editorial",
+        "double_click_single_request": true,
+        "unsaved_link_and_back_guard": true,
+        "created_saved_reloaded": true,
+        "reconnected": true,
+        "validation_400": true,
+        "conflict_412_keeps_local": true,
+        "duplicate_independent": true,
+        "archive_restore": true,
+        "mobile_no_overflow": true
+      }
+    ],
+    "page_errors": 0
+  },
+  "limitations": [
+    "Windows native pending; previous symlink skip remains an environment limitation",
+    "Unsaved drafts remain in memory only",
+    "Idempotency replay expires after 24h; physical deletion requires documented pruning command",
+    "Future production pruning schedule not deployed",
+    "No media uploads, public publication, free visual editor or immersive engine"
+  ],
+  "implementation_commit": "0d7a202"
+}

@@ -1,0 +1,1 @@
+PASS: create, personalize, save, reload and reconnect from both templates; conflicts, duplication and responsive checked.
