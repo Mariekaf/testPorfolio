@@ -1,6 +1,6 @@
-import {PortfolioError} from './portfolios';
+import {PortfolioError,type Portfolio} from './portfolios';
 export type ReadyData=Record<string,any>;
-export type ReadyRecord={portfolio:ReadyData;snapshot:ReadyData;etag:string;version:number;media_status:string};
+export type ReadyRecord={portfolio:Portfolio;snapshot:ReadyData;etag:string;version:number;media_status:string};
 export async function readyRequest<T>(path:string,method='GET',data?:unknown,extra:Record<string,string>={}):Promise<T>{
  try {
  const headers={...extra};

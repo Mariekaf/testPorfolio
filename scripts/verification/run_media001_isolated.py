@@ -74,7 +74,7 @@ def validate(options):
                 with (work/'cluster.log').open('w',encoding='utf-8') as log:
                     subprocess.run([str(initdb),'-D',str(native_data),'-U',native_admin,'--pwfile',str(pwfile),'--auth-host=scram-sha-256','--auth-local=scram-sha-256','--encoding=UTF8','--locale=C'],check=True,stdout=log,stderr=subprocess.STDOUT)
                 with (native_data/'postgresql.conf').open('a',encoding='utf-8') as file:
-                    file.write("\nlisten_addresses='127.0.0.1'\nport="+str(port)+"\npassword_encryption='scram-sha-256'\n")
+                    file.write("\nlisten_addresses='127.0.0.1'\nport="+str(port)+"\npassword_encryption='scram-sha-256'\nunix_socket_directories=''\n")
                 subprocess.run([str(pg_ctl),'start','-D',str(native_data),'-l',str(work/'cluster.log'),'-w','-t','30'],check=True,stdout=subprocess.DEVNULL)
             for _ in range(100):
                 try:
@@ -153,7 +153,7 @@ def validate(options):
                                 if health.status==200:break
                         except OSError:time.sleep(.2)
                     else:raise ValueError('Synthetic backend not ready.')
-                    run('browser.log',['scripts/verification/browser_media001.py','--output',str(output)],interpreter=options.browser_python)
+                    run('browser.log',[options.browser_script,'--output',str(output)],interpreter=options.browser_python)
                 finally:
                     for process in (studio,backend):
                         if process is not None:
@@ -183,9 +183,10 @@ if __name__=='__main__':
     parser.add_argument('--port',type=int,default=0)
     parser.add_argument('--output',required=True)
     parser.add_argument('--execute-isolated-migrations',action='store_true')
-    parser.add_argument('--tests',choices=('tests','tests.test_ready_instances','tests.test_media'),default='tests')
+    parser.add_argument('--tests',choices=('tests','tests.test_ready_instances','tests.test_media','tests.test_media_acl'),default='tests')
     parser.add_argument('--browser',action='store_true')
     parser.add_argument('--browser-python')
+    parser.add_argument('--browser-script',choices=('scripts/verification/browser_media001.py','scripts/verification/browser_tpl001_f.py'),default='scripts/verification/browser_media001.py')
     parser.add_argument('--image',default='postgres:17@sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3')
     args=parser.parse_args()
     try:

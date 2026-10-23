@@ -1,0 +1,73 @@
+{
+  "groups": [
+    {
+      "template": "minimal",
+      "navigation_without_put_or_reload": true,
+      "draft_history": true,
+      "exit_guards": true,
+      "project_add_remove": true,
+      "template_section_restrictions": true,
+      "save_reopen": true,
+      "etag_conflict": true,
+      "archive_read_only": true,
+      "keyboard_focus": true,
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "template": "editorial",
+      "navigation_without_put_or_reload": true,
+      "draft_history": true,
+      "exit_guards": true,
+      "project_add_remove": true,
+      "template_section_restrictions": true,
+      "save_reopen": true,
+      "etag_conflict": true,
+      "archive_read_only": true,
+      "keyboard_focus": true,
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    },
+    {
+      "template": "creative-editorial",
+      "navigation_without_put_or_reload": true,
+      "draft_history": true,
+      "exit_guards": true,
+      "project_add_remove": true,
+      "template_section_restrictions": true,
+      "save_reopen": true,
+      "etag_conflict": true,
+      "archive_read_only": true,
+      "keyboard_focus": true,
+      "widths": [
+        1440,
+        768,
+        390,
+        320
+      ]
+    }
+  ],
+  "forward_return_reprotects_draft": true,
+  "history_exit_accepted_no_autosave": true,
+  "native_history_exit_guard": true,
+  "history_without_navigation_api": true,
+  "zoom_equivalent_css720_dpr2": true,
+  "blank": true,
+  "unknown_version_fixture": true,
+  "v2_406_fixture": true,
+  "capability_probe_503_retry_fixture": true,
+  "media_reference_alt_crop_persisted": true,
+  "deleted_actual": true,
+  "foreign_actual": true,
+  "revoked_session": true,
+  "page_errors": [],
+  "windows_native_executed": false
+}
