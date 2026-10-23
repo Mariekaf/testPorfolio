@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "design_schema_version": 2,
+  "hero_schema_version": 1,
+  "enabled_by_default": false,
+  "renderer_version": "1.1.0",
+  "layouts": [
+    {
+      "id": "centered",
+      "version": "1.0.0",
+      "implemented": true,
+      "selectable": false
+    },
+    {
+      "id": "split-screen",
+      "version": "1.0.0",
+      "implemented": true,
+      "selectable": false
+    },
+    {
+      "id": "fullscreen",
+      "version": "1.0.0",
+      "implemented": true,
+      "selectable": false
+    },
+    {
+      "id": "typographic",
+      "version": "1.0.0",
+      "implemented": true,
+      "selectable": false
+    },
+    {
+      "id": "asymmetric",
+      "version": "1.0.0",
+      "implemented": true,
+      "selectable": false
+    },
+    {
+      "id": "product-showcase",
+      "version": "1.1.0",
+      "implemented": true,
+      "selectable": false
+    },
+    {
+      "id": "bento-grid",
+      "version": "1.1.0",
+      "implemented": true,
+      "selectable": false
+    }
+  ],
+  "appearance": [
+    "palette",
+    "solid",
+    "gradient",
+    "system-sans",
+    "flat",
+    "glass"
+  ],
+  "behavior": [
+    "none"
+  ]
+}

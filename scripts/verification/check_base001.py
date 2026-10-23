@@ -9,6 +9,7 @@ import sys
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / 'tests' / 'fixtures' / 'base001'
+TEXT_SUFFIXES = frozenset({'.py', '.md', '.html', '.css', '.js', '.json'})
 
 
 def read_json(path):
@@ -20,8 +21,23 @@ def verify_manifest(base, manifest):
         path = (base / name).resolve()
         if not path.is_relative_to(base.resolve()):
             raise ValueError('Manifest path escapes its root')
-        if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
-            raise ValueError('Checksum mismatch: ' + name)
+        raw = path.read_bytes()
+        if hashlib.sha256(raw).hexdigest() == expected:
+            continue
+        # Git for Windows may check out UTF-8 text with CRLF while the pinned
+        # commit/manifest uses LF. Accept ONLY that byte-level equivalence.
+        # Do not strip whitespace, decode/re-encode, replace lone CR, remove BOM,
+        # trust the mutable index, or normalize binary/unknown file types.
+        is_text = path.name == '.gitignore' or path.suffix.lower() in TEXT_SUFFIXES
+        if is_text:
+            try:
+                raw.decode('utf-8', errors='strict')
+            except UnicodeDecodeError:
+                pass
+            else:
+                if hashlib.sha256(raw.replace(b'\r\n', b'\n')).hexdigest() == expected:
+                    continue
+        raise ValueError('Checksum mismatch: ' + name)
     return len(manifest['files'])
 
 
@@ -50,6 +66,7 @@ def main():
         check((FIXTURE / reference.lstrip('/')).is_file(), 'Referenced media missing')
     check('/uploads/33333333333333333333333333333333.png' not in references, 'Orphan fixture unexpectedly referenced')
     print('Fixture accepted without truncation; order, drafts, Unicode and media references verified.')
+    print('UTF-8 reference text allows LF/CRLF checkout equivalence only; binary hashes remain exact.')
     print('No runtime content, credentials, initialization or CORE-001 dependency used.')
 
 

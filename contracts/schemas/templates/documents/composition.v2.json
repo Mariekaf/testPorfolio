@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TPL E02 composition v2 — inactive contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "template",
+    "layout",
+    "sections"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "template": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{0,59}$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?![\\s\\S])",
+          "maxLength": 30
+        }
+      }
+    },
+    "layout": {
+      "enum": [
+        "minimal-stack",
+        "editorial-grid"
+      ]
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "type",
+          "variant",
+          "visible",
+          "required",
+          "toggleable",
+          "reorderable",
+          "presentation_policy"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{0,59}$"
+          },
+          "type": {
+            "enum": [
+              "hero",
+              "about",
+              "projects",
+              "skills",
+              "contact"
+            ]
+          },
+          "variant": {
+            "enum": [
+              "hero-centered",
+              "hero-split",
+              "about-compact",
+              "about-column",
+              "projects-grid",
+              "projects-featured",
+              "skills-list",
+              "skills-sidebar",
+              "contact-simple",
+              "contact-panel"
+            ]
+          },
+          "visible": {
+            "type": "boolean"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "toggleable": {
+            "type": "boolean"
+          },
+          "reorderable": {
+            "type": "boolean"
+          },
+          "presentation_policy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "spacing",
+              "alignment",
+              "emphasis"
+            ],
+            "properties": {
+              "spacing": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "compact",
+                    "normal",
+                    "airy"
+                  ]
+                },
+                "minItems": 1,
+                "maxItems": 3
+              },
+              "alignment": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "start",
+                    "center"
+                  ]
+                },
+                "minItems": 1,
+                "maxItems": 2
+              },
+              "emphasis": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "quiet",
+                    "strong"
+                  ]
+                },
+                "minItems": 1,
+                "maxItems": 2
+              }
+            }
+          },
+          "hero": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "schema_version": {
+                "const": 1
+              },
+              "layout": {
+                "$ref": "../../hero/hero-config.v1.json#/$defs/layoutDefaults"
+              },
+              "policy": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "layouts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "enum": [
+                            "centered",
+                            "split-screen",
+                            "fullscreen",
+                            "typographic",
+                            "asymmetric",
+                            "product-showcase",
+                            "bento-grid"
+                          ]
+                        },
+                        "version": {
+                          "type": "string",
+                          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?![\\s\\S])",
+                          "maxLength": 30
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "version"
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 7,
+                    "uniqueItems": true
+                  },
+                  "appearance": {
+                    "const": true
+                  },
+                  "behaviors": {
+                    "const": [
+                      "none"
+                    ]
+                  }
+                },
+                "required": [
+                  "layouts",
+                  "appearance",
+                  "behaviors"
+                ]
+              }
+            },
+            "required": [
+              "schema_version",
+              "layout",
+              "policy"
+            ]
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "hero"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "hero"
+              ]
+            },
+            "else": {
+              "not": {
+                "required": [
+                  "hero"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 20
+    }
+  }
+}

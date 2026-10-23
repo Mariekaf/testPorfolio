@@ -1,0 +1,47 @@
+name: CORE-001 foundations
+on:
+  push:
+    branches: [arch/core-001]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  linux-foundations:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: python -m pip install --require-hashes -r backend/requirements/development.txt
+      - run: python -B scripts/development/initialize_development.py --mode docker
+      - run: docker compose --env-file infra/env/development.local.env -f infra/compose.yaml up -d --wait postgres
+      - run: python -B scripts/development/provision_database.py
+      - run: python -B backend/manage.py migrate --settings=config.settings.migration --noinput
+      - run: python -B scripts/verification/verify_core_database.py --check-test-access
+      - run: python -B backend/manage.py check
+      - run: python -B backend/manage.py makemigrations --check --dry-run --settings=config.settings.migration
+      - run: python -B manage.py test tests --settings=config.settings.test --noinput --verbosity 2
+        working-directory: backend
+      - run: python -B -m unittest discover -s scripts/verification/tests -v
+      - run: python -B -m unittest discover -s tests -v
+      - run: python -B scripts/verification/check_base001.py
+      - run: node --check script.js && node --check admin.js
+      - run: npm ci --ignore-scripts
+      - run: npm run test:contracts
+      - run: npm run test:auth
+      - run: npm run test:portfolios
+      - run: npm run test:templates
+      - run: npm run test:template-instances
+      - run: npm run typecheck
+      - run: npm run build
+      - if: always()
+        run: docker compose --env-file infra/env/development.local.env -f infra/compose.yaml stop postgres

@@ -1,0 +1,48 @@
+{
+  "ticket": "TPL-001.E.03",
+  "status": "delivered-for-review-not-approved",
+  "base_commit": "76e8af02159ccc237a1f7e83f41d2b6d66db1aab",
+  "branch": "feature/tpl-001-e03",
+  "platform": "Linux",
+  "versions": {
+    "python": "3.13.5",
+    "node": "24.19.0",
+    "typescript": "5.9.3",
+    "jsonschema": "4.26.0",
+    "ajv": "8.20.0"
+  },
+  "tests": {
+    "python_e02": 90,
+    "python_e03": 61,
+    "node_e02_corpus": 2,
+    "node_e03_resolution": 59,
+    "node_v1_html_goldens": 2,
+    "existing_frontend": 23,
+    "base_integrity": 12,
+    "legacy_cms": 6,
+    "total_passed": 255,
+    "failed": 0,
+    "skipped": 0
+  },
+  "shared_parity_cases": 55,
+  "other_checks": {
+    "strict_typescript": "passed",
+    "npm_audit_omit_dev_vulnerabilities": 0,
+    "historical_sources_verified": 11,
+    "historical_fixture_hashes_verified": 4,
+    "v1_reference_sources_verified": 12
+  },
+  "not_executed": [
+    "native-Windows-E03",
+    "studio-build",
+    "browser-tests",
+    "database-tests",
+    "migrations"
+  ],
+  "runtime_enabled": false,
+  "database_access": false,
+  "dependency_added": {
+    "ajv": "8.20.0",
+    "reason": "Apply approved Draft 2020-12 schemas in TypeScript without handwritten schema validator."
+  }
+}

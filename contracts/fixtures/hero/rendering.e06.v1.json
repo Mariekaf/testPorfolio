@@ -1,0 +1,1057 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "asymmetric",
+      "design": {
+        "schema_version": 2,
+        "composition": {
+          "schema_version": 2,
+          "template": {
+            "id": "minimal",
+            "version": "1.0.0"
+          },
+          "layout": "minimal-stack",
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "variant": "hero-centered",
+              "visible": true,
+              "required": true,
+              "toggleable": false,
+              "reorderable": false,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              },
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "asymmetric",
+                  "version": "1.0.0",
+                  "settings": {
+                    "spacing": "normal",
+                    "alignment": "center",
+                    "emphasis": "quiet"
+                  },
+                  "responsive": {
+                    "tablet": {
+                      "alignment": "start"
+                    },
+                    "desktop": {
+                      "alignment": "start"
+                    }
+                  }
+                },
+                "policy": {
+                  "layouts": [
+                    {
+                      "id": "centered",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "split-screen",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "fullscreen",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "typographic",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "asymmetric",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "product-showcase",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "bento-grid",
+                      "version": "1.0.0"
+                    }
+                  ],
+                  "appearance": true,
+                  "behaviors": [
+                    "none"
+                  ]
+                }
+              }
+            },
+            {
+              "id": "projects",
+              "type": "projects",
+              "variant": "projects-grid",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": true,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            },
+            {
+              "id": "about",
+              "type": "about",
+              "variant": "about-compact",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": true,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            },
+            {
+              "id": "skills",
+              "type": "skills",
+              "variant": "skills-list",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": true,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            },
+            {
+              "id": "contact",
+              "type": "contact",
+              "variant": "contact-simple",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": false,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            }
+          ]
+        },
+        "content": {
+          "schema_version": 1,
+          "sections": [
+            {
+              "section_id": "hero",
+              "type": "hero",
+              "data": {
+                "title": "Une autre perspective sur le design.",
+                "subtitle": "Portfolio fictif de Camille : recherche UX et interfaces accessibles.",
+                "cta_label": "Découvrir la suite"
+              }
+            },
+            {
+              "section_id": "projects",
+              "type": "projects",
+              "data": {
+                "heading": "Une sélection de projets",
+                "items": [
+                  {
+                    "id": "20000000-0000-4000-8000-000000000001",
+                    "title": "Clair — rendre les démarches accessibles",
+                    "summary": "Recherche qualitative · Parcours usager · Prototype testé",
+                    "url": null
+                  },
+                  {
+                    "id": "20000000-0000-4000-8000-000000000002",
+                    "title": "Tempo — mieux organiser les soins",
+                    "summary": "Entretiens terrain · Architecture de l’information · Design system",
+                    "url": null
+                  },
+                  {
+                    "id": "20000000-0000-4000-8000-000000000003",
+                    "title": "Lisière — découvrir les mobilités douces",
+                    "summary": "Exploration · Cartographie d’expérience · Interface mobile",
+                    "url": null
+                  }
+                ]
+              }
+            },
+            {
+              "section_id": "about",
+              "type": "about",
+              "data": {
+                "heading": "Écouter avant de dessiner.",
+                "body": "J’explore les besoins, je rends les idées tangibles et je confronte les solutions au terrain. De la recherche au prototype, je construis des interfaces utiles, accessibles et précises. Profil et projets entièrement fictifs, conçus pour illustrer ce template."
+              }
+            },
+            {
+              "section_id": "skills",
+              "type": "skills",
+              "data": {
+                "heading": "De la question à l’interface",
+                "items": [
+                  "Recherche utilisateur",
+                  "Parcours & architecture",
+                  "Design d’interaction",
+                  "Prototypage & tests",
+                  "Design system",
+                  "Accessibilité"
+                ]
+              }
+            },
+            {
+              "section_id": "contact",
+              "type": "contact",
+              "data": {
+                "heading": "Et si nous faisions du beau travail ensemble ?",
+                "body": "Un projet, une question ou une idée à explorer ? Cet espace accueillera votre invitation à échanger.",
+                "email": null
+              }
+            }
+          ]
+        },
+        "presentation": {
+          "schema_version": 2,
+          "theme": {
+            "id": "studio-neutral",
+            "version": "1.0.0"
+          },
+          "sections": [
+            {
+              "section_id": "hero",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "center",
+                "emphasis": "strong"
+              },
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "text": "#172620",
+                    "surface": "#F5F4EE",
+                    "accent": "#254F40"
+                  },
+                  "typography": {
+                    "family": "system-sans",
+                    "scale": "balanced"
+                  },
+                  "background": {
+                    "kind": "gradient",
+                    "angle": 125,
+                    "stops": [
+                      {
+                        "color": "#DDE8DB",
+                        "position": 0
+                      },
+                      {
+                        "color": "#B4C9B0",
+                        "position": 100
+                      }
+                    ]
+                  },
+                  "surface": {
+                    "kind": "flat"
+                  }
+                }
+              }
+            },
+            {
+              "section_id": "projects",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            },
+            {
+              "section_id": "about",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            },
+            {
+              "section_id": "skills",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            },
+            {
+              "section_id": "contact",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            }
+          ]
+        },
+        "customization": {
+          "schema_version": 2,
+          "sections": []
+        },
+        "experience": null
+      }
+    },
+    {
+      "id": "product-showcase",
+      "design": {
+        "schema_version": 2,
+        "composition": {
+          "schema_version": 2,
+          "template": {
+            "id": "minimal",
+            "version": "1.0.0"
+          },
+          "layout": "minimal-stack",
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "variant": "hero-centered",
+              "visible": true,
+              "required": true,
+              "toggleable": false,
+              "reorderable": false,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              },
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "product-showcase",
+                  "version": "1.1.0",
+                  "settings": {
+                    "spacing": "normal",
+                    "alignment": "center",
+                    "emphasis": "quiet"
+                  },
+                  "responsive": {
+                    "tablet": {
+                      "alignment": "start"
+                    },
+                    "desktop": {
+                      "alignment": "start"
+                    }
+                  }
+                },
+                "policy": {
+                  "layouts": [
+                    {
+                      "id": "centered",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "split-screen",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "fullscreen",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "typographic",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "asymmetric",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "bento-grid",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "product-showcase",
+                      "version": "1.1.0"
+                    }
+                  ],
+                  "appearance": true,
+                  "behaviors": [
+                    "none"
+                  ]
+                }
+              }
+            },
+            {
+              "id": "projects",
+              "type": "projects",
+              "variant": "projects-grid",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": true,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            },
+            {
+              "id": "about",
+              "type": "about",
+              "variant": "about-compact",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": true,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            },
+            {
+              "id": "skills",
+              "type": "skills",
+              "variant": "skills-list",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": true,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            },
+            {
+              "id": "contact",
+              "type": "contact",
+              "variant": "contact-simple",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": false,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            }
+          ]
+        },
+        "content": {
+          "schema_version": 1,
+          "sections": [
+            {
+              "section_id": "hero",
+              "type": "hero",
+              "data": {
+                "title": "Clarté, un produit conçu pour simplifier.",
+                "subtitle": "Étude de cas fictive : concevoir une interface qui accompagne chaque étape du parcours.",
+                "cta_label": "Découvrir la suite"
+              }
+            },
+            {
+              "section_id": "projects",
+              "type": "projects",
+              "data": {
+                "heading": "Une sélection de projets",
+                "items": [
+                  {
+                    "id": "20000000-0000-4000-8000-000000000001",
+                    "title": "Clair — rendre les démarches accessibles",
+                    "summary": "Recherche qualitative · Parcours usager · Prototype testé",
+                    "url": null
+                  },
+                  {
+                    "id": "20000000-0000-4000-8000-000000000002",
+                    "title": "Tempo — mieux organiser les soins",
+                    "summary": "Entretiens terrain · Architecture de l’information · Design system",
+                    "url": null
+                  },
+                  {
+                    "id": "20000000-0000-4000-8000-000000000003",
+                    "title": "Lisière — découvrir les mobilités douces",
+                    "summary": "Exploration · Cartographie d’expérience · Interface mobile",
+                    "url": null
+                  }
+                ]
+              }
+            },
+            {
+              "section_id": "about",
+              "type": "about",
+              "data": {
+                "heading": "Écouter avant de dessiner.",
+                "body": "J’explore les besoins, je rends les idées tangibles et je confronte les solutions au terrain. De la recherche au prototype, je construis des interfaces utiles, accessibles et précises. Profil et projets entièrement fictifs, conçus pour illustrer ce template."
+              }
+            },
+            {
+              "section_id": "skills",
+              "type": "skills",
+              "data": {
+                "heading": "De la question à l’interface",
+                "items": [
+                  "Recherche utilisateur",
+                  "Parcours & architecture",
+                  "Design d’interaction",
+                  "Prototypage & tests",
+                  "Design system",
+                  "Accessibilité"
+                ]
+              }
+            },
+            {
+              "section_id": "contact",
+              "type": "contact",
+              "data": {
+                "heading": "Et si nous faisions du beau travail ensemble ?",
+                "body": "Un projet, une question ou une idée à explorer ? Cet espace accueillera votre invitation à échanger.",
+                "email": null
+              }
+            }
+          ]
+        },
+        "presentation": {
+          "schema_version": 2,
+          "theme": {
+            "id": "studio-neutral",
+            "version": "1.0.0"
+          },
+          "sections": [
+            {
+              "section_id": "hero",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "center",
+                "emphasis": "strong"
+              },
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "text": "#172620",
+                    "surface": "#F5F4EE",
+                    "accent": "#254F40"
+                  },
+                  "typography": {
+                    "family": "system-sans",
+                    "scale": "balanced"
+                  },
+                  "background": {
+                    "kind": "gradient",
+                    "angle": 125,
+                    "stops": [
+                      {
+                        "color": "#DDE8DB",
+                        "position": 0
+                      },
+                      {
+                        "color": "#B4C9B0",
+                        "position": 100
+                      }
+                    ]
+                  },
+                  "surface": {
+                    "kind": "flat"
+                  }
+                }
+              }
+            },
+            {
+              "section_id": "projects",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            },
+            {
+              "section_id": "about",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            },
+            {
+              "section_id": "skills",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            },
+            {
+              "section_id": "contact",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            }
+          ]
+        },
+        "customization": {
+          "schema_version": 2,
+          "sections": []
+        },
+        "experience": null
+      }
+    },
+    {
+      "id": "bento-grid",
+      "design": {
+        "schema_version": 2,
+        "composition": {
+          "schema_version": 2,
+          "template": {
+            "id": "minimal",
+            "version": "1.0.0"
+          },
+          "layout": "minimal-stack",
+          "sections": [
+            {
+              "id": "hero",
+              "type": "hero",
+              "variant": "hero-centered",
+              "visible": true,
+              "required": true,
+              "toggleable": false,
+              "reorderable": false,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              },
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "bento-grid",
+                  "version": "1.1.0",
+                  "settings": {
+                    "spacing": "normal",
+                    "alignment": "center",
+                    "emphasis": "quiet"
+                  },
+                  "responsive": {
+                    "tablet": {
+                      "alignment": "start"
+                    },
+                    "desktop": {
+                      "alignment": "start"
+                    }
+                  }
+                },
+                "policy": {
+                  "layouts": [
+                    {
+                      "id": "centered",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "split-screen",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "fullscreen",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "typographic",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "asymmetric",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "product-showcase",
+                      "version": "1.0.0"
+                    },
+                    {
+                      "id": "bento-grid",
+                      "version": "1.1.0"
+                    }
+                  ],
+                  "appearance": true,
+                  "behaviors": [
+                    "none"
+                  ]
+                }
+              }
+            },
+            {
+              "id": "projects",
+              "type": "projects",
+              "variant": "projects-grid",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": true,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            },
+            {
+              "id": "about",
+              "type": "about",
+              "variant": "about-compact",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": true,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            },
+            {
+              "id": "skills",
+              "type": "skills",
+              "variant": "skills-list",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": true,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            },
+            {
+              "id": "contact",
+              "type": "contact",
+              "variant": "contact-simple",
+              "visible": true,
+              "required": false,
+              "toggleable": true,
+              "reorderable": false,
+              "presentation_policy": {
+                "spacing": [
+                  "compact",
+                  "normal",
+                  "airy"
+                ],
+                "alignment": [
+                  "start",
+                  "center"
+                ],
+                "emphasis": [
+                  "quiet",
+                  "strong"
+                ]
+              }
+            }
+          ]
+        },
+        "content": {
+          "schema_version": 1,
+          "sections": [
+            {
+              "section_id": "hero",
+              "type": "hero",
+              "data": {
+                "title": "Une pratique du design aux multiples facettes.",
+                "subtitle": "Portfolio fictif de Camille : recherche, conception et interfaces inclusives.",
+                "cta_label": "Découvrir la suite"
+              }
+            },
+            {
+              "section_id": "projects",
+              "type": "projects",
+              "data": {
+                "heading": "Une sélection de projets",
+                "items": [
+                  {
+                    "id": "20000000-0000-4000-8000-000000000001",
+                    "title": "Clair — rendre les démarches accessibles",
+                    "summary": "Recherche qualitative · Parcours usager · Prototype testé",
+                    "url": null
+                  },
+                  {
+                    "id": "20000000-0000-4000-8000-000000000002",
+                    "title": "Tempo — mieux organiser les soins",
+                    "summary": "Entretiens terrain · Architecture de l’information · Design system",
+                    "url": null
+                  },
+                  {
+                    "id": "20000000-0000-4000-8000-000000000003",
+                    "title": "Lisière — découvrir les mobilités douces",
+                    "summary": "Exploration · Cartographie d’expérience · Interface mobile",
+                    "url": null
+                  }
+                ]
+              }
+            },
+            {
+              "section_id": "about",
+              "type": "about",
+              "data": {
+                "heading": "Écouter avant de dessiner.",
+                "body": "J’explore les besoins, je rends les idées tangibles et je confronte les solutions au terrain. De la recherche au prototype, je construis des interfaces utiles, accessibles et précises. Profil et projets entièrement fictifs, conçus pour illustrer ce template."
+              }
+            },
+            {
+              "section_id": "skills",
+              "type": "skills",
+              "data": {
+                "heading": "De la question à l’interface",
+                "items": [
+                  "Recherche utilisateur",
+                  "Parcours & architecture",
+                  "Design d’interaction",
+                  "Prototypage & tests",
+                  "Design system",
+                  "Accessibilité"
+                ]
+              }
+            },
+            {
+              "section_id": "contact",
+              "type": "contact",
+              "data": {
+                "heading": "Et si nous faisions du beau travail ensemble ?",
+                "body": "Un projet, une question ou une idée à explorer ? Cet espace accueillera votre invitation à échanger.",
+                "email": null
+              }
+            }
+          ]
+        },
+        "presentation": {
+          "schema_version": 2,
+          "theme": {
+            "id": "studio-neutral",
+            "version": "1.0.0"
+          },
+          "sections": [
+            {
+              "section_id": "hero",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "center",
+                "emphasis": "strong"
+              },
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "text": "#172620",
+                    "surface": "#F5F4EE",
+                    "accent": "#254F40"
+                  },
+                  "typography": {
+                    "family": "system-sans",
+                    "scale": "balanced"
+                  },
+                  "background": {
+                    "kind": "gradient",
+                    "angle": 125,
+                    "stops": [
+                      {
+                        "color": "#DDE8DB",
+                        "position": 0
+                      },
+                      {
+                        "color": "#B4C9B0",
+                        "position": 100
+                      }
+                    ]
+                  },
+                  "surface": {
+                    "kind": "glass",
+                    "opacity": 90,
+                    "blur": 6
+                  }
+                }
+              }
+            },
+            {
+              "section_id": "projects",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            },
+            {
+              "section_id": "about",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            },
+            {
+              "section_id": "skills",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            },
+            {
+              "section_id": "contact",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "start",
+                "emphasis": "quiet"
+              }
+            }
+          ]
+        },
+        "customization": {
+          "schema_version": 2,
+          "sections": []
+        },
+        "experience": null
+      }
+    }
+  ]
+}

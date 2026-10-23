@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "slots": {
+    "identity_name": {
+      "type": "text",
+      "value": "Camille Démo — profil fictif"
+    },
+    "brand_logo": {
+      "type": "logo",
+      "value": null
+    },
+    "hero_title": {
+      "type": "text",
+      "value": "Des idées claires. Des interfaces vivantes."
+    },
+    "hero_subtitle": {
+      "type": "text",
+      "value": "Portfolio de démonstration fictif en recherche UX et design UI."
+    },
+    "hero_portrait": {
+      "type": "image",
+      "value": null
+    },
+    "hero_cta": {
+      "type": "link",
+      "label": "Voir les projets",
+      "target": null
+    },
+    "about_heading": {
+      "type": "text",
+      "value": "Une approche attentive"
+    },
+    "about_body": {
+      "type": "rich_text",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Présentation fictive à remplacer avant publication.",
+              "marks": []
+            }
+          ]
+        }
+      ]
+    },
+    "projects_heading": {
+      "type": "text",
+      "value": "Projets sélectionnés"
+    },
+    "selected_projects": {
+      "type": "project_list",
+      "items": []
+    },
+    "contact_heading": {
+      "type": "text",
+      "value": "Travaillons ensemble"
+    },
+    "contact_link": {
+      "type": "link",
+      "label": "Me contacter",
+      "target": null
+    },
+    "socials": {
+      "type": "social_links",
+      "items": []
+    },
+    "footer_note": {
+      "type": "text",
+      "value": ""
+    }
+  }
+}

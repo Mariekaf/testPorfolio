@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "ticket": "TPL-001.E.07.04",
+  "base_commit": "144043b67c96b7869c714e79a0b1b66c536ad5f5",
+  "branch": "feature/tpl-001-e0704",
+  "status": "delivered-for-review",
+  "existing_database_access": false,
+  "new_disposable_cluster_only": true,
+  "windows_executed": false,
+  "screen_reader_executed": false,
+  "counts": {
+    "django": 367,
+    "node": 212,
+    "integrity": 12,
+    "legacy": 6,
+    "total": 597,
+    "skipped_linux": 0,
+    "browser_groups": 8,
+    "screenshots": 5
+  },
+  "log_normalization": "Terminal CR and trailing whitespace normalized in npm/baseline logs only; no outcomes altered.",
+  "sha256": {
+    "browser-results.json": "109c7789381dd98891d11e9935ff8d953a2a98a739de8f52809486f875c9416b",
+    "browser.log": "5fcf5f7d72702c2a21f0054f80a2543e6aa4fc701f31704c4aa98e76eac2ec3c",
+    "build.log": "ef9341605b0edfbd5876f5b81b11d3129fb40093e5bee224ad1ce5c61f5c9ded",
+    "django-tests.log": "619667217ba145d4ace28ef520e217db3b3356f3456270804b9cb34c64b3e697",
+    "historical-reference.log": "c18c0879588aa737000177e770f1efd7b770cc5408499ff474808dda6f8120d5",
+    "integrity-tests.log": "60d7b3c1ec5b764cce68ff04c6db47096b994d3977a6e505e47fb85feaaa2334",
+    "isolated-environment.json": "423f55c058d965aa0e88d4bd7e543be800f2d1ec811abd479bccfc4e2360f2ef",
+    "legacy-tests.log": "01101e343ec25daeac63a2ae57eb605ee6b0089624ee0e1a396088a13c4298dc",
+    "migrations.log": "566b800ef58316849bbf394b7f810c65f2bba3e6f85ca3bd127d45dd2b093f9b",
+    "node-tests.log": "e323f92cf2ccca427fb1e12441df6d0d1d53db68a60d52dff99fbad38f5ba79c",
+    "portfolio-desktop.png": "434344ea20300e62fb3de11f7171974bad8a16f5f7cb3058c35cce2edb9005b2",
+    "portfolio-mobile.png": "049f0fdf34b0c37b19d7a02232f882fe3e522dfcd447d87c2892bcc376d0b7bd",
+    "provision.log": "31df3f033b9aa9d63365b704276061aec7ae65602a42b7631926e483dc37cc8d",
+    "runtime-privileges.log": "f152c36f9ec1d5c9a282867b16f7684c5c80624ef6b43792a07167ff1b2fecf5",
+    "schema-check.log": "a2bfa7b376c38062f77ce2b1e703876aaa04662f96355cdf5dc9d0d075302b05",
+    "selection-desktop.png": "a4ec52b8c4ae990892ec280cc1f653a76ac27a7721410818fc5ecc7f5e81c430",
+    "studio-desktop.png": "02eb4ee57eee7731c924c753a45b2c870a462d995223590c8d8a1b6767bd322b",
+    "studio-mobile.png": "2b34ab471b5d4eea5d4711a7744160b8cfd64f5b18c2baa9ac6c9b6e51f959d4",
+    "typecheck.log": "88d2b26ea4cecc20f11ca89ec136f964d24460820123465002310dc4153495f5"
+  }
+}

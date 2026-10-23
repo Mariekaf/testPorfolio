@@ -1,0 +1,42 @@
+{
+  "ticket": "TPL-001.E.04",
+  "status": "delivered-for-review-not-approved",
+  "base_commit": "ef4139109032f6974bd4b88dd3995879319ada78",
+  "branch": "feature/tpl-001-e04",
+  "platform": "Linux",
+  "postgresql": "17.11",
+  "migration_authorization": "Explicit user consent received before execution; NEW isolated E04 clusters only.",
+  "tests": {
+    "django_total": 263,
+    "django_e04": 26,
+    "django_previous": 237,
+    "node_hero": 63,
+    "node_existing_frontend": 23,
+    "base_integrity": 12,
+    "legacy_cms": 6,
+    "total_passed": 367,
+    "failed": 0,
+    "skipped": 0
+  },
+  "checks": {
+    "schema_model_consistency": "passed",
+    "runtime_least_privilege": "passed",
+    "test_maintenance_access": "passed",
+    "strict_typescript": "passed",
+    "historical_files_unchanged": 11,
+    "historical_fixture_hashes": 4,
+    "v1_source_references": 12,
+    "new_clusters_cleaned_up": true
+  },
+  "runtime_transition_default": false,
+  "existing_database_access": false,
+  "real_data_migrations": false,
+  "new_application_dependencies": [],
+  "not_executed": [
+    "Windows-native-E04",
+    "browser-tests",
+    "studio-build",
+    "physical-crash-recovery",
+    "real-database-migration"
+  ]
+}

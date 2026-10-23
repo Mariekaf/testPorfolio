@@ -1,0 +1,15 @@
+{
+  "database_mode": "native",
+  "secret_key": "GENERATED_BY_INITIALIZER_NOT_A_REAL_SECRET",
+  "database": {
+    "host": "127.0.0.1",
+    "port": 5433,
+    "name": "portfolio_core_dev",
+    "runtime_user": "portfolio_core_app",
+    "runtime_password": "GENERATED_LOCALLY",
+    "migration_user": "portfolio_core_migrator",
+    "migration_password": "GENERATED_LOCALLY",
+    "test_user": "portfolio_core_test",
+    "test_password": "GENERATED_LOCALLY"
+  }
+}

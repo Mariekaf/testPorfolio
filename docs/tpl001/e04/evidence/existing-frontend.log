@@ -1,0 +1,47 @@
+(node:812217) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/testPorfolio/apps/studio/src/lib/auth.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/testPorfolio/apps/studio/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ POST initializes CSRF first and uses same-origin cookies without caching (136.753452ms)
+✔ private identity request performs no mutation (5.803532ms)
+✔ API errors preserve accessible field validation and session status (1.031061ms)
+✔ non-JSON server failures do not expose raw response bodies (3.128185ms)
+(node:812219) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/testPorfolio/apps/studio/src/lib/portfolios.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/testPorfolio/apps/studio/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ names produce valid ASCII slugs including French accents (26.78111ms)
+✔ list uses canonical URL, session cookies and no cache (103.411853ms)
+✔ conditional mutation obtains CSRF and forwards exact ETag and JSON (9.031484ms)
+✔ confirmed deletion accepts empty 204 response without JSON parsing (0.793381ms)
+✔ slug and version conflicts retain field validation and status (1.080684ms)
+✔ non-JSON network failures expose a generic message (1.003371ms)
+(node:812221) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/testPorfolio/apps/studio/src/lib/portfolios.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/testPorfolio/apps/studio/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ creation obtains CSRF and sends the exact idempotency key with private credentials (55.958146ms)
+✔ save sends content and customization with exact version precondition (1.67388ms)
+✔ conflict and expired session surface errors without discarding caller state (1.279808ms)
+✔ new creation intents have distinct keys and explicit timestamps (1.062908ms)
+(node:812261) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///workspace/testPorfolio/apps/studio/src/lib/template-render.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /workspace/testPorfolio/apps/studio/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ real renderer produces distinct layouts and all declared section variants (25.330529ms)
+✔ same renderer resolves a local snapshot without modifying its source (38.498317ms)
+✔ React escapes hostile text and never renders HTML or unsafe project links (9.754742ms)
+✔ URLs reject unsafe schemes, credentials and whitespace (0.356206ms)
+✔ protected sections, unknown documents and invalid settings fail closed (1.367748ms)
+✔ renderer has only whitelisted local styling and responsive container rules (0.277199ms)
+✔ accepts ready and unavailable health documents (0.726622ms)
+✔ rejects invalid, incomplete and future documents (0.14955ms)
+✔ rejects extra fields consistently with the canonical schema (0.108731ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1155.122419

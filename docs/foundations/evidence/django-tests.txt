@@ -1,0 +1,46 @@
+Creating test database for alias 'default' ('test_portfolio_core_dev')...
+Found 12 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: rest_framework
+  Apply all migrations: auth, contenttypes, identity, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying identity.0001_initial... OK
+  Applying sessions.0001_initial...test_health_aliases_and_no_business_routes (tests.test_foundations.HealthTests.test_health_aliases_and_no_business_routes) ... ok
+test_health_contract_matches_responses_and_examples (tests.test_foundations.HealthTests.test_health_contract_matches_responses_and_examples) ... ok
+test_live_without_database_access (tests.test_foundations.HealthTests.test_live_without_database_access) ... ok
+test_missing_initial_schema_is_not_ready (tests.test_foundations.HealthTests.test_missing_initial_schema_is_not_ready) ... PostgreSQL readiness check failed; connection details omitted.
+ok
+test_ready_uses_real_postgresql_and_migrated_table (tests.test_foundations.HealthTests.test_ready_uses_real_postgresql_and_migrated_table) ... ok
+test_unavailable_is_generic_without_secret_or_trace (tests.test_foundations.HealthTests.test_unavailable_is_generic_without_secret_or_trace) ... PostgreSQL readiness check failed; connection details omitted.
+ok
+test_user_has_uuid_primary_key_without_seeded_personal_data (tests.test_foundations.HealthTests.test_user_has_uuid_primary_key_without_seeded_personal_data) ... ok
+test_invalid_config_does_not_echo_values (tests.test_foundations.ConfigurationTests.test_invalid_config_does_not_echo_values) ... ok
+test_missing_config_fails_without_initializing_anything (tests.test_foundations.ConfigurationTests.test_missing_config_fails_without_initializing_anything) ... ok
+test_docker_settings_generated_without_printing_credentials (tests.test_foundations.LocalInitializationTests.test_docker_settings_generated_without_printing_credentials) ... ok
+test_existing_mode_or_port_cannot_be_overwritten (tests.test_foundations.LocalInitializationTests.test_existing_mode_or_port_cannot_be_overwritten) ... ok
+test_native_initialization_is_idempotent_and_docker_free (tests.test_foundations.LocalInitializationTests.test_native_initialization_is_idempotent_and_docker_free) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.736s
+
+OK
+Destroying test database for alias 'default' ('test_portfolio_core_dev')...
+ OK
+System check identified no issues (0 silenced).

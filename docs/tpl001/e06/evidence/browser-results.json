@@ -1,0 +1,174 @@
+{
+  "browser": "Chromium",
+  "results": [
+    {
+      "layout": "asymmetric",
+      "width": 320,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "asymmetric",
+      "width": 375,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "asymmetric",
+      "width": 640,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "asymmetric",
+      "width": 768,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "asymmetric",
+      "width": 1024,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "asymmetric",
+      "width": 1440,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "product-showcase",
+      "width": 320,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "product-showcase",
+      "width": 375,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "product-showcase",
+      "width": 640,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "product-showcase",
+      "width": 768,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "product-showcase",
+      "width": 1024,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "product-showcase",
+      "width": 1440,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "bento-grid",
+      "width": 320,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "bento-grid",
+      "width": 375,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "bento-grid",
+      "width": 640,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "bento-grid",
+      "width": 768,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "bento-grid",
+      "width": 1024,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "bento-grid",
+      "width": 1440,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    }
+  ],
+  "screenshots": 9,
+  "forced_colors": "3 passed",
+  "page_errors": [],
+  "limitations": [
+    "Linux Chromium only; no Windows, Safari, Firefox or screen-reader certification.",
+    "CSS zoom exercised; operating-system display scaling not tested."
+  ]
+}

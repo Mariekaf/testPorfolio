@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "design_schema_version": 2,
+  "hero_schema_version": 1,
+  "runtime_enabled": false,
+  "layouts": [
+    {
+      "id": "centered",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    },
+    {
+      "id": "split-screen",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    },
+    {
+      "id": "fullscreen",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    },
+    {
+      "id": "typographic",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    },
+    {
+      "id": "asymmetric",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    },
+    {
+      "id": "product-showcase",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": [
+        "content-v2",
+        "media-assets"
+      ]
+    },
+    {
+      "id": "bento-grid",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": [
+        "content-v2"
+      ]
+    }
+  ],
+  "appearance": [
+    {
+      "id": "palette",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    },
+    {
+      "id": "solid",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    },
+    {
+      "id": "gradient",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    },
+    {
+      "id": "system-sans",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    },
+    {
+      "id": "flat",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    },
+    {
+      "id": "glass",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    }
+  ],
+  "behaviors": [
+    {
+      "id": "none",
+      "version": "1.0.0",
+      "declared": true,
+      "implemented": false,
+      "selectable": false,
+      "requires": []
+    }
+  ]
+}

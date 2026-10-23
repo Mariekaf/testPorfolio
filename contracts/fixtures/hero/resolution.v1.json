@@ -1,0 +1,3207 @@
+{
+  "schema_version": 1,
+  "description": "Synthetic E03 resolution/reset parity vectors. Expectations authored independently of resolvers.",
+  "base_design": {
+    "schema_version": 2,
+    "composition": {
+      "schema_version": 2,
+      "template": {
+        "id": "minimal",
+        "version": "1.0.0"
+      },
+      "layout": "minimal-stack",
+      "sections": [
+        {
+          "id": "hero",
+          "type": "hero",
+          "variant": "hero-centered",
+          "visible": true,
+          "required": true,
+          "toggleable": false,
+          "reorderable": false,
+          "presentation_policy": {
+            "spacing": [
+              "compact",
+              "normal",
+              "airy"
+            ],
+            "alignment": [
+              "start",
+              "center"
+            ],
+            "emphasis": [
+              "quiet",
+              "strong"
+            ]
+          },
+          "hero": {
+            "schema_version": 1,
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "spacing": "normal",
+                "alignment": "center",
+                "emphasis": "quiet"
+              }
+            },
+            "policy": {
+              "layouts": [
+                {
+                  "id": "centered",
+                  "version": "1.0.0"
+                },
+                {
+                  "id": "split-screen",
+                  "version": "1.0.0"
+                },
+                {
+                  "id": "fullscreen",
+                  "version": "1.0.0"
+                },
+                {
+                  "id": "typographic",
+                  "version": "1.0.0"
+                },
+                {
+                  "id": "asymmetric",
+                  "version": "1.0.0"
+                },
+                {
+                  "id": "product-showcase",
+                  "version": "1.0.0"
+                },
+                {
+                  "id": "bento-grid",
+                  "version": "1.0.0"
+                }
+              ],
+              "appearance": true,
+              "behaviors": [
+                "none"
+              ]
+            }
+          }
+        },
+        {
+          "id": "projects",
+          "type": "projects",
+          "variant": "projects-grid",
+          "visible": true,
+          "required": false,
+          "toggleable": true,
+          "reorderable": true,
+          "presentation_policy": {
+            "spacing": [
+              "compact",
+              "normal",
+              "airy"
+            ],
+            "alignment": [
+              "start",
+              "center"
+            ],
+            "emphasis": [
+              "quiet",
+              "strong"
+            ]
+          }
+        },
+        {
+          "id": "about",
+          "type": "about",
+          "variant": "about-compact",
+          "visible": true,
+          "required": false,
+          "toggleable": true,
+          "reorderable": true,
+          "presentation_policy": {
+            "spacing": [
+              "compact",
+              "normal",
+              "airy"
+            ],
+            "alignment": [
+              "start",
+              "center"
+            ],
+            "emphasis": [
+              "quiet",
+              "strong"
+            ]
+          }
+        },
+        {
+          "id": "skills",
+          "type": "skills",
+          "variant": "skills-list",
+          "visible": true,
+          "required": false,
+          "toggleable": true,
+          "reorderable": true,
+          "presentation_policy": {
+            "spacing": [
+              "compact",
+              "normal",
+              "airy"
+            ],
+            "alignment": [
+              "start",
+              "center"
+            ],
+            "emphasis": [
+              "quiet",
+              "strong"
+            ]
+          }
+        },
+        {
+          "id": "contact",
+          "type": "contact",
+          "variant": "contact-simple",
+          "visible": true,
+          "required": false,
+          "toggleable": true,
+          "reorderable": false,
+          "presentation_policy": {
+            "spacing": [
+              "compact",
+              "normal",
+              "airy"
+            ],
+            "alignment": [
+              "start",
+              "center"
+            ],
+            "emphasis": [
+              "quiet",
+              "strong"
+            ]
+          }
+        }
+      ]
+    },
+    "content": {
+      "schema_version": 1,
+      "sections": [
+        {
+          "section_id": "hero",
+          "type": "hero",
+          "data": {
+            "title": "Designer Démo É02",
+            "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+            "cta_label": "Explorer mes études de cas"
+          }
+        },
+        {
+          "section_id": "projects",
+          "type": "projects",
+          "data": {
+            "heading": "Une sélection de projets",
+            "items": [
+              {
+                "id": "20000000-0000-4000-8000-000000000001",
+                "title": "Clair — rendre les démarches accessibles",
+                "summary": "Recherche qualitative · Parcours usager · Prototype testé",
+                "url": null
+              },
+              {
+                "id": "20000000-0000-4000-8000-000000000002",
+                "title": "Tempo — mieux organiser les soins",
+                "summary": "Entretiens terrain · Architecture de l’information · Design system",
+                "url": null
+              },
+              {
+                "id": "20000000-0000-4000-8000-000000000003",
+                "title": "Lisière — découvrir les mobilités douces",
+                "summary": "Exploration · Cartographie d’expérience · Interface mobile",
+                "url": null
+              }
+            ]
+          }
+        },
+        {
+          "section_id": "about",
+          "type": "about",
+          "data": {
+            "heading": "Écouter avant de dessiner.",
+            "body": "J’explore les besoins, je rends les idées tangibles et je confronte les solutions au terrain. De la recherche au prototype, je construis des interfaces utiles, accessibles et précises. Profil et projets entièrement fictifs, conçus pour illustrer ce template."
+          }
+        },
+        {
+          "section_id": "skills",
+          "type": "skills",
+          "data": {
+            "heading": "De la question à l’interface",
+            "items": [
+              "Recherche utilisateur",
+              "Parcours & architecture",
+              "Design d’interaction",
+              "Prototypage & tests",
+              "Design system",
+              "Accessibilité"
+            ]
+          }
+        },
+        {
+          "section_id": "contact",
+          "type": "contact",
+          "data": {
+            "heading": "Et si nous faisions du beau travail ensemble ?",
+            "body": "Un projet, une question ou une idée à explorer ? Cet espace accueillera votre invitation à échanger.",
+            "email": null
+          }
+        }
+      ]
+    },
+    "presentation": {
+      "schema_version": 2,
+      "theme": {
+        "id": "studio-neutral",
+        "version": "1.0.0"
+      },
+      "sections": [
+        {
+          "section_id": "hero",
+          "settings": {
+            "spacing": "normal",
+            "alignment": "center",
+            "emphasis": "strong"
+          },
+          "hero": {
+            "schema_version": 1,
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            }
+          }
+        },
+        {
+          "section_id": "projects",
+          "settings": {
+            "spacing": "normal",
+            "alignment": "start",
+            "emphasis": "quiet"
+          }
+        },
+        {
+          "section_id": "about",
+          "settings": {
+            "spacing": "normal",
+            "alignment": "start",
+            "emphasis": "quiet"
+          }
+        },
+        {
+          "section_id": "skills",
+          "settings": {
+            "spacing": "normal",
+            "alignment": "start",
+            "emphasis": "quiet"
+          }
+        },
+        {
+          "section_id": "contact",
+          "settings": {
+            "spacing": "normal",
+            "alignment": "start",
+            "emphasis": "quiet"
+          }
+        }
+      ]
+    },
+    "customization": {
+      "schema_version": 2,
+      "sections": []
+    },
+    "experience": null
+  },
+  "cases": [
+    {
+      "id": "local-defaults-only",
+      "changes": [],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "layout-centered",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "1.0.0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "layout-split-screen",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "split-screen",
+                  "version": "1.0.0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "split-screen",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "layout-fullscreen",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "fullscreen",
+                  "version": "1.0.0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "fullscreen",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "layout-typographic",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "typographic",
+                  "version": "1.0.0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "typographic",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "layout-asymmetric",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "asymmetric",
+                  "version": "1.0.0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "asymmetric",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "layout-refused-product-showcase",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "product-showcase",
+                  "version": "1.0.0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "layout-refused-bento-grid",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "bento-grid",
+                  "version": "1.0.0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "layout-refused-missing",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "missing",
+                  "version": "1.0.0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "palette-without-layout",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "accent": "#333333"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#333333"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "contrast-after-partial-text",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "text": "#EEEEEE"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "contrast-after-partial-surface",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "surface": "#111111"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "contrast-after-partial-accent",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "accent": "#FFFFFF"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "contrast-threshold-767676",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "text": "#767676"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#767676",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "contrast-threshold-777777",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "text": "#777777"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "dark-palette-atomic-effective",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "text": "#FFFFFF",
+                    "surface": "#000000",
+                    "accent": "#CCCCCC"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#FFFFFF",
+                "surface": "#000000",
+                "accent": "#CCCCCC"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "typography-scale",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "typography": {
+                    "scale": "display"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "display"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "background-replaced-not-deep-merged",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "background": {
+                    "kind": "gradient",
+                    "angle": 140,
+                    "stops": [
+                      {
+                        "color": "#001122",
+                        "position": 0
+                      },
+                      {
+                        "color": "#8899AA",
+                        "position": 100
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "gradient",
+                "angle": 140,
+                "stops": [
+                  {
+                    "color": "#001122",
+                    "position": 0
+                  },
+                  {
+                    "color": "#8899AA",
+                    "position": 100
+                  }
+                ]
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "surface-union-replacement",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "surface": {
+                    "kind": "glass",
+                    "opacity": 90,
+                    "blur": 8
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "glass",
+                "opacity": 90,
+                "blur": 8
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "all-dimensions-combined",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "asymmetric",
+                  "version": "1.0.0"
+                },
+                "appearance": {
+                  "palette": {
+                    "text": "#111111",
+                    "surface": "#FFFFFF",
+                    "accent": "#333333"
+                  },
+                  "typography": {
+                    "family": "system-sans",
+                    "scale": "display"
+                  },
+                  "background": {
+                    "kind": "gradient",
+                    "angle": 140,
+                    "stops": [
+                      {
+                        "color": "#001122",
+                        "position": 0
+                      },
+                      {
+                        "color": "#8899AA",
+                        "position": 100
+                      }
+                    ]
+                  },
+                  "surface": {
+                    "kind": "glass",
+                    "opacity": 90,
+                    "blur": 8
+                  }
+                },
+                "behavior": {
+                  "kind": "none"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "asymmetric",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#333333"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "display"
+              },
+              "background": {
+                "kind": "gradient",
+                "angle": 140,
+                "stops": [
+                  {
+                    "color": "#001122",
+                    "position": 0
+                  },
+                  {
+                    "color": "#8899AA",
+                    "position": 100
+                  }
+                ]
+              },
+              "surface": {
+                "kind": "glass",
+                "opacity": 90,
+                "blur": 8
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "tablet-does-not-leak-to-desktop",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "1.0.0",
+                  "responsive": {
+                    "tablet": {
+                      "alignment": "start",
+                      "spacing": "airy"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "airy",
+                  "alignment": "start",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "local-responsive-defaults",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/layout/responsive",
+          "value": {
+            "tablet": {
+              "spacing": "airy",
+              "alignment": "start"
+            },
+            "desktop": {
+              "emphasis": "strong"
+            }
+          }
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "airy",
+                  "alignment": "start",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "strong"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "responsive-merge-per-key",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/layout/responsive",
+          "value": {
+            "tablet": {
+              "spacing": "airy",
+              "alignment": "start"
+            },
+            "desktop": {
+              "emphasis": "strong"
+            }
+          }
+        },
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "1.0.0",
+                  "responsive": {
+                    "tablet": {
+                      "spacing": "compact"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "compact",
+                  "alignment": "start",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "strong"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "local-hero-priority-over-legacy",
+      "changes": [
+        {
+          "path": "/presentation/sections/0/settings/spacing",
+          "value": "airy"
+        },
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "presentation": {
+                "spacing": "compact"
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "all-setting-priorities",
+      "changes": [
+        {
+          "path": "/presentation/sections/0/settings/spacing",
+          "value": "airy"
+        },
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "1.0.0",
+                  "settings": {
+                    "spacing": "compact"
+                  },
+                  "responsive": {
+                    "tablet": {
+                      "spacing": "airy"
+                    }
+                  }
+                }
+              },
+              "presentation": {
+                "spacing": "airy"
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "compact",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "airy",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "compact",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "layout-change-inherits-local-responsive",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/layout/responsive",
+          "value": {
+            "tablet": {
+              "spacing": "airy",
+              "alignment": "start"
+            },
+            "desktop": {
+              "emphasis": "strong"
+            }
+          }
+        },
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "split-screen",
+                  "version": "1.0.0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "split-screen",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "airy",
+                  "alignment": "start",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "strong"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "null",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": null
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "unknown-property",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "css": "body{}"
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "unknown-version",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "2.0.0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "future-behavior",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "behavior": {
+                  "kind": "parallax"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "bad-gradient",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "background": {
+                    "kind": "gradient",
+                    "angle": 1,
+                    "stops": [
+                      {
+                        "color": "#FFFFFF",
+                        "position": 70
+                      },
+                      {
+                        "color": "#FFFFFF",
+                        "position": 20
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "unknown-font",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "typography": {
+                    "family": "remote"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "v1-envelope-refused",
+      "changes": [
+        {
+          "path": "/schema_version",
+          "value": 1
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "foreign-section-refused",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "foreign",
+              "hero": {
+                "schema_version": 1
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "unknown-breakpoint",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "1.0.0",
+                  "responsive": {
+                    "phone": {
+                      "spacing": "airy"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "policy-refused",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/policy/layouts",
+          "value": [
+            {
+              "id": "centered",
+              "version": "1.0.0"
+            }
+          ]
+        },
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "typographic",
+                  "version": "1.0.0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "responsive-policy-refused",
+      "changes": [
+        {
+          "path": "/composition/sections/0/presentation_policy/spacing",
+          "value": [
+            "normal"
+          ]
+        },
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "1.0.0",
+                  "responsive": {
+                    "desktop": {
+                      "spacing": "airy"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "reset-palette-key",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "1.0.0"
+                },
+                "appearance": {
+                  "palette": {
+                    "accent": "#333333"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "reset": {
+        "section_id": "hero",
+        "path": [
+          "appearance",
+          "palette",
+          "accent"
+        ]
+      },
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "reset-whole-hero",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "1.0.0"
+                },
+                "appearance": {
+                  "palette": {
+                    "accent": "#333333"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "reset": {
+        "section_id": "hero",
+        "path": []
+      },
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "reset-layout",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "1.0.0"
+                },
+                "appearance": {
+                  "palette": {
+                    "accent": "#333333"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "reset": {
+        "section_id": "hero",
+        "path": [
+          "layout"
+        ]
+      },
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#333333"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "reset-absent-allowed-key",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "1.0.0"
+                },
+                "appearance": {
+                  "palette": {
+                    "accent": "#333333"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "reset": {
+        "section_id": "hero",
+        "path": [
+          "appearance",
+          "palette",
+          "text"
+        ]
+      },
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#333333"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "reset-absent-hero",
+      "changes": [],
+      "reset": {
+        "section_id": "hero",
+        "path": [
+          "appearance",
+          "palette",
+          "accent"
+        ]
+      },
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "reset-invalid-schema_version",
+      "changes": [],
+      "reset": {
+        "section_id": "hero",
+        "path": [
+          "schema_version"
+        ]
+      },
+      "error": true
+    },
+    {
+      "id": "reset-invalid-layout-id",
+      "changes": [],
+      "reset": {
+        "section_id": "hero",
+        "path": [
+          "layout",
+          "id"
+        ]
+      },
+      "error": true
+    },
+    {
+      "id": "reset-invalid-appearance-background-kind",
+      "changes": [],
+      "reset": {
+        "section_id": "hero",
+        "path": [
+          "appearance",
+          "background",
+          "kind"
+        ]
+      },
+      "error": true
+    },
+    {
+      "id": "reset-invalid-__proto__",
+      "changes": [],
+      "reset": {
+        "section_id": "hero",
+        "path": [
+          "__proto__"
+        ]
+      },
+      "error": true
+    },
+    {
+      "id": "reset-invalid-appearance/palette",
+      "changes": [],
+      "reset": {
+        "section_id": "hero",
+        "path": [
+          "appearance/palette"
+        ]
+      },
+      "error": true
+    },
+    {
+      "id": "reset-unknown-section",
+      "changes": [],
+      "reset": {
+        "section_id": "missing",
+        "path": []
+      },
+      "error": true
+    },
+    {
+      "id": "reset-responsive-key-restores-local",
+      "changes": [
+        {
+          "path": "/composition/sections/0/hero/layout/responsive",
+          "value": {
+            "tablet": {
+              "spacing": "airy"
+            }
+          }
+        },
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "layout": {
+                  "id": "centered",
+                  "version": "1.0.0",
+                  "responsive": {
+                    "tablet": {
+                      "spacing": "compact"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "reset": {
+        "section_id": "hero",
+        "path": [
+          "layout",
+          "responsive",
+          "tablet",
+          "spacing"
+        ]
+      },
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "airy",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "multiple-heroes-including-hidden",
+      "changes": [
+        {
+          "path": "/composition/sections/5",
+          "value": {
+            "id": "secondary",
+            "type": "hero",
+            "variant": "hero-centered",
+            "visible": true,
+            "required": false,
+            "toggleable": true,
+            "reorderable": true,
+            "presentation_policy": {
+              "spacing": [
+                "compact",
+                "normal",
+                "airy"
+              ],
+              "alignment": [
+                "start",
+                "center"
+              ],
+              "emphasis": [
+                "quiet",
+                "strong"
+              ]
+            },
+            "hero": {
+              "schema_version": 1,
+              "layout": {
+                "id": "centered",
+                "version": "1.0.0",
+                "settings": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              },
+              "policy": {
+                "layouts": [
+                  {
+                    "id": "centered",
+                    "version": "1.0.0"
+                  },
+                  {
+                    "id": "split-screen",
+                    "version": "1.0.0"
+                  },
+                  {
+                    "id": "fullscreen",
+                    "version": "1.0.0"
+                  },
+                  {
+                    "id": "typographic",
+                    "version": "1.0.0"
+                  },
+                  {
+                    "id": "asymmetric",
+                    "version": "1.0.0"
+                  },
+                  {
+                    "id": "product-showcase",
+                    "version": "1.0.0"
+                  },
+                  {
+                    "id": "bento-grid",
+                    "version": "1.0.0"
+                  }
+                ],
+                "appearance": true,
+                "behaviors": [
+                  "none"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/presentation/sections/5",
+          "value": {
+            "section_id": "secondary",
+            "settings": {
+              "spacing": "normal",
+              "alignment": "center",
+              "emphasis": "strong"
+            },
+            "hero": {
+              "schema_version": 1,
+              "appearance": {
+                "palette": {
+                  "text": "#111111",
+                  "surface": "#FFFFFF",
+                  "accent": "#222222"
+                },
+                "typography": {
+                  "family": "system-sans",
+                  "scale": "balanced"
+                },
+                "background": {
+                  "kind": "solid",
+                  "color": "#FFFFFF"
+                },
+                "surface": {
+                  "kind": "flat"
+                }
+              }
+            }
+          }
+        },
+        {
+          "path": "/content/sections/5",
+          "value": {
+            "section_id": "secondary",
+            "type": "hero",
+            "data": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            }
+          }
+        },
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "secondary",
+              "visible": false
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "schema_version": 1,
+        "design_schema_version": 2,
+        "heroes": [
+          {
+            "section_id": "hero",
+            "visible": true,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          },
+          {
+            "section_id": "secondary",
+            "visible": false,
+            "content": {
+              "title": "Designer Démo É02",
+              "subtitle": "Portfolio entièrement fictif pour validation Unicode.",
+              "cta_label": "Explorer mes études de cas"
+            },
+            "layout": {
+              "id": "centered",
+              "version": "1.0.0",
+              "settings": {
+                "mobile": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "tablet": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                },
+                "desktop": {
+                  "spacing": "normal",
+                  "alignment": "center",
+                  "emphasis": "quiet"
+                }
+              }
+            },
+            "appearance": {
+              "palette": {
+                "text": "#111111",
+                "surface": "#FFFFFF",
+                "accent": "#222222"
+              },
+              "typography": {
+                "family": "system-sans",
+                "scale": "balanced"
+              },
+              "background": {
+                "kind": "solid",
+                "color": "#FFFFFF"
+              },
+              "surface": {
+                "kind": "flat"
+              }
+            },
+            "behavior": {
+              "kind": "none"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "reset-refused-if-inherited-surface-breaks-contrast",
+      "changes": [
+        {
+          "path": "/customization/sections",
+          "value": [
+            {
+              "section_id": "hero",
+              "hero": {
+                "schema_version": 1,
+                "appearance": {
+                  "palette": {
+                    "text": "#FFFFFF",
+                    "surface": "#000000",
+                    "accent": "#CCCCCC"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "reset": {
+        "section_id": "hero",
+        "path": [
+          "appearance",
+          "palette",
+          "surface"
+        ]
+      },
+      "error": true
+    },
+    {
+      "id": "bad-project-uuid-newline",
+      "changes": [
+        {
+          "path": "/content/sections/1/data/items/0/id",
+          "value": "00000000-0000-4000-8000-000000000001\n"
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "project-url-no-authority",
+      "changes": [
+        {
+          "path": "/content/sections/1/data/items/0/url",
+          "value": "https:example.test"
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "project-url-invalid-ipv6",
+      "changes": [
+        {
+          "path": "/content/sections/1/data/items/0/url",
+          "value": "https://[bad"
+        }
+      ],
+      "error": true
+    },
+    {
+      "id": "project-url-unsafe",
+      "changes": [
+        {
+          "path": "/content/sections/1/data/items/0/url",
+          "value": "javascript:bad()"
+        }
+      ],
+      "error": true
+    }
+  ]
+}

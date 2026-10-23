@@ -1,0 +1,22 @@
+Historical reference: 11 files unchanged (SHA-256).
+Synthetic fixture: 4 checksums verified.
+Fixture accepted without truncation; order, drafts, Unicode and media references verified.
+UTF-8 reference text allows LF/CRLF checkout equivalence only; binary hashes remain exact.
+No runtime content, credentials, initialization or CORE-001 dependency used.
+test_added_whitespace_is_rejected (test_check_base001.IntegrityTests.test_added_whitespace_is_rejected) ... ok
+test_binary_file_is_never_normalized (test_check_base001.IntegrityTests.test_binary_file_is_never_normalized) ... ok
+test_bom_is_not_silently_removed (test_check_base001.IntegrityTests.test_bom_is_not_silently_removed) ... ok
+test_exact_lf_bytes_are_accepted (test_check_base001.IntegrityTests.test_exact_lf_bytes_are_accepted) ... ok
+test_invalid_utf8_is_rejected (test_check_base001.IntegrityTests.test_invalid_utf8_is_rejected) ... ok
+test_lone_carriage_return_is_rejected (test_check_base001.IntegrityTests.test_lone_carriage_return_is_rejected) ... ok
+test_manifest_path_cannot_escape_root (test_check_base001.IntegrityTests.test_manifest_path_cannot_escape_root) ... ok
+test_mixed_line_endings_only_are_accepted (test_check_base001.IntegrityTests.test_mixed_line_endings_only_are_accepted) ... ok
+test_real_text_change_is_rejected (test_check_base001.IntegrityTests.test_real_text_change_is_rejected) ... ok
+test_unknown_extension_remains_byte_exact (test_check_base001.IntegrityTests.test_unknown_extension_remains_byte_exact) ... ok
+test_utf8_crlf_json_is_accepted (test_check_base001.IntegrityTests.test_utf8_crlf_json_is_accepted) ... ok
+test_windows_crlf_gitignore_is_accepted (test_check_base001.IntegrityTests.test_windows_crlf_gitignore_is_accepted) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.004s
+
+OK

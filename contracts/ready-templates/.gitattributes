@@ -1,0 +1,2 @@
+# New immutable offline bundles use the exact LF bytes hashed by the manifest.
+*.json text eol=lf

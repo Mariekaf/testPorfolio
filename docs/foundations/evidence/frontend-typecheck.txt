@@ -1,0 +1,10 @@
+
+> portfolio-saas-foundations@0.1.0 typecheck
+> npm run typecheck --workspaces --if-present
+
+
+> @portfolio/studio@0.1.0 typecheck
+> next typegen && tsc --noEmit
+
+Generating route types...
+✓ Types generated successfully

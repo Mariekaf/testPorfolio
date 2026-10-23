@@ -1,0 +1,33 @@
+Using CPython 3.13.5 interpreter at: /usr/bin/python3.13
+Creating virtual environment with seed packages at: /tmp/core001-replay-python
+ + pip==26.2.1
+Activate with: source /tmp/core001-replay-python/bin/activate
+Ignoring tzdata: markers 'sys_platform == "win32"' don't match your environment
+Collecting asgiref==3.12.1 (from -r backend/requirements/development.txt (line 3))
+  Downloading asgiref-3.12.1-py3-none-any.whl (25 kB)
+Collecting attrs==26.1.0 (from -r backend/requirements/development.txt (line 7))
+  Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+Collecting django==5.2.18 (from -r backend/requirements/development.txt (line 13))
+  Downloading django-5.2.18-py3-none-any.whl (8.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.3/8.3 MB 21.1 MB/s  0:00:00
+Collecting djangorestframework==3.18.3 (from -r backend/requirements/development.txt (line 19))
+  Downloading djangorestframework-3.18.3-py3-none-any.whl (903 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 904.0/904.0 kB 115.1 MB/s  0:00:00
+Collecting jsonschema==4.26.0 (from -r backend/requirements/development.txt (line 23))
+  Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Collecting jsonschema-specifications==2025.9.1 (from -r backend/requirements/development.txt (line 27))
+  Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Collecting psycopg==3.3.6 (from -r backend/requirements/development.txt (line 31))
+  Downloading psycopg-3.3.6-py3-none-any.whl (215 kB)
+Collecting psycopg-binary==3.3.6 (from -r backend/requirements/development.txt (line 35))
+  Downloading psycopg_binary-3.3.6-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.2/5.2 MB 19.4 MB/s  0:00:00
+Collecting referencing==0.37.0 (from -r backend/requirements/development.txt (line 103))
+  Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+Collecting rpds-py==2026.9.1 (from -r backend/requirements/development.txt (line 109))
+  Downloading rpds_py-2026.9.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (370 kB)
+Collecting sqlparse==0.6.0 (from -r backend/requirements/development.txt (line 241))
+  Downloading sqlparse-0.6.0-py3-none-any.whl (50 kB)
+Installing collected packages: sqlparse, rpds-py, psycopg-binary, psycopg, attrs, asgiref, referencing, django, jsonschema-specifications, djangorestframework, jsonschema
+
+Successfully installed asgiref-3.12.1 attrs-26.1.0 django-5.2.18 djangorestframework-3.18.3 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 psycopg-3.3.6 psycopg-binary-3.3.6 referencing-0.37.0 rpds-py-2026.9.1 sqlparse-0.6.0

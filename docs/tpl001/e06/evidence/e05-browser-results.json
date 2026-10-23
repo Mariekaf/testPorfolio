@@ -1,0 +1,228 @@
+{
+  "browser": "Chromium",
+  "results": [
+    {
+      "layout": "centered",
+      "width": 320,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "centered",
+      "width": 375,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "centered",
+      "width": 640,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "centered",
+      "width": 768,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "centered",
+      "width": 1024,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "centered",
+      "width": 1440,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "split-screen",
+      "width": 320,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "split-screen",
+      "width": 375,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "split-screen",
+      "width": 640,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "split-screen",
+      "width": 768,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "split-screen",
+      "width": 1024,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "split-screen",
+      "width": 1440,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "fullscreen",
+      "width": 320,
+      "text_contrast": 14.28,
+      "cta_contrast": 12.076,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "fullscreen",
+      "width": 375,
+      "text_contrast": 14.28,
+      "cta_contrast": 12.076,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "fullscreen",
+      "width": 640,
+      "text_contrast": 14.28,
+      "cta_contrast": 12.076,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "fullscreen",
+      "width": 768,
+      "text_contrast": 14.28,
+      "cta_contrast": 12.076,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "fullscreen",
+      "width": 1024,
+      "text_contrast": 14.28,
+      "cta_contrast": 12.076,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "fullscreen",
+      "width": 1440,
+      "text_contrast": 14.28,
+      "cta_contrast": 12.076,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "typographic",
+      "width": 320,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "typographic",
+      "width": 375,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "center"
+    },
+    {
+      "layout": "typographic",
+      "width": 640,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "typographic",
+      "width": 768,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "typographic",
+      "width": 1024,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    },
+    {
+      "layout": "typographic",
+      "width": 1440,
+      "text_contrast": 14.28,
+      "cta_contrast": 8.391,
+      "keyboard": "passed",
+      "long_content_200_percent_zoom": "passed",
+      "alignment": "left"
+    }
+  ],
+  "screenshots": 12,
+  "forced_colors": "4 passed",
+  "page_errors": [],
+  "limitations": [
+    "Linux Chromium only; no Windows, Safari, Firefox or screen-reader certification.",
+    "CSS zoom exercised; operating-system display scaling not tested."
+  ]
+}

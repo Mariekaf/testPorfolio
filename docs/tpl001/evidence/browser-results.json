@@ -1,0 +1,49 @@
+{
+  "platform": "Linux Chromium",
+  "synthetic_only": true,
+  "results": [
+    {
+      "template": "minimal",
+      "viewport": 1365,
+      "layout": "minimal-stack",
+      "sections": 5,
+      "projects": 3,
+      "overflow": false,
+      "shared_renderer": true
+    },
+    {
+      "template": "editorial",
+      "viewport": 1365,
+      "layout": "editorial-grid",
+      "sections": 5,
+      "projects": 3,
+      "overflow": false,
+      "shared_renderer": true
+    },
+    {
+      "template": "minimal",
+      "viewport": 390,
+      "layout": "minimal-stack",
+      "sections": 5,
+      "projects": 3,
+      "overflow": false,
+      "shared_renderer": true
+    },
+    {
+      "template": "editorial",
+      "viewport": 390,
+      "layout": "editorial-grid",
+      "sections": 5,
+      "projects": 3,
+      "overflow": false,
+      "shared_renderer": true
+    }
+  ],
+  "anonymous_redirect": true,
+  "write_denied": true,
+  "csrf_preserved": true,
+  "logout_guard": true,
+  "no_portfolio_created": true,
+  "external_requests": 0,
+  "page_errors": 0
+}

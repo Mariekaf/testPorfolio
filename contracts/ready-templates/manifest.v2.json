@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "digest_algorithm": "sha256-list-v1",
+  "entries": [
+    {
+      "template": {
+        "id": "creative-editorial",
+        "version": "1.0.0"
+      },
+      "status": "draft",
+      "bundle_digest": "66486eb6d0b84894fc54d34f60d9ce4594ddb95c1dfbb6540e9ed5c0e0bbe458",
+      "files": [
+        {
+          "role": "descriptor",
+          "path": "creative-editorial/1.0.0/descriptor.json",
+          "bytes": 2643,
+          "sha256": "068999a1d6f94f5dbe4180f3fe407e22db70aa31dd8ef94d8b1f7e6eab3756d6"
+        },
+        {
+          "role": "snapshot",
+          "path": "creative-editorial/1.0.0/snapshot.json",
+          "bytes": 3133,
+          "sha256": "ab042829790e1f620441919a5805b4224c1c81095d0d330abb4136b8441d54db"
+        },
+        {
+          "role": "style-policy",
+          "path": "creative-editorial/1.0.0/style-policy.json",
+          "bytes": 563,
+          "sha256": "26b6fa1972408b227e522e657ac24ad8a070c5a35e12023fe5172ba5e8443d1a"
+        },
+        {
+          "role": "fonts",
+          "path": "creative-editorial/1.0.0/fonts.json",
+          "bytes": 407,
+          "sha256": "2c702560418914f2f98ee6b9e7e622baa0f1f4aa6850e88aa5d0546ba26d85f8"
+        },
+        {
+          "role": "responsive",
+          "path": "creative-editorial/1.0.0/responsive.json",
+          "bytes": 267,
+          "sha256": "3e1f12751f6226cc221eab0669600fc17c51f72fe4ea9b9cc7fa6ac7211b7c2c"
+        },
+        {
+          "role": "demo-content",
+          "path": "creative-editorial/1.0.0/demo-content.json",
+          "bytes": 1538,
+          "sha256": "18e410a73a370f0b60338ce734eece0b11165ca747afc93e3c41f125292f9e51"
+        }
+      ]
+    }
+  ]
+}

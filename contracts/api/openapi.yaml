@@ -1,0 +1,81 @@
+openapi: 3.1.0
+info:
+  title: Portfolio SaaS foundations
+  version: 0.1.0
+  description: CORE-001 health plus PORT-001 portfolio contracts; AUTH session contract remains separate.
+paths:
+  /api/v1/health/live:
+    get:
+      operationId: liveness
+      responses:
+        '200':
+          description: Process available, without querying PostgreSQL.
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/health/response.v1.json'
+  /api/v1/health/ready:
+    get:
+      operationId: readiness
+      responses:
+        '200':
+          description: PostgreSQL reachable and initial user table accessible.
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/health/response.v1.json'
+        '503':
+          description: Database or required user table unavailable; no private details.
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/health/response.v1.json'
+
+  /api/v1/portfolios:
+    $ref: "./portfolios.v1.json#/paths/~1api~1v1~1portfolios"
+
+  /api/v1/portfolios/{id}:
+    $ref: "./portfolios.v1.json#/paths/~1api~1v1~1portfolios~1{id}"
+
+  /api/v1/portfolios/{id}/duplicate:
+    $ref: "./portfolios.v1.json#/paths/~1api~1v1~1portfolios~1{id}~1duplicate"
+
+  /api/v1/portfolios/{id}/archive:
+    $ref: "./portfolios.v1.json#/paths/~1api~1v1~1portfolios~1{id}~1archive"
+
+  /api/v1/portfolios/{id}/restore:
+    $ref: "./portfolios.v1.json#/paths/~1api~1v1~1portfolios~1{id}~1restore"
+
+  /api/v1/templates:
+    $ref: "./templates.v1.json#/paths/~1api~1v1~1templates"
+
+  /api/v1/templates/{template_id}/versions/{template_version}:
+    $ref: "./templates.v1.json#/paths/~1api~1v1~1templates~1{template_id}~1versions~1{template_version}"
+
+  /api/v1/templates/{template_id}/versions/{template_version}/preview:
+    $ref: "./templates.v1.json#/paths/~1api~1v1~1templates~1{template_id}~1versions~1{template_version}~1preview"
+
+  /api/v1/portfolios/from-template:
+    $ref: "./template-instances.v1.json#/paths/~1api~1v1~1portfolios~1from-template"
+
+  /api/v1/portfolios/{id}/design:
+    $ref: "./hero-design.v2.json#/paths/~1api~1v1~1portfolios~1{id}~1design"
+
+  /api/v1/portfolios/{id}/design/upgrade:
+    $ref: "./hero-design.v2.json#/paths/~1api~1v1~1portfolios~1{id}~1design~1upgrade"
+
+  /api/v1/portfolios/{id}/design/restore:
+    $ref: "./hero-design.v2.json#/paths/~1api~1v1~1portfolios~1{id}~1design~1restore"
+
+  /api/v1/portfolios/{id}/design/revisions:
+    $ref: "./hero-design.v2.json#/paths/~1api~1v1~1portfolios~1{id}~1design~1revisions"
+
+  /api/v1/portfolios/{id}/design/revisions/{revision_id}:
+    $ref: "./hero-design.v2.json#/paths/~1api~1v1~1portfolios~1{id}~1design~1revisions~1{revision_id}"
+
+components:
+  securitySchemes:
+    session:
+      type: apiKey
+      in: cookie
+      name: portfolio_saas_session

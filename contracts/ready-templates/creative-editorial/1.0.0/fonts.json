@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "fonts": [
+    {
+      "reference": {
+        "id": "system-sans",
+        "version": "1.0.0"
+      },
+      "family": "sans-serif",
+      "source": "system",
+      "load_required": false
+    },
+    {
+      "reference": {
+        "id": "system-serif",
+        "version": "1.0.0"
+      },
+      "family": "serif",
+      "source": "system",
+      "load_required": false
+    }
+  ]
+}

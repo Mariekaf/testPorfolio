@@ -1,0 +1,178 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "design_schema_version": {
+      "const": 2
+    },
+    "hero_schema_version": {
+      "const": 1
+    },
+    "runtime_enabled": {
+      "const": false
+    },
+    "layouts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{0,59}$",
+            "maxLength": 60
+          },
+          "version": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?![\\s\\S])",
+            "maxLength": 30
+          },
+          "declared": {
+            "const": true
+          },
+          "implemented": {
+            "type": "boolean"
+          },
+          "selectable": {
+            "type": "boolean"
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "content-v2",
+                "media-assets"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 2,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "declared",
+          "implemented",
+          "selectable",
+          "requires"
+        ]
+      },
+      "minItems": 7,
+      "maxItems": 7
+    },
+    "appearance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{0,59}$",
+            "maxLength": 60
+          },
+          "version": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?![\\s\\S])",
+            "maxLength": 30
+          },
+          "declared": {
+            "const": true
+          },
+          "implemented": {
+            "type": "boolean"
+          },
+          "selectable": {
+            "type": "boolean"
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "content-v2",
+                "media-assets"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 2,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "declared",
+          "implemented",
+          "selectable",
+          "requires"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 12
+    },
+    "behaviors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]{0,59}$",
+            "maxLength": 60
+          },
+          "version": {
+            "type": "string",
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?![\\s\\S])",
+            "maxLength": 30
+          },
+          "declared": {
+            "const": true
+          },
+          "implemented": {
+            "type": "boolean"
+          },
+          "selectable": {
+            "type": "boolean"
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "content-v2",
+                "media-assets"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 2,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "version",
+          "declared",
+          "implemented",
+          "selectable",
+          "requires"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "design_schema_version",
+    "hero_schema_version",
+    "runtime_enabled",
+    "layouts",
+    "appearance",
+    "behaviors"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

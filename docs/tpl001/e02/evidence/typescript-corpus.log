@@ -1,0 +1,10 @@
+✔ common UTF-8 corpus has unique typed cases and explicit expected results (1.739277ms)
+✔ every declared layout has positive color independence and negative selection vectors (0.192434ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 116.175059

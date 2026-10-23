@@ -1,0 +1,29 @@
+Operations to perform:
+  Apply all migrations: accounts, auth, contenttypes, identity, portfolios, sessions, templates
+Running migrations:
+  Applying sessions.0001_initial... OK
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying identity.0001_initial... OK
+  Applying identity.0002_authenticationlimit_authsession_alter_user_options_and_more... OK
+  Applying accounts.0001_initial... OK
+  Applying accounts.0002_provision_personal_accounts... OK
+  Applying portfolios.0001_initial... OK
+  Applying portfolios.0002_expand_account_ownership... OK
+  Applying portfolios.0003_backfill_and_constrain... OK
+  Applying portfolios.0004_contract_legacy_owner... OK
+  Applying templates.0001_initial... OK
+  Applying templates.0002_versioned_design_transitions... OK
+  Applying templates.0003_readyportfoliodesign_readydesignrevision_and_more... OK

@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-18",
+  "timezone": "Africa/Douala",
+  "platform": "Linux",
+  "database": {
+    "engine": "PostgreSQL",
+    "version": "17.11",
+    "real_connection": true,
+    "synthetic_data_only": true
+  },
+  "tests": {
+    "django": {
+      "passed": 57,
+      "failed": 0
+    },
+    "integrity": {
+      "passed": 12,
+      "failed": 0
+    },
+    "legacy": {
+      "passed": 6,
+      "failed": 0
+    },
+    "health_contracts": {
+      "passed": 3,
+      "failed": 0
+    },
+    "auth_client": {
+      "passed": 4,
+      "failed": 0
+    },
+    "portfolio_client": {
+      "passed": 6,
+      "failed": 0
+    }
+  },
+  "total_passed": 88,
+  "typecheck": "passed",
+  "build": "passed",
+  "migration_entry_points": [
+    "AUTH-001 identity.0002",
+    "provisional portfolios.0001"
+  ],
+  "migration_tests_passed": 5,
+  "concurrency_tests_passed": 4,
+  "windows_port001": "not executed",
+  "legacy_source_files_unchanged": 11,
+  "auth_session_contract": "unchanged",
+  "public_deployment": false,
+  "implementation_commit": "34d78fe"
+}
