@@ -1,0 +1,30 @@
+test_added_whitespace_is_rejected (test_check_base001.IntegrityTests.test_added_whitespace_is_rejected) ... ok
+test_binary_file_is_never_normalized (test_check_base001.IntegrityTests.test_binary_file_is_never_normalized) ... ok
+test_bom_is_not_silently_removed (test_check_base001.IntegrityTests.test_bom_is_not_silently_removed) ... ok
+test_exact_lf_bytes_are_accepted (test_check_base001.IntegrityTests.test_exact_lf_bytes_are_accepted) ... ok
+test_invalid_utf8_is_rejected (test_check_base001.IntegrityTests.test_invalid_utf8_is_rejected) ... ok
+test_lone_carriage_return_is_rejected (test_check_base001.IntegrityTests.test_lone_carriage_return_is_rejected) ... ok
+test_manifest_path_cannot_escape_root (test_check_base001.IntegrityTests.test_manifest_path_cannot_escape_root) ... ok
+test_mixed_line_endings_only_are_accepted (test_check_base001.IntegrityTests.test_mixed_line_endings_only_are_accepted) ... ok
+test_real_text_change_is_rejected (test_check_base001.IntegrityTests.test_real_text_change_is_rejected) ... ok
+test_unknown_extension_remains_byte_exact (test_check_base001.IntegrityTests.test_unknown_extension_remains_byte_exact) ... ok
+test_utf8_crlf_json_is_accepted (test_check_base001.IntegrityTests.test_utf8_crlf_json_is_accepted) ... ok
+test_windows_crlf_gitignore_is_accepted (test_check_base001.IntegrityTests.test_windows_crlf_gitignore_is_accepted) ... ok
+test_existing_user_directory_is_never_adopted_or_changed (test_media_initialization.PrivateMediaInitializationTests.test_existing_user_directory_is_never_adopted_or_changed) ... ok
+test_legacy_local_directory_is_not_created_or_used (test_media_initialization.PrivateMediaInitializationTests.test_legacy_local_directory_is_not_created_or_used) ... ok
+test_new_dedicated_directory_has_marker_and_private_mode (test_media_initialization.PrivateMediaInitializationTests.test_new_dedicated_directory_has_marker_and_private_mode) ... ok
+test_initializer_and_temporary_test_storage_remain_private (test_media_windows_acl.WindowsDaclIntegrationTests.test_initializer_and_temporary_test_storage_remain_private) ... skipped 'Requires native Windows and Python 3.13; not a Linux validation'
+test_public_allow_is_rejected_even_with_owner_rights_and_deny (test_media_windows_acl.WindowsDaclIntegrationTests.test_public_allow_is_rejected_even_with_owner_rights_and_deny) ... skipped 'Requires native Windows and Python 3.13; not a Linux validation'
+test_python313_temp_directory_and_marker_do_not_require_admin (test_media_windows_acl.WindowsDaclIntegrationTests.test_python313_temp_directory_and_marker_do_not_require_admin) ... skipped 'Requires native Windows and Python 3.13; not a Linux validation'
+test_explicit_user_and_trusted_system_owners (test_media_windows_acl.WindowsDaclPolicyTests.test_explicit_user_and_trusted_system_owners) ... ok
+test_inspection_errors_and_unsafe_reports_fail_closed (test_media_windows_acl.WindowsDaclPolicyTests.test_inspection_errors_and_unsafe_reports_fail_closed) ... ok
+test_null_empty_and_malformed_dacl_reports_rejected (test_media_windows_acl.WindowsDaclPolicyTests.test_null_empty_and_malformed_dacl_reports_rejected) ... ok
+test_owner_rights_never_authorizes_an_untrusted_owner (test_media_windows_acl.WindowsDaclPolicyTests.test_owner_rights_never_authorizes_an_untrusted_owner) ... ok
+test_public_unknown_and_creator_owner_principals_rejected (test_media_windows_acl.WindowsDaclPolicyTests.test_public_unknown_and_creator_owner_principals_rejected) ... ok
+test_python313_owner_rights_acl_is_private (test_media_windows_acl.WindowsDaclPolicyTests.test_python313_owner_rights_acl_is_private) ... ok
+test_transport_uses_encoded_command_and_path_in_environment_only (test_media_windows_acl.WindowsDaclPolicyTests.test_transport_uses_encoded_command_and_path_in_environment_only) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.005s
+
+OK (skipped=3)
